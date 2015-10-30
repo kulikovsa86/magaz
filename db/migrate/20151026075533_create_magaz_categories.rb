@@ -6,7 +6,7 @@ class CreateMagazCategories < ActiveRecord::Migration
       t.string :description
       t.boolean :hidden
       t.integer :parent_id
-      t.integer :sort_order
+      t.integer :position
       t.string :permalink, index: true
 
       t.timestamps null: false

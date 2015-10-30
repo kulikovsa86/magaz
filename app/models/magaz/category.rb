@@ -16,7 +16,8 @@
 
 module Magaz
   class Category < ActiveRecord::Base
-    acts_as_tree order: 'sort_order'
+    acts_as_tree
+    acts_as_list scope: :parent
     has_permalink :translit_name
 
     has_and_belongs_to_many :properties

@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 20151028125950) do
     t.string   "description"
     t.boolean  "hidden"
     t.integer  "parent_id"
-    t.integer  "sort_order"
+    t.integer  "position"
     t.string   "permalink"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false

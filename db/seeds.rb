@@ -25,6 +25,9 @@ Magaz::Property.create!(code: '03', name: 'prop-3', static: true, property_type:
 cat = Magaz::Category.find_or_create_by_path %w|Категория-1 Подкатегория-11 Секция-111|
 Magaz::Category.find_or_create_by_path %w|Категория-1 Подкатегория-11 Секция-112|
 Magaz::Category.find_or_create_by_path %w|Категория-1 Подкатегория-11 Секция-113|
+Magaz::Category.find_or_create_by_path %w|Категория-1 Подкатегория-11 Секция-114|
+Magaz::Category.find_or_create_by_path %w|Категория-1 Подкатегория-11 Секция-115|
+Magaz::Category.find_or_create_by_path %w|Категория-1 Подкатегория-11 Секция-116|
 Magaz::Category.find_or_create_by_path %w|Категория-1 Подкатегория-12|
 Magaz::Category.find_or_create_by_path %w|Категория-1 Подкатегория-13|
 Magaz::Category.find_or_create_by_path %w|Категория-2 Подкатегория-21|
