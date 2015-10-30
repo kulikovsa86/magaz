@@ -1,0 +1,5 @@
+%ol.breadcrumb
+  %li= link_to '---', categories_path, class: 'btn-link'
+  - if @parent_category
+    - @parent_category.self_and_ancestors.reverse.each do |cat|
+      %li= link_to cat.name, categories_path(cat), class: 'btn-link'

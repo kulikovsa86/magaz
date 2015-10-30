@@ -1,0 +1,78 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t 'hello'
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t('hello') %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# To learn more, please read the Rails Internationalization guide
+# available at http://guides.rubyonrails.org/i18n.html.
+
+en:
+  errors:
+    messages:
+      ref_line_items: 'line items exist'
+    template:
+      body: ""
+      header: "%{count} prohibited this %{model} from being saved"
+  helpers:
+    submit:
+      create: New %{model}
+      submit: Save %{model}
+      update: Update %{model}
+      save: Save
+      login: Login
+    label:
+      new: New %{model}
+      list: List of %{model}
+      edit: Editing %{model}
+      edit_id: Editing %{model} %{id}
+    link_to:
+      back: Back
+      show: Show
+      edit: Edit
+      destroy: Destroy
+      new: New
+      logout: Logout
+    question:
+      confirm: Are you sure?
+  controllers:
+    created: "%{model} was successfully created"
+    updated: "%{model} was successfully updated"
+    destroyed: "%{model} was successfully destroyed"
+  ecom:
+    catalogue: 'Catalogue'
+    admin: 'Control panel'
+    home: Home
+    about: 'About company'
+    contacts: Contacts
+    cart: Cart
+    add2cart: 'Add to Cart'
+    add2order: 'Add to Order'
+    empty_cart: 'Empty cart'
+    recount: Recalculate
+    checkout: Checkout
+    registration: 'Order registration'
+    place: 'Place order'
+    placed: 'The order is successfully submitted'
+    not_placed: 'Error placing order'
+    deleted_from_cart: 'Product was successfully removed from cart'
+    deleted_from_order: 'Product was successfully removed from order'
+  users:
+    auth: Authorization
+    sign_in: 'Please, authorize'
+    login_error: 'Wrong username/password'
+    welcome: Welcome
+    info: 'User information'
+    session_closed: 'Session closed'

@@ -1,0 +1,60 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "bootstrap-select";
+
+@import "properties";
+
+$form_field_default_width: 400px;
+
+.panel_header {
+  font-weight: bold;
+}
+
+.code_column {
+  width: 50px;
+}
+
+table.editable_table {
+
+  .static_column {
+    width: 50px;
+  }
+
+  .th_actions {
+    width: 70px;
+  }
+
+  .actions {
+    visibility: hidden;
+  }
+
+  tr:hover .actions {
+    visibility: visible;
+  }
+
+}
+
+
+form {
+  .form-group label {
+    color: #606060;
+  }
+
+  .code_input_group {
+    width: 150px;
+  }
+
+  .name_input_group {
+    width: $form_field_default_width;
+  }
+
+  .select_input_group select {
+    width: $form_field_default_width;
+  }
+
+  textarea {
+    min-width: $form_field_default_width;
+    max-width: 600px;
+  }
+}
+

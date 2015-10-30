@@ -1,0 +1,16 @@
+= bootstrap_form_for [@category, @product] do |f|
+  - if @product.errors.any?
+    = f.alert_message t('errors.template.header', count: @product.errors.count)
+
+  .name_input_group
+    = f.text_field :name
+  = f.text_area :description
+  .name_input_group
+    = f.text_field :price, icon: 'ruble'
+    = f.text_field :article
+    = f.text_field :weight
+  .form-group
+    = f.check_box :hidden
+  
+  %br
+  = f.submit t('helpers.submit.save'), class: 'btn btn-success'

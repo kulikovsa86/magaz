@@ -1,0 +1,15 @@
+= bootstrap_form_for @property do |f|
+  - if @property.errors.any?
+    = f.alert_message t('errors.template.header', count: @property.errors.count)
+
+  .code_input_group
+    = f.text_field :code
+  .name_input_group
+    = f.text_field :name
+  .form-group
+    = label_tag Magaz::Property.human_attribute_name(:property_type)
+    = f.collection_select :property_type_id, Magaz::PropertyType.all, :id, :name, { hide_label: true }, {class: 'selectpicker', disabled: !new_property_page?, :'data-width'=> "400px" }
+  = f.check_box :static
+  %br
+
+  = f.submit t('helpers.submit.save'), class: 'btn btn-success'

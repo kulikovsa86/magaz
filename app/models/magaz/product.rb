@@ -1,0 +1,35 @@
+# == Schema Information
+#
+# Table name: magaz_products
+#
+#  id          :integer          not null, primary key
+#  name        :string
+#  category_id :integer
+#  description :text
+#  price       :decimal(8, 2)
+#  hidden      :boolean
+#  article     :string
+#  weight      :decimal(6, 3)
+#  permalink   :string
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#
+
+module Magaz
+  class Product < ActiveRecord::Base
+    has_permalink :translit_name
+
+    belongs_to :category
+
+    validates :name, presence: true
+
+    private
+      def translit_name
+        if name
+          Translit.convert(name, :english)
+        else
+          nil
+        end
+      end
+  end
+end

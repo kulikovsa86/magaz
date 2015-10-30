@@ -1,0 +1,15 @@
+- if notice
+  .alert.alert-success= notice
+
+= render 'breadcrumb'
+
+.panel.panel-default
+  .panel-heading
+    %h4.panel_header= @category.name
+  .panel-body
+    = render 'form'
+
+%br
+
+%br
+= link_to t('helpers.link_to.back'), categories_path(@parent_category)

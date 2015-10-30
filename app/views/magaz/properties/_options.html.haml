@@ -1,0 +1,12 @@
+.panel.panel-default
+  .panel-heading
+    %h4.panel_header= t('magaz.properties.edit.options')
+  .panel-body
+    = form_for [@property, @property.property_options.build], html: { class: 'form-inline' } do |f|
+      #input_option.input-group
+        = f.text_field :name, class: 'form-control', placeholder: 'Новый элемент'
+        %span.input-group-btn
+          = button_tag(type: "submit", class: "btn btn-default") do
+            %i.glyphicon.glyphicon-plus
+    %table#opt_table.table.table-hover.table-condensed
+      = render @property.property_options

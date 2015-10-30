@@ -1,0 +1,43 @@
+- if notice
+  .alert.alert-success= notice
+
+= render 'breadcrumb'
+
+
+.panel.panel-default
+  .panel-heading
+    %h4.panel_header= t('.title')
+  .panel-body
+    %table.editable_table.table.table-hover
+      %thead
+        %tr
+          %th.code_column= Magaz::Category.human_attribute_name(:code)
+          %th.code_column
+          %th= Magaz::Category.human_attribute_name(:name)
+          %th.th_actions
+
+      %tbody
+        - if @parent_category
+          %tr
+            %td
+            %td
+            %td= link_to '...', categories_path(@parent_category.parent)
+            %td
+        - @categories.each do |category|
+          %tr
+            %td= category.id
+            %td
+              - if category.products.empty?
+                %i.glyphicon.glyphicon-folder-open
+              - else
+                %i.glyphicon.glyphicon-folder-close
+            %td= link_to category.name, categories_path(category)
+            %td.td_actions
+              .actions
+                = link_to edit_category_path(category), class: 'btn-link' do
+                  %i.glyphicon.glyphicon-pencil
+                &nbsp;
+                = link_to category, :method => :delete, :data => { :confirm => 'Are you sure?' }, class: 'btn-link' do
+                  %i.glyphicon.glyphicon-remove
+%br
+= link_to t('helpers.link_to.new_f', model: Magaz::Category.model_name.human), new_category_path(@parent_category)

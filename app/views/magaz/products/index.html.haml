@@ -1,0 +1,28 @@
+- if notice
+  .alert.alert-success= notice
+
+= render '/magaz/categories/breadcrumb'
+
+.panel.panel-default
+  .panel-heading
+    %h4.panel_header= t('.title')
+  .panel-body
+    %table.table.table-hover
+      %thead
+        %tr
+          %th.code_column= Magaz::Product.human_attribute_name(:article)
+          %th.code_column
+          %th= Magaz::Product.human_attribute_name(:name)
+      %tbody
+        %tr
+          %td
+          %td
+          %td= link_to '...', categories_path(@parent_category.parent)
+        - @products.each do |product|
+          %tr
+            %td= product.id
+            %td
+            %td= link_to product.name, edit_product_path(product)
+
+%br
+= link_to t('helpers.link_to.new', model: Magaz::Product.model_name.human), new_category_product_path(@parent_category)

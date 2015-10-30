@@ -1,0 +1,38 @@
+- if notice
+  .alert.alert-success= notice
+
+.panel.panel-default
+  .panel-heading
+    %h4.panel_header= t('.title')
+  .panel-body
+    %table.editable_table.table.table-hover
+      %thead
+        %tr
+          %th.code_column= Magaz::Property.human_attribute_name(:code)
+          %th= Magaz::Property.human_attribute_name(:name)
+          %th= Magaz::Property.human_attribute_name(:type)
+          %th.th_actions
+
+      %tbody
+        - @properties.each do |property|
+          %tr
+            %td= property.code
+            %td
+              - if property.static
+                %i.glyphicon.glyphicon-lock
+              = property.name
+            %td
+              - if property.type
+                = property.type.name
+            %td.td_actions
+              .actions
+                = link_to edit_property_path(property), class: 'btn-link' do
+                  %i.glyphicon.glyphicon-pencil
+
+                &nbsp;
+                = link_to property, :method => :delete, :data => { :confirm => 'Are you sure?' }, class: 'btn-link' do
+                  %i.glyphicon.glyphicon-remove
+
+%br
+
+= link_to t('helpers.link_to.new_f', model: Magaz::Property.model_name.human), new_property_path

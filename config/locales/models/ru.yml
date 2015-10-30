@@ -1,0 +1,37 @@
+ru:
+  activerecord:
+    models:
+      magaz/property_type:
+        one: Тип характеристики
+        other: Типы характеристик
+      magaz/property: 
+        one: Характеристика
+        other: Характеристики
+      magaz/category:
+        one: Категория
+        other: Категории
+      magaz/product:
+        one: Товар
+        other: Товары
+    attributes:
+      magaz/property_type:
+        code: "Код"
+        name: "Наименование"
+      magaz/property:
+        code: Код
+        name: Наименование
+        property_type: Тип
+        static: Константная характеристика
+      magaz/category:
+        code: Код
+        name: Наименование
+        description: Описание
+        properties: Характеристики
+        hidden: Скрытая
+      magaz/product:
+        name: Наименование
+        description: Описание
+        price: Цена
+        hidden: Скрытый
+        article: Арт.
+        weight: Вес

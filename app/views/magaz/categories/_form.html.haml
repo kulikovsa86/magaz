@@ -1,0 +1,20 @@
+= bootstrap_form_for @category do |f|
+  - if @category.errors.any?
+    = f.alert_message t('errors.template.header', count: @category.errors.count)
+  - if @parent_category
+    = hidden_field_tag :parent, @parent_category.permalink
+
+  .code_input_group
+    = f.text_field :code
+  .name_input_group
+    = f.text_field :name
+  = f.text_area :description
+  .form-group
+    = f.check_box :hidden
+    %br
+    = label_tag Magaz::Category.human_attribute_name(:properties)
+    = f.collection_select :property_ids, Magaz::Property.all, :id, :name, { hide_label: true }, {class: 'selectpicker', multiple: true, :'data-width'=> "400px" }
+  %br
+  %br
+  = f.submit t('helpers.submit.save'), class: 'btn btn-success'
+
