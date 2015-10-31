@@ -21,6 +21,8 @@ require 'rails_helper'
 module Magaz
   RSpec.describe CategoriesController, type: :controller do
 
+    routes { Magaz::Engine.routes }
+
     # This should return the minimal set of attributes required to create a valid
     # Category. As you add validations to Category, be sure to
     # adjust the attributes here as well.

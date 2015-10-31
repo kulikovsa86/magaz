@@ -1,19 +1,18 @@
 # == Schema Information
 #
-# Table name: magaz_property_options
+# Table name: magaz_property_values
 #
 #  id          :integer          not null, primary key
+#  variant_id  :integer
 #  property_id :integer
-#  code        :string
-#  name        :string
+#  value       :string
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
-#  position    :integer
 #
 
 module Magaz
-  class PropertyOption < ActiveRecord::Base
+  class PropertyValue < ActiveRecord::Base
+    belongs_to :variant
     belongs_to :property
-    acts_as_list scope: :property
   end
 end

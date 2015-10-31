@@ -10,6 +10,7 @@
 #  hidden      :boolean
 #  article     :string
 #  weight      :decimal(6, 3)
+#  position    :integer
 #  permalink   :string
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
@@ -20,6 +21,7 @@ module Magaz
     has_permalink :translit_name
 
     belongs_to :category
+    acts_as_list scope: :category
 
     validates :name, presence: true
 

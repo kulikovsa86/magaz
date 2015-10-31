@@ -31,13 +31,24 @@
                 %i.glyphicon.glyphicon-folder-open
               - else
                 %i.glyphicon.glyphicon-folder-close
-            %td= link_to category.name, categories_path(category)
-            %td.td_actions
-              .actions
+            %td
+              = link_to category.name, categories_path(category)
+              &nbsp;
+              %span.actions
                 = link_to edit_category_path(category), class: 'btn-link' do
                   %i.glyphicon.glyphicon-pencil
-                &nbsp;
+            %td.td_actions
+              .actions
+                / &nbsp;
+                = link_to category_up_path(category), method: :patch, class: 'btn-link' do
+                  %i.glyphicon.glyphicon-menu-up
+                = link_to category_down_path(category), method: :patch, class: 'btn-link' do
+                  %i.glyphicon.glyphicon-menu-down
+                / &nbsp;
                 = link_to category, :method => :delete, :data => { :confirm => 'Are you sure?' }, class: 'btn-link' do
                   %i.glyphicon.glyphicon-remove
 %br
 = link_to t('helpers.link_to.new_f', model: Magaz::Category.model_name.human), new_category_path(@parent_category)
+- if @categories.empty?
+  \|
+  = link_to t('helpers.link_to.new', model: Magaz::Product.model_name.human), new_category_product_path(@parent_category)

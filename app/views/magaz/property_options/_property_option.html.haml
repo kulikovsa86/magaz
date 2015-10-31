@@ -4,10 +4,10 @@
       = property_option.name
     %td.td_actions
       .actions
-        = link_to up_property_property_option_path(@property, property_option), method: :patch, class: 'btn-link' do
+        = link_to property_option_up_path(property_option), method: :patch, class: 'btn-link' do
           %i.glyphicon.glyphicon-menu-up
-        = link_to down_property_property_option_path(@property, property_option), method: :patch, class: 'btn-link' do
+        = link_to property_option_down_path(property_option), method: :patch, class: 'btn-link' do
           %i.glyphicon.glyphicon-menu-down
-        = link_to property_property_option_path(@property, property_option), method: :delete, class: 'btn-link' do
+        = link_to property_option_path(property_option), method: :delete, class: 'btn-link' do
           %i.glyphicon.glyphicon-remove
 

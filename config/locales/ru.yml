@@ -280,11 +280,17 @@ ru:
     saved: 'Изменения успешно сохранены'
 
   magaz:
+    variants:
+      new:
+        title: Новый вариант
     products:
       index:
         title: Товары
       new:
         title: Новый товар
+      edit:
+        variants: Варианты товара
+        characteristics: Характеристики
       create:
         success: Товар создан
       update:

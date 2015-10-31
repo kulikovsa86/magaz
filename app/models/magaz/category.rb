@@ -8,7 +8,7 @@
 #  description :string
 #  hidden      :boolean
 #  parent_id   :integer
-#  sort_order  :integer
+#  position    :integer
 #  permalink   :string
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
@@ -16,7 +16,7 @@
 
 module Magaz
   class Category < ActiveRecord::Base
-    acts_as_tree
+    acts_as_tree dependent: :destroy
     acts_as_list scope: :parent
     has_permalink :translit_name
 

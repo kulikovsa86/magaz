@@ -1,0 +1,11 @@
+= render '/magaz/categories/breadcrumb'
+
+.panel.panel-default
+  .panel-heading
+    %h4.panel_header= @product.name
+
+.panel.panel-default
+  .panel-heading
+    %h4.panel_header= t('.title')
+  .panel-body
+    = render 'form'

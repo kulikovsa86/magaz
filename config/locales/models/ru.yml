@@ -13,10 +13,13 @@ ru:
       magaz/product:
         one: Товар
         other: Товары
+      magaz/variant:
+        one: Вариант
+        other: Варианты
     attributes:
       magaz/property_type:
-        code: "Код"
-        name: "Наименование"
+        code: Код
+        name: Наименование
       magaz/property:
         code: Код
         name: Наименование
@@ -35,3 +38,5 @@ ru:
         hidden: Скрытый
         article: Арт.
         weight: Вес
+      magaz/variant:
+        price: Цена

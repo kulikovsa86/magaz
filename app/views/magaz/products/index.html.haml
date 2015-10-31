@@ -7,22 +7,32 @@
   .panel-heading
     %h4.panel_header= t('.title')
   .panel-body
-    %table.table.table-hover
+    %table.editable_table.table.table-hover
       %thead
         %tr
           %th.code_column= Magaz::Product.human_attribute_name(:article)
           %th.code_column
           %th= Magaz::Product.human_attribute_name(:name)
+          %th.th_actions
       %tbody
         %tr
           %td
           %td
           %td= link_to '...', categories_path(@parent_category.parent)
+          %td
         - @products.each do |product|
           %tr
             %td= product.id
             %td
             %td= link_to product.name, edit_product_path(product)
+            %td.td_actions
+              .actions
+                = link_to product_up_path(product), method: :patch, class: 'btn-link' do
+                  %i.glyphicon.glyphicon-menu-up
+                = link_to product_down_path(product), method: :patch, class: 'btn-link' do
+                  %i.glyphicon.glyphicon-menu-down
+                = link_to product, :method => :delete, :data => { :confirm => 'Are you sure?' }, class: 'btn-link' do
+                  %i.glyphicon.glyphicon-remove
 
 %br
 = link_to t('helpers.link_to.new', model: Magaz::Product.model_name.human), new_category_product_path(@parent_category)

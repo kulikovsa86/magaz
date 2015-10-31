@@ -9,5 +9,18 @@
   .panel-body
     = render 'form'
 
+.panel.panel-default
+  .panel-heading
+    %h4.panel_header= t('.variants')
+  .panel-body
+    %table.editable_table.table.table-hover
+      %thead
+        %tr
+          %th.small_column N
+          %th.medium_column= Magaz::Product.human_attribute_name(:price)
+          %th= t('.characteristics')
+    %br
+    = link_to t('helpers.link_to.new', model: Magaz::Variant.model_name.human), new_product_variant_path(@product)
+
 
 = link_to t('helpers.link_to.back'), category_products_path(@parent_category)

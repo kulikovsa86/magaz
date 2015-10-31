@@ -8,9 +8,9 @@ module Magaz
     def index
       if params[:parent]
         @parent_category = Category.find_by_permalink(params[:parent])
-        @categories = @parent_category.children
+        @categories = @parent_category.children.order(:position)
       else
-        @categories = Category.roots
+        @categories = Category.roots.order(:position)
       end
       if @parent_category && !@parent_category.products.empty?
         redirect_to category_products_path(@parent_category)
@@ -51,6 +51,20 @@ module Magaz
       else
         render :edit
       end
+    end
+
+    # PATCH  /categories/:category_id/up(.:format)
+    def up
+      category = Category.find_by_permalink(params[:category_id])
+      category.move_higher
+      redirect_to categories_path(parent: category.parent)
+    end
+
+    # PATCH  /categories/:category_id/down(.:format)
+    def down
+      category = Category.find_by_permalink(params[:category_id])
+      category.move_lower
+      redirect_to categories_path(parent: category.parent)
     end
 
     # DELETE /categories/1

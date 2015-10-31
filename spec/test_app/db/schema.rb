@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151028125950) do
+ActiveRecord::Schema.define(version: 20151030133653) do
 
   create_table "magaz_categories", force: :cascade do |t|
     t.string   "code"
@@ -52,6 +52,7 @@ ActiveRecord::Schema.define(version: 20151028125950) do
     t.boolean  "hidden"
     t.string   "article"
     t.decimal  "weight",      precision: 6, scale: 3
+    t.integer  "position"
     t.string   "permalink"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
@@ -86,5 +87,25 @@ ActiveRecord::Schema.define(version: 20151028125950) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "magaz_property_values", force: :cascade do |t|
+    t.integer  "variant_id"
+    t.integer  "property_id"
+    t.string   "value"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "magaz_property_values", ["property_id"], name: "index_magaz_property_values_on_property_id"
+  add_index "magaz_property_values", ["variant_id"], name: "index_magaz_property_values_on_variant_id"
+
+  create_table "magaz_variants", force: :cascade do |t|
+    t.integer  "product_id"
+    t.decimal  "price",      precision: 8, scale: 2
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
+  end
+
+  add_index "magaz_variants", ["product_id"], name: "index_magaz_variants_on_product_id"
 
 end

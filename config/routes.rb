@@ -3,9 +3,19 @@
 
 Magaz::Engine.routes.draw do
   
+  concern :movable do
+    patch :up
+    patch :down
+  end
+
   shallow do
     resources :categories, only: [:edit, :update, :destroy] do
-      resources :products, except: :show
+      concerns :movable
+      resources :products, except: :show do
+        concerns :movable
+        resources :variants, except: [:index, :show] do
+        end
+      end
     end
   end
 
@@ -14,12 +24,12 @@ Magaz::Engine.routes.draw do
   get '/categories/(:parent)', to: 'categories#index', as: :categories
 
 
-  resources :properties, except: :show do
-    resources :property_options, only: [:create, :destroy] do
-      member do
-        patch :up
-        patch :down
+  shallow do
+    resources :properties, except: :show do
+      resources :property_options, only: [:create, :destroy] do
+        concerns :movable
       end
     end
   end
+
 end

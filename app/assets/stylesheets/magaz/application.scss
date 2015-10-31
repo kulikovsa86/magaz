@@ -16,16 +16,21 @@ $form_field_default_width: 400px;
 
 table.editable_table {
 
-  .static_column {
+  .small_column {
     width: 50px;
   }
 
+  .medium_column {
+    width: 200px;
+  }
+
   .th_actions {
-    width: 70px;
+    width: 100px;
   }
 
   .actions {
     visibility: hidden;
+    text-align: right;
   }
 
   tr:hover .actions {
@@ -36,15 +41,21 @@ table.editable_table {
 
 
 form {
-  .form-group label {
+
+  label {
     color: #606060;
   }
 
-  .code_input_group {
+  textarea {
+    min-width: $form_field_default_width;
+    max-width: 600px;
+  }
+
+  .small_input_group {
     width: 150px;
   }
 
-  .name_input_group {
+  .medium_input_group {
     width: $form_field_default_width;
   }
 
@@ -52,9 +63,6 @@ form {
     width: $form_field_default_width;
   }
 
-  textarea {
-    min-width: $form_field_default_width;
-    max-width: 600px;
-  }
+  
 }
 

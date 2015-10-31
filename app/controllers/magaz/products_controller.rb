@@ -7,7 +7,7 @@ module Magaz
     # GET /categories/:category_id/products(.:format)
     def index
       @parent_category = Category.find_by_permalink(params[:category_id])
-      @products = @parent_category.products
+      @products = @parent_category.products.order(:position)
     end
 
     # GET /categories/:category_id/products/new(.:format)
@@ -43,11 +43,30 @@ module Magaz
       end
     end
 
+    # PATCH  /products/:product_id/up(.:format)
+    def up
+      product = Product.find_by_permalink(params[:product_id])
+      product.move_higher
+      redirect_to category_products_path(product.category)
+    end
+
+    # PATCH  /products/:product_id/down(.:format)
+    def down
+      product = Product.find_by_permalink(params[:product_id])
+      product.move_lower
+      redirect_to category_products_path(product.category)
+    end
+
     # DELETE /products/1
     def destroy
       @parent_category = @product.category
       @product.destroy
-      redirect_to category_products_path(@parent_category), notice: t('.success')
+      if @parent_category.products.empty?
+        redirect_to categories_path(@parent_category), notice: t('.success')
+      else
+        @products = @parent_category.products
+        render :index, notice: t('.success')
+      end
     end
 
     private

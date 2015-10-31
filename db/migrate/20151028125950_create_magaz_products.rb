@@ -8,6 +8,7 @@ class CreateMagazProducts < ActiveRecord::Migration
       t.boolean :hidden
       t.string :article
       t.decimal :weight, :precision => 6, :scale => 3
+      t.integer :position
       t.string :permalink, index: true
 
       t.timestamps null: false

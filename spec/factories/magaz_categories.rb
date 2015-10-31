@@ -8,7 +8,7 @@
 #  description :string
 #  hidden      :boolean
 #  parent_id   :integer
-#  sort_order  :integer
+#  position    :integer
 #  permalink   :string
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null

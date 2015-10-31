@@ -1,0 +1,15 @@
+= bootstrap_form_for [@product, @variant] do |f|
+  - if @variant.errors.any?
+    = f.alert_message t('errors.template.header', count: @variant.errors.count)
+
+  = f.text_field :price, icon: 'ruble'
+
+  = f.fields_for 'property_values' do |ff|
+    - @properties.each do |property|
+      = label_tag property.name
+      = ff.text_field property.code, hide_label: true
+
+  = f.submit t('helpers.submit.save'), class: 'btn btn-success'
+
+
+

@@ -9,6 +9,7 @@
       %thead
         %tr
           %th.code_column= Magaz::Property.human_attribute_name(:code)
+          %th.code_column
           %th= Magaz::Property.human_attribute_name(:name)
           %th= Magaz::Property.human_attribute_name(:type)
           %th.th_actions
@@ -20,16 +21,13 @@
             %td
               - if property.static
                 %i.glyphicon.glyphicon-lock
-              = property.name
+            %td
+              = link_to property.name, edit_property_path(property)
             %td
               - if property.type
                 = property.type.name
             %td.td_actions
               .actions
-                = link_to edit_property_path(property), class: 'btn-link' do
-                  %i.glyphicon.glyphicon-pencil
-
-                &nbsp;
                 = link_to property, :method => :delete, :data => { :confirm => 'Are you sure?' }, class: 'btn-link' do
                   %i.glyphicon.glyphicon-remove
 

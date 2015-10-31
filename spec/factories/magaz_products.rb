@@ -10,6 +10,7 @@
 #  hidden      :boolean
 #  article     :string
 #  weight      :decimal(6, 3)
+#  position    :integer
 #  permalink   :string
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
