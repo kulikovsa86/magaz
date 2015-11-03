@@ -1,0 +1,24 @@
+
+.panel.panel-default
+  .panel-heading
+    %h4.panel_header= t('.variants')
+  .panel-body
+    %table.editable_table.table.table-hover
+      %thead
+        %tr
+          %th.small_column N
+          %th.medium_column= Magaz::Product.human_attribute_name(:price)
+          %th= t('.characteristics')
+          %th.th_actions
+      %tbody
+        - @product.variants.each_with_index do |variant, index|
+          %tr
+            %td= index + 1
+            %td= variant.price
+            %td= variant.to_s.html_safe
+            %td.td_actions
+              .actions
+                = link_to variant, :method => :delete, :data => { :confirm => 'Are you sure?' }, class: 'btn-link' do
+                  %i.glyphicon.glyphicon-remove
+    %br
+    = link_to t('helpers.link_to.new', model: Magaz::Variant.model_name.human), new_product_variant_path(@product)

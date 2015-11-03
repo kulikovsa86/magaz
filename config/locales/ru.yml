@@ -283,12 +283,17 @@ ru:
     variants:
       new:
         title: Новый вариант
+      create:
+        success: Новый вариант добавлен
+      destroy:
+        success: Вариант удален
     products:
       index:
         title: Товары
       new:
         title: Новый товар
       edit:
+      product_variants:
         variants: Варианты товара
         characteristics: Характеристики
       create:

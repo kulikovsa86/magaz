@@ -23,6 +23,8 @@ module Magaz
     belongs_to :category
     acts_as_list scope: :category
 
+    has_many :variants, dependent: :destroy
+
     validates :name, presence: true
 
     private

@@ -7,9 +7,12 @@
   = f.fields_for 'property_values' do |ff|
     - @properties.each do |property|
       = label_tag property.name
-      = ff.text_field property.code, hide_label: true
+      - if property.type.code == '01'
+        = ff.collection_select property.id, property.options, :name, :name, {hide_label: true}, {class: 'selectpicker form-control'}
+      - elsif property.type.code == '10'
+        = ff.text_field property.id, hide_label: true, class: 'pick-a-color form-control'
+      - else
+        = ff.text_field property.id, hide_label: true
 
   = f.submit t('helpers.submit.save'), class: 'btn btn-success'
-
-
 

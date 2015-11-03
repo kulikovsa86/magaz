@@ -13,7 +13,7 @@ Magaz::Engine.routes.draw do
       concerns :movable
       resources :products, except: :show do
         concerns :movable
-        resources :variants, except: [:index, :show] do
+        resources :variants, only: [:new, :create, :destroy] do
         end
       end
     end

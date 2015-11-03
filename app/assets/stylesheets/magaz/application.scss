@@ -1,8 +1,11 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "bootstrap-select";
+@import "pick-a-color-1.2.3.min";
+@import "bootstrap-wysihtml5/bootstrap3-wysihtml5";
 
 @import "properties";
+@import "products";
 
 $form_field_default_width: 400px;
 

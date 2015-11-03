@@ -16,14 +16,22 @@
 //= require turbolinks
 //= require bootstrap-select
 //= require defaults-ru_RU
+//= require tinycolor-0.9.15.min
+//= require pick-a-color-1.2.3.min
+//= require bootstrap-wysihtml5
+//= require bootstrap-wysihtml5/locales/ru-RU
 //= require_tree .
-
-// $('.selectpicker').selectpicker();
 
 var ready;
 ready = function() {
   $('.selectpicker').selectpicker({
   });
+
+  $(".pick-a-color").pickAColor();
+
+  $('.wysihtml5').each(function(i, elem) {
+      $(elem).wysihtml5();
+    });
 }
 
 $( document ).ready(ready);

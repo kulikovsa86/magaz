@@ -5,6 +5,7 @@ PATH
       acts_as_list (~> 0.7.2)
       autoprefixer-rails
       bootstrap-sass (~> 3.3, >= 3.3.5)
+      bootstrap-wysihtml5-rails
       bootstrap_form (~> 2.3, >= 2.3.0)
       closure_tree
       haml-rails (~> 0.9)
@@ -71,6 +72,8 @@ GEM
     bootstrap-sass (3.3.5.1)
       autoprefixer-rails (>= 5.0.0.1)
       sass (>= 3.3.0)
+    bootstrap-wysihtml5-rails (0.3.3.7)
+      railties (>= 3.0)
     bootstrap_form (2.3.0)
     builder (3.2.2)
     capybara (2.5.0)
@@ -79,8 +82,8 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
-    closure_tree (5.2.0)
-      activerecord (>= 3.2.0)
+    closure_tree (6.0.0)
+      activerecord (>= 4.1.0)
       with_advisory_lock (>= 3.0.0)
     coderay (1.1.0)
     coffee-rails (4.1.0)
@@ -217,7 +220,7 @@ GEM
       rspec-mocks (~> 3.3.0)
       rspec-support (~> 3.3.0)
     rspec-support (3.3.0)
-    ruby_parser (3.7.1)
+    ruby_parser (3.7.2)
       sexp_processor (~> 4.1)
     sass (3.4.19)
     sass-rails (5.0.4)

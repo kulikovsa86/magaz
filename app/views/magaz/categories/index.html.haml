@@ -39,12 +39,10 @@
                   %i.glyphicon.glyphicon-pencil
             %td.td_actions
               .actions
-                / &nbsp;
                 = link_to category_up_path(category), method: :patch, class: 'btn-link' do
                   %i.glyphicon.glyphicon-menu-up
                 = link_to category_down_path(category), method: :patch, class: 'btn-link' do
                   %i.glyphicon.glyphicon-menu-down
-                / &nbsp;
                 = link_to category, :method => :delete, :data => { :confirm => 'Are you sure?' }, class: 'btn-link' do
                   %i.glyphicon.glyphicon-remove
 %br
