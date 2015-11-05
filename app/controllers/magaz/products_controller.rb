@@ -69,6 +69,14 @@ module Magaz
       end
     end
 
+    # POST   /products/:product_id/upload(.:format)
+    def upload
+      params.permit(:picture)
+      @product = Product.find_by_permalink(params[:product_id])
+      @product.images << Image.create(picture: params[:picture])
+      redirect_to edit_product_path(@product), notice: t('.success')
+    end
+
     private
       # Use callbacks to share common setup or constraints between actions.
       def set_product

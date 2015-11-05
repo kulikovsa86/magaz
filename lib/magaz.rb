@@ -10,6 +10,7 @@ require 'closure_tree'
 require 'translit'
 require 'has_permalink'
 require 'bootstrap-wysihtml5-rails'
+require 'carrierwave'
 
 require "magaz/engine"
 

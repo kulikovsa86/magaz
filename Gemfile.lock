@@ -7,6 +7,7 @@ PATH
       bootstrap-sass (~> 3.3, >= 3.3.5)
       bootstrap-wysihtml5-rails
       bootstrap_form (~> 2.3, >= 2.3.0)
+      carrierwave
       closure_tree
       haml-rails (~> 0.9)
       has_permalink
@@ -82,6 +83,11 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
+    carrierwave (0.10.0)
+      activemodel (>= 3.2.0)
+      activesupport (>= 3.2.0)
+      json (>= 1.7)
+      mime-types (>= 1.16)
     closure_tree (6.0.0)
       activerecord (>= 4.1.0)
       with_advisory_lock (>= 3.0.0)

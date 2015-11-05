@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151030133653) do
+ActiveRecord::Schema.define(version: 20151105072644) do
 
   create_table "magaz_categories", force: :cascade do |t|
     t.string   "code"
@@ -43,6 +43,16 @@ ActiveRecord::Schema.define(version: 20151030133653) do
 
   add_index "magaz_category_hierarchies", ["ancestor_id", "descendant_id", "generations"], name: "magaz_category_anc_desc_udx", unique: true
   add_index "magaz_category_hierarchies", ["descendant_id"], name: "magaz_category_desc_idx"
+
+  create_table "magaz_images", force: :cascade do |t|
+    t.string   "picture"
+    t.integer  "imageable_id"
+    t.string   "imageable_type"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  add_index "magaz_images", ["imageable_type", "imageable_id"], name: "index_magaz_images_on_imageable_type_and_imageable_id"
 
   create_table "magaz_products", force: :cascade do |t|
     t.string   "name"

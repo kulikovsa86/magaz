@@ -24,6 +24,7 @@ module Magaz
     acts_as_list scope: :category
 
     has_many :variants, dependent: :destroy
+    has_many :images, as: :imageable
 
     validates :name, presence: true
 

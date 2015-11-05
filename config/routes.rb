@@ -3,16 +3,21 @@
 
 Magaz::Engine.routes.draw do
   
-  concern :movable do
+  concern :moveable do
     patch :up
     patch :down
   end
 
+  concern :imageable do
+    post :upload
+    get :gallery
+  end
+
   shallow do
     resources :categories, only: [:edit, :update, :destroy] do
-      concerns :movable
+      concerns :moveable
       resources :products, except: :show do
-        concerns :movable
+        concerns [:moveable, :imageable]
         resources :variants, only: [:new, :create, :destroy] do
         end
       end
@@ -27,7 +32,7 @@ Magaz::Engine.routes.draw do
   shallow do
     resources :properties, except: :show do
       resources :property_options, only: [:create, :destroy] do
-        concerns :movable
+        concerns :moveable
       end
     end
   end

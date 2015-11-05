@@ -293,9 +293,15 @@ ru:
       new:
         title: Новый товар
       edit:
+      upload:
+        success: Изображение загружено
       product_variants:
         variants: Варианты товара
         characteristics: Характеристики
+      product_images:
+        images: Изображения
+        new_image: Добавить изображение товара
+        upload: Загрузить
       create:
         success: Товар создан
       update:

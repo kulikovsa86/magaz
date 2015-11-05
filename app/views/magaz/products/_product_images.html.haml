@@ -1,0 +1,8 @@
+
+.panel.panel-default
+  .panel-heading
+    %h4.panel_header= t('.images')
+  .panel-body
+    = bootstrap_form_tag url: product_upload_path(@product) do |f|
+      = f.file_field :picture, hide_label: true
+      = f.submit t('.upload'), class: 'btn btn-success'
