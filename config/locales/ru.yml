@@ -280,7 +280,13 @@ ru:
     saved: 'Изменения успешно сохранены'
 
   magaz:
+    common:
+      gallery: Галерея
+      variants: Варианты
     variants:
+      index:
+        title: Варианты товара
+        characteristics: Характеристики
       new:
         title: Новый вариант
       create:
@@ -288,6 +294,9 @@ ru:
       destroy:
         success: Вариант удален
     products:
+      gallery: 
+        title: Галерея
+        upload: Загрузить
       index:
         title: Товары
       new:
@@ -298,10 +307,6 @@ ru:
       product_variants:
         variants: Варианты товара
         characteristics: Характеристики
-      product_images:
-        images: Изображения
-        new_image: Добавить изображение товара
-        upload: Загрузить
       create:
         success: Товар создан
       update:

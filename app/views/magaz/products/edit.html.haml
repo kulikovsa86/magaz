@@ -6,12 +6,10 @@
 .panel.panel-default
   .panel-heading
     %h4.panel_header= @product.name
+    = link_to t('magaz.common.gallery'), product_gallery_path(@product)
+    \|
+    = link_to t('magaz.common.variants'), product_variants_path(@product)
   .panel-body
     = render 'form'
-
-= render 'product_images'
-%br
-= render 'product_variants'
-
 
 = link_to t('helpers.link_to.back'), category_products_path(@parent_category)

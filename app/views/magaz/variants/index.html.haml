@@ -1,7 +1,18 @@
+- if notice
+  .alert.alert-success= notice
+
+= render '/magaz/categories/breadcrumb'
 
 .panel.panel-default
   .panel-heading
-    %h4.panel_header= t('.variants')
+    %h4.panel_header= @product.name
+    = link_to t('magaz.common.gallery'), product_gallery_path(@product)
+    \|
+    = link_to t('magaz.common.variants'), '#'
+
+.panel.panel-default
+  .panel-heading
+    %h4.panel_header= t('.title')
   .panel-body
     %table.editable_table.table.table-hover
       %thead
@@ -22,3 +33,5 @@
                   %i.glyphicon.glyphicon-remove
     %br
     = link_to t('helpers.link_to.new', model: Magaz::Variant.model_name.human), new_product_variant_path(@product)
+
+= link_to t('helpers.link_to.back'), edit_product_path(@product)

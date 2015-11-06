@@ -1,0 +1,24 @@
+- if notice
+  .alert.alert-success= notice
+
+= render '/magaz/categories/breadcrumb'
+
+.panel.panel-default
+  .panel-heading
+    %h4.panel_header= @product.name
+    = link_to t('magaz.common.gallery'), product_gallery_path(@product)
+    \|
+    = link_to t('magaz.common.variants'), product_variants_path(@product)
+
+
+.panel.panel-default
+  .panel-heading
+    %h4.panel_header= t('.title')
+  .panel-body
+    - @product.images.each do |image|
+      = image_tag image.picture.url
+    = bootstrap_form_tag url: product_upload_path(@product) do |f|
+      = f.file_field :picture, hide_label: true
+      = f.submit t('.upload'), class: 'btn btn-success'
+
+= link_to t('helpers.link_to.back'), edit_product_path(@product)

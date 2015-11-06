@@ -2,17 +2,16 @@ require_dependency "magaz/application_controller"
 
 module Magaz
   class ProductsController < ApplicationController
-    before_action :set_product, only: [:edit, :update, :destroy]
+    before_action :set_product, only: [:edit, :update, :up, :down, :destroy, :upload, :gallery]
+    before_action :set_parent_category, only: [:index, :new, :create]
 
     # GET /categories/:category_id/products(.:format)
     def index
-      @parent_category = Category.find_by_permalink(params[:category_id])
       @products = @parent_category.products.order(:position)
     end
 
     # GET /categories/:category_id/products/new(.:format)
     def new
-      @parent_category = Category.find_by_permalink(params[:category_id])
       @category = @parent_category
       @product = Product.new
     end
@@ -24,7 +23,6 @@ module Magaz
 
     # POST /categories/:category_id/products(.:format)
     def create
-      @parent_category = Category.find_by_permalink(params[:category_id])
       @product = Product.new(product_params)
       @product.category_id = @parent_category.id
       if @product.save
@@ -45,16 +43,14 @@ module Magaz
 
     # PATCH  /products/:product_id/up(.:format)
     def up
-      product = Product.find_by_permalink(params[:product_id])
-      product.move_higher
-      redirect_to category_products_path(product.category)
+      @product.move_higher
+      redirect_to category_products_path(@product.category)
     end
 
     # PATCH  /products/:product_id/down(.:format)
     def down
-      product = Product.find_by_permalink(params[:product_id])
-      product.move_lower
-      redirect_to category_products_path(product.category)
+      @product.move_lower
+      redirect_to category_products_path(@product.category)
     end
 
     # DELETE /products/1
@@ -72,15 +68,30 @@ module Magaz
     # POST   /products/:product_id/upload(.:format)
     def upload
       params.permit(:picture)
-      @product = Product.find_by_permalink(params[:product_id])
       @product.images << Image.create(picture: params[:picture])
-      redirect_to edit_product_path(@product), notice: t('.success')
+      redirect_to product_gallery_path(@product), notice: t('.success')
+    end
+
+    # GET    /products/:product_id/gallery(.:format)
+    def gallery
+      @parent_category = @product.category
     end
 
     private
+
+      def set_parent_category
+        @parent_category = Category.find_by_permalink(params[:category_id])
+      end
+
       # Use callbacks to share common setup or constraints between actions.
       def set_product
-        @product = Product.find_by_permalink(params[:id])
+        if params[:id]
+          @product = Product.find_by_permalink(params[:id])
+        elsif params[:product_id]
+          @product = Product.find_by_permalink(params[:product_id])
+        else
+          @product = Product.new
+        end
       end
 
       # Only allow a trusted parameter "white list" through.
