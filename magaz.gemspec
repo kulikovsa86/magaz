@@ -30,6 +30,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'has_permalink'
   s.add_dependency 'bootstrap-wysihtml5-rails'
   s.add_dependency 'carrierwave'
+  s.add_dependency 'lightbox2-rails'
 
   s.add_development_dependency "sqlite3"
   s.add_development_dependency "rspec-rails", "~> 3.3.3"

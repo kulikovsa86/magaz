@@ -16,9 +16,14 @@
     %h4.panel_header= t('.title')
   .panel-body
     - @product.images.each do |image|
-      = image_tag image.picture.url
+      = link_to image_tag(image.picture.url, class: 'example-image img-rounded img-thumbnail'), image.picture.url, {:'data-lightbox' => @product.permalink}
+
     = bootstrap_form_tag url: product_upload_path(@product) do |f|
       = f.file_field :picture, hide_label: true
       = f.submit t('.upload'), class: 'btn btn-success'
 
+
+%br
 = link_to t('helpers.link_to.back'), edit_product_path(@product)
+
+

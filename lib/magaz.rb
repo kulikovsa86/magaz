@@ -11,6 +11,7 @@ require 'translit'
 require 'has_permalink'
 require 'bootstrap-wysihtml5-rails'
 require 'carrierwave'
+require 'lightbox2-rails'
 
 require "magaz/engine"
 

@@ -20,6 +20,8 @@
 //= require pick-a-color-1.2.3.min
 //= require bootstrap-wysihtml5
 //= require bootstrap-wysihtml5/locales/ru-RU
+//= require lightbox
+
 //= require_tree .
 
 var ready;
