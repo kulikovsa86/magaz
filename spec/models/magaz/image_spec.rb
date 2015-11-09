@@ -6,6 +6,7 @@
 #  picture        :string
 #  imageable_id   :integer
 #  imageable_type :string
+#  position       :integer
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
 #

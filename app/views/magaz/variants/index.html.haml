@@ -6,9 +6,7 @@
 .panel.panel-default
   .panel-heading
     %h4.panel_header= @product.name
-    = link_to t('magaz.common.gallery'), product_gallery_path(@product)
-    \|
-    = link_to t('magaz.common.variants'), '#'
+    = render '/magaz/products/undertitle_links'
 
 .panel.panel-default
   .panel-heading

@@ -281,6 +281,7 @@ ru:
 
   magaz:
     common:
+      specification: Спецификация
       gallery: Галерея
       variants: Варианты
     variants:

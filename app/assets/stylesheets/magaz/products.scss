@@ -9,8 +9,28 @@
   border-color: rgba(0, 0, 0, .2);
 }
 
-.example-image {
-  width: 240px;
-  height: 240px;
+.gallery-item {
+
+  display: inline-block;
+
+  .example-image {
+    float: left;
+    width: 240px;
+    height: 240px;
+    margin: 0 5px 10px 5px;
+  }
+
+  .actions {
+    float: left;
+    width: 15px;
+    visibility: hidden; 
+  }
+
+  &:hover .actions {
+    visibility: visible;
+  }
+}
+
+#upload-form {
   margin: 0 5px 10px 5px;
 }

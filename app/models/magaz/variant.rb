@@ -13,6 +13,7 @@ module Magaz
   class Variant < ActiveRecord::Base
     belongs_to :product
     has_many :property_values, dependent: :destroy
+    has_many :images, as: :imageable
 
     def to_s
       colors = ''

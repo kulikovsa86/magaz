@@ -48,6 +48,7 @@ ActiveRecord::Schema.define(version: 20151105072644) do
     t.string   "picture"
     t.integer  "imageable_id"
     t.string   "imageable_type"
+    t.integer  "position"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
   end

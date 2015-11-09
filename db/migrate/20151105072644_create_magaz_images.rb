@@ -3,7 +3,8 @@ class CreateMagazImages < ActiveRecord::Migration
     create_table :magaz_images do |t|
       t.string :picture
       t.references :imageable, polymorphic: true, index: true
-
+      t.integer :position
+      
       t.timestamps null: false
     end
   end
