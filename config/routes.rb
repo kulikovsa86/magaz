@@ -40,4 +40,6 @@ Magaz::Engine.routes.draw do
     end
   end
 
+  resources :line_items, only: [:create, :destroy]
+
 end

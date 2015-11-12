@@ -1,0 +1,22 @@
+= link_to "Home", root_path
+%h3= @product.name
+
+- unless @product.images.empty?
+  = image_tag @product.images.first.picture.url, width: '300px', style: 'float:right'
+
+%hr
+
+- if @product.description
+  = @product.description.html_safe
+
+%br
+= form_tag url_for(controller: 'products', action: 'add2cart'), method: 'post' do
+  = hidden_field_tag :product_id, @product.id
+  = select_tag :variant_id, options_from_collection_for_select(@product.variants, "id", "id")
+  %br
+  = number_field_tag :count, '1'
+  %br
+  = submit_tag 'В корзину'
+
+
+

@@ -4,15 +4,25 @@
 
   = f.text_field :price, icon: 'ruble'
 
-  = f.fields_for 'property_values' do |ff|
-    - @properties.each do |property|
+  - @properties.each do |property|
+    .form-group
+      = hidden_field_tag "properties[][property_id]", property.id
       = label_tag property.name
       - if property.type.code == '01'
-        = ff.collection_select property.id, property.options, :name, :name, {hide_label: true}, {class: 'selectpicker form-control'}
+        = select_tag "properties[][value]", options_from_collection_for_select(property.options, :name, :name), class: 'selectpicker form-control'
       - elsif property.type.code == '10'
-        = ff.text_field property.id, hide_label: true, class: 'pick-a-color form-control'
+        = text_field_tag "properties[][value]", '', class: 'pick-a-color form-control'
       - else
-        = ff.text_field property.id, hide_label: true
+        = text_field_tag "properties[][value]", '', class: 'form-control'
+
+  %br
+  .panel.panel-default
+    .panel-heading
+      %h5.panel_header= t('.images')
+    .panel-body
+      .alert.alert-info{role: 'alert'}
+        = t('.select')
+      = f.select :image_ids, @options, {hide_label: true}, {multiple: 'multiple', class: 'image-picker'}
 
   = f.submit t('helpers.submit.save'), class: 'btn btn-success'
 

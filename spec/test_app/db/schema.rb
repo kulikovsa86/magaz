@@ -11,7 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151105072644) do
+ActiveRecord::Schema.define(version: 20151110101337) do
+
+  create_table "magaz_carts", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "magaz_categories", force: :cascade do |t|
     t.string   "code"
@@ -54,6 +59,21 @@ ActiveRecord::Schema.define(version: 20151105072644) do
   end
 
   add_index "magaz_images", ["imageable_type", "imageable_id"], name: "index_magaz_images_on_imageable_type_and_imageable_id"
+
+  create_table "magaz_line_items", force: :cascade do |t|
+    t.integer  "product_id"
+    t.integer  "variant_id"
+    t.decimal  "price",      precision: 8, scale: 2
+    t.integer  "count"
+    t.integer  "cart_id"
+    t.integer  "order_id"
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
+  end
+
+  add_index "magaz_line_items", ["cart_id"], name: "index_magaz_line_items_on_cart_id"
+  add_index "magaz_line_items", ["product_id"], name: "index_magaz_line_items_on_product_id"
+  add_index "magaz_line_items", ["variant_id"], name: "index_magaz_line_items_on_variant_id"
 
   create_table "magaz_products", force: :cascade do |t|
     t.string   "name"
@@ -109,6 +129,11 @@ ActiveRecord::Schema.define(version: 20151105072644) do
 
   add_index "magaz_property_values", ["property_id"], name: "index_magaz_property_values_on_property_id"
   add_index "magaz_property_values", ["variant_id"], name: "index_magaz_property_values_on_variant_id"
+
+  create_table "magaz_variant_images", force: :cascade do |t|
+    t.integer "variant_id"
+    t.integer "image_id"
+  end
 
   create_table "magaz_variants", force: :cascade do |t|
     t.integer  "product_id"

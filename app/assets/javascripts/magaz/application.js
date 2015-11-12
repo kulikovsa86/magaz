@@ -21,6 +21,7 @@
 //= require bootstrap-wysihtml5
 //= require bootstrap-wysihtml5/locales/ru-RU
 //= require lightbox
+//= require image-picker
 
 //= require_tree .
 
@@ -34,6 +35,9 @@ ready = function() {
   $('.wysihtml5').each(function(i, elem) {
       $(elem).wysihtml5();
     });
+  $(".image-picker").imagepicker({
+
+    })
 }
 
 $( document ).ready(ready);

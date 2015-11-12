@@ -1,13 +1,4 @@
 
-.small-colored-square {
-  float: left;
-  width: 20px;
-  height: 20px;
-  margin-right: 5px;
-  border-width: 1px;
-  border-style: solid;
-  border-color: rgba(0, 0, 0, .2);
-}
 
 .gallery-item {
 
@@ -30,6 +21,7 @@
     visibility: visible;
   }
 }
+
 
 #upload-form {
   margin: 0 5px 10px 5px;

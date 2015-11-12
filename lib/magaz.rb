@@ -12,6 +12,7 @@ require 'has_permalink'
 require 'bootstrap-wysihtml5-rails'
 require 'carrierwave'
 require 'lightbox2-rails'
+require 'image-picker-rails'
 
 require "magaz/engine"
 

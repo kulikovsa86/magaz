@@ -15,15 +15,15 @@ module Magaz
       @parent_category = @product.category
       @variant = Variant.new
       @properties = @product.category.properties
+      @images = @product.images
+      @options = []
+      @product.images.each { |image| @options << [image.id, image.id, {:'data-img-src' => image.picture.url}] }
     end
 
     # POST   /products/:product_id/variants(.:format)
     def create
       variant = @product.variants.create(variant_params)
-      params[:variant][:property_values].each do |property_id, value|
-        property = Property.find(property_id)
-        variant.property_values.create(property: property, value: value)
-      end
+      variant.set_properties(variant_properties)
       redirect_to product_variants_path(@product), notice: t('.success')
     end
 
@@ -41,7 +41,12 @@ module Magaz
       end
 
       def variant_params
-        params.require(:variant).permit(:price, property_values: [])
+        params.require(:variant).permit(:price, image_ids: [])
+      end
+
+      def variant_properties
+        params.require(:properties)
+        # params.permit(:properties => [:property_id, :value])[:properties]
       end
   end
 end

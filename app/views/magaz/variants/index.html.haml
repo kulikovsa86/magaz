@@ -15,17 +15,24 @@
     %table.editable_table.table.table-hover
       %thead
         %tr
-          %th.small_column N
-          %th.medium_column= Magaz::Product.human_attribute_name(:price)
+          %th.serial_number_column N
+          %th.price_column= Magaz::Product.human_attribute_name(:price)
           %th= t('.characteristics')
+          %th= t('magaz.common.gallery')
+          %th= t('.colors')
           %th.th_actions
       %tbody
         - @product.variants.each_with_index do |variant, index|
           %tr
             %td= index + 1
             %td= variant.price
-            %td= variant.to_s.html_safe
-            %td.td_actions
+            %td= variant.values_string
+            %td
+              - variant.images.each do |image|
+                = link_to image.picture.url, {:'data-lightbox' => variant.id} do
+                  = image_tag(image.picture.url, class: 'variant-index-image img-rounded img-thumbnail')
+            %td= variant.colors_string.html_safe
+            %td
               .actions
                 = link_to variant, :method => :delete, :data => { :confirm => 'Are you sure?' }, class: 'btn-link' do
                   %i.glyphicon.glyphicon-remove

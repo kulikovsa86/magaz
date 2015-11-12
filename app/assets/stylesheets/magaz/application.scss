@@ -4,9 +4,11 @@
 @import "pick-a-color-1.2.3.min";
 @import "bootstrap-wysihtml5/bootstrap3-wysihtml5";
 @import "lightbox";
+@import "image-picker";
 
 @import "properties";
 @import "products";
+@import "variants";
 
 $form_field_default_width: 400px;
 
@@ -18,29 +20,32 @@ $form_field_default_width: 400px;
   width: 50px;
 }
 
-table.editable_table {
+table {
 
-  .small_column {
-    width: 50px;
+  .serial_number_column {
+    width: 30px;
   }
 
-  .medium_column {
-    width: 200px;
-  }
-
-  .th_actions {
+  .price_column {
     width: 100px;
   }
 
-  .actions {
-    visibility: hidden;
-    text-align: right;
-  }
+  &.editable_table {
 
-  tr:hover .actions {
-    visibility: visible;
-  }
+    .th_actions {
+      width: 100px;
+    }
 
+    .actions {
+      visibility: hidden;
+      text-align: right;
+    }
+
+    tr:hover .actions {
+      visibility: visible;
+    }
+
+  }
 }
 
 

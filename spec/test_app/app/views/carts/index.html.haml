@@ -1,0 +1,11 @@
+= link_to "Home", root_path
+%h3 Корзина
+%table
+  - @items.each do |item|
+    %tr
+      %td= item.product.name
+      %td= item.product.price
+      %td= item.count
+
+%br
+= link_to "Clear", @cart, :method => :delete, :data => { :confirm => 'Are you sure?' }

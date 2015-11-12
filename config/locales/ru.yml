@@ -283,13 +283,17 @@ ru:
     common:
       specification: Спецификация
       gallery: Галерея
-      variants: Варианты
+      variants: Характеристики и варианты
     variants:
       index:
         title: Варианты товара
         characteristics: Характеристики
+        colors: Цвета
       new:
         title: Новый вариант
+      form:
+        images: Изображения
+        select: "Выберите изображения, связанные с данным вариантом"
       create:
         success: Новый вариант добавлен
       destroy:

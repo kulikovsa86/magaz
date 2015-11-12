@@ -1,4 +1,4 @@
-class CreateCategoryHierarchies < ActiveRecord::Migration
+class CreateMagazCategoryHierarchies < ActiveRecord::Migration
   def change
     create_table :magaz_category_hierarchies, id: false do |t|
       t.integer  :ancestor_id, :null => false   # ID of the parent/grandparent/great-grandparent/... categories

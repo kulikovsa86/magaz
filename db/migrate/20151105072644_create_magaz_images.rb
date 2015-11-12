@@ -7,5 +7,10 @@ class CreateMagazImages < ActiveRecord::Migration
       
       t.timestamps null: false
     end
+
+    create_table :magaz_variant_images do |t|
+      t.belongs_to :variant
+      t.belongs_to :image
+    end
   end
 end

@@ -1,0 +1,7 @@
+- if has_cart?
+  = link_to 'Cart', cart_path
+
+%h2 Товары
+
+- @products.each do |product|
+  %p= link_to product.name, product_path(product)
