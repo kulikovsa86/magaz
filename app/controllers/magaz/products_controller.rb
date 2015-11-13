@@ -2,7 +2,7 @@ require_dependency "magaz/application_controller"
 
 module Magaz
   class ProductsController < ApplicationController
-    before_action :set_product, only: [:edit, :update, :up, :down, :destroy, :upload, :gallery, :image_up, :image_down, :image_destroy]
+    before_action :set_product, only: [:edit, :update, :up, :down, :destroy, :upload, :gallery, :properties, :properties_create, :image_up, :image_down, :image_destroy]
     before_action :set_image, only: [:image_up, :image_down, :image_destroy]
     before_action :set_parent_category, only: [:index, :new, :create]
 
@@ -20,6 +20,7 @@ module Magaz
     # GET /products/1/edit
     def edit
       @parent_category = @product.category
+      @properties = @product.category.static_properties
     end
 
     # POST /categories/:category_id/products(.:format)
@@ -79,6 +80,18 @@ module Magaz
       @ordered_images = @product.images.order(:position)
     end
 
+    # GET    /products/:product_id/properties(.:format)
+    def properties
+      @parent_category = @product.category
+      @properties = @product.category.static_properties
+    end
+
+    # POST  /products/:product_id/properties_create(.:format)
+    def properties_create
+      @product.set_properties(params.require(:properties))
+      redirect_to product_properties_path(@product)
+    end
+
     # PATCH  /products(/:product_id)/images(/:image_id)/up(.:format)
     def image_up
       @image.move_higher
@@ -121,6 +134,10 @@ module Magaz
       # Only allow a trusted parameter "white list" through.
       def product_params
         params.require(:product).permit(:name, :description, :price, :hidden, :article, :weight)
+      end
+
+      def product_properties
+        params.require(:properties)
       end
   end
 end

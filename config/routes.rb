@@ -13,11 +13,16 @@ Magaz::Engine.routes.draw do
     get :gallery
   end
 
+  concern :valuable do
+    get :properties
+    post :properties_create
+  end
+
   shallow do
     resources :categories, only: [:edit, :update, :destroy] do
       concerns :moveable
       resources :products, except: :show do
-        concerns [:moveable, :image_attachable]
+        concerns [:moveable, :image_attachable, :valuable]
         resources :variants, only: [:index, :new, :create, :destroy] do
         end
       end

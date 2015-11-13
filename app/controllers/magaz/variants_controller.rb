@@ -14,7 +14,7 @@ module Magaz
     def new
       @parent_category = @product.category
       @variant = Variant.new
-      @properties = @product.category.properties
+      @properties = @product.category.dynamic_properties
       @images = @product.images
       @options = []
       @product.images.each { |image| @options << [image.id, image.id, {:'data-img-src' => image.picture.url}] }
@@ -46,7 +46,6 @@ module Magaz
 
       def variant_properties
         params.require(:properties)
-        # params.permit(:properties => [:property_id, :value])[:properties]
       end
   end
 end

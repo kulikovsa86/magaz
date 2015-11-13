@@ -12,13 +12,16 @@
 module Magaz
   class Variant < ActiveRecord::Base
     belongs_to :product
-    has_many :property_values, dependent: :destroy
+    
+    has_many :property_values, as: :valuable
+    
     has_many :variant_images, dependent: :destroy
     has_many :images, through: :variant_images
 
     # properties = [{property_id: "", value: ""}, ...]
     def set_properties(properties)
       properties.each do |pv|
+        next if (!pv[:value] || pv[:value].empty?)
         property_values.create(property_id: pv[:property_id], value: pv[:value])
       end
     end
@@ -27,7 +30,13 @@ module Magaz
       values = []
       property_values.each do |pv|
         if pv.property && pv.property.type.code != '10'
-          values << pv.value
+          if pv.property.type.code == '04'
+            values << (pv.value.gsub(/<\/?[^>]*>/, "")[0..15] + '...')
+          elsif pv.property.type.code == '05' && pv.value
+            values << pv.property.name
+          else
+            values << pv.value
+          end
         end
       end
       values.join(', ')

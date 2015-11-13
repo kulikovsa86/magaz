@@ -22,6 +22,7 @@
 //= require bootstrap-wysihtml5/locales/ru-RU
 //= require lightbox
 //= require image-picker
+//= require bootstrap-switch
 
 //= require_tree .
 
@@ -37,7 +38,9 @@ ready = function() {
     });
   $(".image-picker").imagepicker({
 
-    })
+  })
+  $(".switcher").bootstrapSwitch();
+  // $("[name='switcher']").bootstrapSwitch();
 }
 
 $( document ).ready(ready);

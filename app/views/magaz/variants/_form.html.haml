@@ -4,18 +4,9 @@
 
   = f.text_field :price, icon: 'ruble'
 
-  - @properties.each do |property|
-    .form-group
-      = hidden_field_tag "properties[][property_id]", property.id
-      = label_tag property.name
-      - if property.type.code == '01'
-        = select_tag "properties[][value]", options_from_collection_for_select(property.options, :name, :name), class: 'selectpicker form-control'
-      - elsif property.type.code == '10'
-        = text_field_tag "properties[][value]", '', class: 'pick-a-color form-control'
-      - else
-        = text_field_tag "properties[][value]", '', class: 'form-control'
+  = render '/magaz/property_values/form'
 
-  %br
+  %hr
   .panel.panel-default
     .panel-heading
       %h5.panel_header= t('.images')

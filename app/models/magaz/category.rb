@@ -20,10 +20,19 @@ module Magaz
     acts_as_list scope: :parent
     has_permalink :translit_name
 
-    has_and_belongs_to_many :properties
     has_many :products, dependent: :destroy
+    has_many :property_values, as: :valuable
+    has_many :properties, through: :property_values
 
     validates :name, presence: true
+
+    def static_properties
+      properties.where(static: true)
+    end
+
+    def dynamic_properties
+      properties.where(static: false)
+    end
 
     private
       def translit_name

@@ -1,8 +1,0 @@
-- @properties.each do |property|
-  = label_tag property.name
-  - if property.type.code == '01'
-    = property_values_fields.collection_select property.id, property.options, :name, :name, {hide_label: true}, {class: 'selectpicker form-control'}
-  - elsif property.type.code == '10'
-    = property_values_fields.text_field property.id, hide_label: true, class: 'pick-a-color form-control'
-  - else
-    = property_values_fields.text_field property.id, hide_label: true

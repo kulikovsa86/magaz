@@ -32,14 +32,6 @@ ActiveRecord::Schema.define(version: 20151110101337) do
 
   add_index "magaz_categories", ["permalink"], name: "index_magaz_categories_on_permalink"
 
-  create_table "magaz_categories_properties", id: false, force: :cascade do |t|
-    t.integer "category_id"
-    t.integer "property_id"
-  end
-
-  add_index "magaz_categories_properties", ["category_id"], name: "index_magaz_categories_properties_on_category_id"
-  add_index "magaz_categories_properties", ["property_id"], name: "index_magaz_categories_properties_on_property_id"
-
   create_table "magaz_category_hierarchies", id: false, force: :cascade do |t|
     t.integer "ancestor_id",   null: false
     t.integer "descendant_id", null: false
@@ -120,15 +112,17 @@ ActiveRecord::Schema.define(version: 20151110101337) do
   end
 
   create_table "magaz_property_values", force: :cascade do |t|
-    t.integer  "variant_id"
     t.integer  "property_id"
     t.string   "value"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.integer  "valuable_id"
+    t.string   "valuable_type"
+    t.integer  "position"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
   add_index "magaz_property_values", ["property_id"], name: "index_magaz_property_values_on_property_id"
-  add_index "magaz_property_values", ["variant_id"], name: "index_magaz_property_values_on_variant_id"
+  add_index "magaz_property_values", ["valuable_type", "valuable_id"], name: "index_magaz_property_values_on_valuable_type_and_valuable_id"
 
   create_table "magaz_variant_images", force: :cascade do |t|
     t.integer "variant_id"

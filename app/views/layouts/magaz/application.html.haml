@@ -8,4 +8,9 @@
     = csrf_meta_tags
   %body
     .container
+      = link_to 'Категории и товары', categories_path
+      \|
+      = link_to 'Характеристики', properties_path
+      %br
+      %br
       = yield

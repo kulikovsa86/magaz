@@ -13,6 +13,7 @@ require 'bootstrap-wysihtml5-rails'
 require 'carrierwave'
 require 'lightbox2-rails'
 require 'image-picker-rails'
+require 'bootstrap-switch-rails'
 
 require "magaz/engine"
 

@@ -10,7 +10,7 @@
   = f.check_box :hidden
   %br
   = label_tag Magaz::Category.human_attribute_name(:properties)
-  = f.collection_select :property_ids, Magaz::Property.all, :id, :name, { hide_label: true }, {class: 'selectpicker', multiple: true, :'data-width'=> "400px" }
+  = f.collection_select :property_ids, Magaz::Property.all, :id, :name, { hide_label: true }, {class: 'selectpicker', multiple: true, :'data-width'=> "400px", :'data-selected-text-format' => "count>3"}
   %br
   %br
   = f.submit t('helpers.submit.save'), class: 'btn btn-success'

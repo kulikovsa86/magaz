@@ -283,7 +283,8 @@ ru:
     common:
       specification: Спецификация
       gallery: Галерея
-      variants: Характеристики и варианты
+      properties: Характеристики
+      variants: Варианты
     variants:
       index:
         title: Варианты товара
@@ -299,7 +300,9 @@ ru:
       destroy:
         success: Вариант удален
     products:
-      gallery: 
+      properties:
+        title: Характеристики
+      gallery:
         title: Галерея
         upload: Загрузить
       index:
