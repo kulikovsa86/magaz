@@ -11,5 +11,7 @@ Rails.application.routes.draw do
   
   get "cart", to: "carts#index", as: "cart"
   delete "cart", to: "carts#destroy"
+  delete "item/:id", to: "carts#delete_item", as: "item"
+  post "recount", to: "carts#recount", as: "recount"
 
 end

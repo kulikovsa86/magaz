@@ -7,7 +7,9 @@
   = f.text_field :code
   = f.text_field :name
   = f.text_area :description
-  = f.check_box :hidden
+  / = f.check_box :hidden
+  = label_tag Magaz::Category.human_attribute_name(:hidden)
+  = f.check_box :hidden, :label => '', :'data-on-text' => 'ДА', :'data-off-text' => 'НЕТ', :'data-size' => 'mini', class: 'switcher'
   %br
   = label_tag Magaz::Category.human_attribute_name(:properties)
   = f.collection_select :property_ids, Magaz::Property.all, :id, :name, { hide_label: true }, {class: 'selectpicker', multiple: true, :'data-width'=> "400px", :'data-selected-text-format' => "count>3"}

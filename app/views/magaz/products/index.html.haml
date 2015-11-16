@@ -24,6 +24,8 @@
           %tr
             %td= product.id
             %td
+              - if product.hidden
+                %i.glyphicon.glyphicon-eye-close
             %td= link_to product.name, edit_product_path(product)
             %td.td_actions
               .actions

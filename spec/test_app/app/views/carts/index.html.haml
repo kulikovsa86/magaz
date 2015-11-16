@@ -1,11 +1,25 @@
-= link_to "Home", root_path
+= link_to "Домой", root_path
 %h3 Корзина
-%table
-  - @items.each do |item|
+= form_tag recount_path do
+  %table
     %tr
-      %td= item.product.name
-      %td= item.product.price
-      %td= item.count
+      %th Наименование 
+      %th Вариант
+      %th Кол-во
+      %th Цена
+      %th Сумма
+      %th    
+    - @items.each do |item|
+      = hidden_field_tag "items[][id]", item.id
+      %tr
+        %td= item.product.name
+        %td= item.variant.id if item.variant
+        / %td= item.count
+        %td= number_field_tag "items[][count]", item.count || '1', :in => 1..10000
+        %td= item.cart_price
+        %td= item.total_cart_price
+        %td= link_to 'Удалить', item_path(item), method: :delete
+  = submit_tag 'Пересчитать'
 
 %br
-= link_to "Clear", @cart, :method => :delete, :data => { :confirm => 'Are you sure?' }
+= link_to "Очистить корзину", @cart, method: :delete

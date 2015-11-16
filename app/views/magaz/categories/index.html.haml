@@ -31,6 +31,8 @@
                 %i.glyphicon.glyphicon-folder-open
               - else
                 %i.glyphicon.glyphicon-folder-close
+              - if category.hidden
+                %i.glyphicon.glyphicon-eye-close
             %td
               = link_to category.name, categories_path(category)
               &nbsp;

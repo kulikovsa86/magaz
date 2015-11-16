@@ -7,7 +7,8 @@
   = f.text_field :price, icon: 'ruble'
   = f.text_field :article
   = f.text_field :weight
-  = f.check_box :hidden
+  = label_tag Magaz::Product.human_attribute_name(:hidden)
+  = f.check_box :hidden, :label => '', :'data-on-text' => 'ДА', :'data-off-text' => 'НЕТ', :'data-size' => 'mini', class: 'switcher'
         
   %br
   = f.submit t('helpers.submit.save'), class: 'btn btn-success'

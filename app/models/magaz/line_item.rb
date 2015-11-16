@@ -18,5 +18,21 @@ module Magaz
     belongs_to :product
     belongs_to :variant
     belongs_to :cart
+
+    def cart_price
+      if variant && variant.price
+        variant.price
+      else
+        product.price
+      end
+    end
+
+    def total_cart_price
+      if cart_price
+        cart_price * count
+      else
+        0
+      end
+    end
   end
 end
