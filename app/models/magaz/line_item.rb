@@ -18,6 +18,7 @@ module Magaz
     belongs_to :product
     belongs_to :variant
     belongs_to :cart
+    belongs_to :order
 
     def cart_price
       if variant && variant.price

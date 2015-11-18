@@ -8,6 +8,8 @@
     = csrf_meta_tags
   %body
     .container
+      = link_to 'Заказы', orders_path
+      \|
       = link_to 'Категории и товары', categories_path
       \|
       = link_to 'Характеристики', properties_path

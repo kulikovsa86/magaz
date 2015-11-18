@@ -285,6 +285,13 @@ ru:
       gallery: Галерея
       properties: Характеристики
       variants: Варианты
+    orders:
+      index:
+        title: Заказы
+        num: Номер
+        created: Создан
+        customer: 'Компания/ФИО'
+        total: Стоимость заказа
     variants:
       index:
         title: Варианты товара

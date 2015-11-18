@@ -46,5 +46,7 @@ Magaz::Engine.routes.draw do
   end
 
   resources :line_items, only: [:create, :destroy]
+  
+  resources :orders, except: [:show]
 
 end

@@ -6,7 +6,7 @@ class CreateMagazPropertyValues < ActiveRecord::Migration
       t.references :valuable, polymorphic: true, index: true
       t.integer :position
 
-      t.timestamps null: true
+      t.timestamps null: false
     end
   end
 end

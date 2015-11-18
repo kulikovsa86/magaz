@@ -16,6 +16,9 @@ ru:
       magaz/variant:
         one: Вариант
         other: Варианты
+      magaz/order:
+        one: Заказ
+        other: Заказы
     attributes:
       magaz/property_type:
         code: Код
@@ -40,3 +43,19 @@ ru:
         weight: Вес
       magaz/variant:
         price: Цена
+      magaz/order:
+        customer: ФИО клиента
+        company: Компания
+        phone: Телефон
+        email: Эл. почта
+        delivery: Доставка
+        post_code: Почтовый индекс
+        address1: Страна
+        address2: 'Область/край/республика'
+        address3: Населенный пункт
+        address4: 'Улица, дом, квартира'
+        payment: Способ оплаты
+        status: Статус
+        pdt: Время доставки
+        customer_comment: Коментарий клиента
+        manager_comment: Коментарий менеджера

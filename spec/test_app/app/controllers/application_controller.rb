@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-  helper_method :current_cart, :has_cart?
+  helper_method :current_cart, :has_cart?, :destroy_cart
 
   private
 
@@ -19,6 +19,9 @@ class ApplicationController < ActionController::Base
       session[:cart_id]
     end
 
-
+    def destroy_cart
+      current_cart.destroy
+      session[:cart_id] = nil
+    end
 
 end

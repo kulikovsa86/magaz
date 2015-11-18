@@ -31,6 +31,23 @@ table {
     width: 100px;
   }
 
+  .datetime_column {
+    width: 150px;
+  }
+
+  .total_price_column {
+    width: 150px;
+  }
+
+  .status_column {
+    width: 200px;
+    text-align: center;
+  }
+
+  td.price_cell {
+    text-align: right;
+  }
+
   &.editable_table {
 
     .th_actions {
@@ -45,7 +62,6 @@ table {
     tr:hover .actions {
       visibility: visible;
     }
-
   }
 }
 

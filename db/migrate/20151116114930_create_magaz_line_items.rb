@@ -6,7 +6,7 @@ class CreateMagazLineItems < ActiveRecord::Migration
       t.decimal :price, :precision => 8, :scale => 2
       t.integer :count
       t.belongs_to :cart, index: true, foreign_key: true
-      t.integer :order_id
+      t.belongs_to :order, index: true, foreign_key: true
 
       t.timestamps null: false
     end

@@ -1,0 +1,25 @@
+- if notice
+  .alert.alert-success= notice
+
+.panel.panel-default
+  .panel-heading
+    %h4.panel_header= t('.title')
+  .panel-body
+    %table.table.table-hover
+      %thead
+        %tr
+          %th.serial_number_column= t('.num')
+          %th.datetime_column= t('.created')
+          %th= t('.customer')
+          %th.total_price_column= t('.total')
+          %th.status_column= Magaz::Order.human_attribute_name(:status)
+      %tbody
+        - @orders.each do |order|
+          %tr
+            %td= order.id
+            %td= order.created_at.strftime "%d.%m.%Y %H:%M"
+            %td
+              = order.customer
+              = "(#{order.company})" if order.company
+            %td.price_cell= number_to_currency order.total_price
+            %td= order.status.name if order.status

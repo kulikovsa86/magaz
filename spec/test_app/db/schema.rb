@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151110101337) do
+ActiveRecord::Schema.define(version: 20151116114930) do
 
   create_table "magaz_carts", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -41,6 +41,17 @@ ActiveRecord::Schema.define(version: 20151110101337) do
   add_index "magaz_category_hierarchies", ["ancestor_id", "descendant_id", "generations"], name: "magaz_category_anc_desc_udx", unique: true
   add_index "magaz_category_hierarchies", ["descendant_id"], name: "magaz_category_desc_idx"
 
+  create_table "magaz_deliveries", force: :cascade do |t|
+    t.string   "code"
+    t.string   "name"
+    t.text     "note"
+    t.boolean  "address_required"
+    t.boolean  "post_code_required"
+    t.decimal  "price",              precision: 8, scale: 2
+    t.datetime "created_at",                                 null: false
+    t.datetime "updated_at",                                 null: false
+  end
+
   create_table "magaz_images", force: :cascade do |t|
     t.string   "picture"
     t.integer  "imageable_id"
@@ -64,8 +75,41 @@ ActiveRecord::Schema.define(version: 20151110101337) do
   end
 
   add_index "magaz_line_items", ["cart_id"], name: "index_magaz_line_items_on_cart_id"
+  add_index "magaz_line_items", ["order_id"], name: "index_magaz_line_items_on_order_id"
   add_index "magaz_line_items", ["product_id"], name: "index_magaz_line_items_on_product_id"
   add_index "magaz_line_items", ["variant_id"], name: "index_magaz_line_items_on_variant_id"
+
+  create_table "magaz_orders", force: :cascade do |t|
+    t.string   "customer"
+    t.string   "company"
+    t.string   "phone"
+    t.string   "email"
+    t.integer  "delivery_id"
+    t.string   "address1"
+    t.string   "address2"
+    t.string   "address3"
+    t.string   "address4"
+    t.string   "post_code"
+    t.integer  "payment_id"
+    t.integer  "status_id"
+    t.datetime "pdt"
+    t.text     "customer_comment"
+    t.text     "manager_comment"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+
+  add_index "magaz_orders", ["delivery_id"], name: "index_magaz_orders_on_delivery_id"
+  add_index "magaz_orders", ["payment_id"], name: "index_magaz_orders_on_payment_id"
+  add_index "magaz_orders", ["status_id"], name: "index_magaz_orders_on_status_id"
+
+  create_table "magaz_payments", force: :cascade do |t|
+    t.string   "code"
+    t.string   "name"
+    t.text     "note"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "magaz_products", force: :cascade do |t|
     t.string   "name"
@@ -123,6 +167,14 @@ ActiveRecord::Schema.define(version: 20151110101337) do
 
   add_index "magaz_property_values", ["property_id"], name: "index_magaz_property_values_on_property_id"
   add_index "magaz_property_values", ["valuable_type", "valuable_id"], name: "index_magaz_property_values_on_valuable_type_and_valuable_id"
+
+  create_table "magaz_statuses", force: :cascade do |t|
+    t.string   "code"
+    t.string   "name"
+    t.text     "note"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "magaz_variant_images", force: :cascade do |t|
     t.integer "variant_id"

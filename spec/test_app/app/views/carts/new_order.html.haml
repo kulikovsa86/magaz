@@ -1,0 +1,39 @@
+= link_to "Домой", root_path
+%h3 Новый заказ
+%table
+  %tr
+    %th N
+    %th Наименование 
+    %th Вариант
+    %th Кол-во
+    %th Цена
+    %th Сумма
+  - @cart.items.each_with_index do |item, index|
+    %tr
+      %td= index + 1
+      %td= item.product.name
+      %td= item.variant.id if item.variant
+      %td= item.count
+      %td= item.cart_price
+      %td= item.total_cart_price
+
+%br
+= form_for @order, url: order_path do |f|
+  - if @order.errors.any?
+    %ul
+      - @order.errors.full_messages.each do |msg|
+        %li= msg
+
+  = f.label :customer
+  = f.text_field :customer
+  %br
+  = f.label :email
+  = f.email_field :email
+  %br
+  = f.label :phone
+  = f.text_field :phone
+  %br
+  = f.submit 'Подвердить'
+
+%br
+= link_to 'Назад', :back
