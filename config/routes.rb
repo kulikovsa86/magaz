@@ -49,4 +49,7 @@ Magaz::Engine.routes.draw do
   
   resources :orders, except: [:show]
 
+  resources :deliveries, except: [:show]
+  resources :payments, except: [:show]
+
 end

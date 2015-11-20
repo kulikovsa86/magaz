@@ -285,6 +285,30 @@ ru:
       gallery: Галерея
       properties: Характеристики
       variants: Варианты
+    payments:
+      index:
+        title: Способы оплаты
+      new:
+        title: Новый способ оплаты
+      create:
+        success: Создан новый способ оплаты
+      update:
+        success: Данные обновлены
+      destroy:
+        success: Запись удалена
+    deliveries:
+      index:
+        title: Способы доставки
+        address: Адрес
+        post_code: Индекс
+      new:
+        title: Новый способ доставки
+      create:
+        success: Создан новый способ доставки
+      update:
+        success: Данные обновлены
+      destroy:
+        success: Запись удалена
     orders:
       index:
         title: Заказы
@@ -292,6 +316,16 @@ ru:
         created: Создан
         customer: 'Компания/ФИО'
         total: Стоимость заказа
+      new:
+        title: Новый заказ
+      create:
+        success: Создан новый заказ
+      edit:
+        title: Заказ N%{num}
+      update:
+        success: Данные заказа обновлены
+      destroy:
+        success: Заказ удален
     variants:
       index:
         title: Варианты товара

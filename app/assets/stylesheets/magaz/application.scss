@@ -6,6 +6,7 @@
 @import "lightbox";
 @import "image-picker";
 @import "bootstrap3-switch";
+@import 'bootstrap-datetimepicker';
 
 @import "properties";
 @import "products";
@@ -27,16 +28,20 @@ table {
     width: 30px;
   }
 
-  .price_column {
-    width: 100px;
-  }
-
   .datetime_column {
     width: 150px;
   }
 
+  .price_column {
+    width: 100px;
+  }
+
   .total_price_column {
     width: 150px;
+  }
+
+  td.price_cell {
+    text-align: right;
   }
 
   .status_column {
@@ -44,8 +49,8 @@ table {
     text-align: center;
   }
 
-  td.price_cell {
-    text-align: right;
+  td.status_cell {
+    text-align: center;
   }
 
   &.editable_table {

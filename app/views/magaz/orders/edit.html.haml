@@ -1,0 +1,11 @@
+- if notice
+  .alert.alert-success= notice
+
+.panel.panel-default
+  .panel-heading
+    %h4.panel_header= t('.title', num: @order.num)
+  .panel-body
+    = render 'form'
+
+%br
+= link_to t('helpers.link_to.back'), orders_path

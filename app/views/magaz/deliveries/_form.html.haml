@@ -1,0 +1,16 @@
+= bootstrap_form_for @delivery do |f|
+  - if @delivery.errors.any?
+    = f.alert_message t('errors.template.header', count: @delivery.errors.count)
+
+  = f.text_field :code
+  = f.text_field :name
+  = f.text_area :note
+  = label_tag Magaz::Delivery.human_attribute_name(:address_required)
+  = f.check_box :address_required, :label => '', :'data-on-text' => 'ДА', :'data-off-text' => 'НЕТ', :'data-size' => 'mini', class: 'switcher'
+  = label_tag Magaz::Delivery.human_attribute_name(:post_code_required)
+  = f.check_box :post_code_required, :label => '', :'data-on-text' => 'ДА', :'data-off-text' => 'НЕТ', :'data-size' => 'mini', class: 'switcher'
+  = f.text_field :price, icon: 'ruble'
+
+  = f.submit t('helpers.submit.save'), class: 'btn btn-success'
+  - unless @delivery.new_record?
+    = link_to t('helpers.link_to.destroy'), @delivery, method: :delete, data: {confirm: "Вы уверены, что хотите удалить запись?"}, class: 'btn btn-default btn-danger pull-right'

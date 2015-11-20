@@ -1,0 +1,34 @@
+= bootstrap_form_for @order do |f|
+  - if @order.errors.any?
+    = f.alert_message t('errors.template.header', count: @order.errors.count)
+
+  = f.text_field :customer
+  = f.text_field :company
+  = f.phone_field :phone
+  = f.email_field :email
+
+  = label_tag Magaz::Order.human_attribute_name(:delivery)
+  = f.collection_select :delivery_id, Magaz::Delivery.all, :id, :name, { hide_label: true }, {class: 'selectpicker'}
+
+  = f.text_field :address1
+  = f.text_field :address2
+  = f.text_field :address3
+  = f.text_field :address4
+  = f.text_field :post_code
+
+  = label_tag Magaz::Order.human_attribute_name(:payment)
+  = f.collection_select :payment_id, Magaz::Payment.all, :id, :name, { hide_label: true }, {class: 'selectpicker'}
+
+  = f.datetime_field :pdt, value: @order.formatted_pdt, icon: 'calendar', class: 'datetimepicker'
+
+
+  - unless @order.new_record?
+    = label_tag Magaz::Order.human_attribute_name(:customer_comment)
+    %p= @order.customer_comment
+    %br
+
+  = f.text_area :manager_comment
+
+  = f.submit t('helpers.submit.save'), class: 'btn btn-success'
+  - unless @order.new_record?
+    = link_to t('helpers.link_to.destroy'), @order, method: :delete, data: {confirm: "Вы уверены, что хотите удалить заказ?"}, class: 'btn btn-default btn-danger pull-right'

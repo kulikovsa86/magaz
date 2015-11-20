@@ -19,6 +19,12 @@ ru:
       magaz/order:
         one: Заказ
         other: Заказы
+      magaz/delivery:
+        one: Способ доставки
+        other: Способы доставки
+      magaz/payment:
+        one: Способ оплаты
+        other: Способы оплаты
     attributes:
       magaz/property_type:
         code: Код
@@ -59,3 +65,14 @@ ru:
         pdt: Время доставки
         customer_comment: Коментарий клиента
         manager_comment: Коментарий менеджера
+      magaz/delivery:
+        code: Код
+        name: Наименование
+        note: Примечание
+        address_required: Требуется указывать адрес
+        post_code_required: Требуется указывать почтовый индекс
+        price: Стоимость
+      magaz/payment:
+        code: Код
+        name: Наименование
+        note: Примечание

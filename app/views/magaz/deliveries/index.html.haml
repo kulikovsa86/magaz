@@ -1,0 +1,36 @@
+- if notice
+  .alert.alert-success= notice
+
+.panel.panel-default
+  .panel-heading
+    %h4.panel_header= t('.title')
+  .panel-body
+    %table.table.table-hover
+      %thead
+        %tr
+          %th.code_column= Magaz::Delivery.human_attribute_name(:code)
+          %th= Magaz::Delivery.human_attribute_name(:name)
+          %th= Magaz::Delivery.human_attribute_name(:note)
+          %th.price_column= Magaz::Delivery.human_attribute_name(:price)
+          %th.code_column= t('.address')
+          %th.code_column= t('.post_code')
+      %tbody
+        - @deliveries.each do |delivery|
+          %tr
+            %td= delivery.code
+            %td= link_to delivery.name, edit_delivery_path(delivery)
+            %td= delivery.note
+            %td= delivery.price
+            %td
+              - if delivery.address_required
+                %i.glyphicon.glyphicon-plus
+              - else
+                %i.glyphicon.glyphicon-minus
+            %td
+              - if delivery.post_code_required
+                %i.glyphicon.glyphicon-plus
+              - else
+                %i.glyphicon.glyphicon-minus
+
+%br
+= link_to t('helpers.link_to.new', model: Magaz::Delivery.model_name.human), new_delivery_path

@@ -16,10 +16,12 @@
       %tbody
         - @orders.each do |order|
           %tr
-            %td= order.id
+            %td= link_to order.num, edit_order_path(order)
             %td= order.created_at.strftime "%d.%m.%Y %H:%M"
             %td
               = order.customer
               = "(#{order.company})" if order.company
             %td.price_cell= number_to_currency order.total_price
-            %td= order.status.name if order.status
+            %td.status_cell= order.status.name if order.status
+
+= link_to t('helpers.link_to.new', model: Magaz::Order.model_name.human), new_order_path

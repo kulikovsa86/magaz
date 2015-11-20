@@ -57,6 +57,10 @@ module Magaz
     
     alias items line_items
 
+    def num
+      "#{id}".rjust(3, '0')
+    end
+
     def total_price
       items.to_a.sum do |item|
         price = item.price ? item.price : 0
@@ -69,6 +73,14 @@ module Magaz
         item.cart_id = nil
         item.price = item.cart_price
         items << item
+      end
+    end
+
+    def formatted_pdt
+      if pdt
+        pdt.strftime('%d.%m.%Y %H:%M')
+      else
+        ''
       end
     end
 

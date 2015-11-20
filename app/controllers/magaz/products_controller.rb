@@ -62,8 +62,8 @@ module Magaz
       if @parent_category.products.empty?
         redirect_to categories_path(@parent_category), notice: t('.success')
       else
-        @products = @parent_category.products
-        render :index, notice: t('.success')
+        # @products = @parent_category.products
+        redirect_to category_products_path(@parent_category), notice: t('.success')
       end
     end
 

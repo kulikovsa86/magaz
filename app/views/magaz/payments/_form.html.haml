@@ -1,0 +1,11 @@
+= bootstrap_form_for @payment do |f|
+  - if @payment.errors.any?
+    = f.alert_message t('errors.template.header', count: @payment.errors.count)
+
+  = f.text_field :code
+  = f.text_field :name
+  = f.text_area :note
+
+  = f.submit t('helpers.submit.save'), class: 'btn btn-success'
+  - unless @payment.new_record?
+    = link_to t('helpers.link_to.destroy'), @payment, method: :delete, data: {confirm: "Вы уверены, что хотите удалить запись?"}, class: 'btn btn-default btn-danger pull-right'

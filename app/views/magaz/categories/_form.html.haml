@@ -14,6 +14,6 @@
   = label_tag Magaz::Category.human_attribute_name(:properties)
   = f.collection_select :property_ids, Magaz::Property.all, :id, :name, { hide_label: true }, {class: 'selectpicker', multiple: true, :'data-width'=> "400px", :'data-selected-text-format' => "count>3"}
   %br
-  %br
   = f.submit t('helpers.submit.save'), class: 'btn btn-success'
-
+  - unless @category.new_record?
+    = link_to t('helpers.link_to.destroy'), @category, method: :delete, data: {confirm: "Вы уверены, что хотите удалить категорию? <br/>Все дочерние категории и товары будут также удалены"}, class: 'btn btn-default btn-danger pull-right'

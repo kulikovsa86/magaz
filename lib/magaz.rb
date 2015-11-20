@@ -14,6 +14,9 @@ require 'carrierwave'
 require 'lightbox2-rails'
 require 'image-picker-rails'
 require 'bootstrap-switch-rails'
+require 'momentjs-rails'
+require 'bootstrap3-datetimepicker-rails'
+require 'bootbox-rails'
 
 require "magaz/engine"
 
