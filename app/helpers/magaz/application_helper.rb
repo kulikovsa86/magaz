@@ -1,5 +1,11 @@
 module Magaz
   module ApplicationHelper
+    
+    def active_class(link_path)
+      current_page?(link_path) ? "active" : ""
+    end
+
+
     def t_att(model, attribute)
       t("activerecord.attributes.#{model}.#{attribute}")
     end

@@ -2,13 +2,11 @@
 
 .panel.panel-default
   .panel-heading
-    %h4.panel_header= @product.name
-    = render '/magaz/products/undertitle_links'
+    %h4.panel_header= @product.name + ' (новый вариант)'
 
-.panel.panel-default
-  .panel-heading
-    %h4.panel_header= t('.title')
   .panel-body
+    = render '/magaz/products/undertitle_links'
+    %br
     = render 'form'
 
 

@@ -5,7 +5,12 @@
   .panel-heading
     %h4.panel_header= t('.title', num: @order.num)
   .panel-body
-    = render 'form'
+    = render 'undertitle_links'
+    %br
+    - if @form
+      = render @form
+    - else
+      = render 'form'
 
 %br
 = link_to t('helpers.link_to.back'), orders_path

@@ -47,7 +47,14 @@ Magaz::Engine.routes.draw do
 
   resources :line_items, only: [:create, :destroy]
   
-  resources :orders, except: [:show]
+  resources :orders, except: [:show] do
+    member do
+      get :edit_items
+      get :edit_contacts
+      get :edit_delivery
+      get :edit_payment
+    end
+  end
 
   resources :deliveries, except: [:show]
   resources :payments, except: [:show]

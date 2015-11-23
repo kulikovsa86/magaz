@@ -6,12 +6,9 @@
 .panel.panel-default
   .panel-heading
     %h4.panel_header= @product.name
-    = render 'undertitle_links'
-
-.panel.panel-default
-  .panel-heading
-    %h4.panel_header= t('.title')
   .panel-body
+    = render 'undertitle_links'
+    %br
     = bootstrap_form_tag url: product_properties_create_path(@product) do |f|
       = render '/magaz/property_values/form'
       = f.submit t('helpers.submit.save'), class: 'btn btn-success'

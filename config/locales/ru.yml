@@ -285,6 +285,10 @@ ru:
       gallery: Галерея
       properties: Характеристики
       variants: Варианты
+      contacts: Контакты
+      products: Товары
+      delivery: Доставка
+      payment: Оплата
     payments:
       index:
         title: Способы оплаты

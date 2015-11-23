@@ -1,0 +1,5 @@
+%ul.nav.nav-tabs
+  %li{class: active_class(edit_items_order_path(@order))}= link_to t('magaz.common.products'), edit_items_order_path(@order)
+  %li{class: active_class(edit_contacts_order_path(@order))}= link_to t('magaz.common.contacts'), edit_contacts_order_path(@order)
+  %li{class: active_class(edit_delivery_order_path(@order))}= link_to t('magaz.common.delivery'), edit_delivery_order_path(@order)
+  %li{class: active_class(edit_payment_order_path(@order))}= link_to t('magaz.common.payment'), edit_payment_order_path(@order)

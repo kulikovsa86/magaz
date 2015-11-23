@@ -6,12 +6,9 @@
 .panel.panel-default
   .panel-heading
     %h4.panel_header= @product.name
-    = render 'undertitle_links'
-
-.panel.panel-default
-  .panel-heading
-    %h4.panel_header= t('.title')
   .panel-body
+    = render 'undertitle_links'
+    %br
 
     - @ordered_images.each do |image|
       .gallery-item

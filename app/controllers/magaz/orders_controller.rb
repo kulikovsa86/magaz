@@ -3,7 +3,7 @@ require_dependency "magaz/application_controller"
 module Magaz
   class OrdersController < ApplicationController
 
-    before_action :set_order, only: [:edit, :update, :destroy]
+    before_action :set_order, only: [:edit, :update, :destroy, :edit_items, :edit_contacts, :edit_delivery, :edit_payment]
 
     # GET    /orders(.:format)
     def index
@@ -27,6 +27,30 @@ module Magaz
 
     # GET    /orders/:id/edit(.:format)
     def edit
+    end
+
+    # GET    /orders/:id/edit_items(.:format)
+    def edit_items
+      @form = 'form_items'
+      render :edit
+    end
+
+    # GET    /orders/:id/edit_contacts(.:format)
+    def edit_contacts
+      @form = 'form_contacts'
+      render :edit
+    end
+
+    # GET    /orders/:id/edit_delivery(.:format)
+    def edit_delivery
+      @form = 'form_delivery'
+      render :edit
+    end
+
+    # GET    /orders/:id/edit_payment(.:format)
+    def edit_payment
+      @form = 'form_payment'
+      render :edit
     end
 
     # PATCH/PUT  /orders/:id(.:format)

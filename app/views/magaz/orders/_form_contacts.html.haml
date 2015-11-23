@@ -1,0 +1,10 @@
+= bootstrap_form_for @order do |f|
+  - if @order.errors.any?
+    = f.alert_message t('errors.template.header', count: @order.errors.count)
+
+  = f.text_field :customer
+  = f.text_field :company
+  = f.phone_field :phone
+  = f.email_field :email
+
+  = f.submit t('helpers.submit.save'), class: 'btn btn-success'
