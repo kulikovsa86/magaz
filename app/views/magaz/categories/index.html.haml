@@ -12,9 +12,9 @@
       %thead
         %tr
           %th.code_column= Magaz::Category.human_attribute_name(:code)
-          %th.code_column
-          %th= Magaz::Category.human_attribute_name(:name)
           %th.th_actions
+          %th= Magaz::Category.human_attribute_name(:name)
+          %th.code_column
 
       %tbody
         - if @parent_category
@@ -26,6 +26,19 @@
         - @categories.each do |category|
           %tr
             %td= category.id
+            
+            %td.td_actions
+              .actions.btn-group
+                %button.btn.btn-default.dropdown-toggle.btn-xs{:'data-toggle' => 'dropdown'}
+                  %i.glyphicon.glyphicon-menu-hamburger
+                %ul.dropdown-menu
+                  %li= link_to t('magaz.common.edit'), edit_category_path(category)
+                  %li= link_to t('magaz.common.higher'), category_up_path(category), method: :patch
+                  %li= link_to t('magaz.common.lower'), category_down_path(category), method: :patch
+                  %li.divider{role: 'separator'}
+                  %li= link_to t('helpers.link_to.destroy'), category, method: :delete, data: {confirm: "Вы уверены, что хотите удалить категорию? <br/>Все дочерние категории и товары будут также удалены"}
+            %td
+              = link_to category.name, categories_path(category)
             %td
               - if category.products.empty?
                 %i.glyphicon.glyphicon-folder-open
@@ -33,20 +46,8 @@
                 %i.glyphicon.glyphicon-folder-close
               - if category.hidden
                 %i.glyphicon.glyphicon-eye-close
-            %td
-              = link_to category.name, categories_path(category)
-              &nbsp;
-              %span.actions
-                = link_to edit_category_path(category), class: 'btn-link' do
-                  %i.glyphicon.glyphicon-pencil
-            %td.td_actions
-              .actions
-                = link_to category_up_path(category), method: :patch, class: 'btn-link' do
-                  %i.glyphicon.glyphicon-menu-up
-                = link_to category_down_path(category), method: :patch, class: 'btn-link' do
-                  %i.glyphicon.glyphicon-menu-down
-                / = link_to category, :method => :delete, :data => { :confirm => 'Are you sure?' }, class: 'btn-link' do
-                /   %i.glyphicon.glyphicon-remove
+
+
 %br
 = link_to t('helpers.link_to.new_f', model: Magaz::Category.model_name.human), new_category_path(@parent_category)
 - if @categories.empty?

@@ -1,5 +1,41 @@
-= bootstrap_form_for @order do |f|
+= form_tag(recount_order_path, method: 'patch') do
   - if @order.errors.any?
     = f.alert_message t('errors.template.header', count: @order.errors.count)
 
-  = f.submit t('helpers.submit.save'), class: 'btn btn-success'
+  %table.table.table-hover.editable_table
+
+    %thead
+      %th.serial_number_column N
+      %th.th_actions
+      %th= Magaz::Category.model_name.human
+      %th= Magaz::Product.human_attribute_name(:name)
+      %th= Magaz::Variant.model_name.human
+      %th.count_column= t('magaz.common.count')
+      %th.price_column= t('magaz.common.price')
+      %th.price_column= t('magaz.common.sum')
+
+    %tbody
+      - @order.items.each_with_index do |item, index|
+        = hidden_field_tag 'items[][id]', item.id
+        %tr
+          %td= index + 1
+          %td
+            .actions.btn-group
+              %button.btn.btn-default.dropdown-toggle.btn-xs{:'data-toggle' => 'dropdown'}
+                %i.glyphicon.glyphicon-menu-hamburger
+              %ul.dropdown-menu
+                %li= link_to t('helpers.link_to.destroy'), item, method: :delete, data: {confirm: "Вы уверены, что хотите удалить товар из заказа?"}
+                / = link_to item, :method => :delete, :data => { :confirm => 'Вы уверены, что хотите удалить товар из заказа?' }, class: 'btn-link' do
+                /   %i.glyphicon.glyphicon-remove
+          %td= item.product.category.name
+          %td= link_to item.product.name, edit_product_path(item.product)
+          %td
+            = item.variant.values_string if item.variant
+          %td
+            = number_field_tag 'items[][count]', item.count || 1, in: 1..1000, class: 'form-control input-sm'
+          %td.price_cell= number_to_currency item.price
+          %td.price_cell= number_to_currency item.total_order_price
+
+  %br
+  %br
+  = submit_tag t('magaz.common.recount'), class: 'btn btn-success'

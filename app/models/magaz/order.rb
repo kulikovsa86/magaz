@@ -84,6 +84,14 @@ module Magaz
       end
     end
 
+    # param_items = [ {id: "id", count: "count"}, ... ]
+    def recount(param_items) 
+      param_items.each do |param_item|
+        item = items.find_by_id(param_item[:id])
+        item.update(count: param_item[:count]) if item
+      end
+    end
+
     private
 
       def delivery_need?

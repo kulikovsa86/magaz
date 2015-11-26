@@ -281,14 +281,23 @@ ru:
 
   magaz:
     common:
+      edit: Редактировать
+      higher: Выше
+      lower: Ниже
+      delete: Удалить
       specification: Спецификация
       gallery: Галерея
       properties: Характеристики
       variants: Варианты
+      new_variant: Новый вариант
       contacts: Контакты
       products: Товары
       delivery: Доставка
       payment: Оплата
+      count: Количество
+      price: Цена за ед.
+      sum: Сумма
+      recount: Пересчитать
     payments:
       index:
         title: Способы оплаты
@@ -326,6 +335,7 @@ ru:
         success: Создан новый заказ
       edit:
         title: Заказ N%{num}
+        product: Наименование
       update:
         success: Данные заказа обновлены
       destroy:

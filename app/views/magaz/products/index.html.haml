@@ -11,9 +11,9 @@
       %thead
         %tr
           %th.code_column= Magaz::Product.human_attribute_name(:article)
-          %th.code_column
-          %th= Magaz::Product.human_attribute_name(:name)
           %th.th_actions
+          %th= Magaz::Product.human_attribute_name(:name)
+          %th.code_column
       %tbody
         %tr
           %td
@@ -23,16 +23,21 @@
         - @products.each do |product|
           %tr
             %td= product.id
+            %td.td_actions
+              .actions.btn-group
+                %button.btn.btn-default.dropdown-toggle.btn-xs{:'data-toggle' => 'dropdown'}
+                  %i.glyphicon.glyphicon-menu-hamburger
+                %ul.dropdown-menu
+                  %li= link_to t('magaz.common.edit'), edit_product_path(product)
+                  %li= link_to t('magaz.common.higher'), product_up_path(product), method: :patch
+                  %li= link_to t('magaz.common.lower'), product_down_path(product), method: :patch
+                  %li.divider{role: 'separator'}
+                  %li= link_to t('helpers.link_to.destroy'), product, method: :delete, data: {confirm: "Вы уверены, что хотите удалить товар?"}
+
+            %td= link_to product.name, edit_product_path(product)
             %td
               - if product.hidden
                 %i.glyphicon.glyphicon-eye-close
-            %td= link_to product.name, edit_product_path(product)
-            %td.td_actions
-              .actions
-                = link_to product_up_path(product), method: :patch, class: 'btn-link' do
-                  %i.glyphicon.glyphicon-menu-up
-                = link_to product_down_path(product), method: :patch, class: 'btn-link' do
-                  %i.glyphicon.glyphicon-menu-down
 
 %br
 = link_to t('helpers.link_to.new', model: Magaz::Product.model_name.human), new_category_product_path(@parent_category)

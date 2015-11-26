@@ -3,7 +3,7 @@ require_dependency "magaz/application_controller"
 module Magaz
   class OrdersController < ApplicationController
 
-    before_action :set_order, only: [:edit, :update, :destroy, :edit_items, :edit_contacts, :edit_delivery, :edit_payment]
+    before_action :set_order, only: [:edit, :update, :destroy, :edit_items, :edit_contacts, :edit_delivery, :edit_payment, :recount]
 
     # GET    /orders(.:format)
     def index
@@ -66,6 +66,13 @@ module Magaz
     def destroy
       @order.destroy
       redirect_to orders_path, notice: t('.success')
+    end
+
+    # PATCH  /orders/:id/recount(.:format)
+    def recount
+      params.require(:items)
+      @order.recount(params[:items])
+      redirect_to edit_items_order_path(@order)
     end
 
     private

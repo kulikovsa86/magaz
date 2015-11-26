@@ -35,5 +35,13 @@ module Magaz
         0
       end
     end
+
+    def total_order_price
+      if price && count
+        price * count
+      else
+        0
+      end
+    end
   end
 end

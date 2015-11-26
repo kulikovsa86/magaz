@@ -69,8 +69,9 @@ module Magaz
 
     # POST   /products/:product_id/upload(.:format)
     def upload
-      params.permit(:picture)
-      @product.images << Image.create(picture: params[:picture])
+      if params[:picture]
+        @product.images << Image.create(picture: params[:picture])
+      end
       redirect_to product_gallery_path(@product), notice: t('.success')
     end
 

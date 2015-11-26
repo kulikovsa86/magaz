@@ -14,15 +14,21 @@
       %thead
         %tr
           %th.serial_number_column N
+          %th.th_actions
           %th.price_column= Magaz::Product.human_attribute_name(:price)
           %th= t('.characteristics')
           %th= t('magaz.common.gallery')
           %th= t('.colors')
-          %th.th_actions
       %tbody
         - @product.variants.each_with_index do |variant, index|
           %tr
             %td= index + 1
+            %td
+              .actions.btn-group
+                %button.btn.btn-default.dropdown-toggle.btn-xs{:'data-toggle' => 'dropdown'}
+                  %i.glyphicon.glyphicon-menu-hamburger
+                %ul.dropdown-menu
+                  %li= link_to t('helpers.link_to.destroy'), variant, method: :delete, data: {confirm: "Вы уверены, что хотите удалить вариант товара?"}
             %td= variant.price
             %td= variant.values_string
             %td
@@ -30,10 +36,8 @@
                 = link_to image.picture.url, {:'data-lightbox' => variant.id} do
                   = image_tag(image.picture.url, class: 'variant-index-image img-rounded img-thumbnail')
             %td= variant.colors_string.html_safe
-            %td
-              .actions
-                = link_to variant, :method => :delete, :data => { :confirm => 'Are you sure?' }, class: 'btn-link' do
-                  %i.glyphicon.glyphicon-remove
+
+               
     %br
     = link_to t('helpers.link_to.new', model: Magaz::Variant.model_name.human), new_product_variant_path(@product)
 
