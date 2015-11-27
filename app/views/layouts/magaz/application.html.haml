@@ -7,16 +7,7 @@
     = javascript_include_tag "magaz/application"
     = csrf_meta_tags
   %body
+    = render 'layouts/magaz/nav'
     .container
-      = link_to 'Категории и товары', categories_path
-      \|
-      = link_to 'Характеристики', properties_path
-      \|
-      = link_to 'Заказы', orders_path
-      \|
-      = link_to 'Доставка', deliveries_path
-      \|
-      = link_to 'Оплата', payments_path
-      %br
-      %br
-      = yield
+      .row.main
+        = yield

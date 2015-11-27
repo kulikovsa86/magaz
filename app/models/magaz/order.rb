@@ -44,6 +44,7 @@ module Magaz
 
     with_options if: :delivery_need? do |o|
       o.validates :address1, presence: true
+      o.validates :address2, presence: true
       o.validates :address3, presence: true
       o.validates :address4, presence: true
       o.validates :post_code, presence: true, if: :post_code_need?

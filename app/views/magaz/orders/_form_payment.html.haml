@@ -2,6 +2,8 @@
   - if @order.errors.any?
     = f.alert_message t('errors.template.header', count: @order.errors.count)
 
+  = hidden_field_tag "member", "edit_payment"
+  = hidden_field_tag "form", "form_payment"
   = label_tag Magaz::Order.human_attribute_name(:payment)
   = f.collection_select :payment_id, Magaz::Payment.all, :id, :name, { hide_label: true }, {class: 'selectpicker'}
 

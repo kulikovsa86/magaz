@@ -2,6 +2,8 @@
   - if @order.errors.any?
     = f.alert_message t('errors.template.header', count: @order.errors.count)
 
+  = hidden_field_tag "member", "edit_contacts"
+  = hidden_field_tag "form", "form_contacts"
   = f.text_field :customer
   = f.text_field :company
   = f.phone_field :phone

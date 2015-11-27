@@ -56,8 +56,9 @@ module Magaz
     # PATCH/PUT  /orders/:id(.:format)
     def update
       if @order.update(order_params)
-        redirect_to edit_order_path(@order), notice: t('.success')
+        redirect_to "/magaz/orders/#{@order.id}/#{params[:member]}", notice: t('.success')
       else
+        @form = params[:form]
         render :edit
       end
     end
@@ -82,8 +83,8 @@ module Magaz
       end
 
       def order_params
-        params.require(:order).permit(:customer, :company, :phone, :email, :delivery_id, :address1, :address2, :address3, :address4, :post_code, :payment_id, :status_id, :pdt, :manager_comment)
-      end 
+        params.require(:order).permit(:customer, :company, :phone, :email, :delivery_id, :address1, :address2, :address3, :address4, :post_code, :payment_id, :status_id, :pdt, :manager_comment, :form)
+      end
 
   end
 end

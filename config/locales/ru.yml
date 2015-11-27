@@ -290,6 +290,7 @@ ru:
       properties: Характеристики
       variants: Варианты
       new_variant: Новый вариант
+      categories: Категории и товары
       contacts: Контакты
       products: Товары
       delivery: Доставка
@@ -378,7 +379,7 @@ ru:
         success: Товар удален
     categories:
       index:
-        title: Категории товаров
+        title: Категории
       new:
         title: Новая категория
       create:

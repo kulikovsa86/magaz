@@ -2,6 +2,8 @@
   - if @order.errors.any?
     = f.alert_message t('errors.template.header', count: @order.errors.count)
 
+  = hidden_field_tag "member", "edit_delivery"
+  = hidden_field_tag "form", "form_delivery"
   = label_tag Magaz::Order.human_attribute_name(:delivery)
   = f.collection_select :delivery_id, Magaz::Delivery.all, :id, :name, { hide_label: true }, {class: 'selectpicker'}
 

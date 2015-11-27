@@ -14,6 +14,10 @@
 
 $form_field_default_width: 400px;
 
+.main {
+  padding-top: 70px;
+}
+
 .panel_header {
   font-weight: bold;
 }
@@ -26,6 +30,10 @@ table {
 
   .serial_number_column {
     width: 30px;
+  }
+
+  .icons_column {
+    width: 100px;
   }
 
   .datetime_column {

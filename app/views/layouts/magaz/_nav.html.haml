@@ -1,0 +1,29 @@
+%nav.navbar.navbar-inverse.navbar-fixed-top
+  %div.container-fluid
+    %div.navbar-header
+      %button.navbar-toggle.collapsed{:type => 'button', :'data-toggle' => 'collapse', :'data-target' => '#navbar', :'aria-expanded' => 'false', :'aria-controls' => 'navbar'}
+        %span.sr-only Toggle navigation
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+      = link_to Magaz, '#', class: 'navbar-brand'
+    %div#navbar.navbar-collapse.collapse
+      %ul.nav.navbar-nav.navbar-right
+        
+        / %form.navbar-form.navbar-right
+        /   %input.form-control{type: 'text', placeholder: 'Поиск товара...'}
+        / %ul.nav.navbar-nav.navbar-right
+        %li
+          = link_to t('magaz.common.categories'), categories_path
+        %li
+          = link_to t('magaz.properties.index.title'), properties_path
+        %li
+          = link_to t('magaz.orders.index.title'), orders_path
+        %li
+          = link_to t('magaz.common.delivery'), deliveries_path
+        %li
+          = link_to t('magaz.common.payment'), payments_path
+        %li
+          = link_to 'Выход', '#'
+      
+
