@@ -1,29 +1,33 @@
-%nav.navbar.navbar-inverse.navbar-fixed-top
-  %div.container-fluid
-    %div.navbar-header
-      %button.navbar-toggle.collapsed{:type => 'button', :'data-toggle' => 'collapse', :'data-target' => '#navbar', :'aria-expanded' => 'false', :'aria-controls' => 'navbar'}
-        %span.sr-only Toggle navigation
-        %span.icon-bar
-        %span.icon-bar
-        %span.icon-bar
-      = link_to Magaz, '#', class: 'navbar-brand'
-    %div#navbar.navbar-collapse.collapse
-      %ul.nav.navbar-nav.navbar-right
-        
-        / %form.navbar-form.navbar-right
-        /   %input.form-control{type: 'text', placeholder: 'Поиск товара...'}
-        / %ul.nav.navbar-nav.navbar-right
+
+%nav.navbar.navbar-default.navbar-static-top{role: "navigation", style: "margin-bottom: 0"}
+
+  .navbar-header
+    %button.navbar-toggle{:type => "button", :'data-toggle' => 'collapse', :'data-target' => ".navbar-collapse"}
+      %span.sr-only Toggle navigation
+      %span.icon-bar
+      %span.icon-bar
+      %span.icon-bar
+    = link_to Magaz, '#', class: "navbar-brand"
+
+  %ul.nav.navbar-top-links.navbar-right
+    %li.dropdown
+      = link_to '#', class: "dropdown-toggle", :'data-toggle' => "dropdown" do
+        %i.fa.fa-user.fa-fw
+        %i.fa.fa-caret-down
+      %ul.dropdown-menu.dropdown-user
         %li
-          = link_to t('magaz.common.categories'), categories_path
+          = link_to '#' do
+            %i.fa.fa-user.fa-fw 
+            Профиль
         %li
-          = link_to t('magaz.properties.index.title'), properties_path
+          = link_to '#' do
+            %i.fa.fa-gear.fa-fw
+            Настройки
+        %li.divider
         %li
-          = link_to t('magaz.orders.index.title'), orders_path
-        %li
-          = link_to t('magaz.common.delivery'), deliveries_path
-        %li
-          = link_to t('magaz.common.payment'), payments_path
-        %li
-          = link_to 'Выход', '#'
+          = link_to '#' do
+            %i.fa.fa-sign-out.fa-fw
+            Выход
+
       
 

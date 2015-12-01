@@ -7,7 +7,11 @@
     = javascript_include_tag "magaz/application"
     = csrf_meta_tags
   %body
-    = render 'layouts/magaz/nav'
+
+    #wrapper
+      = render 'layouts/magaz/nav'
+
+    / = render 'layouts/magaz/nav'
     .container
       .row.main
         = yield

@@ -14,7 +14,7 @@
 //= require bootstrap-sprockets
 //= require jquery_ujs
 //= require turbolinks
-//= require bootstrap-select
+//= require bootstrap-select.min
 //= require defaults-ru_RU
 //= require tinycolor-0.9.15.min
 //= require pick-a-color-1.2.3.min
@@ -27,8 +27,9 @@
 //= require moment/ru
 //= require bootstrap-datetimepicker
 //= require bootbox
+//= require metisMenu.min
+//= require sb-admin-2
 
-//= require_tree .
 
 var ready;
 ready = function() {

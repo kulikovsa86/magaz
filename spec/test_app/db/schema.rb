@@ -177,8 +177,10 @@ ActiveRecord::Schema.define(version: 20151116114930) do
   end
 
   create_table "magaz_variant_images", force: :cascade do |t|
-    t.integer "variant_id"
-    t.integer "image_id"
+    t.integer  "variant_id"
+    t.integer  "image_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "magaz_variants", force: :cascade do |t|

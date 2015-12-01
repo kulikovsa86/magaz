@@ -10,12 +10,12 @@ Magaz::Delivery.delete_all
 Magaz::Payment.delete_all
 Magaz::Status.delete_all
 
-Magaz::Delivery.create!(code: '01', name: 'Самовывоз', address_required: false, post_code_required: false)
+delivery = Magaz::Delivery.create!(code: '01', name: 'Самовывоз', address_required: false, post_code_required: false)
 Magaz::Delivery.create!(code: '02', name: 'Курьер', address_required: true, post_code_required: false)
 Magaz::Delivery.create!(code: '03', name: 'Почта России', address_required: true, post_code_required: true)
 
 Magaz::Payment.create!(code: '01', name: 'Безналичный расчет')
-Magaz::Payment.create!(code: '02', name: 'Наличными при получении')
+payment = Magaz::Payment.create!(code: '02', name: 'Наличными при получении')
 
 staus_new = Magaz::Status.create!(code: '01', name: 'Новый')
 Magaz::Status.create!(code: '02', name: 'Подтвержден')
@@ -56,10 +56,10 @@ p3 = Magaz::Product.create!(name: 'Гомер Симпсон', category: cat, pr
 v11 = Magaz::Variant.create!(product: p1, price: 110)
 v12 = Magaz::Variant.create!(product: p1, price: 120)
 
-o1 = Magaz::Order.create!(customer: 'Иванов Иван', phone: '111-22-333', email: 'ivanoff@example.com', status: staus_new)
+o1 = Magaz::Order.create!(customer: 'Иванов Иван', phone: '111-22-333', email: 'ivanoff@example.com', status: staus_new, payment: payment, delivery: delivery)
 o1.line_items << Magaz::LineItem.create!(product: p1, variant: v11, count: 2, price: 200)
 o1.line_items << Magaz::LineItem.create!(product: p1, variant: v12, count: 2, price: 300)
 
-o2 = Magaz::Order.create!(customer: 'Петров Петр', phone: '123-45-678', email: 'petroff@example.com', status: staus_new)
+o2 = Magaz::Order.create!(customer: 'Петров Петр', phone: '123-45-678', email: 'petroff@example.com', status: staus_new, payment: payment, delivery: delivery)
 o2.line_items << Magaz::LineItem.create!(product: p2, count: 4) << Magaz::LineItem.create!(product: p3, count: 7)
 
