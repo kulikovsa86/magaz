@@ -32,20 +32,33 @@
                 %button.btn.btn-default.dropdown-toggle.btn-xs{:'data-toggle' => 'dropdown'}
                   %i.glyphicon.glyphicon-menu-hamburger
                 %ul.dropdown-menu
-                  %li= link_to t('magaz.common.edit'), edit_category_path(category)
-                  %li= link_to t('magaz.common.higher'), category_up_path(category), method: :patch
-                  %li= link_to t('magaz.common.lower'), category_down_path(category), method: :patch
+                  %li
+                    = link_to edit_category_path(category) do
+                      %i.fa.fa-pencil.fa-fw
+                      = t('magaz.common.edit')
                   %li.divider{role: 'separator'}
-                  %li= link_to t('helpers.link_to.destroy'), category, method: :delete, data: {confirm: "Вы уверены, что хотите удалить категорию? <br/>Все дочерние категории и товары будут также удалены"}
+                  %li
+                    = link_to category_up_path(category), method: :patch do
+                      %i.fa.fa-arrow-up.fa-fw
+                      = t('magaz.common.higher')
+                  %li
+                    = link_to category_down_path(category), method: :patch do
+                      %i.fa.fa-arrow-down.fa-fw
+                      = t('magaz.common.lower')
+
+                  %li.divider{role: 'separator'}
+                  %li
+                    = link_to category, method: :delete, data: {confirm: "Вы уверены, что хотите удалить категорию? <br/>Все дочерние категории и товары будут также удалены"} do
+                      %i.fa.fa-trash.fa-fw
+                      = t('helpers.link_to.destroy')
             %td
-              = link_to category.name, categories_path(category)
+              = link_to categories_path(category) do
+                - if category.products.empty?
+                  %i.fa.fa-folder-open
+                - else
+                  %i.fa.fa-folder
+                = category.name
             %td
-              - if category.products.empty?
-                %i.glyphicon.glyphicon-folder-open
-              - else
-                %i.glyphicon.glyphicon-folder-close
-              - if category.hidden
-                %i.glyphicon.glyphicon-eye-close
 
 
 %br

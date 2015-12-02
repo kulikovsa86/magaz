@@ -1,0 +1,36 @@
+.navbar-default.sidebar{role: "navigation"}
+  .sidebar-nav.navbar-collapse
+    %ul#side-menu.nav
+      %li.sidebar-search
+        .input-group.custom-search-form
+          %input.form-control{type: "text", placeholder: 'Поиск...'}
+          %span.input-group-btn
+            %button.btn.btn-default{type: "button"}
+              %i.fa.fa-search
+      %li
+        = link_to '#' do
+          %i.fa.fa-dashboard.fa-fw
+          = t('magaz.common.dashboard')
+      %li
+        = link_to categories_path, class: active_section("categories") do
+          %i.fa.fa-barcode.fa-fw
+          = t('magaz.common.categories')
+      %li
+        = link_to properties_path, class: active_section("properties") do
+          %i.fa.fa-bars.fa-fw
+          = t('magaz.properties.index.title')
+      %li
+        = link_to orders_path, class: active_section("orders") do
+          %i.fa.fa-shopping-cart.fa-fw
+          = t('magaz.orders.index.title')
+      %li
+        = link_to deliveries_path, class: active_section("deliveries") do
+          %i.fa.fa-truck.fa-fw
+          = t('magaz.common.delivery')
+      %li
+        = link_to payments_path, class: active_section("payments") do
+          %i.fa.fa-rub.fa-fw
+          = t('magaz.common.payment')
+
+
+

@@ -9,9 +9,11 @@
   %body
 
     #wrapper
-      = render 'layouts/magaz/nav'
+      %nav.navbar.navbar-default.navbar-static-top{role: "navigation", style: "margin-bottom: 0"}
+        = render 'layouts/magaz/nav'
+        = render 'layouts/magaz/side'
 
-    / = render 'layouts/magaz/nav'
-    .container
-      .row.main
-        = yield
+      #page-wrapper
+        .row.main
+          .col-lg-12
+            = yield      

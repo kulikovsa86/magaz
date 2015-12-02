@@ -18,7 +18,7 @@
 $form_field_default_width: 400px;
 
 .main {
-  padding-top: 70px;
+  padding-top: 10px;
 }
 
 .panel_header {
@@ -27,6 +27,10 @@ $form_field_default_width: 400px;
 
 .code_column {
   width: 50px;
+}
+
+.pick-a-color-weapper {
+  width: 300px;
 }
 
 table {
