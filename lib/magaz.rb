@@ -18,6 +18,7 @@ require 'momentjs-rails'
 require 'bootstrap3-datetimepicker-rails'
 require 'bootbox-rails'
 require 'font-awesome-rails'
+require 'devise'
 
 require "magaz/engine"
 

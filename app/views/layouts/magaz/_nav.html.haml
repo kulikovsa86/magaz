@@ -14,7 +14,7 @@
       %i.fa.fa-caret-down
     %ul.dropdown-menu.dropdown-user
       %li
-        = link_to '#' do
+        = link_to edit_user_registration_path do
           %i.fa.fa-user.fa-fw 
           Профиль
       %li
@@ -23,7 +23,7 @@
           Настройки
       %li.divider
       %li
-        = link_to '#' do
+        = link_to destroy_user_session_path, method: :delete do
           %i.fa.fa-sign-out.fa-fw
           Выход
 

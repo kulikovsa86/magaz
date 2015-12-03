@@ -2,6 +2,7 @@ require_dependency "magaz/application_controller"
 
 module Magaz
   class OrdersController < ApplicationController
+    # before_action :authenticate_user!
 
     before_action :set_order, only: [:edit, :update, :destroy, :edit_items, :edit_contacts, :edit_delivery, :edit_payment, :recount]
 

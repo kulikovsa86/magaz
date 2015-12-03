@@ -3,6 +3,13 @@
 
 Magaz::Engine.routes.draw do
   
+  devise_for :users, {
+    class_name: "Magaz::User",
+    module: :devise
+  }
+  
+  root to: "categories#index"
+
   concern :moveable do
     patch :up
     patch :down

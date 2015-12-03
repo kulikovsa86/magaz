@@ -5,6 +5,8 @@
 #  id         :integer          not null, primary key
 #  variant_id :integer
 #  image_id   :integer
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
 #
 
 module Magaz
