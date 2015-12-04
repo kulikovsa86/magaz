@@ -1,4 +1,6 @@
 
+Magaz::User.delete_all
+
 Magaz::Order.delete_all
 
 Magaz::Category.delete_all
@@ -63,3 +65,4 @@ o1.line_items << Magaz::LineItem.create!(product: p1, variant: v12, count: 2, pr
 o2 = Magaz::Order.create!(customer: 'Петров Петр', phone: '123-45-678', email: 'petroff@example.com', status: staus_new, payment: payment, delivery: delivery)
 o2.line_items << Magaz::LineItem.create!(product: p2, count: 4) << Magaz::LineItem.create!(product: p3, count: 7)
 
+Magaz::User.create(email: 'user@example.com', password: 'useruser')

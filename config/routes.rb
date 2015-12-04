@@ -8,6 +8,10 @@ Magaz::Engine.routes.draw do
     module: :devise
   }
   
+  as :user do
+    get 'profile', to: 'users#edit', as: 'edit_user'
+  end
+
   root to: "categories#index"
 
   concern :moveable do
