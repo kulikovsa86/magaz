@@ -1,0 +1,15 @@
+= bootstrap_form_for @user, {url: '/magaz/profile', layout: :horizontal, control_col: "col-sm-6"} do |f|
+  - if @user.errors.any?
+    = f.alert_message t('errors.template.header', count: @user.errors.count)
+
+  = f.email_field :email
+
+  = f.fields_for :profile do |ff|
+    = ff.text_field :first_name
+    = ff.text_field :last_name
+    = ff.text_field :phone
+    = ff.email_field :email
+
+  
+  = f.submit t('helpers.submit.save'), class: 'btn btn-success'
+

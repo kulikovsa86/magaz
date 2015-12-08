@@ -24,15 +24,9 @@
           %tr
             %td= product.id
             %td.td_actions
-              .actions.btn-group
-                %button.btn.btn-default.dropdown-toggle.btn-xs{:'data-toggle' => 'dropdown'}
-                  %i.glyphicon.glyphicon-menu-hamburger
-                %ul.dropdown-menu
-                  %li= link_to t('magaz.common.edit'), edit_product_path(product)
-                  %li= link_to t('magaz.common.higher'), product_up_path(product), method: :patch
-                  %li= link_to t('magaz.common.lower'), product_down_path(product), method: :patch
-                  %li.divider{role: 'separator'}
-                  %li= link_to t('helpers.link_to.destroy'), product, method: :delete, data: {confirm: "Вы уверены, что хотите удалить товар?"}
+
+              = render '/magaz/common/dropdown_menu', edit: edit_product_path(product), up: product_up_path(product), down: product_down_path(product), target: product, confirm: "Вы уверены, что хотите удалить товар?"
+
 
             %td= link_to product.name, edit_product_path(product)
             %td

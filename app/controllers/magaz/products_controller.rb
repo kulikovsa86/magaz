@@ -39,7 +39,9 @@ module Magaz
       if @product.update(product_params)
         redirect_to edit_product_path(@product), notice: t('.success')
       else
-        render :edit
+        @parent_category = @product.category
+        @properties = @product.category.static_properties
+        render :action => 'edit'
       end
     end
 

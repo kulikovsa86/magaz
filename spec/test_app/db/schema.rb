@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151203152421) do
+ActiveRecord::Schema.define(version: 20151207113949) do
 
   create_table "magaz_carts", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -127,6 +127,18 @@ ActiveRecord::Schema.define(version: 20151203152421) do
 
   add_index "magaz_products", ["category_id"], name: "index_magaz_products_on_category_id"
   add_index "magaz_products", ["permalink"], name: "index_magaz_products_on_permalink"
+
+  create_table "magaz_profiles", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "phone"
+    t.string   "email"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "magaz_profiles", ["user_id"], name: "index_magaz_profiles_on_user_id"
 
   create_table "magaz_properties", force: :cascade do |t|
     t.string   "code"

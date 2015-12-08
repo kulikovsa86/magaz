@@ -1,0 +1,5 @@
+= bootstrap_form_for @user, {url: '/magaz/update_password', method: :patch, layout: :horizontal, control_col: "col-sm-6"} do |f|
+  = f.password_field :password
+  = f.password_field :password_confirmation
+  = f.password_field :current_password
+  = f.submit t('helpers.submit.change'), class: 'btn btn-success'

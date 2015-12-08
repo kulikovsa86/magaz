@@ -172,6 +172,7 @@ ru:
       update: Сохранить %{model}
       save: Сохранить
       login: Войти
+      change: Изменить
     label:
       new: Новый %{model}
       list: Список %{model}
@@ -279,18 +280,6 @@ ru:
     destroyed: "%{model} успешно удален(а)"
     saved: 'Изменения успешно сохранены'
 
-  ru:
-  errors:
-    messages:
-      expired: "устарела. Пожалуйста, запросите новую"
-      not_found: "не найдена"
-      already_confirmed: "уже подтверждена. Пожалуйста, попробуйте войти в систему"
-      not_locked: "не заблокирована"
-      not_saved:
-        one: "%{resource}: сохранение не удалось из-за %{count} ошибки"
-        few: "%{resource}: сохранение не удалось из-за %{count} ошибок"
-        many: "%{resource}: сохранение не удалось из-за %{count} ошибок"
-        other: "%{resource}: сохранение не удалось из-за %{count} ошибки"
 
   devise:
     failure:
@@ -357,6 +346,16 @@ ru:
       price: Цена за ед.
       sum: Сумма
       recount: Пересчитать
+    layouts:
+      profile: Профиль
+      settings: Настройки
+      quit: Выход
+    users:
+      edit:
+        profile: Профиль пользователя
+        change_pwd: Изменить пароль
+      update:
+        success: 'Профиль обновлен'
     payments:
       index:
         title: Способы оплаты
@@ -424,6 +423,7 @@ ru:
       new:
         title: Новый товар
       edit:
+        default_header: Товар
       upload:
         success: Изображение загружено
       product_variants:
@@ -438,6 +438,8 @@ ru:
     categories:
       index:
         title: Категории
+      edit:
+        default_header: Категория товара
       new:
         title: Новая категория
       create:

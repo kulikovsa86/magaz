@@ -9,7 +9,9 @@ Magaz::Engine.routes.draw do
   }
   
   as :user do
-    get 'profile', to: 'users#edit', as: 'edit_user'
+    get 'profile', to: 'users#edit', as: 'edit_profile'
+    patch 'profile', to: 'users#update'
+    patch 'update_password', to: 'users#update_password'
   end
 
   root to: "categories#index"

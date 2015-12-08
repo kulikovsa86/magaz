@@ -11,7 +11,7 @@
     %table.editable_table.table.table-hover
       %thead
         %tr
-          %th.code_column= Magaz::Category.human_attribute_name(:code)
+          %th.checkbox_column
           %th.th_actions
           %th= Magaz::Category.human_attribute_name(:name)
           %th.icons_column
@@ -25,32 +25,11 @@
             %td
         - @categories.each do |category|
           %tr
-            %td= category.id
-            
+            %td
             %td.td_actions
-              .actions.btn-group
-                %button.btn.btn-default.dropdown-toggle.btn-xs{:'data-toggle' => 'dropdown'}
-                  %i.glyphicon.glyphicon-menu-hamburger
-                %ul.dropdown-menu
-                  %li
-                    = link_to edit_category_path(category) do
-                      %i.fa.fa-pencil.fa-fw
-                      = t('magaz.common.edit')
-                  %li.divider{role: 'separator'}
-                  %li
-                    = link_to category_up_path(category), method: :patch do
-                      %i.fa.fa-arrow-up.fa-fw
-                      = t('magaz.common.higher')
-                  %li
-                    = link_to category_down_path(category), method: :patch do
-                      %i.fa.fa-arrow-down.fa-fw
-                      = t('magaz.common.lower')
 
-                  %li.divider{role: 'separator'}
-                  %li
-                    = link_to category, method: :delete, data: {confirm: "Вы уверены, что хотите удалить категорию? <br/>Все дочерние категории и товары будут также удалены"} do
-                      %i.fa.fa-trash.fa-fw
-                      = t('helpers.link_to.destroy')
+              = render '/magaz/common/dropdown_menu', edit: edit_category_path(category), up:category_up_path(category), down: category_down_path(category), target: category, confirm:  "Вы уверены, что хотите удалить категорию? <br/>Все дочерние категории и товары будут также удалены"
+
             %td
               = link_to categories_path(category) do
                 - if category.products.empty?

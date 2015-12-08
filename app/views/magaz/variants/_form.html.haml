@@ -2,9 +2,12 @@
   - if @variant.errors.any?
     = f.alert_message t('errors.template.header', count: @variant.errors.count)
 
-  = f.text_field :price, icon: 'ruble'
+  .row
+    .col-md-6
 
-  = render '/magaz/property_values/form'
+      = f.text_field :price, icon: 'ruble'
+
+      = render '/magaz/property_values/form'
 
   %hr
   .panel.panel-default
@@ -15,5 +18,5 @@
         = t('.select')
       = f.select :image_ids, @options, {hide_label: true}, {multiple: 'multiple', class: 'image-picker'}
 
-  = f.submit t('helpers.submit.save'), class: 'btn btn-success'
+  = f.submit t('helpers.link_to.add'), class: 'btn btn-success'
 

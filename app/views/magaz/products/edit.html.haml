@@ -5,7 +5,11 @@
 
 .panel.panel-default
   .panel-heading
-    %h4.panel_header= @product.name
+    %h4.panel_header
+      - unless @product.name.empty?
+        = @product.name
+      - else
+        = t('.default_header')
   .panel-body
     = render 'undertitle_links'
     %br

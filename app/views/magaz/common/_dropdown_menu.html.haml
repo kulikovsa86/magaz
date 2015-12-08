@@ -1,0 +1,22 @@
+.actions.btn-group
+  %button.btn.btn-default.dropdown-toggle.btn-xs{:'data-toggle' => 'dropdown'}
+    %i.fa.fa-bars
+  %ul.dropdown-menu
+    %li
+      = link_to edit do
+        %i.fa.fa-pencil.fa-fw
+        = t('magaz.common.edit')
+    %li.divider{role: 'separator'}
+    %li
+      = link_to up, method: :patch do
+        %i.fa.fa-arrow-up.fa-fw
+        = t('magaz.common.higher')
+    %li
+      = link_to down, method: :patch do
+        %i.fa.fa-arrow-down.fa-fw
+        = t('magaz.common.lower')
+    %li.divider{role: 'separator'}
+    %li
+      = link_to target, method: :delete, data: {confirm: confirm} do
+        %i.fa.fa-trash.fa-fw
+        = t('helpers.link_to.destroy')

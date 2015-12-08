@@ -24,6 +24,7 @@ PATH
       sass-rails (~> 5.0, >= 5.0.4)
       translit
       turbolinks
+      validates_email_format_of
 
 GEM
   remote: https://rubygems.org/
@@ -284,6 +285,8 @@ GEM
       coffee-rails
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
+    validates_email_format_of (1.6.3)
+      i18n
     warden (1.2.3)
       rack (>= 1.0)
     with_advisory_lock (3.0.0)

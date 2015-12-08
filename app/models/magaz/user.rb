@@ -24,5 +24,12 @@ module Magaz
     # devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable
     devise :database_authenticatable, :rememberable, :trackable
     
+    has_one :profile, dependent: :destroy
+    accepts_nested_attributes_for :profile
+    devise :database_authenticatable, :validatable, password_length: 6..128
+
+    validates :email, presence: true
+    validates :email, allow_blank: true, email_format: { message: 'Не похоже, что это адрес электронной почты' }
+
   end
 end

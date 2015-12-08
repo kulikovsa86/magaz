@@ -12,7 +12,7 @@
       .checkbox
         = check_box_tag 'properties[][value]', '1', str2bool(@product.value(property.id)), :'data-on-text' => 'ДА', :'data-off-text' => 'НЕТ', :'data-size' => 'mini', class: 'switcher'
     - elsif property.type.code == '10'
-      .pick-a-color-weapper
-        = text_field_tag 'properties[][value]', @product.value(property.id), class: 'pick-a-color form-control'
+      
+      = text_field_tag 'properties[][value]', @product.value(property.id), class: 'pick-a-color form-control'
     - else
       = text_field_tag 'properties[][value]', @product.value(property.id), class: 'form-control'

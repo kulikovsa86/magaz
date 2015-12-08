@@ -14,18 +14,18 @@
       %i.fa.fa-caret-down
     %ul.dropdown-menu.dropdown-user
       %li
-        = link_to edit_user_path do
+        = link_to edit_profile_path do
           %i.fa.fa-user.fa-fw 
-          Профиль
+          = t('magaz.layouts.profile')
       %li
         = link_to '#' do
           %i.fa.fa-gear.fa-fw
-          Настройки
+          = t('magaz.layouts.settings')
       %li.divider
       %li
         = link_to destroy_user_session_path, method: :delete do
           %i.fa.fa-sign-out.fa-fw
-          Выход
+          = t('magaz.layouts.quit')
 
       
 

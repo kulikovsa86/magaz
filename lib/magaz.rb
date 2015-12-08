@@ -19,6 +19,7 @@ require 'bootstrap3-datetimepicker-rails'
 require 'bootbox-rails'
 require 'font-awesome-rails'
 require 'devise'
+require 'validates_email_format_of'
 
 require "magaz/engine"
 

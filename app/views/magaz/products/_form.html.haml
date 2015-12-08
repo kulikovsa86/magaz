@@ -1,14 +1,16 @@
-= bootstrap_form_for [@category, @product] do |f|
+= bootstrap_form_for [@category, @product], {layout: :horizontal, control_col: "col-sm-6"}  do |f|
   - if @product.errors.any?
     = f.alert_message t('errors.template.header', count: @product.errors.count)
 
   = f.text_field :name
-  = f.text_area :description, class: 'wysihtml5'
   = f.text_field :price, icon: 'ruble'
   = f.text_field :article
   = f.text_field :weight
-  = label_tag Magaz::Product.human_attribute_name(:hidden)
-  = f.check_box :hidden, :label => '', :'data-on-text' => 'ДА', :'data-off-text' => 'НЕТ', :'data-size' => 'mini', class: 'switcher'
+  = f.text_area :description, class: 'wysihtml5', control_col: 'col-sm-10'
+  = f.form_group :hidden do
+    = f.check_box :hidden
+  / = label_tag Magaz::Product.human_attribute_name(:hidden)
+  / = f.check_box :hidden, :label => '', :'data-on-text' => 'ДА', :'data-off-text' => 'НЕТ', :'data-size' => 'mini', class: 'switcher'
         
   %br
   = f.submit t('helpers.submit.save'), class: 'btn btn-success'

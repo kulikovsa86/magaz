@@ -1,7 +1,17 @@
 - if notice
   .alert.alert-success= notice
+- if alert
+  .alert.alert-danger= alert
 
 .panel.panel-default
   .panel-heading
-    %h4.panel_header Профиль пользователя
+    %h4.panel_header= t('.profile')
   .panel-body
+    = render 'form'
+
+.panel.panel-default
+  .panel-heading
+    %h4.panel_header= t('.change_pwd')
+  .panel-body
+    = render 'change_pwd_form'
+
