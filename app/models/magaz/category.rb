@@ -34,6 +34,21 @@ module Magaz
       properties.where(static: false)
     end
 
+    def self.options
+      opts = []
+      # Magaz::Category.roots.order(:position).each do |root| 
+      #   root.self_and_descendants.order(:parent_id, :position).each do |cat|    
+      #     subtext = cat.ancestry_path[0..-2].join('/')
+      #     opts += [[cat.name, cat.id, {'data-subtext' => subtext}]]
+      #   end
+      # end
+      Magaz::Category.leaves.order(:parent_id, :position).each do |cat|
+        subtext = cat.ancestry_path[0..-2].join('/')
+        opts += [[cat.name, cat.id, {'data-subtext' => subtext}]]
+      end
+      opts
+    end
+
     private
       def translit_name
         if name

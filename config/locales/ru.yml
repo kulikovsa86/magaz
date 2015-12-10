@@ -187,6 +187,7 @@ ru:
       new_f: Новая %{model}
       logout: Выход
       add: Добавить
+      apply: Применить
     question:
       confirm: 'Вы уверенны?'
       confirm_remove_category: 'Вы уверенны? Все товары данной категории также будут удалены'
@@ -346,6 +347,9 @@ ru:
       price: Цена за ед.
       sum: Сумма
       recount: Пересчитать
+      move: Переместить
+      copy: Копировать
+      remove: Удалить
     layouts:
       profile: Профиль
       settings: Настройки

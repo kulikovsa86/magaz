@@ -42,9 +42,14 @@ Magaz::Engine.routes.draw do
     end
   end
 
+  resources :products, only: [] do
+    post 'remodel', on: :collection
+  end
+
   patch '/products/(:product_id)/images/(:image_id)/up', to: 'products#image_up', as: :product_image_up
   patch '/products/(:product_id)/images/(:image_id)/down', to: 'products#image_down', as: :product_image_down
   delete '/products/(:product_id)/images/(:image_id)', to: 'products#image_destroy', as: :product_image_destroy
+
 
   get '/categories/new/(:parent)', to: 'categories#new', as: :new_category
   post '/categories/(:parent)', to: 'categories#create'

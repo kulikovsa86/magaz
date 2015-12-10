@@ -15,7 +15,6 @@
           %th.th_actions
           %th= Magaz::Category.human_attribute_name(:name)
           %th.icons_column
-
       %tbody
         - if @parent_category
           %tr
@@ -27,9 +26,7 @@
           %tr
             %td
             %td.td_actions
-
               = render '/magaz/common/dropdown_menu', edit: edit_category_path(category), up:category_up_path(category), down: category_down_path(category), target: category, confirm:  "Вы уверены, что хотите удалить категорию? <br/>Все дочерние категории и товары будут также удалены"
-
             %td
               = link_to categories_path(category) do
                 - if category.products.empty?
@@ -38,7 +35,7 @@
                   %i.fa.fa-folder
                 = category.name
             %td
-
+      
 
 %br
 = link_to t('helpers.link_to.new_f', model: Magaz::Category.model_name.human), new_category_path(@parent_category)

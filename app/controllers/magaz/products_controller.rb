@@ -113,6 +113,14 @@ module Magaz
       redirect_to product_gallery_path(@product)
     end
 
+    # PATCH  /products/remodel(.:format)
+    def remodel
+      remodel_params = params.require(:remodel).permit(:parent, :target, :items => [:id, :checked] )
+      @parent_category = Category.find_by_permalink(remodel_params[:parent])
+      Product.remodel(remodel_params, params.include?(:remove))
+      redirect_to category_products_path(@parent_category), notice: 'Операция выполнена'
+    end
+
     private
 
       def set_parent_category

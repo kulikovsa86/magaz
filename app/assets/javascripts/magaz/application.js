@@ -49,6 +49,18 @@ ready = function() {
   $(".datetimepicker").datetimepicker({
   });
 
+  $(".header-checkbox").click(function() {
+    //alert($('.header-checkbox').prop('checked'));
+    checked = $('.header-checkbox').prop('checked');
+    $('.row-checkbox').prop('checked', checked);
+  })
+
+  // $('.submit-link').click( function(event) {
+  //   event.preventDefault();
+  //   $('#link-submitted-form').submit();
+  // })
+
+
   // $(".bootbox").click(function() {
   //   bootbox.confirm("A you sure?");
   // });
@@ -97,6 +109,8 @@ ready = function() {
     }
     return false;
   };
+
+
 }
 
 $( document ).ready(ready);

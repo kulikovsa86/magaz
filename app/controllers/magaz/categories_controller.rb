@@ -67,6 +67,8 @@ module Magaz
       redirect_to categories_path(parent: category.parent)
     end
 
+    
+
     # DELETE /categories/1
     def destroy
       @parent_category = @category.parent

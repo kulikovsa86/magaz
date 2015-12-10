@@ -27,5 +27,13 @@ module Magaz
         ""
       end
     end
+
+    def action_list
+      [t('magaz.common.move'), t('magaz.common.remove')]
+    end
+
+    def default_action
+      t('magaz.common.move')
+    end
   end
 end
