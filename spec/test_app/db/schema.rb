@@ -143,6 +143,7 @@ ActiveRecord::Schema.define(version: 20151207113949) do
   create_table "magaz_properties", force: :cascade do |t|
     t.string   "code"
     t.string   "name"
+    t.text     "description"
     t.integer  "property_type_id"
     t.boolean  "static"
     t.datetime "created_at",       null: false

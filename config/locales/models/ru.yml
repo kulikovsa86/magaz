@@ -14,8 +14,8 @@ ru:
         one: Товар
         other: Товары
       magaz/variant:
-        one: Вариант
-        other: Варианты
+        one: Модификация
+        other: Модификации
       magaz/order:
         one: Заказ
         other: Заказы
@@ -35,6 +35,7 @@ ru:
       magaz/property:
         code: Код
         name: Наименование
+        description: Описание
         property_type: Тип
         static: Константная характеристика
       magaz/category:
@@ -46,10 +47,10 @@ ru:
       magaz/product:
         name: Наименование
         description: Описание
-        price: Цена
+        price: Цена, руб.
         hidden: Скрытый
-        article: Арт.
-        weight: Вес
+        article: Артикул
+        weight: Вес, кг
       magaz/variant:
         price: Цена
       magaz/order:

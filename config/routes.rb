@@ -57,7 +57,7 @@ Magaz::Engine.routes.draw do
 
   shallow do
     resources :properties, except: :show do
-      resources :property_options, only: [:create, :destroy] do
+      resources :property_options, only: [:index, :create, :destroy] do
         concerns :moveable
       end
     end

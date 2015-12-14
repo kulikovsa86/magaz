@@ -1,14 +1,6 @@
 - if property_option.id
   %tr
+    %td.td_actions
+      = render '/magaz/common/dropdown_menu', up: property_option_up_path(property_option), down: property_option_down_path(property_option), target: property_option, confirm: "Вы уверены, что хотите удалить опцию?"
     %td
       = property_option.name
-    %td.td_actions
-      .actions.btn-group
-        %button.btn.btn-default.dropdown-toggle.btn-xs{:'data-toggle' => 'dropdown'}
-          %i.glyphicon.glyphicon-menu-hamburger
-        %ul.dropdown-menu
-          %li= link_to t('magaz.common.higher'), property_option_up_path(property_option), method: :patch
-          %li= link_to t('magaz.common.lower'), property_option_down_path(property_option), method: :patch
-          %li.divider{role: 'separator'}
-          %li= link_to t('helpers.link_to.destroy'), property_option_path(property_option), method: :delete, data: {confirm: "Вы уверены, что хотите удалить опцию?"}
-

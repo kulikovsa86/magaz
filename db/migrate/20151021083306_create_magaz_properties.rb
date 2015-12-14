@@ -3,6 +3,7 @@ class CreateMagazProperties < ActiveRecord::Migration
     create_table :magaz_properties do |t|
       t.string :code
       t.string :name
+      t.text :description
       t.references :property_type, index: true, foreign_key: true
       t.boolean :static
 

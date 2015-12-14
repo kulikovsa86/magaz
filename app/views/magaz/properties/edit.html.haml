@@ -4,13 +4,17 @@
 
 .panel.panel-default
   .panel-heading
-    %h4.panel_header= @property.name
+    %h4.panel_header
+      = @property.name
+      -if @property.type.code == '01'
+        \|
+        %small= link_to t('magaz.common.options'), property_property_options_path(@property)
   .panel-body
     = render 'form'
 
-%br
-- if !new_property_page? && @property.type && @property.type.code == '01'
-  = render 'options'
+/ %br
+/ - if @property.type && @property.type.code == '01'
+/   = render 'options'
 
 
 = link_to t('helpers.link_to.back'), properties_path

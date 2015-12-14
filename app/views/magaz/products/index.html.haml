@@ -35,16 +35,8 @@
               %td
 
       %br
-      / = select_tag 'remodel[remodel-action]', options_for_select(action_list, default_action), class: 'selectpicker'
       = select_tag 'remodel[target]', options_for_select(Magaz::Category.options), class: 'selectpicker submit-select', 'data-show-subtext' => true, :title => t('magaz.common.move'), :onchange => ("$('#productform').submit()")
       = submit_tag t('magaz.common.remove'), class: 'btn btn-default', data: { confirm: 'Уверены, что хотите удалить выбранные позиции?' }, name: 'remove'
-      / .btn-group
-      /   %button.btn.btn-default.dropdown-toggle{:type => 'submit', 'data-toggle' => 'dropdown', 'aria-haspopup' => true, 'aria-expanded'=> false}
-      /     = t('magaz.common.move')
-      /     %span.caret
-      /   %ul.dropdown-menu
-      /     %li= link_to 'Action', '#', class: 'submit-link'
-
 
 
 %br

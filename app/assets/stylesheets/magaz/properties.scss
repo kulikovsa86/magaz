@@ -1,23 +1,7 @@
 
-#input_option {
-  width: 430px;
-}
-
 table#opt_table {
 
   margin-top: 5px;
   width: 400px;
-
-  td.td_actions {
-    width: 70px;
-  }
-
-  .actions {
-    visibility: hidden;
-  }
-
-  tr:hover .actions {
-    visibility: visible;
-  }
 
 }

@@ -336,8 +336,8 @@ ru:
       specification: Спецификация
       gallery: Галерея
       properties: Характеристики
-      variants: Варианты
-      new_variant: Новый вариант
+      variants: Модификации
+      new_variant: Новая модификация
       categories: Категории и товары
       contacts: Контакты
       products: Товары
@@ -350,6 +350,7 @@ ru:
       move: Переместить
       copy: Копировать
       remove: Удалить
+      options: Параметры
     layouts:
       profile: Профиль
       settings: Настройки
@@ -404,18 +405,18 @@ ru:
         success: Заказ удален
     variants:
       index:
-        title: Варианты товара
+        title: Модификации товара
         characteristics: Характеристики
         colors: Цвета
       new:
-        title: Новый вариант
+        title: Новая модификация
       form:
         images: Изображения
-        select: "Выберите изображения, связанные с данным вариантом"
+        select: "Выберите изображения, связанные с данной модификацией"
       create:
-        success: Новый вариант добавлен
+        success: Новая модификация добавлена
       destroy:
-        success: Вариант удален
+        success: Модификация удалена
     products:
       properties:
         title: Характеристики
@@ -431,7 +432,7 @@ ru:
       upload:
         success: Изображение загружено
       product_variants:
-        variants: Варианты товара
+        variants: Модификации товара
         characteristics: Характеристики
       create:
         success: Товар создан

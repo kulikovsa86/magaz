@@ -2,10 +2,10 @@
 
 .panel.panel-default
   .panel-heading
-    %h4.panel_header= @product.name + ' (новый вариант)'
+    %h4.panel_header= @product.name + ' (новая модификация)'
 
   .panel-body
-    = render '/magaz/products/undertitle_links'
+    = render '/magaz/products/tabs'
     %br
     
     = render 'form'

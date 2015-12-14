@@ -15,10 +15,19 @@
 @import "products";
 @import "variants";
 
+$panel_min_width: 450px;
+$panel_max_width: 750px;
+$form_small_field_width: 150px;
 $form_field_default_width: 400px;
+
 
 .main {
   padding-top: 10px;
+}
+
+.panel {
+  min-width: $panel_min_width;
+  max-width: $panel_max_width;
 }
 
 .panel_header {
@@ -106,7 +115,7 @@ form {
   }
 
   .small_input_group {
-    width: 150px;
+    width: $form_small_field_width;
   }
 
   .medium_input_group {

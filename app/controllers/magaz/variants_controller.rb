@@ -23,7 +23,7 @@ module Magaz
     # POST   /products/:product_id/variants(.:format)
     def create
       variant = @product.variants.create(variant_params)
-      variant.set_properties(variant_properties)
+      variant.set_properties(params[:properties]) if params[:properties]
       redirect_to product_variants_path(@product), notice: t('.success')
     end
 

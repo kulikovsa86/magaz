@@ -1,11 +1,11 @@
-= bootstrap_form_for [@category, @product], {layout: :horizontal, control_col: "col-sm-6"}  do |f|
+= bootstrap_form_for [@category, @product]  do |f|
   - if @product.errors.any?
     = f.alert_message t('errors.template.header', count: @product.errors.count)
 
   = f.text_field :name
-  = f.text_field :price, icon: 'ruble'
-  = f.text_field :article
-  = f.text_field :weight
+  = f.text_field :price, class: 'small_input_group'
+  = f.text_field :article, class: 'small_input_group'
+  = f.text_field :weight, class: 'small_input_group'
   = f.text_area :description, class: 'wysihtml5', control_col: 'col-sm-10'
   = f.form_group :hidden do
     = f.check_box :hidden

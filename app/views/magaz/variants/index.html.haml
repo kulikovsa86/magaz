@@ -8,7 +8,7 @@
     %h4.panel_header= @product.name
 
   .panel-body
-    = render '/magaz/products/undertitle_links'
+    = render '/magaz/products/tabs'
     %br
     %table.editable_table.table.table-hover
       %thead
@@ -23,12 +23,13 @@
         - @product.variants.each_with_index do |variant, index|
           %tr
             %td= index + 1
-            %td
-              .actions.btn-group
-                %button.btn.btn-default.dropdown-toggle.btn-xs{:'data-toggle' => 'dropdown'}
-                  %i.glyphicon.glyphicon-menu-hamburger
-                %ul.dropdown-menu
-                  %li= link_to t('helpers.link_to.destroy'), variant, method: :delete, data: {confirm: "Вы уверены, что хотите удалить вариант товара?"}
+            %td.td_actions
+              = render '/magaz/common/dropdown_menu', target: variant, confirm: "Вы уверены, что хотите удалить вариант товара?"
+              / .actions.btn-group
+              /   %button.btn.btn-default.dropdown-toggle.btn-xs{:'data-toggle' => 'dropdown'}
+              /     %i.glyphicon.glyphicon-menu-hamburger
+              /   %ul.dropdown-menu
+              /     %li= link_to t('helpers.link_to.destroy'), variant, method: :delete, data: {confirm: "Вы уверены, что хотите удалить вариант товара?"}
             %td= variant.price
             %td= variant.values_string
             %td
@@ -39,6 +40,6 @@
 
                
     %br
-    = link_to t('helpers.link_to.new', model: Magaz::Variant.model_name.human), new_product_variant_path(@product)
+    = link_to t('helpers.link_to.new_f', model: Magaz::Variant.model_name.human), new_product_variant_path(@product)
 
 = link_to t('helpers.link_to.back'), edit_product_path(@product)

@@ -8,16 +8,16 @@
     %table.editable_table.table.table-hover
       %thead
         %tr
-          %th.code_column= Magaz::Property.human_attribute_name(:code)
-          %th.code_column
+          %th.checkbox_column= check_box_tag '', '', false, class: 'header-checkbox'
+          %th.th_actions
           %th= Magaz::Property.human_attribute_name(:name)
-          %th= Magaz::Property.human_attribute_name(:type)
+          %th= Magaz::Property.human_attribute_name(:property_type)
           %th.th_actions
 
       %tbody
         - @properties.each do |property|
           %tr
-            %td= property.code
+            %td
             %td
               - if property.static
                 %i.fa.fa-lock.fa-lg
