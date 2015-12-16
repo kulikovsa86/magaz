@@ -15,5 +15,6 @@ module Magaz
 
     validates :code, :name, presence: true
     validates :code, allow_blank: true, uniqueness: true
+
   end
 end

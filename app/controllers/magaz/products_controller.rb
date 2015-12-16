@@ -27,6 +27,7 @@ module Magaz
     def create
       @product = Product.new(product_params)
       @product.category_id = @parent_category.id
+      @category = @parent_category
       if @product.save
         redirect_to edit_product_path(@product), notice: t('.success')
       else

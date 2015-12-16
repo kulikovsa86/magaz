@@ -1,0 +1,5 @@
+%ol.breadcrumb
+  %li= link_to '---', property_groups_path, class: 'btn-link'
+  - if @parent_group
+    - @parent_group.self_and_ancestors.reverse.each do |group|
+      %li= link_to group.name, property_groups_path(group), class: 'btn-link'

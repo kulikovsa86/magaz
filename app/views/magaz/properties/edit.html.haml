@@ -2,19 +2,16 @@
 - if notice
   .alert.alert-success= notice
 
+= render '/magaz/property_groups/breadcrumb'
+
 .panel.panel-default
   .panel-heading
     %h4.panel_header
       = @property.name
-      -if @property.type.code == '01'
+      -if @property.type && @property.type.code == '01'
         \|
         %small= link_to t('magaz.common.options'), property_property_options_path(@property)
   .panel-body
     = render 'form'
 
-/ %br
-/ - if @property.type && @property.type.code == '01'
-/   = render 'options'
-
-
-= link_to t('helpers.link_to.back'), properties_path
+= link_to t('helpers.link_to.back'), property_group_properties_path(@parent_group)

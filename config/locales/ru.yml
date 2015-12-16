@@ -453,6 +453,17 @@ ru:
         success: Категория обновлена
       destroy:
         success: Категория удалена
+    property_groups:
+      index:
+        title: Группы характеристик
+      new:
+        title: Новая группа характеристик
+      create:
+        success: Группа характеристик создана
+      destroy:
+        success: Группа характеристик удалена
+      update:
+        success: Группа характеристик обновлена
     properties:
       index:
         title: Характеристики

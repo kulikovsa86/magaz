@@ -7,6 +7,7 @@ module Magaz
 
     #  GET    /properties/:property_id/property_options(.:format)
     def index
+      @parent_group = @property.group
     end
 
     # POST   /properties/:property_id/property_options(.:format)

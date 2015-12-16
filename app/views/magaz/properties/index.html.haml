@@ -1,6 +1,8 @@
 - if notice
   .alert.alert-success= notice
 
+= render '/magaz/property_groups/breadcrumb'
+
 .panel.panel-default
   .panel-heading
     %h4.panel_header= t('.title')
@@ -12,25 +14,24 @@
           %th.th_actions
           %th= Magaz::Property.human_attribute_name(:name)
           %th= Magaz::Property.human_attribute_name(:property_type)
-          %th.th_actions
-
+          %th
       %tbody
+        %tr
+          %td
+          %td
+          %td= link_to '...', property_groups_path(@parent_group.parent)
+          %td
         - @properties.each do |property|
           %tr
             %td
             %td
-              - if property.static
-                %i.fa.fa-lock.fa-lg
             %td
               = link_to property.name, edit_property_path(property)
             %td
               - if property.type
                 = property.type.name
-            %td.td_actions
-              .actions
-                / = link_to property, :method => :delete, :data => { :confirm => 'Are you sure?' }, class: 'btn-link' do
-                /   %i.glyphicon.glyphicon-remove
+            %td
 
 %br
 
-= link_to t('helpers.link_to.new_f', model: Magaz::Property.model_name.human), new_property_path
+= link_to t('helpers.link_to.new_f', model: Magaz::Property.model_name.human), new_property_group_property_path(@parent_group)

@@ -56,12 +56,20 @@ Magaz::Engine.routes.draw do
   get '/categories/(:parent)', to: 'categories#index', as: :categories
 
   shallow do
-    resources :properties, except: :show do
-      resources :property_options, only: [:index, :create, :destroy] do
+    resources :property_groups, only: [:edit, :update, :destroy] do
+      concerns :moveable
+      resources :properties, except: :show do
         concerns :moveable
+        resources :property_options, only: [:index, :create, :destroy] do
+          concerns :moveable
+        end
       end
     end
   end
+
+  get '/property_groups/new/(:parent_id)', to: 'property_groups#new', as: :new_property_group
+  post '/property_groups/(:parent_id)', to: 'property_groups#create'
+  get '/property_groups/(:parent_id)', to: 'property_groups#index', as: :property_groups
 
   resources :line_items, only: [:create, :destroy]
   

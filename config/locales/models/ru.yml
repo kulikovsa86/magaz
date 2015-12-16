@@ -4,6 +4,9 @@ ru:
       magaz/property_type:
         one: Тип характеристики
         other: Типы характеристик
+      magaz/property_group:
+        one: Группа характеристик
+        other: Группы характеристик
       magaz/property: 
         one: Характеристика
         other: Характеристики
@@ -38,6 +41,9 @@ ru:
         description: Описание
         property_type: Тип
         static: Константная характеристика
+      magaz/property_group:
+        code: Код
+        name: Наименование
       magaz/category:
         code: Код
         name: Наименование

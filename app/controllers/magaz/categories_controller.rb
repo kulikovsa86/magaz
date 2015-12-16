@@ -2,7 +2,7 @@ require_dependency "magaz/application_controller"
 
 module Magaz
   class CategoriesController < ApplicationController
-    before_action :set_category, only: [:show, :edit, :update, :destroy]
+    before_action :set_category, only: [:edit, :update, :destroy]
 
     # GET /categories/(:parent_id)
     def index
@@ -66,8 +66,6 @@ module Magaz
       category.move_lower
       redirect_to categories_path(parent: category.parent)
     end
-
-    
 
     # DELETE /categories/1
     def destroy

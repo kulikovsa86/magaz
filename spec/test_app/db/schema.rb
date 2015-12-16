@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151207113949) do
+ActiveRecord::Schema.define(version: 20151215120424) do
 
   create_table "magaz_carts", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -146,11 +146,31 @@ ActiveRecord::Schema.define(version: 20151207113949) do
     t.text     "description"
     t.integer  "property_type_id"
     t.boolean  "static"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.integer  "position"
+    t.integer  "property_group_id"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
   end
 
   add_index "magaz_properties", ["property_type_id"], name: "index_magaz_properties_on_property_type_id"
+
+  create_table "magaz_property_group_hierarchies", force: :cascade do |t|
+    t.integer "ancestor_id",   null: false
+    t.integer "descendant_id", null: false
+    t.integer "generations",   null: false
+  end
+
+  add_index "magaz_property_group_hierarchies", ["ancestor_id", "descendant_id", "generations"], name: "magaz_property_group_anc_desc_udx", unique: true
+  add_index "magaz_property_group_hierarchies", ["descendant_id"], name: "magaz_property_group_desc_idx"
+
+  create_table "magaz_property_groups", force: :cascade do |t|
+    t.string   "name"
+    t.string   "code"
+    t.integer  "parent_id"
+    t.integer  "position"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "magaz_property_options", force: :cascade do |t|
     t.integer  "property_id"

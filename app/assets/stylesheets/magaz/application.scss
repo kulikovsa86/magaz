@@ -25,6 +25,11 @@ $form_field_default_width: 400px;
   padding-top: 10px;
 }
 
+
+.breadcrumb {
+  min-width: $panel_min_width;
+  max-width: $panel_max_width;
+}
 .panel {
   min-width: $panel_min_width;
   max-width: $panel_max_width;

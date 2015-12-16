@@ -1,7 +1,10 @@
+
+= render '/magaz/property_groups/breadcrumb'
+
 .panel.panel-default
   .panel-heading
     %h4.panel_header= t('.title')
   .panel-body
     = render 'form'
 
-= link_to t('helpers.link_to.back'), properties_path
+= link_to t('helpers.link_to.back'), property_group_properties_path(@parent_group)

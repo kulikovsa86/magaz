@@ -3,10 +3,12 @@ Magaz::User.delete_all
 
 Magaz::Order.delete_all
 
+Magaz::Product.delete_all
 Magaz::Category.delete_all
 Magaz::PropertyOption.delete_all
 Magaz::Property.delete_all
 Magaz::PropertyType.delete_all
+Magaz::PropertyGroup.delete_all
 
 Magaz::Delivery.delete_all
 Magaz::Payment.delete_all
@@ -35,6 +37,10 @@ bool = Magaz::PropertyType.create!(code: '05', name: 'Логический')
 color = Magaz::PropertyType.create!(code: '10', name: 'Цвет')
 
 # -----------------------------
+
+Magaz::PropertyGroup.create(code: '01', name: 'group 1')
+Magaz::PropertyGroup.create(code: '02', name: 'group 2')
+Magaz::PropertyGroup.create(code: '03', name: 'group 3')
 
 size = Magaz::Property.create!(code: '01', name: 'Размер', static: false, property_type: list)
 Magaz::PropertyOption.create!(code: '01', name: 'S', property: size)

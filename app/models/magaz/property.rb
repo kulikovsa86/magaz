@@ -13,6 +13,11 @@
 
 module Magaz
   class Property < ActiveRecord::Base
+
+    belongs_to :property_group
+    acts_as_list scope: :property_group
+
+
     belongs_to :property_type
     has_many :property_options, -> { order(position: :asc) }, dependent: :destroy
 
@@ -25,6 +30,10 @@ module Magaz
 
     def type
       property_type
+    end
+
+    def group
+      property_group
     end
 
   end

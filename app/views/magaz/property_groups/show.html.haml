@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @property_group.name
+%p
+  %b Parent:
+  = @property_group.parent_id
+%p
+  %b Position:
+  = @property_group.position
+
+= link_to 'Edit', edit_property_group_path(@property_group)
+\|
+= link_to 'Back', property_groups_path
