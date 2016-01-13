@@ -9,7 +9,12 @@
   / = label_tag Magaz::Category.human_attribute_name(:hidden)
   / = f.form_group :hidden do
   /   = f.check_box :hidden, :label => '', :'data-on-text' => 'ДА', :'data-off-text' => 'НЕТ', :'data-size' => 'mini', class: 'switcher'
-  = f.collection_select :property_ids, Magaz::Property.all, :id, :name, { label: Magaz::Category.human_attribute_name(:properties) }, {class: 'selectpicker', multiple: true, :'data-selected-text-format' => "count>3" }
+
+  / = f.collection_select :property_ids, Magaz::Property.all, :id, :name, { label: Magaz::Category.human_attribute_name(:properties) }, {class: 'selectpicker', multiple: true, :'data-selected-text-format' => "count>3" }
+
+  = f.select :property_group_ids, grouped_options_for_select(Magaz::PropertyGroup.options, @category.property_group_ids), { label: Magaz::Category.human_attribute_name(:properties) }, { class: 'selectpicker', multiple: true, :'data-size' => 5 }
+
+  
   = f.text_area :description, class: 'wysihtml5', control_col: 'col-sm-10'
   = f.form_group :hidden do
     = f.check_box :hidden

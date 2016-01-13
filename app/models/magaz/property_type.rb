@@ -16,5 +16,13 @@ module Magaz
     validates :code, :name, presence: true
     validates :code, allow_blank: true, uniqueness: true
 
+    def self.LIST
+      PropertyType.find_by(code: '01')
+    end
+
+    def self.NUMBER
+      PropertyType.find_by(code: '02')
+    end
+
   end
 end

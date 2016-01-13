@@ -408,6 +408,7 @@ ru:
         title: Модификации товара
         characteristics: Характеристики
         colors: Цвета
+        mod: Модификация
       new:
         title: Новая модификация
       form:

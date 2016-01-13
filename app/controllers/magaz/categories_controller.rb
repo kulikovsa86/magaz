@@ -82,7 +82,7 @@ module Magaz
 
       # Only allow a trusted parameter "white list" through.
       def category_params
-        params.require(:category).permit(:code, :name, :description, :hidden, property_ids: [])
+        params.require(:category).permit(:code, :name, :description, :hidden, property_group_ids: [])
       end
   end
 end

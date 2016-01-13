@@ -4,6 +4,7 @@
 #
 #  id          :integer          not null, primary key
 #  name        :string
+#  var_name    :string
 #  category_id :integer
 #  description :text
 #  price       :decimal(8, 2)
@@ -29,6 +30,7 @@ module Magaz
 
     validates :name, presence: true
 
+    # Устанавливаем значения характеристик товара
     # properties = [{property_id: "", value: ""}, ...]
     def set_properties(properties)
       property_values.clear

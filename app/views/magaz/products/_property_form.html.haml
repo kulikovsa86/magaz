@@ -1,0 +1,13 @@
+
+.form-group
+  = label_tag 'var_name', Magaz::Product.human_attribute_name(:var_name), class: 'col-sm-4 control-label'
+  .col-sm-8
+    = text_field_tag :var_name, @product.var_name, class: 'form-control', id: 'var_name'
+%br
+- @property_groups.each do |group|
+  %fieldset
+    %legend= group.name
+    = render '/magaz/property_values/form', properties: group.properties
+
+
+%br

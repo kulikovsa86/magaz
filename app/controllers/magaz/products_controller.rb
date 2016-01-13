@@ -87,11 +87,12 @@ module Magaz
     # GET    /products/:product_id/properties(.:format)
     def properties
       @parent_category = @product.category
-      @properties = @product.category.static_properties
+      @property_groups = @product.category.property_groups
     end
 
     # POST  /products/:product_id/properties_create(.:format)
     def properties_create
+      @product.update(var_name: params[:var_name])
       @product.set_properties(params.require(:properties))
       redirect_to product_properties_path(@product)
     end

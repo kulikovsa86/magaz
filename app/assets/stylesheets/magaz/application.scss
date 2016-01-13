@@ -49,6 +49,10 @@ $form_field_default_width: 400px;
 
 table {
 
+  .mod_column {
+    width: 100px;
+  }
+
   .serial_number_column {
     width: 30px;
   }
@@ -110,7 +114,7 @@ table {
 
 form {
 
-  label {
+  label,legend {
     color: #606060;
   }
 

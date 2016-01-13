@@ -21,6 +21,8 @@ module Magaz
     def active_section(section)
       if section == "categories" && %w|categories products variants|.include?(controller_name)
         "active"
+      elsif section == "properties" && %w|properties property_groups|.include?(controller_name)
+        "active"
       elsif section == controller_name
         "active"
       else

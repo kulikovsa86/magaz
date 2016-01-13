@@ -52,6 +52,7 @@ ru:
         hidden: Скрытая
       magaz/product:
         name: Наименование
+        var_name: Модификация
         description: Описание
         price: Цена, руб.
         hidden: Скрытый

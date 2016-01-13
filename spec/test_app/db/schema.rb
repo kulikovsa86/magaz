@@ -32,6 +32,14 @@ ActiveRecord::Schema.define(version: 20151215120424) do
 
   add_index "magaz_categories", ["permalink"], name: "index_magaz_categories_on_permalink"
 
+  create_table "magaz_categories_property_groups", id: false, force: :cascade do |t|
+    t.integer "category_id"
+    t.integer "property_group_id"
+  end
+
+  add_index "magaz_categories_property_groups", ["category_id"], name: "index_magaz_categories_property_groups_on_category_id"
+  add_index "magaz_categories_property_groups", ["property_group_id"], name: "index_magaz_categories_property_groups_on_property_group_id"
+
   create_table "magaz_category_hierarchies", id: false, force: :cascade do |t|
     t.integer "ancestor_id",   null: false
     t.integer "descendant_id", null: false
@@ -113,6 +121,7 @@ ActiveRecord::Schema.define(version: 20151215120424) do
 
   create_table "magaz_products", force: :cascade do |t|
     t.string   "name"
+    t.string   "var_name"
     t.integer  "category_id"
     t.text     "description"
     t.decimal  "price",       precision: 8, scale: 2
@@ -237,6 +246,7 @@ ActiveRecord::Schema.define(version: 20151215120424) do
   create_table "magaz_variants", force: :cascade do |t|
     t.integer  "product_id"
     t.decimal  "price",      precision: 8, scale: 2
+    t.string   "name"
     t.datetime "created_at",                         null: false
     t.datetime "updated_at",                         null: false
   end

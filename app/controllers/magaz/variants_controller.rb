@@ -14,7 +14,8 @@ module Magaz
     def new
       @parent_category = @product.category
       @variant = Variant.new
-      @properties = @product.category.dynamic_properties
+      # @properties = @product.category.dynamic_properties
+      @property_groups = @product.category.property_groups
       @images = @product.images
       @options = []
       @product.images.each { |image| @options << [image.id, image.id, {:'data-img-src' => image.picture.url}] }

@@ -16,6 +16,9 @@
 
 module Magaz
   class Category < ActiveRecord::Base
+
+    after_save :clean_product_properties
+
     acts_as_tree dependent: :destroy
     acts_as_list scope: :parent
     has_permalink :translit_name
@@ -23,6 +26,7 @@ module Magaz
     has_many :products, dependent: :destroy
     has_many :property_values, as: :valuable
     has_many :properties, through: :property_values
+    has_and_belongs_to_many :property_groups
 
     validates :name, presence: true
 
@@ -36,12 +40,6 @@ module Magaz
 
     def self.options
       opts = []
-      # Magaz::Category.roots.order(:position).each do |root| 
-      #   root.self_and_descendants.order(:parent_id, :position).each do |cat|    
-      #     subtext = cat.ancestry_path[0..-2].join('/')
-      #     opts += [[cat.name, cat.id, {'data-subtext' => subtext}]]
-      #   end
-      # end
       Magaz::Category.leaves.order(:parent_id, :position).each do |cat|
         subtext = cat.ancestry_path[0..-2].join('/')
         opts += [[cat.name, cat.id, {'data-subtext' => subtext}]]
@@ -49,7 +47,12 @@ module Magaz
       opts
     end
 
+    def clean_product_properties
+      Magaz::PropertyValue.where(valuable_type: Magaz::Product, valuable_id: product_ids).where.not(property: Magaz::Property.where(property_group: property_groups)).destroy_all
+    end
+
     private
+  
       def translit_name
         if name
           Translit.convert(name, :english)
@@ -57,5 +60,7 @@ module Magaz
           nil
         end
       end
+
+      # p.property_values.where.not(property: Magaz::Property.where(property_group: c.property_groups)).destroy_all
   end
 end

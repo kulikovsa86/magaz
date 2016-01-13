@@ -1,13 +1,12 @@
-= bootstrap_form_for [@product, @variant] do |f|
+= form_for([@product, @variant], html: {class: 'form-horizontal'}) do |f|
   - if @variant.errors.any?
     = f.alert_message t('errors.template.header', count: @variant.errors.count)
 
-  .row
-    .col-md-6
-
-      = f.text_field :price, icon: 'ruble'
-
-      = render '/magaz/property_values/form'
+  .form-group
+    = label_tag 'var_price', Magaz::Product.human_attribute_name(:price), class: 'col-sm-4 control-label'
+    .col-sm-8
+      = text_field_tag :var_price, @variant.price, class: 'form-control', id: 'var_price'
+  = render '/magaz/property_values/form'
 
   %hr
   .panel.panel-default
