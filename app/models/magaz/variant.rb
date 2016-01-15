@@ -19,6 +19,9 @@ module Magaz
     has_many :variant_images, dependent: :destroy
     has_many :images, through: :variant_images
 
+    validates :name, presence: true
+    validates :name, allow_blank: true, uniqueness: true
+
     # properties = [{property_id: "", value: ""}, ...]
     def set_properties(properties)
       properties.each do |pv|

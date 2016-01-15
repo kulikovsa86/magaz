@@ -60,6 +60,7 @@ ru:
         weight: Вес, кг
       magaz/variant:
         price: Цена
+        name: Модификация
       magaz/order:
         customer: ФИО клиента
         company: Компания

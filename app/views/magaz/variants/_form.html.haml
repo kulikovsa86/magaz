@@ -1,12 +1,10 @@
-= form_for([@product, @variant], html: {class: 'form-horizontal'}) do |f|
+= bootstrap_form_for([@p, @variant], layout: :horizontal, label_col: 'col-md-4', control_col: 'col-md-8') do |f|
   - if @variant.errors.any?
     = f.alert_message t('errors.template.header', count: @variant.errors.count)
 
-  .form-group
-    = label_tag 'var_price', Magaz::Product.human_attribute_name(:price), class: 'col-sm-4 control-label'
-    .col-sm-8
-      = text_field_tag :var_price, @variant.price, class: 'form-control', id: 'var_price'
-  = render '/magaz/property_values/form'
+  = f.text_field :price, class: 'form-control', id: 'var_price', placeholder: @product.price.to_s
+
+  = render '/magaz/property_values/form', modification_name: @variant.name
 
   %hr
   .panel.panel-default
@@ -17,5 +15,5 @@
         = t('.select')
       = f.select :image_ids, @options, {hide_label: true}, {multiple: 'multiple', class: 'image-picker'}
 
-  = f.submit t('helpers.link_to.add'), class: 'btn btn-success'
+  = f.submit t('helpers.submit.save'), class: 'btn btn-success'
 

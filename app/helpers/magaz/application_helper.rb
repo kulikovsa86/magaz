@@ -5,6 +5,14 @@ module Magaz
       current_page?(link_path) ? "active" : ""
     end
 
+    def active_tab(tab)
+      if tab == controller_name
+        "active"
+      else
+        ""
+      end
+    end
+
 
     def t_att(model, attribute)
       t("activerecord.attributes.#{model}.#{attribute}")
