@@ -1,8 +1,9 @@
 
 Magaz::User.delete_all
-
 Magaz::Order.delete_all
 
+Magaz::PropertyValue.delete_all
+Magaz::Variant.delete_all
 Magaz::Product.delete_all
 Magaz::Category.delete_all
 Magaz::PropertyOption.delete_all

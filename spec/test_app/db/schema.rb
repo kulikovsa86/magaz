@@ -247,6 +247,7 @@ ActiveRecord::Schema.define(version: 20151215120424) do
     t.integer  "product_id"
     t.decimal  "price",      precision: 8, scale: 2
     t.string   "name"
+    t.integer  "position"
     t.datetime "created_at",                         null: false
     t.datetime "updated_at",                         null: false
   end

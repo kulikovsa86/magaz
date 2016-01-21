@@ -17,3 +17,6 @@
 
   = f.submit t('helpers.submit.save'), class: 'btn btn-success'
 
+  - unless @variant.new_record?
+    = link_to t('helpers.link_to.destroy'), @variant, method: :delete, data: {confirm: "Вы уверены, что хотите удалить модификацию?"}, class: 'btn btn-link'
+

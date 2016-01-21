@@ -20,9 +20,10 @@ module Magaz
     belongs_to :property_group
     acts_as_list scope: :property_group
 
-
     belongs_to :property_type
     has_many :property_options, -> { order(position: :asc) }, dependent: :destroy
+
+    has_many :property_values, dependent: :destroy
 
     # validates :code, :name, presence: true
     # validates :code, allow_blank: true, uniqueness: true

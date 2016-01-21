@@ -2,7 +2,7 @@ require_dependency "magaz/application_controller"
 
 module Magaz
   class ProductsController < ApplicationController
-    before_action :set_product, only: [:edit, :update, :up, :down, :destroy, :upload, :gallery, :properties, :properties_create, :image_up, :image_down, :image_destroy]
+    before_action :set_product, only: [:edit, :update, :up, :down, :destroy, :upload, :gallery, :properties, :properties_create, :image_up, :image_down, :image_destroy, :descr]
     before_action :set_image, only: [:image_up, :image_down, :image_destroy]
     before_action :set_parent_category, only: [:index, :new, :create]
 
@@ -23,6 +23,11 @@ module Magaz
       @properties = @product.category.static_properties
     end
 
+    # GET    /products(/:product_id)/descr(.:format)
+    def descr
+      @parent_category = @product.category
+    end
+
     # POST /categories/:category_id/products(.:format)
     def create
       @product = Product.new(product_params)
@@ -38,7 +43,11 @@ module Magaz
     # PATCH/PUT /products/1
     def update
       if @product.update(product_params)
-        redirect_to edit_product_path(@product), notice: t('.success')
+        if params[:descr]
+          redirect_to product_description_path(@product), notice: t('.success')
+        else
+          redirect_to edit_product_path(@product), notice: t('.success')
+        end
       else
         @parent_category = @product.category
         @properties = @product.category.static_properties
@@ -115,11 +124,11 @@ module Magaz
       redirect_to product_gallery_path(@product)
     end
 
-    # PATCH  /products/remodel(.:format)
-    def remodel
-      remodel_params = params.require(:remodel).permit(:parent, :target, :items => [:id, :checked] )
-      @parent_category = Category.find_by_permalink(remodel_params[:parent])
-      Product.remodel(remodel_params, params.include?(:remove))
+    # PATCH  /products/shift(.:format)
+    def shift
+      shift_params = params.require(:shift).permit(:parent, :target, :items => [:id, :checked] )
+      @parent_category = Category.find_by_permalink(shift_params[:parent])
+      Product.shift(shift_params, params.include?(:remove))
       redirect_to category_products_path(@parent_category), notice: 'Операция выполнена'
     end
 

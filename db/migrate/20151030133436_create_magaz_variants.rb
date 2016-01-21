@@ -4,6 +4,7 @@ class CreateMagazVariants < ActiveRecord::Migration
       t.belongs_to :product, index: true, foreign_key: true
       t.decimal :price, :precision => 8, :scale => 2
       t.string :name
+      t.integer :position
 
       t.timestamps null: false
     end

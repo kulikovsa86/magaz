@@ -17,7 +17,7 @@
 module Magaz
   class Category < ActiveRecord::Base
 
-    after_save :clean_product_properties
+    after_save :clean_desc_properties
 
     acts_as_tree dependent: :destroy
     acts_as_list scope: :parent
@@ -47,7 +47,10 @@ module Magaz
       opts
     end
 
-    def clean_product_properties
+    def clean_desc_properties
+      # --- удаляем характеристики в модификациях, которых (уже) нет в категориях
+      Magaz::PropertyValue.where(valuable_type: Magaz::Variant, valuable_id: Magaz::Variant.where(product_id:product_ids).ids).where.not(property: Magaz::Property.where(property_group: property_groups)).destroy_all
+      # --- удаляем характеристики в товарах, которых (уже) нет в категориях
       Magaz::PropertyValue.where(valuable_type: Magaz::Product, valuable_id: product_ids).where.not(property: Magaz::Property.where(property_group: property_groups)).destroy_all
     end
 

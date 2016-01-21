@@ -334,6 +334,7 @@ ru:
       lower: Ниже
       delete: Удалить
       specification: Спецификация
+      description: Описание
       gallery: Галерея
       properties: Характеристики
       variants: Модификации
@@ -424,7 +425,11 @@ ru:
         success: Модификация удалена
       update:
         success: Модификация сохранена
+      shift:
+        success: Операция выполнена
     products:
+      descr:
+        title: Описание
       properties:
         title: Характеристики
       gallery:
@@ -462,7 +467,7 @@ ru:
         success: Категория удалена
     property_groups:
       index:
-        title: Группы характеристик
+        title: Характеристики
       new:
         title: Новая группа характеристик
       create:

@@ -1,4 +1,4 @@
-= bootstrap_form_for [@category, @product]  do |f|
+= bootstrap_form_for([@category, @product], layout: :horizontal, label_col: 'col-md-2', control_col: 'col-md-10')  do |f|
   - if @product.errors.any?
     = f.alert_message t('errors.template.header', count: @product.errors.count)
 
@@ -6,13 +6,17 @@
   = f.text_field :price, class: 'small_input_group'
   = f.text_field :article, class: 'small_input_group'
   = f.text_field :weight, class: 'small_input_group'
-  = f.text_area :description, class: 'wysihtml5', control_col: 'col-sm-10'
   = f.form_group :hidden do
     = f.check_box :hidden
+  / %fieldset
+  /   %legend Описание
+  /   = f.text_area :description, class: 'wysihtml5', hide_label: true, control_col: 'col-sm-12'
+  / = f.form_group :hidden do
+  /   = f.check_box :hidden
   / = label_tag Magaz::Product.human_attribute_name(:hidden)
   / = f.check_box :hidden, :label => '', :'data-on-text' => 'ДА', :'data-off-text' => 'НЕТ', :'data-size' => 'mini', class: 'switcher'
         
   %br
   = f.submit t('helpers.submit.save'), class: 'btn btn-success'
   - unless @product.new_record?
-    = link_to t('helpers.link_to.destroy'), @product, method: :delete, data: {confirm: "Вы уверены, что хотите удалить товар?"}, class: 'btn btn-default btn-danger pull-right'
+    = link_to t('helpers.link_to.destroy'), @product, method: :delete, data: {confirm: "Вы уверены, что хотите удалить товар?"}, class: 'btn btn-link'

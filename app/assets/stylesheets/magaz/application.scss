@@ -97,17 +97,17 @@ table {
   &.editable_table {
 
     .th_actions {
-      width: 50px;
+      width: 30px;
     }
 
-    .actions {
-      visibility: hidden;
-      text-align: right;
-    }
+    // .actions {
+    //   visibility: hidden;
+    //   text-align: right;
+    // }
 
-    tr:hover .actions {
-      visibility: visible;
-    }
+    // tr:hover .actions {
+    //   visibility: visible;
+    // }
   }
 }
 
@@ -121,6 +121,10 @@ form {
   textarea {
     min-width: $form_field_default_width;
     max-width: 600px;
+  }
+
+  textarea#product_description {
+    height: 400px;
   }
 
   .small_input_group {

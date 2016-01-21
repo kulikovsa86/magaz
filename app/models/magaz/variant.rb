@@ -6,6 +6,7 @@
 #  product_id :integer
 #  price      :decimal(8, 2)
 #  name       :string
+#  position   :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
@@ -13,17 +14,29 @@
 module Magaz
   class Variant < ActiveRecord::Base
     belongs_to :product
+    acts_as_list scope: :product
     
-    has_many :property_values, as: :valuable
-    
+    has_many :property_values, as: :valuable, dependent: :destroy
     has_many :variant_images, dependent: :destroy
     has_many :images, through: :variant_images
 
     validates :name, presence: true
     validates :name, allow_blank: true, uniqueness: true
 
+    # удаление модификаций
+    # params = {'product' => permalink, items = [{id: id, checked: true}, ...]}
+    # id - идентификатор модификации, checked - модификация выбрана
+    # remove_flag - флаг операции удаления
+    def self.shift(params, remove_flag)
+      variant_ids = params[:items].select{|item| item[:checked]}.map{|item| item[:id]}
+      if remove_flag
+        Variant.where(:id => variant_ids).destroy_all
+      end
+    end
+
     # properties = [{property_id: "", value: ""}, ...]
     def set_properties(properties)
+      property_values.clear
       properties.each do |pv|
         next if (!pv[:value] || pv[:value].empty?)
         property_values.create(property_id: pv[:property_id], value: pv[:value])

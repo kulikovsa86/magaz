@@ -49,12 +49,12 @@ module Magaz
       end
     end
 
+    # Перемещение/удаление товаров
     # params = {'parent' => permalink, 'target' => target, items = [{id: id, checked: true}, ...]}
-    # action - Переместить/Удалить
     # target - id категории (для перемещения)
     # id - идентификатор товара, checked - товар выбран
     # remove_flag - флаг операции удаления
-    def self.remodel(params, remove_flag)
+    def self.shift(params, remove_flag)
       product_ids = params[:items].select{|item| item[:checked]}.map{|item| item[:id]}
       if remove_flag
         Product.where(:id => product_ids).destroy_all

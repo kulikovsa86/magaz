@@ -7,8 +7,8 @@
   .panel-heading
     %h4.panel_header= t('.title')
   .panel-body
-    = form_tag(remodel_products_path, id: 'productform') do
-      = hidden_field_tag 'remodel[parent]', @parent_category.permalink
+    = form_tag(shift_products_path, id: 'productform') do
+      = hidden_field_tag 'shift[parent]', @parent_category.permalink
       %table.editable_table.table.table-hover
         %thead
           %tr
@@ -23,10 +23,10 @@
             %td= link_to '...', categories_path(@parent_category.parent)
             %td
           - @products.each do |product|
-            = hidden_field_tag 'remodel[items][][id]', product.id
+            = hidden_field_tag 'shift[items][][id]', product.id
             %tr
               %td
-                = check_box_tag 'remodel[items][][checked]', 'true', false, class: 'row-checkbox'
+                = check_box_tag 'shift[items][][checked]', 'true', false, class: 'row-checkbox'
               %td.td_actions
                 = render '/magaz/common/dropdown_menu', edit: edit_product_path(product), up: product_up_path(product), down: product_down_path(product), target: product, confirm: "Вы уверены, что хотите удалить товар?"
 
@@ -35,8 +35,8 @@
               %td
 
       %br
-      = select_tag 'remodel[target]', options_for_select(Magaz::Category.options), class: 'selectpicker submit-select', 'data-show-subtext' => true, :title => t('magaz.common.move'), :onchange => ("$('#productform').submit()")
-      = submit_tag t('magaz.common.remove'), class: 'btn btn-default', data: { confirm: 'Уверены, что хотите удалить выбранные позиции?' }, name: 'remove'
+      = select_tag 'shift[target]', options_for_select(Magaz::Category.options), class: 'selectpicker submit-select', 'data-show-subtext' => true, :title => t('magaz.common.move'), :onchange => ("$('#productform').submit()")
+      = submit_tag t('magaz.common.remove'), class: 'btn ', data: { confirm: 'Уверены, что хотите удалить выбранные позиции?' }, name: 'remove'
 
 
 %br

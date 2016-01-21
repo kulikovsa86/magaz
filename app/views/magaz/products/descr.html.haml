@@ -1,0 +1,15 @@
+- if notice
+  .alert.alert-success= notice
+
+= render '/magaz/categories/breadcrumb'
+
+.panel.panel-default
+  .panel-heading
+    %h4.panel_header= @product.name
+  .panel-body
+    = render 'tabs'
+    %br
+    = bootstrap_form_for @product do |f|
+      = hidden_field_tag 'descr', '1'
+      = f.text_area :description, class: 'wysihtml5', hide_label: true, id: 'product_description'
+      = f.submit t('helpers.submit.save'), class: 'btn btn-success'

@@ -3,12 +3,13 @@ require_dependency "magaz/application_controller"
 module Magaz
   class VariantsController < ApplicationController
 
-    before_action :set_product, only: [:index, :new, :create]
-    before_action :set_variant, only: [:edit, :update]
+    before_action :set_product, only: [:index, :new, :create, :shift]
+    before_action :set_variant, only: [:edit, :update, :up, :down]
 
     # GET    /products/:product_id/variants(.:format)
     def index
       @parent_category = @product.category
+      @variants = @product.variants.order(:position)
     end
 
     # GET    /products/:product_id/variants/new(.:format)
@@ -54,7 +55,30 @@ module Magaz
 
     # PATCH/PUT  /variants/:id(.:format)
     def update
+      @variant.update(variant_params)
+      @variant.name = params[:var_name]
+      @variant.set_properties(params[:properties]) if params[:properties]
       redirect_to product_variants_path(@variant.product), notice: t('.success')
+    end
+
+    # POST   /variants/shift(.:format)
+    def shift
+      shift_params = params.require(:shift).permit(:product, :target, :items => [:id, :checked] )
+      @product = Product.find_by_permalink(shift_params[:product])
+      Variant.shift(shift_params, true)
+      redirect_to product_variants_path(@product), notice: t('.success')
+    end
+
+    # PATCH  /variants/:variant_id/up(.:format)
+    def up
+      @variant.move_higher
+      redirect_to product_variants_path(@variant.product)
+    end
+
+    # PATCH  /variants/:variant_id/down(.:format)
+    def down
+      @variant.move_lower
+      redirect_to product_variants_path(@variant.product)
     end
 
     # DELETE /variants/:id(.:format)
@@ -71,7 +95,13 @@ module Magaz
       end
 
       def set_variant
-        @variant = Variant.find(params[:id])
+        if params[:id]
+          @variant = Variant.find(params[:id])
+        elsif params[:variant_id]
+          @variant = Variant.find(params[:variant_id])
+        else
+          @variant = Variant.new
+        end
       end
 
       def variant_params
