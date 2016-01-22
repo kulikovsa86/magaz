@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151215120424) do
+ActiveRecord::Schema.define(version: 20160122082616) do
 
   create_table "magaz_carts", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -155,6 +155,7 @@ ActiveRecord::Schema.define(version: 20151215120424) do
     t.text     "description"
     t.integer  "property_type_id"
     t.boolean  "static"
+    t.boolean  "variant"
     t.integer  "position"
     t.integer  "property_group_id"
     t.datetime "created_at",        null: false
@@ -162,6 +163,18 @@ ActiveRecord::Schema.define(version: 20151215120424) do
   end
 
   add_index "magaz_properties", ["property_type_id"], name: "index_magaz_properties_on_property_type_id"
+
+  create_table "magaz_property_args", force: :cascade do |t|
+    t.integer  "property_id"
+    t.decimal  "min"
+    t.decimal  "max"
+    t.decimal  "step"
+    t.decimal  "default"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "magaz_property_args", ["property_id"], name: "index_magaz_property_args_on_property_id"
 
   create_table "magaz_property_group_hierarchies", force: :cascade do |t|
     t.integer "ancestor_id",   null: false

@@ -494,3 +494,6 @@ ru:
         success: Элемент списка создан
       destroy:
         success: Элемент списка удален
+    property_args:
+      update:
+        success: Параметры обновлены

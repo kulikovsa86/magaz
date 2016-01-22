@@ -80,7 +80,7 @@ module Magaz
 
       # Only allow a trusted parameter "white list" through.
       def property_params
-        params.require(:property).permit(:code, :name, :description, :property_type_id, :static)
+        params.require(:property).permit(:code, :name, :description, :property_type_id, :static, :variant)
       end
 
   end

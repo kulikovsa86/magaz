@@ -1,4 +1,4 @@
-= bootstrap_form_for @property_group do |f|
+= bootstrap_form_for @property_group, layout: :horizontal, label_col: 'col-md-2', control_col: 'col-md-10' do |f|
   - if @property_group.errors.any?
     = f.alert_message t('errors.template.header', count: @property_group.errors.count)
   - if @parent_group
@@ -9,4 +9,4 @@
   %br
   = f.submit t('helpers.submit.save'), class: 'btn btn-success'
   - unless @property_group.new_record?
-    = link_to t('helpers.link_to.destroy'), @property_group, method: :delete, data: {confirm: "Вы уверены, что хотите удалить группу? <br/>Все дочерние группы и характеристики будут также удалены"}, class: 'btn btn-default btn-danger pull-right'
+    = link_to t('helpers.link_to.destroy'), @property_group, method: :delete, data: {confirm: "Вы уверены, что хотите удалить группу? <br/>Все дочерние группы и характеристики будут также удалены"}, class: 'btn btn-link'

@@ -10,16 +10,18 @@
     %table.editable_table.table.table-hover
       %thead
         %tr
-          %th.checkbox_column= check_box_tag '', '', false, class: 'header-checkbox'
+          / %th.checkbox_column= check_box_tag '', '', false, class: 'header-checkbox'
+          %th
           %th.th_actions
           %th= Magaz::Property.human_attribute_name(:name)
           %th= Magaz::Property.human_attribute_name(:property_type)
-          %th
+          %th.icons_column
       %tbody
         %tr
           %td
           %td
           %td= link_to '...', property_groups_path(@parent_group.parent)
+          %td
           %td
         - @properties.each do |property|
           %tr
@@ -31,6 +33,8 @@
               - if property.type
                 = property.type.name
             %td
+              - if property.variant
+                %i.fa.fa-pencil-square.fa-fw 
 
 %br
 

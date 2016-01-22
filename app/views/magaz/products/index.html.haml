@@ -34,9 +34,9 @@
               %td= link_to product.name, edit_product_path(product)
               %td
 
-      %br
-      = select_tag 'shift[target]', options_for_select(Magaz::Category.options), class: 'selectpicker submit-select', 'data-show-subtext' => true, :title => t('magaz.common.move'), :onchange => ("$('#productform').submit()")
-      = submit_tag t('magaz.common.remove'), class: 'btn ', data: { confirm: 'Уверены, что хотите удалить выбранные позиции?' }, name: 'remove'
+      
+      / = select_tag 'shift[target]', options_for_select(Magaz::Category.options), class: 'selectpicker submit-select', 'data-show-subtext' => true, :title => t('magaz.common.move'), :onchange => ("$('#productform').submit()")
+      = submit_tag t('magaz.common.remove'), class: 'btn btn-default', data: { confirm: 'Уверены, что хотите удалить выбранные позиции?' }, name: 'remove'
 
 
 %br

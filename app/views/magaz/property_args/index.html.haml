@@ -1,0 +1,18 @@
+- if notice
+  .alert.alert-success= notice
+
+= render '/magaz/property_groups/breadcrumb'
+.panel.panel-default
+  .panel-heading
+    %h4.panel_header
+      = link_to @property.name, edit_property_path(@property)
+      \|
+      %small= t('magaz.common.options')
+  .panel-body
+    = bootstrap_form_for @property_arg, layout: :horizontal, label_col: 'col-md-4', control_col: 'col-md-8' do |f|
+      = f.number_field :min
+      = f.number_field :max
+      = f.number_field :step
+      = f.number_field :default
+      = f.submit t('helpers.submit.save'), class: 'btn btn-success'
+

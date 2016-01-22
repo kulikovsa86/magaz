@@ -74,6 +74,7 @@ Magaz::Engine.routes.draw do
         resources :property_options, only: [:index, :create, :destroy] do
           concerns :moveable
         end
+        resources :property_args, only: [:index, :update]
       end
     end
   end

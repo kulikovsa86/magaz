@@ -41,6 +41,7 @@ ru:
         description: Описание
         property_type: Тип
         static: Константная характеристика
+        variant: Расчетная характеристика
       magaz/property_group:
         code: Код
         name: Наименование
@@ -103,4 +104,8 @@ ru:
         last_name: Фамилия
         phone: Телефон
         email: E-mail
-
+      magaz/property_arg:
+        min: Минимальное значение
+        max: Максимальное значение
+        step: Шаг
+        default: Значение по-умолчанию

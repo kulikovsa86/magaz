@@ -11,6 +11,10 @@
       -if @property.type && @property.type.code == '01'
         \|
         %small= link_to t('magaz.common.options'), property_property_options_path(@property)
+      -if @property.type && @property.type.code == '02'
+        \|
+        %small= link_to t('magaz.common.options'), property_property_args_path(@property)
+
   .panel-body
     = render 'form'
 

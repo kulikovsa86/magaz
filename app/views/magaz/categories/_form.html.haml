@@ -1,4 +1,4 @@
-= bootstrap_form_for @category do |f|
+= bootstrap_form_for @category, layout: :horizontal, label_col: 'col-md-2', control_col: 'col-md-10' do |f|
   - if @category.errors.any?
     = f.alert_message t('errors.template.header', count: @category.errors.count)
   - if @parent_category
@@ -13,11 +13,12 @@
   / = f.collection_select :property_ids, Magaz::Property.all, :id, :name, { label: Magaz::Category.human_attribute_name(:properties) }, {class: 'selectpicker', multiple: true, :'data-selected-text-format' => "count>3" }
 
   = f.select :property_group_ids, grouped_options_for_select(Magaz::PropertyGroup.options, @category.property_group_ids), { label: Magaz::Category.human_attribute_name(:properties) }, { class: 'selectpicker', multiple: true, :'data-size' => 5 }
-
-  
-  = f.text_area :description, class: 'wysihtml5', control_col: 'col-sm-10'
   = f.form_group :hidden do
     = f.check_box :hidden
+
+  %fieldset
+    %legend= t('magaz.common.description')
+    = f.text_area :description, class: 'wysihtml5', hide_label: true, control_col: 'col-md-12'
   %br
   = f.submit t('helpers.submit.save'), class: 'btn btn-success'
   - unless @category.new_record?
