@@ -2,14 +2,14 @@ require_dependency "magaz/application_controller"
 
 module Magaz
   class PropertiesController < ApplicationController
-    before_action :set_property, only: [:edit, :update, :destroy]
+    before_action :set_property, only: [:edit, :update, :destroy, :up, :down]
     before_action :set_group, only: [:index, :new, :create]
 
     # GET    /property_groups/:property_group_id/properties(.:format)
     def index
       # @properties = Property.joins(:property_type).order('magaz_property_types.code ASC')
       # @properties = Property.all
-      @properties = @parent_group.properties
+      @properties = @parent_group.properties.order(:position)
     end
 
 
@@ -47,12 +47,16 @@ module Magaz
 
     # PATCH  /properties/:property_id/up(.:format)
     def up
-
+      @property.move_higher
+      @parent_group = @property.property_group
+      redirect_to property_group_properties_path(@parent_group)
     end
 
     # PATCH  /properties/:property_id/down(.:format)
     def down
-
+      @property.move_lower
+      @parent_group = @property.property_group
+      redirect_to property_group_properties_path(@parent_group)
     end
 
     # DELETE /properties/1

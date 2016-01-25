@@ -31,7 +31,8 @@ Magaz::Status.create!(code: '10', name: 'Исполнен')
 Magaz::Status.create!(code: '11', name: 'Отменен')
 
 list = Magaz::PropertyType.create!(code: '01', name: 'Список')
-num = Magaz::PropertyType.create!(code: '02', name: 'Цифровой')
+num = Magaz::PropertyType.create!(code: '02', name: 'Целочисленный')
+float = Magaz::PropertyType.create!(code: '021', name: 'Число с плавающей точкой')
 str = Magaz::PropertyType.create!(code: '03', name: 'Строковый')
 text = Magaz::PropertyType.create!(code: '04', name: 'Текстовый')
 bool = Magaz::PropertyType.create!(code: '05', name: 'Логический')
@@ -53,6 +54,10 @@ Magaz::PropertyGroup.find_or_create_by_path %w|Бытовая-техника М�
 Magaz::PropertyGroup.find_or_create_by_path %w|Бытовая-техника Плиты|
 Magaz::PropertyGroup.find_or_create_by_path %w|Бытовая-техника Вытяжки|
 
+pg_pos = Magaz::PropertyGroup.find_or_create_by_path %w|РТИ Рукава|
+pg_plate = Magaz::PropertyGroup.find_or_create_by_path %w|РТИ Техпластины|
+
+
 pg_origin.add_combo_property('Страна', %w|Китай Тайвань Корея Япония|)
 pg_origin.add_combo_property('Компания', %w|HP ASUS Acer DELL MSI|)
 pg_proc.add_combo_property('Тип', %w|A10 A8 A6 Core-i7 Core-i5 Core-i3|)
@@ -61,6 +66,20 @@ pg_mem.add_combo_property('Размер, ГБ', %w|4 6 8 12 16 32|)
 pg_mem.add_combo_property('Тип', %w|DDR3 DDR4 DDR5|)
 pg_mon.add_number_property('Размер,"')
 pg_mon.add_combo_property('Разрешение', %w|1024x768 1440x900 5000x2500|)
+
+pg_pos.add_number_property('Внутренний диаметр, мм')
+pg_pos.add_number_property('Рабочее давление, МПа')
+pg_pos.add_number_property('Минимальная длина, м')
+pg_pos.add_number_property('Максимальная длина, м')
+pg_pos.add_number_property('Длина, м')
+
+pg_plate.add_number_property('Длина, п/м')
+pg_plate.add_number_property('Ширина, мм')
+pg_plate.add_number_property('Минимальная ширина, мм')
+pg_plate.add_number_property('Максимальная ширина, мм')
+pg_plate.add_number_property('Толщина, мм')
+pg_plate.add_number_property('Минимальная толщина, мм')
+pg_plate.add_number_property('Максимальная толщина, мм')
 
 
 notes = Magaz::Category.find_or_create_by_path %w|Компьютеры Ноутбуки|
@@ -74,6 +93,9 @@ Magaz::Category.find_or_create_by_path %w|Электроника Телевиз�
 Magaz::Category.find_or_create_by_path %w|Бытовая-техника Крупная-техника-для-кухни|
 Magaz::Category.find_or_create_by_path %w|Бытовая-техника Мелкая-техника-для-кухни|
 Magaz::Category.find_or_create_by_path %w|Бытовая-техника Техника-для-дома|
+Magaz::Category.find_or_create_by_path %w|РТИ Рукава|
+Magaz::Category.find_or_create_by_path %w|РТИ Кольца|
+Magaz::Category.find_or_create_by_path %w|РТИ Техпластины|
 
 p1 = Magaz::Product.create(name: 'ASUS K501LB', category: notes, price: 57260)
 p2 = Magaz::Product.create(name: 'HP 15-ac000', category: notes, price: 55401)

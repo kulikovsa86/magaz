@@ -26,9 +26,9 @@
         - @properties.each do |property|
           %tr
             %td
-            %td
-            %td
-              = link_to property.name, edit_property_path(property)
+            %td.td_actions
+              = render '/magaz/common/dropdown_menu', edit: edit_property_path(property), up: property_up_path(property), down: property_down_path(property), target: property, confirm:  "Вы уверены, что хотите удалить характеристику?"
+            %td= link_to property.name, edit_property_path(property)
             %td
               - if property.type
                 = property.type.name

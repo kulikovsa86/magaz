@@ -5,8 +5,8 @@ class CreateMagazProperties < ActiveRecord::Migration
       t.string :name
       t.text :description
       t.references :property_type, index: true, foreign_key: true
-      t.boolean :static
-      t.boolean :variant
+      t.boolean :static, default: false
+      t.boolean :variant, default: false
 
       t.integer :position
       t.integer :property_group_id

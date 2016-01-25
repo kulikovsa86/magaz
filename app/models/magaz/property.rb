@@ -18,6 +18,8 @@
 module Magaz
   class Property < ActiveRecord::Base
 
+    acts_as_list scope: :property_group
+
     after_create :create_property_arg
 
     belongs_to :property_group

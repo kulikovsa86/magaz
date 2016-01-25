@@ -18,6 +18,10 @@ module Magaz
 
     has_many :properties, dependent: :destroy
 
+    def invariant_properties
+      properties.where(variant: false)
+    end
+
 
     def self.options
       options = []
