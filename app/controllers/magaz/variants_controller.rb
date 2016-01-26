@@ -105,7 +105,7 @@ module Magaz
       end
 
       def variant_params
-        params.require(:variant).permit(:price, image_ids: [])
+        params.require(:variant).permit(:price, :name, :hidden, image_ids: [])
       end
 
       def variant_properties

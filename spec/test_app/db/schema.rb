@@ -125,13 +125,13 @@ ActiveRecord::Schema.define(version: 20160122082616) do
     t.integer  "category_id"
     t.text     "description"
     t.decimal  "price",       precision: 8, scale: 2
-    t.boolean  "hidden"
+    t.boolean  "hidden",                              default: false
     t.string   "article"
     t.decimal  "weight",      precision: 6, scale: 3
     t.integer  "position"
     t.string   "permalink"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
+    t.datetime "created_at",                                          null: false
+    t.datetime "updated_at",                                          null: false
   end
 
   add_index "magaz_products", ["category_id"], name: "index_magaz_products_on_category_id"
@@ -260,9 +260,10 @@ ActiveRecord::Schema.define(version: 20160122082616) do
     t.integer  "product_id"
     t.decimal  "price",      precision: 8, scale: 2
     t.string   "name"
+    t.boolean  "hidden",                             default: false
     t.integer  "position"
-    t.datetime "created_at",                         null: false
-    t.datetime "updated_at",                         null: false
+    t.datetime "created_at",                                         null: false
+    t.datetime "updated_at",                                         null: false
   end
 
   add_index "magaz_variants", ["product_id"], name: "index_magaz_variants_on_product_id"

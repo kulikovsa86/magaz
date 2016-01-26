@@ -4,6 +4,9 @@
 
   = f.text_field :price, class: 'form-control', id: 'var_price', placeholder: @product.price.to_s
 
+  = f.form_group :hidden do
+    = f.check_box :hidden
+
   = render '/magaz/property_values/form', modification_name: @variant.name
 
   %hr

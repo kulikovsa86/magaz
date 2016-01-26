@@ -338,6 +338,7 @@ ru:
       gallery: Галерея
       properties: Характеристики
       variants: Модификации
+      mod: Мод.
       new_variant: Новая модификация
       categories: Категории и товары
       contacts: Контакты
@@ -352,6 +353,7 @@ ru:
       copy: Копировать
       remove: Удалить
       options: Параметры
+      total: ИТОГО
     layouts:
       profile: Профиль
       settings: Настройки

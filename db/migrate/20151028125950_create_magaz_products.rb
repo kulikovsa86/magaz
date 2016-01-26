@@ -6,7 +6,7 @@ class CreateMagazProducts < ActiveRecord::Migration
       t.belongs_to :category, index: true, foreign_key: true
       t.text :description
       t.decimal :price, :precision => 8, :scale => 2
-      t.boolean :hidden
+      t.boolean :hidden, default: false
       t.string :article
       t.decimal :weight, :precision => 6, :scale => 3
       t.integer :position

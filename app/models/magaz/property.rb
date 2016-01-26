@@ -7,8 +7,8 @@
 #  name              :string
 #  description       :text
 #  property_type_id  :integer
-#  static            :boolean
-#  variant           :boolean
+#  static            :boolean          default(FALSE)
+#  variant           :boolean          default(FALSE)
 #  position          :integer
 #  property_group_id :integer
 #  created_at        :datetime         not null

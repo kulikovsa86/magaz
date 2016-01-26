@@ -8,7 +8,7 @@
 #  category_id :integer
 #  description :text
 #  price       :decimal(8, 2)
-#  hidden      :boolean
+#  hidden      :boolean          default(FALSE)
 #  article     :string
 #  weight      :decimal(6, 3)
 #  position    :integer

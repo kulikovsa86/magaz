@@ -62,6 +62,7 @@ ru:
       magaz/variant:
         price: Цена
         name: Модификация
+        hidden: Скрытая
       magaz/order:
         customer: ФИО клиента
         company: Компания
