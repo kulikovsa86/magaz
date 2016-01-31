@@ -364,6 +364,11 @@ ru:
         change_pwd: Изменить пароль
       update:
         success: 'Профиль обновлен'
+    settings:
+      index:
+        title: Настройки
+      update:
+        success: Настройки сохранены
     payments:
       index:
         title: Способы оплаты

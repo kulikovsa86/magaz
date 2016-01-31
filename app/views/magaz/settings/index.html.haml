@@ -1,0 +1,14 @@
+- if notice
+  .alert.alert-success= notice
+- if alert
+  .alert.alert-danger= alert
+
+.panel.panel-default
+  .panel-heading
+    %h4.panel_header= t('.title')
+  .panel-body
+    = bootstrap_form_tag do |f|
+      = f.form_group do
+        = f.check_box 'magaz[advanced]', :label => 'Расширенный режим', checked: Magaz::Setting.get_bool('magaz-advanced')
+        = f.check_box 'magaz[show-colors]', :label => 'Отображать цвета в списке модификаций', checked: Magaz::Setting.get_bool('magaz-show-colors')
+      = f.submit t('helpers.submit.save')

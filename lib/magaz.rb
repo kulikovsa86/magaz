@@ -20,6 +20,7 @@ require 'bootbox-rails'
 require 'font-awesome-rails'
 require 'devise'
 require 'validates_email_format_of'
+require 'rails-settings-cached'
 
 require "magaz/engine"
 

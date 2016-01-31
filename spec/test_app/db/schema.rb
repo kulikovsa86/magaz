@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160122082616) do
+ActiveRecord::Schema.define(version: 20160130164904) do
 
   create_table "magaz_carts", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -222,6 +222,14 @@ ActiveRecord::Schema.define(version: 20160122082616) do
 
   add_index "magaz_property_values", ["property_id"], name: "index_magaz_property_values_on_property_id"
   add_index "magaz_property_values", ["valuable_type", "valuable_id"], name: "index_magaz_property_values_on_valuable_type_and_valuable_id"
+
+  create_table "magaz_settings", force: :cascade do |t|
+    t.string   "name"
+    t.string   "value"
+    t.string   "param"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "magaz_statuses", force: :cascade do |t|
     t.string   "code"

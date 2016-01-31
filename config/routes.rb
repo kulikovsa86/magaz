@@ -2,7 +2,7 @@
 #
 
 Magaz::Engine.routes.draw do
-  
+
   devise_for :users, {
     class_name: "Magaz::User",
     module: :devise
@@ -97,5 +97,8 @@ Magaz::Engine.routes.draw do
 
   resources :deliveries, except: [:show]
   resources :payments, except: [:show]
+
+  get '/settings', to: 'settings#index', as: :settings
+  post '/settings', to: 'settings#update'
 
 end

@@ -2,7 +2,7 @@
   - if @order.errors.any?
     = f.alert_message t('errors.template.header', count: @order.errors.count)
 
-  %table.table.table-hover.editable_table.table-condensed
+  %table.table.editable_table.table-condensed
 
     %thead
       %th.serial_number_column N
