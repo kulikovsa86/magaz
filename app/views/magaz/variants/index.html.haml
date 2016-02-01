@@ -20,8 +20,10 @@
             %th.mod_column= t('.mod')
             %th.price_column= Magaz::Product.human_attribute_name(:price)
             %th= t('.characteristics')
-            / %th= t('magaz.common.gallery')
-            / %th= t('.colors')
+            - if Magaz::Setting.get_bool('magaz-show-images')
+              %th= t('magaz.common.gallery')
+            - if Magaz::Setting.get_bool('magaz-show-colors')
+              %th= t('.colors')
         %tbody
           - @variants.each_with_index do |variant, index|
             = hidden_field_tag 'shift[items][][id]', variant.id
@@ -32,11 +34,13 @@
               %td= link_to variant.name, edit_variant_path(variant)
               %td= variant.price
               %td= variant.values_string
-              / %td
-              /   - variant.images.each do |image|
-              /     = link_to image.picture.url, {:'data-lightbox' => variant.id} do
-              /       = image_tag(image.picture.url, class: 'variant-index-image img-rounded img-thumbnail')
-              / %td= variant.colors_string.html_safe
+              - if Magaz::Setting.get_bool('magaz-show-images')
+                %td
+                  - variant.images.each do |image|
+                    = link_to image.picture.url, {:'data-lightbox' => variant.id} do
+                      = image_tag(image.picture.url, class: 'variant-index-image img-rounded img-thumbnail')
+              - if Magaz::Setting.get_bool('magaz-show-colors')
+                %td= variant.colors_string.html_safe
       - unless @variants.empty?
         = submit_tag t('magaz.common.remove'), class: 'btn btn-default', data: { confirm: 'Уверены, что хотите удалить выбранные позиции?' }, name: 'remove'
 

@@ -104,7 +104,7 @@ module Magaz
       end
 
       def check_status
-        self.status_id = Status.find_by(code: '01').id unless status_id
+        self.status = Status.NEW unless status_id
       end
 
   end

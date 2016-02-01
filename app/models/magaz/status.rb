@@ -12,5 +12,10 @@
 
 module Magaz
   class Status < ActiveRecord::Base
+
+    def self.NEW
+      Status.find_by(code: '01')
+    end
+
   end
 end

@@ -19,8 +19,10 @@ module Magaz
     # POST   /orders(.:format)
     def create
       @order = Order.new(order_params)
+      @order.skip_delivery_valid = true
+      @order.skip_payment_valid = true
       if @order.save
-        redirect_to edit_order_path(@order), notice: t('.success')
+        redirect_to edit_contacts_order_path(@order), notice: t('.success')
       else
         render :new
       end
