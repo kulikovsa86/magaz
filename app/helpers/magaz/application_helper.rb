@@ -45,5 +45,9 @@ module Magaz
     def default_action
       t('magaz.common.move')
     end
+
+    def setting_moulded?
+      Magaz::Setting.get_bool('magaz-moulded')
+    end
   end
 end

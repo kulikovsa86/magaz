@@ -59,6 +59,9 @@ ru:
         hidden: Скрытый
         article: Артикул
         weight: Вес, кг
+        input_dim: Единицы ввода
+        calc_dim: Единицы расчета
+        correct: Корректировка кол-ва единиц в товарной позиции
       magaz/variant:
         price: Цена
         name: Модификация

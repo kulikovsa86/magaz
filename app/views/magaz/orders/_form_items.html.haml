@@ -7,10 +7,11 @@
     %thead
       %th.serial_number_column N
       %th.th_actions
-      / %th= Magaz::Category.model_name.human
       %th= Magaz::Product.human_attribute_name(:name)
       %th= t('magaz.common.mod')
       %th.count_column= t('magaz.common.count')
+      - if setting_moulded?
+        %th.count_column= t('magaz.common.count_total')
       %th.price_column= t('magaz.common.price')
       %th.price_column= t('magaz.common.sum')
 
@@ -21,23 +22,38 @@
           %td= index + 1
           %td.td_actions
             = render '/magaz/common/dropdown_menu', target: item, confirm: "Вы уверены, что хотите удалить товар из заказа?"
-          / %td= item.product.category.name
           %td= link_to item.product.name, edit_product_path(item.product)
           %td= item.variant.name if item.variant
           %td
-            = number_field_tag 'items[][count]', item.count || 1, in: 1..1000, class: 'form-control input-sm'
+            - unless setting_moulded?
+              = number_field_tag 'items[][count]', item.count || 1, in: 1..1000, class: 'form-control input-sm'
+            - else
+              .input-group
+                .input-group-addon
+                  = item.product.input_dim_name
+                = number_field_tag 'items[][count]', item.count || 1, in: 1..1000, class: 'form-control input-sm'
+
+          - if setting_moulded?
+            %td
+              .input-group
+                .input-group-addon
+                  = item.product.calc_dim_name
+                = number_field_tag 'items[][total_count]', item.unit_count, class: 'form-control input-sm', disabled: true
+
           %td.price_cell= number_to_currency item.price
-          %td.price_cell= number_to_currency item.total_order_price
+          %td.price_cell= number_to_currency item.total_order_price(setting_moulded?)
       %tr
         %td
         %td
         %td
         %td
         %td
+        - if setting_moulded?
+          %td
         %td.price_cell
           %strong= t('magaz.common.total')
         %td.price_cell
-          %strong= number_to_currency @order.total_price
+          %strong= number_to_currency @order.total_price(setting_moulded?)
 
   %br
   %br

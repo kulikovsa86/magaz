@@ -346,6 +346,7 @@ ru:
       delivery: Доставка
       payment: Оплата
       count: Количество
+      count_total: Кол-во единиц
       price: Цена за ед.
       sum: Сумма
       recount: Пересчитать
@@ -354,6 +355,7 @@ ru:
       remove: Удалить
       options: Параметры
       total: ИТОГО
+      moulded_data: Погонажные даные
     layouts:
       profile: Профиль
       settings: Настройки
@@ -367,6 +369,9 @@ ru:
     settings:
       index:
         title: Настройки
+        moulded: Отображать погонажные данные
+        images: Отображать картинки в списке модификаций
+        colors: Отображать цвета в списке модификаций
       update:
         success: Настройки сохранены
     payments:
@@ -504,3 +509,4 @@ ru:
     property_args:
       update:
         success: Параметры обновлены
+

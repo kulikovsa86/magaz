@@ -2,19 +2,22 @@
 #
 # Table name: magaz_products
 #
-#  id          :integer          not null, primary key
-#  name        :string
-#  var_name    :string
-#  category_id :integer
-#  description :text
-#  price       :decimal(8, 2)
-#  hidden      :boolean          default(FALSE)
-#  article     :string
-#  weight      :decimal(6, 3)
-#  position    :integer
-#  permalink   :string
-#  created_at  :datetime         not null
-#  updated_at  :datetime         not null
+#  id           :integer          not null, primary key
+#  name         :string
+#  var_name     :string
+#  category_id  :integer
+#  description  :text
+#  price        :decimal(8, 2)
+#  hidden       :boolean          default(FALSE)
+#  article      :string
+#  weight       :decimal(6, 3)
+#  position     :integer
+#  permalink    :string
+#  input_dim_id :integer
+#  calc_dim_id  :integer
+#  correct      :boolean          default(FALSE)
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
 #
 
 module Magaz
@@ -23,6 +26,8 @@ module Magaz
 
     belongs_to :category
     acts_as_list scope: :category
+    belongs_to :input_dim, :class_name => "Dimension"
+    belongs_to :calc_dim, :class_name => "Dimension"
 
     has_many :variants, dependent: :destroy
     has_many :images, as: :imageable, dependent: :destroy
@@ -63,6 +68,24 @@ module Magaz
         category.products << Product.find(product_ids)
       end
     end
+
+    def input_dim_name
+      if input_dim
+        input_dim.name
+      else
+        Dimension.default.name
+      end
+    end
+
+    def calc_dim_name
+      if calc_dim
+        calc_dim.name
+      else
+        Dimension.default.name
+      end
+    end
+
+
 
     private
       def translit_name

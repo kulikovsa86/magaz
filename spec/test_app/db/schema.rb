@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160130164904) do
+ActiveRecord::Schema.define(version: 20160202064233) do
 
   create_table "magaz_carts", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -60,6 +60,14 @@ ActiveRecord::Schema.define(version: 20160130164904) do
     t.datetime "updated_at",                                 null: false
   end
 
+  create_table "magaz_dimensions", force: :cascade do |t|
+    t.string   "code"
+    t.string   "name"
+    t.string   "full_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "magaz_images", force: :cascade do |t|
     t.string   "picture"
     t.integer  "imageable_id"
@@ -74,12 +82,15 @@ ActiveRecord::Schema.define(version: 20160130164904) do
   create_table "magaz_line_items", force: :cascade do |t|
     t.integer  "product_id"
     t.integer  "variant_id"
-    t.decimal  "price",      precision: 8, scale: 2
+    t.decimal  "price",       precision: 8, scale: 2
     t.integer  "count"
+    t.decimal  "total_count", precision: 8, scale: 3
+    t.boolean  "manual",                              default: false
+    t.decimal  "ratio",       precision: 8, scale: 3
     t.integer  "cart_id"
     t.integer  "order_id"
-    t.datetime "created_at",                         null: false
-    t.datetime "updated_at",                         null: false
+    t.datetime "created_at",                                          null: false
+    t.datetime "updated_at",                                          null: false
   end
 
   add_index "magaz_line_items", ["cart_id"], name: "index_magaz_line_items_on_cart_id"
@@ -124,14 +135,17 @@ ActiveRecord::Schema.define(version: 20160130164904) do
     t.string   "var_name"
     t.integer  "category_id"
     t.text     "description"
-    t.decimal  "price",       precision: 8, scale: 2
-    t.boolean  "hidden",                              default: false
+    t.decimal  "price",        precision: 8, scale: 2
+    t.boolean  "hidden",                               default: false
     t.string   "article"
-    t.decimal  "weight",      precision: 6, scale: 3
+    t.decimal  "weight",       precision: 6, scale: 3
     t.integer  "position"
     t.string   "permalink"
-    t.datetime "created_at",                                          null: false
-    t.datetime "updated_at",                                          null: false
+    t.integer  "input_dim_id"
+    t.integer  "calc_dim_id"
+    t.boolean  "correct",                              default: false
+    t.datetime "created_at",                                           null: false
+    t.datetime "updated_at",                                           null: false
   end
 
   add_index "magaz_products", ["category_id"], name: "index_magaz_products_on_category_id"

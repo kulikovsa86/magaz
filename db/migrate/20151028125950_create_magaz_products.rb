@@ -11,6 +11,9 @@ class CreateMagazProducts < ActiveRecord::Migration
       t.decimal :weight, :precision => 6, :scale => 3
       t.integer :position
       t.string :permalink, index: true
+      t.integer :input_dim_id
+      t.integer :calc_dim_id
+      t.boolean :correct, default: false
 
       t.timestamps null: false
     end

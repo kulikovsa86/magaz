@@ -11,6 +11,7 @@ Magaz::Property.delete_all
 Magaz::PropertyType.delete_all
 Magaz::PropertyGroup.delete_all
 
+Magaz::Dimension.delete_all
 Magaz::Delivery.delete_all
 Magaz::Payment.delete_all
 Magaz::Status.delete_all
@@ -21,6 +22,12 @@ Magaz::Delivery.create!(code: '03', name: 'Почта России', address_req
 
 Magaz::Payment.create!(code: '01', name: 'Безналичный расчет')
 payment = Magaz::Payment.create!(code: '02', name: 'Наличными при получении')
+
+Magaz::Dimension.create!(code: '01', name: 'шт', full_name: 'Штука')
+Magaz::Dimension.create!(code: '011', name: 'ед', full_name: 'Единица')
+Magaz::Dimension.create!(code: '02', name: 'м', full_name: 'Метр')
+Magaz::Dimension.create!(code: '021', name: 'пм', full_name: 'Погонный метр')
+Magaz::Dimension.create!(code: '03', name: 'кг', full_name: 'Килограмм')
 
 staus_new = Magaz::Status.create!(code: '01', name: 'Новый')
 Magaz::Status.create!(code: '02', name: 'Подтвержден')

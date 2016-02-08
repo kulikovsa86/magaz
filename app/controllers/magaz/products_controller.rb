@@ -15,12 +15,14 @@ module Magaz
     def new
       @category = @parent_category
       @product = Product.new
+      @dimensions = Dimension.all
     end
 
     # GET /products/1/edit
     def edit
       @parent_category = @product.category
       @properties = @product.category.static_properties
+      @dimensions = Dimension.all
     end
 
     # GET    /products(/:product_id)/descr(.:format)
@@ -155,7 +157,7 @@ module Magaz
 
       # Only allow a trusted parameter "white list" through.
       def product_params
-        params.require(:product).permit(:name, :description, :price, :hidden, :article, :weight)
+        params.require(:product).permit(:name, :description, :price, :hidden, :article, :weight, :input_dim_id, :calc_dim_id, :correct)
       end
 
       def product_properties

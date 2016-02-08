@@ -9,7 +9,7 @@
   .panel-body
     = bootstrap_form_tag do |f|
       = f.form_group do
-        = f.check_box 'magaz[advanced]', :label => 'Расширенный режим', checked: Magaz::Setting.get_bool('magaz-advanced')
-        = f.check_box 'magaz[show-images]', :label => 'Отображать картинки в списке модификаций', checked: Magaz::Setting.get_bool('magaz-show-images')
-        = f.check_box 'magaz[show-colors]', :label => 'Отображать цвета в списке модификаций', checked: Magaz::Setting.get_bool('magaz-show-colors')
+        = f.check_box 'magaz[moulded]', :label => t('.moulded'), checked: Magaz::Setting.get_bool('magaz-moulded')
+        = f.check_box 'magaz[show-images]', :label => t('.images'), checked: Magaz::Setting.get_bool('magaz-show-images')
+        = f.check_box 'magaz[show-colors]', :label => t('.colors'), checked: Magaz::Setting.get_bool('magaz-show-colors')
       = f.submit t('helpers.submit.save'), class: 'btn btn-success'

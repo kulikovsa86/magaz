@@ -8,13 +8,13 @@
   = f.text_field :weight, class: 'small_input_group'
   = f.form_group :hidden do
     = f.check_box :hidden
-  / %fieldset
-  /   %legend Описание
-  /   = f.text_area :description, class: 'wysihtml5', hide_label: true, control_col: 'col-sm-12'
-  / = f.form_group :hidden do
-  /   = f.check_box :hidden
-  / = label_tag Magaz::Product.human_attribute_name(:hidden)
-  / = f.check_box :hidden, :label => '', :'data-on-text' => 'ДА', :'data-off-text' => 'НЕТ', :'data-size' => 'mini', class: 'switcher'
+  - if setting_moulded?
+    %fieldset{disabled: true}
+      %legend= t('magaz.common.moulded_data')
+      = f.collection_select :input_dim_id, @dimensions, :id, :to_s, { label: Magaz::Product.human_attribute_name(:input_dim) }, {class: 'selectpicker', 'data-width' => '400px'}
+      = f.collection_select :calc_dim_id, @dimensions, :id, :to_s, { label: Magaz::Product.human_attribute_name(:calc_dim) }, {class: 'selectpicker', 'data-width' => '400px'}
+      = f.form_group :correct do
+        = f.check_box :correct
         
   %br
   = f.submit t('helpers.submit.save'), class: 'btn btn-success'

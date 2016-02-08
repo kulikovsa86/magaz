@@ -62,10 +62,11 @@ module Magaz
       "#{id}".rjust(3, '0')
     end
 
-    def total_price
+    def total_price(moulded_flag = false)
       items.to_a.sum do |item|
-        price = item.price ? item.price : 0
-        item.count * price
+        # price = item.price ? item.price : 0
+        # item.count * price
+        item.total_order_price(moulded_flag)
       end
     end
 
