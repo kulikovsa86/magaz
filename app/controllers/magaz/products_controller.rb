@@ -157,7 +157,7 @@ module Magaz
 
       # Only allow a trusted parameter "white list" through.
       def product_params
-        params.require(:product).permit(:name, :description, :price, :hidden, :article, :weight, :input_dim_id, :calc_dim_id, :correct)
+        params.require(:product).permit(:name, :description, :price, :hidden, :article, :weight, :input_dim_id, :calc_dim_id, :correct, :moulded)
       end
 
       def product_properties

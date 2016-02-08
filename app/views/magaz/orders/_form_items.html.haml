@@ -10,7 +10,7 @@
       %th= Magaz::Product.human_attribute_name(:name)
       %th= t('magaz.common.mod')
       %th.count_column= t('magaz.common.count')
-      - if setting_moulded?
+      - if @moulded_flag
         %th.count_column= t('magaz.common.count_total')
       %th.price_column= t('magaz.common.price')
       %th.price_column= t('magaz.common.sum')
@@ -25,7 +25,7 @@
           %td= link_to item.product.name, edit_product_path(item.product)
           %td= item.variant.name if item.variant
           %td
-            - unless setting_moulded?
+            - unless @moulded_flag
               = number_field_tag 'items[][count]', item.count || 1, in: 1..1000, class: 'form-control input-sm'
             - else
               .input-group
@@ -33,28 +33,29 @@
                   = item.product.input_dim_name
                 = number_field_tag 'items[][count]', item.count || 1, in: 1..1000, class: 'form-control input-sm'
 
-          - if setting_moulded?
+          - if @moulded_flag
             %td
               .input-group
                 .input-group-addon
                   = item.product.calc_dim_name
-                = number_field_tag 'items[][total_count]', item.unit_count, class: 'form-control input-sm', disabled: true
+                = number_field_tag 'items[][total_count]', item.unit_count, step: 'any', class: 'form-control input-sm', disabled: !item.product.correct
 
           %td.price_cell= number_to_currency item.price
-          %td.price_cell= number_to_currency item.total_order_price(setting_moulded?)
+          %td.price_cell= number_to_currency item.total_order_price
       %tr
         %td
         %td
         %td
         %td
         %td
-        - if setting_moulded?
+        - if @moulded_flag
           %td
         %td.price_cell
           %strong= t('magaz.common.total')
         %td.price_cell
-          %strong= number_to_currency @order.total_price(setting_moulded?)
+          %strong= number_to_currency @order.total_price
 
   %br
-  %br
-  = submit_tag t('magaz.common.recount'), class: 'btn btn-success'
+  = submit_tag t('magaz.common.recount'), class: 'btn btn-success', name: 'recount'
+  = submit_tag t('magaz.common.recount_unit'), class: 'btn btn-link', name: 'recount_unit'
+

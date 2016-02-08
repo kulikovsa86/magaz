@@ -62,12 +62,14 @@ module Magaz
       "#{id}".rjust(3, '0')
     end
 
-    def total_price(moulded_flag = false)
+    def total_price
       items.to_a.sum do |item|
-        # price = item.price ? item.price : 0
-        # item.count * price
-        item.total_order_price(moulded_flag)
+        item.total_order_price
       end
+    end
+
+    def has_moulded?
+      !items.to_a.select{ |item| item.product.moulded }.empty?
     end
 
     def take_items_from_cart(cart)
@@ -90,7 +92,15 @@ module Magaz
     def recount(param_items) 
       param_items.each do |param_item|
         item = items.find_by_id(param_item[:id])
-        item.update(count: param_item[:count]) if item
+        item.update(count: param_item[:count], manual: false) if item
+      end
+    end
+
+    # param_items = [ {id: "id", count: "count"}, ... ]
+    def recount_unit(param_items)
+      param_items.each do |param_item|
+        item = items.find_by_id(param_item[:id])
+        item.update(total_count: param_item[:total_count], manual: true) if item
       end
     end
 

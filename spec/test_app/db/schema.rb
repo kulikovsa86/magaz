@@ -144,6 +144,7 @@ ActiveRecord::Schema.define(version: 20160202064233) do
     t.integer  "input_dim_id"
     t.integer  "calc_dim_id"
     t.boolean  "correct",                              default: false
+    t.boolean  "moulded",                              default: false
     t.datetime "created_at",                                           null: false
     t.datetime "updated_at",                                           null: false
   end

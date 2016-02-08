@@ -16,6 +16,7 @@
 #  input_dim_id :integer
 #  calc_dim_id  :integer
 #  correct      :boolean          default(FALSE)
+#  moulded      :boolean          default(FALSE)
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
 #

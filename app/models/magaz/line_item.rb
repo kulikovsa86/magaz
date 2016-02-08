@@ -31,24 +31,24 @@ module Magaz
       end
     end
 
-    def total_cart_price(moulded_flag = false)
+    def total_cart_price
       if cart_price
-        cart_price * amount(moulded_flag)
+        cart_price * amount
       else
         0
       end
     end
 
-    def total_order_price(moulded_flag = false)
+    def total_order_price
       if price && count
-        price * amount(moulded_flag)
+        price * amount
       else
         0
       end
     end
 
     def unit_count
-      if total_count
+      if manual && total_count
         total_count
       elsif ratio
         count * ratio
@@ -57,8 +57,8 @@ module Magaz
       end
     end
 
-    def amount(moulded_flag = false)
-      unless moulded_flag
+    def amount
+      unless product.moulded
         count
       else
         unit_count

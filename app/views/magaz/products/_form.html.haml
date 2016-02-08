@@ -9,8 +9,10 @@
   = f.form_group :hidden do
     = f.check_box :hidden
   - if setting_moulded?
-    %fieldset{disabled: true}
+    %fieldset
       %legend= t('magaz.common.moulded_data')
+      = f.form_group :moulded do
+        = f.check_box :moulded
       = f.collection_select :input_dim_id, @dimensions, :id, :to_s, { label: Magaz::Product.human_attribute_name(:input_dim) }, {class: 'selectpicker', 'data-width' => '400px'}
       = f.collection_select :calc_dim_id, @dimensions, :id, :to_s, { label: Magaz::Product.human_attribute_name(:calc_dim) }, {class: 'selectpicker', 'data-width' => '400px'}
       = f.form_group :correct do

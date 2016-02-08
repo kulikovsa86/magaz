@@ -35,6 +35,7 @@ module Magaz
     # GET    /orders/:id/edit_items(.:format)
     def edit_items
       @form = 'form_items'
+      @moulded_flag = @order.has_moulded?
       render :edit
     end
 
@@ -75,7 +76,11 @@ module Magaz
     # PATCH  /orders/:id/recount(.:format)
     def recount
       params.require(:items)
-      @order.recount(params[:items])
+      unless params[:recount_unit]
+        @order.recount(params[:items])
+      else
+        @order.recount_unit(params[:items])
+      end
       redirect_to edit_items_order_path(@order)
     end
 

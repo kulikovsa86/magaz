@@ -62,6 +62,7 @@ ru:
         input_dim: Единицы ввода
         calc_dim: Единицы расчета
         correct: Корректировка кол-ва единиц в товарной позиции
+        moulded: Погонажный
       magaz/variant:
         price: Цена
         name: Модификация
