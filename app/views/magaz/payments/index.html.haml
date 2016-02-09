@@ -5,16 +5,19 @@
   .panel-heading
     %h4.panel_header= t('.title')
   .panel-body
-    %table.table.table-condensed
+    %table.editable_table.table.table-condensed
       %thead
         %tr
-          %th.code_column= Magaz::Payment.human_attribute_name(:code)
+          %th.checkbox_column
+          %th.th_actions
           %th= Magaz::Payment.human_attribute_name(:name)
           %th= Magaz::Payment.human_attribute_name(:note)
       %tbody
         - @payments.each do |payment|
           %tr
-            %td= payment.code
+            %td
+            %td.td_actions
+              = render '/magaz/common/dropdown_menu', edit: edit_payment_path(payment), up: payment_up_path(payment), down: payment_down_path(payment), target: payment, confirm:  "Вы уверены, что хотите удалить запись?"
             %td= link_to payment.name, edit_payment_path(payment)
             %td= payment.note
 %br

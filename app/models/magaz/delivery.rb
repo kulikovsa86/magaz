@@ -9,6 +9,7 @@
 #  address_required   :boolean
 #  post_code_required :boolean
 #  price              :decimal(8, 2)
+#  position           :integer
 #  created_at         :datetime         not null
 #  updated_at         :datetime         not null
 #

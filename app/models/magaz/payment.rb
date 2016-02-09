@@ -6,6 +6,7 @@
 #  code       :string
 #  name       :string
 #  note       :text
+#  position   :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #

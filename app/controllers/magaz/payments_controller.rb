@@ -3,11 +3,11 @@ require_dependency "magaz/application_controller"
 module Magaz
   class PaymentsController < ApplicationController
 
-    before_action :set_payment, only: [:edit, :update, :destroy]
+    before_action :set_payment, only: [:edit, :update, :destroy, :up, :down]
 
     # GET    /payments(.:format)
     def index
-      @payments = Payment.order(:code)
+      @payments = Payment.order(:position)
     end
 
     # GET    /payments/new(.:format)
@@ -38,6 +38,18 @@ module Magaz
       end
     end
 
+    # PATCH  /payments/:payment_id/up(.:format)
+    def up
+      @payment.move_higher
+      redirect_to payments_path
+    end
+
+    # PATCH  /payments/:payment_id/down(.:format)
+    def down
+      @payment.move_lower
+      redirect_to payments_path
+    end
+
     # DELETE /payments/:id(.:format)
     def destroy
       @payment.destroy
@@ -47,7 +59,11 @@ module Magaz
     private
       # Use callbacks to share common setup or constraints between actions.
       def set_payment
-        @payment = Payment.find(params[:id])
+        if params[:id]
+          @payment = Payment.find(params[:id])
+        else
+          @payment = Payment.find(params[:payment_id])
+        end
       end
 
       def payment_params
