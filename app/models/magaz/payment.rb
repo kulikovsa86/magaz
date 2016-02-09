@@ -12,5 +12,6 @@
 
 module Magaz
   class Payment < ActiveRecord::Base
+    acts_as_list
   end
 end

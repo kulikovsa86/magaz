@@ -5,22 +5,21 @@
   .panel-heading
     %h4.panel_header= t('.title')
   .panel-body
-    %table.table.table-condensed
+    %table.editable_table.table.table-condensed
       %thead
         %tr
-          %th.code_column= Magaz::Delivery.human_attribute_name(:code)
+          %th.checkbox_column
+          %th.th_actions
           %th= Magaz::Delivery.human_attribute_name(:name)
-          %th= Magaz::Delivery.human_attribute_name(:note)
-          %th.price_column= Magaz::Delivery.human_attribute_name(:price)
-          %th.code_column= t('.address')
-          %th.code_column= t('.post_code')
+          %th.icons_column= t('.address')
+          %th.icons_column= t('.post_code')
       %tbody
         - @deliveries.each do |delivery|
           %tr
-            %td= delivery.code
+            %td
+            %td.td_actions
+              = render '/magaz/common/dropdown_menu', edit: edit_delivery_path(delivery), up: delivery_up_path(delivery), down: delivery_down_path(delivery), target: delivery, confirm:  "Вы уверены, что хотите удалить запись?"
             %td= link_to delivery.name, edit_delivery_path(delivery)
-            %td= delivery.note
-            %td= delivery.price
             %td
               - if delivery.address_required
                 %i.glyphicon.glyphicon-plus

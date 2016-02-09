@@ -7,6 +7,7 @@ class CreateMagazDeliveries < ActiveRecord::Migration
       t.boolean :address_required
       t.boolean :post_code_required
       t.decimal :price, :precision => 8, :scale => 2
+      t.integer :position
 
       t.timestamps null: false
     end

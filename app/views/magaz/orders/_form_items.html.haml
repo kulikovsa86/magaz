@@ -22,7 +22,14 @@
           %td= index + 1
           %td.td_actions
             = render '/magaz/common/dropdown_menu', target: item, confirm: "Вы уверены, что хотите удалить товар из заказа?"
-          %td= link_to item.product.name, edit_product_path(item.product)
+          %td
+            = link_to item.product.name, edit_product_path(item.product)
+            %br
+            %small
+              - if item.variant
+                = item.variant.values_string
+              - else
+                = item.product.values_string
           %td= item.variant.name if item.variant
           %td
             - unless @moulded_flag
@@ -57,5 +64,6 @@
 
   %br
   = submit_tag t('magaz.common.recount'), class: 'btn btn-success', name: 'recount'
-  = submit_tag t('magaz.common.recount_unit'), class: 'btn btn-link', name: 'recount_unit'
+  - if @moulded_flag
+    = submit_tag t('magaz.common.recount_unit'), class: 'btn btn-link', name: 'recount_unit'
 

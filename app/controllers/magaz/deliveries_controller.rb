@@ -3,11 +3,11 @@ require_dependency "magaz/application_controller"
 module Magaz
   class DeliveriesController < ApplicationController
 
-    before_action :set_delivery, only: [:edit, :update, :destroy]
+    before_action :set_delivery, only: [:edit, :update, :destroy, :up, :down]
 
     # GET    /deliveries(.:format)
     def index
-      @deliveries = Delivery.order(:code)
+      @deliveries = Delivery.order(:position)
     end
 
     # GET    /deliveries/new(.:format)
@@ -38,6 +38,18 @@ module Magaz
       end
     end
 
+    # PATCH  /deliveries/:delivery_id/up(.:format)
+    def up
+      @delivery.move_higher
+      redirect_to deliveries_path
+    end
+
+    # PATCH  /deliveries/:delivery_id/down(.:format) 
+    def down
+      @delivery.move_lower
+      redirect_to deliveries_path
+    end
+
     # DELETE /deliveries/:id(.:format)
     def destroy
       @delivery.destroy
@@ -47,7 +59,11 @@ module Magaz
     private
       # Use callbacks to share common setup or constraints between actions.
       def set_delivery
-        @delivery = Delivery.find(params[:id])
+        if params[:id]
+          @delivery = Delivery.find(params[:id])
+        else
+          @delivery = Delivery.find(params[:delivery_id])
+        end
       end
 
       def delivery_params

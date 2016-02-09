@@ -86,7 +86,21 @@ module Magaz
       end
     end
 
-
+    def values_string
+      values = []
+      property_values.each do |pv|
+        if pv.property && pv.property.type.code != '10'
+          if pv.property.type.code == '04'
+            values << (pv.value.gsub(/<\/?[^>]*>/, "")[0..15] + '...')
+          elsif pv.property.type.code == '05' && pv.value
+            values << pv.property.name
+          else
+            values << pv.value
+          end
+        end
+      end
+      values.join(', ')
+    end
 
     private
       def translit_name

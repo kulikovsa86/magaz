@@ -15,5 +15,6 @@
 
 module Magaz
   class Delivery < ActiveRecord::Base
+    acts_as_list
   end
 end

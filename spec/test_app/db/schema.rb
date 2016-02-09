@@ -56,6 +56,7 @@ ActiveRecord::Schema.define(version: 20160202064233) do
     t.boolean  "address_required"
     t.boolean  "post_code_required"
     t.decimal  "price",              precision: 8, scale: 2
+    t.integer  "position"
     t.datetime "created_at",                                 null: false
     t.datetime "updated_at",                                 null: false
   end
@@ -126,6 +127,7 @@ ActiveRecord::Schema.define(version: 20160202064233) do
     t.string   "code"
     t.string   "name"
     t.text     "note"
+    t.integer  "position"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

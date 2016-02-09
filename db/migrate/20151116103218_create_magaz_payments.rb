@@ -4,6 +4,7 @@ class CreateMagazPayments < ActiveRecord::Migration
       t.string :code
       t.string :name
       t.text :note
+      t.integer :position
 
       t.timestamps null: false
     end
