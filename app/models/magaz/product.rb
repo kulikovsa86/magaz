@@ -33,6 +33,7 @@ module Magaz
     has_many :variants, dependent: :destroy
     has_many :images, as: :imageable, dependent: :destroy
     has_many :property_values, as: :valuable, dependent: :destroy
+    has_many :comments
 
     validates :name, presence: true
 

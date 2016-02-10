@@ -16,6 +16,9 @@ ru:
       magaz/product:
         one: Товар
         other: Товары
+      magaz/comment:
+        one: Комментарий
+        other: Комментарии
       magaz/variant:
         one: Модификация
         other: Модификации
@@ -63,6 +66,11 @@ ru:
         calc_dim: Единицы расчета
         correct: Корректировка кол-ва единиц в товарной позиции
         moulded: Погонажный
+      magaz/comment:
+        name: Имя
+        text: Сообщение
+        rate: Оценка
+        accepted: Опубликовать
       magaz/variant:
         price: Цена
         name: Модификация
@@ -81,8 +89,8 @@ ru:
         payment: Способ оплаты
         status: Статус
         pdt: Время доставки
-        customer_comment: Коментарий клиента
-        manager_comment: Коментарий менеджера
+        customer_comment: Комментарий клиента
+        manager_comment: Комментарий менеджера
       magaz/delivery:
         code: Код
         name: Наименование

@@ -5,5 +5,4 @@
   %li{class: active_class(product_gallery_path(@product))}= link_to t('magaz.common.gallery'), product_gallery_path(@product)
   %li{class: active_class(product_properties_path(@product))}= link_to t('magaz.common.properties'), product_properties_path(@product)
   %li{class: active_tab('variants')}= link_to t('magaz.common.variants'), product_variants_path(@product)
-  / %li{class: active_class(product_variants_path(@product))}= link_to t('magaz.common.variants'), product_variants_path(@product)
-  / %li{class: active_class(new_product_variant_path(@product))}= link_to t('magaz.common.new_variant'), new_product_variant_path(@product)
+  %li{class: active_tab('comments')}= link_to t('magaz.common.comments'), product_comments_path(@product)

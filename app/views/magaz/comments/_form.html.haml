@@ -1,0 +1,12 @@
+= bootstrap_form_for(@comment, layout: :horizontal, label_col: 'col-md-2', control_col: 'col-md-10')  do |f|
+  - if @comment.errors.any?
+    = f.alert_message t('errors.template.header', count: @comment.errors.count)
+
+  = f.text_field :name, class: 'medium_input_group'
+  = f.number_field :rate, class: 'small_input_group', in: 1..5
+  = f.form_group :accepted do
+    = f.check_box :accepted
+  = f.text_area :text
+
+  = f.submit t('helpers.submit.save'), class: 'btn btn-success'
+  = link_to t('helpers.link_to.destroy'), @comment, method: :delete, data: {confirm: "Вы уверены, что хотите удалить запись?"}, class: 'btn btn-link'

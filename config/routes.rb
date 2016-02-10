@@ -43,6 +43,7 @@ Magaz::Engine.routes.draw do
         resources :variants, only: [:index, :new, :create, :destroy, :edit, :update] do
           concerns :moveable
         end
+        resources :comments, only: [:index, :edit, :update, :destroy]
       end
     end
   end

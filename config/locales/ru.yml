@@ -338,6 +338,7 @@ ru:
       gallery: Галерея
       properties: Характеристики
       variants: Модификации
+      comments: Комментарии
       mod: Мод.
       new_variant: Новая модификация
       categories: Категории и товары
@@ -357,6 +358,7 @@ ru:
       options: Параметры
       total: ИТОГО
       moulded_data: Погонажные даные
+      status: Статус
     layouts:
       profile: Профиль
       settings: Настройки
@@ -440,6 +442,13 @@ ru:
         success: Модификация сохранена
       shift:
         success: Операция выполнена
+    comments:
+      edit:
+        title: РЕДАКТИРОВАНИЕ
+      update:
+        success: Операция выполнена
+      destroy:
+        success: Комментарий удален
     products:
       descr:
         title: Описание

@@ -1,0 +1,29 @@
+- if notice
+  .alert.alert-success= notice
+
+= render '/magaz/categories/breadcrumb'
+
+.panel.panel-default
+  .panel-heading
+    %h4.panel_header= @product.name
+
+  .panel-body
+    = render '/magaz/products/tabs'
+    %table.editable_table.table.table-condensed
+      %thead
+        %tr
+          %th.th_actions
+          %th= Magaz::Comment.human_attribute_name(:name)
+          %th= Magaz::Comment.human_attribute_name(:text)
+          %th= Magaz::Comment.human_attribute_name(:rate)
+          %th= t('magaz.common.status')
+      %tbody
+        - @comments.each do |comment|
+          %tr
+            %td
+            %td= link_to comment.name, edit_comment_path(comment)
+            %td= truncate(comment.text, length: 80)
+            %td= comment.rate
+            %td
+              - unless comment.accepted
+                %i.fa.fa-ban

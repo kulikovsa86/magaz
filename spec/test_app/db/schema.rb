@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160202064233) do
+ActiveRecord::Schema.define(version: 20160210171834) do
 
   create_table "magaz_carts", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -48,6 +48,18 @@ ActiveRecord::Schema.define(version: 20160202064233) do
 
   add_index "magaz_category_hierarchies", ["ancestor_id", "descendant_id", "generations"], name: "magaz_category_anc_desc_udx", unique: true
   add_index "magaz_category_hierarchies", ["descendant_id"], name: "magaz_category_desc_idx"
+
+  create_table "magaz_comments", force: :cascade do |t|
+    t.string   "name"
+    t.text     "text"
+    t.integer  "rate"
+    t.boolean  "accepted"
+    t.integer  "product_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "magaz_comments", ["product_id"], name: "index_magaz_comments_on_product_id"
 
   create_table "magaz_deliveries", force: :cascade do |t|
     t.string   "code"
