@@ -81,13 +81,16 @@ ru:
         phone: Телефон
         email: Эл. почта
         delivery: Доставка
+        delivery_id: Доставка
         post_code: Почтовый индекс
         address1: Страна
         address2: 'Область/край/республика'
         address3: Населенный пункт
         address4: 'Улица, дом, квартира'
         payment: Способ оплаты
+        payment_id: Способ оплаты
         status: Статус
+        status_id: Статус
         pdt: Время доставки
         customer_comment: Комментарий клиента
         manager_comment: Комментарий менеджера

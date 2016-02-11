@@ -1,12 +1,12 @@
-= bootstrap_form_for @order do |f|
+= bootstrap_form_for(@order, layout: :horizontal, label_col: 'col-md-2', control_col: 'col-md-10')  do |f|
   - if @order.errors.any?
     = f.alert_message t('errors.template.header', count: @order.errors.count)
 
   = hidden_field_tag "member", "edit_contacts"
   = hidden_field_tag "form", "form_contacts"
-  = f.text_field :customer
-  = f.text_field :company
-  = f.phone_field :phone
-  = f.email_field :email
+  = f.text_field :customer, class: 'medium_input_group'
+  = f.text_field :company, class: 'medium_input_group'
+  = f.phone_field :phone, class: 'medium_input_group'
+  = f.email_field :email, class: 'medium_input_group'
 
   = f.submit t('helpers.submit.save'), class: 'btn btn-success'

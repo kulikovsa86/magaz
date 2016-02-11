@@ -4,7 +4,7 @@ module Magaz
   class OrdersController < ApplicationController
     # before_action :authenticate_user!
 
-    before_action :set_order, only: [:edit, :update, :destroy, :edit_items, :edit_contacts, :edit_delivery, :edit_payment, :recount]
+    before_action :set_order, only: [:edit, :update, :destroy, :edit_items, :edit_contacts, :edit_delivery, :edit_payment, :edit_status, :recount]
 
     # GET    /orders(.:format)
     def index
@@ -54,6 +54,12 @@ module Magaz
     # GET    /orders/:id/edit_payment(.:format)
     def edit_payment
       @form = 'form_payment'
+      render :edit
+    end
+
+    # GET    /orders/:id/edit_status(.:format)
+    def edit_status
+      @form = 'form_status'
       render :edit
     end
 

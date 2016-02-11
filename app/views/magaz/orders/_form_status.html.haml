@@ -2,8 +2,8 @@
   - if @order.errors.any?
     = f.alert_message t('errors.template.header', count: @order.errors.count)
 
-  = hidden_field_tag "member", "edit_payment"
-  = hidden_field_tag "form", "form_payment"
-  = f.collection_select :payment_id, Magaz::Payment.all, :id, :name, { hide_label: false }, {class: 'selectpicker', 'data-width': '400px'}
+  = hidden_field_tag "member", "edit_status"
+  = hidden_field_tag "form", "form_status"
+  = f.collection_select :status_id, Magaz::Status.all, :id, :name, { hide_label: false }, {class: 'selectpicker', 'data-width': '400px'}
 
   = f.submit t('helpers.submit.save'), class: 'btn btn-success'

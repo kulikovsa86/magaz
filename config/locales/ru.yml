@@ -346,6 +346,7 @@ ru:
       products: Товары
       delivery: Доставка
       payment: Оплата
+      status: Статус
       count: Количество
       count_total: Кол-во единиц
       price: Цена за ед.

@@ -92,6 +92,7 @@ Magaz::Engine.routes.draw do
       get :edit_contacts
       get :edit_delivery
       get :edit_payment
+      get :edit_status
       patch :recount
     end
   end
