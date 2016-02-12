@@ -5,5 +5,13 @@
   = hidden_field_tag "member", "edit_status"
   = hidden_field_tag "form", "form_status"
   = f.collection_select :status_id, Magaz::Status.all, :id, :name, { hide_label: false }, {class: 'selectpicker', 'data-width': '400px'}
+  .row
+    .col-md-2
+      %p.text-right= t('magaz.common.history')
+    .col-md-10
+      %textarea{readonly: true, rows: 10}
+        - @history.each do |status|
+          = status.html_safe
+
 
   = f.submit t('helpers.submit.save'), class: 'btn btn-success'

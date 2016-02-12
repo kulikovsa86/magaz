@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160210171834) do
+ActiveRecord::Schema.define(version: 20160212075546) do
 
   create_table "magaz_carts", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -110,6 +110,16 @@ ActiveRecord::Schema.define(version: 20160210171834) do
   add_index "magaz_line_items", ["order_id"], name: "index_magaz_line_items_on_order_id"
   add_index "magaz_line_items", ["product_id"], name: "index_magaz_line_items_on_product_id"
   add_index "magaz_line_items", ["variant_id"], name: "index_magaz_line_items_on_variant_id"
+
+  create_table "magaz_order_statuses", force: :cascade do |t|
+    t.integer  "order_id"
+    t.integer  "status_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "magaz_order_statuses", ["order_id"], name: "index_magaz_order_statuses_on_order_id"
+  add_index "magaz_order_statuses", ["status_id"], name: "index_magaz_order_statuses_on_status_id"
 
   create_table "magaz_orders", force: :cascade do |t|
     t.string   "customer"

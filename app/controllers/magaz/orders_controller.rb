@@ -60,6 +60,7 @@ module Magaz
     # GET    /orders/:id/edit_status(.:format)
     def edit_status
       @form = 'form_status'
+      @history = @order.history
       render :edit
     end
 

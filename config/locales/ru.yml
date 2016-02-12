@@ -360,6 +360,7 @@ ru:
       total: ИТОГО
       moulded_data: Погонажные даные
       status: Статус
+      history: История изменений
     layouts:
       profile: Профиль
       settings: Настройки

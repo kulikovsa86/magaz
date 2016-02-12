@@ -29,8 +29,10 @@ module Magaz
     belongs_to :status
 
     has_many :line_items, dependent: :destroy
+    has_many :order_statuses, dependent: :destroy
 
     before_create :check_status
+    after_save :log_status, if: :status_id_changed?
 
     validates :customer, presence: true
     validates :phone, presence: true
@@ -57,6 +59,7 @@ module Magaz
     validates :pdt, presence: true, if: :pdt_valid
     
     alias items line_items
+    alias statuses order_statuses
 
     def num
       "#{id}".rjust(3, '0')
@@ -104,6 +107,10 @@ module Magaz
       end
     end
 
+    def history
+      statuses.order(:created_at => :desc).map { |s| "#{s.created_at.strftime('%Y-%m-%d %H:%M')} #{s.status.name} &#13;&#10;" }
+    end
+
     private
 
       def delivery_need?
@@ -116,6 +123,10 @@ module Magaz
 
       def check_status
         self.status = Status.NEW unless status_id
+      end
+
+      def log_status
+        statuses.create!(status_id: status_id)
       end
 
   end
