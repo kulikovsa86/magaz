@@ -8,7 +8,15 @@ module Magaz
 
     # GET    /orders(.:format)
     def index
-      @orders = Order.order(created_at: :desc)
+      if params[:filter] == 'opened'
+        @orders = Order.opened
+      elsif params[:filter] == 'closed'
+        @orders = Order.closed
+      else
+        @orders = Order.order(created_at: :desc)
+        @filter = 'all'
+      end
+      @filter = params[:filter] if params[:filter]
     end
 
     # GET    /orders/new(.:format)

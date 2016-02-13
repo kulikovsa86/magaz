@@ -1,0 +1,13 @@
+= bootstrap_form_for @status, layout: :horizontal, label_col: 'col-md-2', control_col: 'col-md-10' do |f|
+  - if @status.errors.any?
+    = f.alert_message t('errors.template.header', count: @status.errors.count)
+
+  = f.text_field :code, class: 'small_input_group'
+  = f.text_field :name, class: 'medium_input_group'
+  = f.form_group :closed do
+    = f.check_box :closed
+  = f.text_area :note
+
+  = f.submit t('helpers.submit.save'), class: 'btn btn-success'
+  - unless @status.new_record?
+    = link_to t('helpers.link_to.destroy'), @status, method: :delete, data: {confirm: "Вы уверены, что хотите удалить запись?"}, class: 'btn btn-link'

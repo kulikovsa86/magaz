@@ -111,6 +111,16 @@ module Magaz
       statuses.order(:created_at => :desc).map { |s| "#{s.created_at.strftime('%Y-%m-%d %H:%M')} #{s.status.name} &#13;&#10;" }
     end
 
+    def self.opened
+      Order.joins(:status).where(:magaz_statuses => { closed: false }).order(created_at: :desc)
+    end
+
+    def self.closed
+      Order.joins(:status).where(:magaz_statuses => { closed: true }).order(created_at: :desc)
+    end
+
+
+
     private
 
       def delivery_need?

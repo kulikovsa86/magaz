@@ -274,8 +274,10 @@ ActiveRecord::Schema.define(version: 20160212075546) do
     t.string   "code"
     t.string   "name"
     t.text     "note"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.boolean  "closed",     default: false
+    t.integer  "position"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
 
   create_table "magaz_users", force: :cascade do |t|

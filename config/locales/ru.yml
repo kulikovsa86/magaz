@@ -359,7 +359,7 @@ ru:
       options: Параметры
       total: ИТОГО
       moulded_data: Погонажные даные
-      status: Статус
+      order_status: Статусы заказа
       history: История изменений
     layouts:
       profile: Профиль
@@ -403,6 +403,17 @@ ru:
         success: Данные обновлены
       destroy:
         success: Запись удалена
+    statuses:
+      index:
+        title: Статусы заказа
+      new:
+        title: Новый статус заказа
+      create:
+        success: Создан новый статус заказа
+      update:
+        success: Данные обновлены
+      destroy:
+        success: Запись удалена
     orders:
       index:
         title: Заказы
@@ -410,6 +421,9 @@ ru:
         created: Создан
         customer: 'Компания/ФИО'
         total: Стоимость заказа
+        opened: Открытые
+        closed: Закрытые
+        all: Все
       new:
         title: Новый заказ
       create:

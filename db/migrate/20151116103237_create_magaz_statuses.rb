@@ -4,6 +4,8 @@ class CreateMagazStatuses < ActiveRecord::Migration
       t.string :code
       t.string :name
       t.text :note
+      t.boolean :closed, default: false
+      t.integer :position
 
       t.timestamps null: false
     end

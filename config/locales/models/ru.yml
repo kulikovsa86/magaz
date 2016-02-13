@@ -34,6 +34,9 @@ ru:
       magaz/profile:
         one: Профиль
         other: Профили
+      magaz/status:
+        one: Статус
+        other: Статусы
     attributes:
       magaz/property_type:
         code: Код
@@ -125,3 +128,8 @@ ru:
         max: Максимальное значение
         step: Шаг
         default: Значение по-умолчанию
+      magaz/status:
+        code: Код
+        name: Наименование
+        note: Примечание
+        closed: Закрытый

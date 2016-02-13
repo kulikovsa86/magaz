@@ -1,0 +1,24 @@
+- if notice
+  .alert.alert-success= notice
+
+.panel.panel-default
+  .panel-heading
+    %h4.panel_header= t('.title')
+  .panel-body
+    %table.editable_table.table.table-condensed
+      %thead
+        %tr
+          %th.checkbox_column
+          %th.th_actions
+          %th.name_column= Magaz::Status.human_attribute_name(:name)
+          %th= Magaz::Status.human_attribute_name(:note)
+      %tbody
+        - @statuses.each do |status|
+          %tr
+            %td
+            %td.td_actions
+              = render '/magaz/common/dropdown_menu', edit: edit_status_path(status), up: status_up_path(status), down: status_down_path(status), target: status, confirm:  "Вы уверены, что хотите удалить запись?"
+            %td= link_to status.name, edit_status_path(status)
+            %td= status.note
+%br
+= link_to t('helpers.link_to.new', model: Magaz::Status.model_name.human), new_status_path

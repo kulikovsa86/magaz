@@ -103,6 +103,9 @@ Magaz::Engine.routes.draw do
   resources :payments, except: [:show] do
     concerns :moveable
   end
+  resources :statuses, except: [:show] do
+    concerns :moveable
+  end
 
   get '/settings', to: 'settings#index', as: :settings
   post '/settings', to: 'settings#update'

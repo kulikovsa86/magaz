@@ -20,7 +20,7 @@
           %i.fa.fa-bars.fa-fw
           = t('magaz.properties.index.title')
       %li
-        = link_to orders_path, class: active_section("orders") do
+        = link_to orders_path(filter: 'opened'), class: active_section("orders") do
           %i.fa.fa-shopping-cart.fa-fw
           = t('magaz.orders.index.title')
       %li
@@ -31,6 +31,11 @@
         = link_to payments_path, class: active_section("payments") do
           %i.fa.fa-rub.fa-fw
           = t('magaz.common.payment')
+      %li
+        = link_to statuses_path, class: active_section("statuses") do
+          %i.fa.fa-bookmark-o.fa-fw
+          = t('magaz.common.order_status')
+
 
 
 
