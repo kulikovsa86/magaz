@@ -32,6 +32,7 @@ module Magaz
     has_many :order_statuses, dependent: :destroy
 
     before_create :check_status
+    attr_accessor :status_changed
     after_save :log_status, if: :status_id_changed?
 
     validates :customer, presence: true

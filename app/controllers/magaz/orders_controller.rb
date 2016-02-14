@@ -2,7 +2,6 @@ require_dependency "magaz/application_controller"
 
 module Magaz
   class OrdersController < ApplicationController
-    # before_action :authenticate_user!
 
     before_action :set_order, only: [:edit, :update, :destroy, :edit_items, :edit_contacts, :edit_delivery, :edit_payment, :edit_status, :recount]
 
@@ -85,7 +84,7 @@ module Magaz
     # DELETE /orders/:id(.:format)
     def destroy
       @order.destroy
-      redirect_to orders_path, notice: t('.success')
+      redirect_to orders_path(filter: 'opened'), notice: t('.success')
     end
 
     # PATCH  /orders/:id/recount(.:format)
@@ -108,6 +107,5 @@ module Magaz
       def order_params
         params.require(:order).permit(:customer, :company, :phone, :email, :delivery_id, :address1, :address2, :address3, :address4, :post_code, :payment_id, :status_id, :pdt, :manager_comment, :form)
       end
-
   end
 end

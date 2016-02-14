@@ -29,3 +29,5 @@
               = "(#{order.company})" if order.company
             %td.price_cell= number_to_currency order.total_price
             %td.status_cell= order.status.name if order.status
+
+    / = link_to t('helpers.link_to.new', model: Magaz::Order.model_name.human), new_order_path
