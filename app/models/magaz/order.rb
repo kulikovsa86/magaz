@@ -94,18 +94,29 @@ module Magaz
 
     # param_items = [ {id: "id", count: "count"}, ... ]
     def recount(param_items) 
+      changed = false
       param_items.each do |param_item|
         item = items.find_by_id(param_item[:id])
-        item.update(count: param_item[:count], manual: false) if item
+        if item
+          count = item.count
+          item.update(count: param_item[:count], manual: false)
+          changed = true if count != item.count
+        end
       end
+      changed
     end
 
     # param_items = [ {id: "id", count: "count"}, ... ]
     def recount_unit(param_items)
+      changed = false
       param_items.each do |param_item|
         item = items.find_by_id(param_item[:id])
-        item.update(total_count: param_item[:total_count], manual: true) if item
+        if item && item.total_count != BigDecimal(param_item[:total_count])
+          item.update(total_count: param_item[:total_count], manual: true)
+          changed = true
+        end
       end
+      changed
     end
 
     def history

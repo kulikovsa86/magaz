@@ -12,4 +12,9 @@ class ProductsController < ApplicationController
     current_cart.add_item(params)
     redirect_to cart_path
   end
+
+  def send_mail
+    OrderNotifier.tested.deliver_now
+    redirect_to root_path
+  end
 end

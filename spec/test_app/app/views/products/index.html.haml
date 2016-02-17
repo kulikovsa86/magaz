@@ -5,3 +5,5 @@
 
 - @products.each do |product|
   %p= link_to product.name, product_path(product)
+
+= button_to 'Send mail', action: "send_mail", controller: "products"

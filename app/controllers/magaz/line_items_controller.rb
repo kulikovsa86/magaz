@@ -13,6 +13,7 @@ module Magaz
     def destroy
       order = @line_item.order
       @line_item.destroy
+      notify( event_type: 'order item deleted', order: order.id )
       redirect_to edit_items_order_path(order)
     end 
 

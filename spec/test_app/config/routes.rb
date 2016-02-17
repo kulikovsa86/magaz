@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
   controller :products do
     get 'products/:id' => :show, as: 'product'
+    post 'products/send_mail' => :send_mail
     post 'products/:id' => :add2cart
   end
   
@@ -17,5 +18,7 @@ Rails.application.routes.draw do
   post 'order', to: 'carts#create_order'
   
   delete 'item/:id', to: 'carts#delete_item', as: 'item'
+
+
 
 end

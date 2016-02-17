@@ -73,7 +73,11 @@ module Magaz
 
     # PATCH/PUT  /orders/:id(.:format)
     def update
+      status_id = @order.status_id
       if @order.update(order_params)
+        if status_id != @order.status_id
+          notify( event_type: 'status updated', order: @order.id )
+        end
         redirect_to "/magaz/orders/#{@order.id}/#{params[:member]}", notice: t('.success')
       else
         @form = params[:form]
@@ -91,11 +95,15 @@ module Magaz
     def recount
       params.require(:items)
       unless params[:recount_unit]
-        @order.recount(params[:items])
+        if @order.recount(params[:items])
+          notify( event_type: 'count changed', order: @order.id )
+        end
       else
-        @order.recount_unit(params[:items])
+        if @order.recount_unit(params[:items])
+          notify( event_type: 'unit count changed', order: @order.id )
+        end
       end
-      redirect_to edit_items_order_path(@order)
+      redirect_to edit_items_order_path(@order), notice: t('.success')
     end
 
     private

@@ -435,6 +435,8 @@ ru:
         success: Данные заказа обновлены
       destroy:
         success: Заказ удален
+      recount:
+        success: Данные заказа обновлены
     variants:
       index:
         title: Модификации товара

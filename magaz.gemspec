@@ -49,6 +49,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'capybara'
   s.add_development_dependency 'rack_session_access'
   s.add_development_dependency "hirb", "~> 0.7.3"
+  s.add_development_dependency "letter_opener"
 
   s.add_development_dependency 'better_errors', '~> 2.1', '>= 2.1.1'
   s.add_development_dependency 'binding_of_caller', '~> 0.7.2'
