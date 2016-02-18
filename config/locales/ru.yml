@@ -423,6 +423,7 @@ ru:
         total: Стоимость заказа
         opened: Открытые
         closed: Закрытые
+        new: Новые
         all: Все
       new:
         title: Новый заказ

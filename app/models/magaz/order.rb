@@ -131,7 +131,9 @@ module Magaz
       Order.joins(:status).where(:magaz_statuses => { closed: true }).order(created_at: :desc)
     end
 
-
+    def self.fresh
+      Order.where(status: Status.NEW).order(created_at: :desc)
+    end
 
     private
 

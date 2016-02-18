@@ -9,6 +9,7 @@
     %ul.nav.nav-pills
       %li{class: ('active' if @filter == 'opened')}= link_to t('.opened'), orders_path(filter: 'opened'), class: 'btn btn-link'
       %li{class: ('active' if @filter == 'closed')}= link_to t('.closed'), orders_path(filter: 'closed'), class: 'btn btn-link'
+      %li{class: ('active' if @filter == 'new')}= link_to t('.new'), orders_path(filter: 'new'), class: 'btn btn-link'
       %li{class: ('active' if @filter == 'all')}= link_to t('.all'), orders_path(filter: 'all'), class: 'btn btn-link'
     %br
     %table.table.table-condensed
