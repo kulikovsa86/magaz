@@ -74,6 +74,7 @@ ru:
         text: Сообщение
         rate: Оценка
         accepted: Опубликовать
+        fresh: Новый
       magaz/variant:
         price: Цена
         name: Модификация

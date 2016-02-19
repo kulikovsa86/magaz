@@ -8,7 +8,7 @@
       /       %button.btn.btn-default{type: "button"}
       /         %i.fa.fa-search
       %li
-        = link_to '#' do
+        = link_to dashboard_index_path, class: active_section("dashboard") do
           %i.fa.fa-dashboard.fa-fw
           = t('magaz.common.dashboard')
       %li
@@ -31,6 +31,11 @@
         = link_to payments_path, class: active_section("payments") do
           %i.fa.fa-rub.fa-fw
           = t('magaz.common.payment')
+      %li
+        = link_to comments_path, class: active_section("comments") do
+          %i.fa.fa-comments.fa-fw
+          = t('magaz.common.comments')
+
       %li
         = link_to statuses_path, class: active_section("statuses") do
           %i.fa.fa-bookmark-o.fa-fw

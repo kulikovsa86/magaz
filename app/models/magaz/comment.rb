@@ -15,5 +15,9 @@
 module Magaz
   class Comment < ActiveRecord::Base
     belongs_to :product
+
+    def self.fresh
+      Comment.where(fresh: true).order(created_at: :desc)
+    end
   end
 end

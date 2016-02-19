@@ -3,6 +3,11 @@
 
 Magaz::Engine.routes.draw do
 
+  root to: "dashboard#index"
+  # root to: "categories#index"
+
+  get 'dashboard/index'
+
   devise_for :users, {
     class_name: "Magaz::User",
     module: :devise
@@ -14,7 +19,6 @@ Magaz::Engine.routes.draw do
     patch 'update_password', to: 'users#update_password'
   end
 
-  root to: "categories#index"
 
   concern :moveable do
     patch :up
@@ -47,6 +51,8 @@ Magaz::Engine.routes.draw do
       end
     end
   end
+
+  resources :comments, only: :index
 
   resources :products, only: [] do
     concerns :shiftable

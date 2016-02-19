@@ -27,10 +27,15 @@ module Magaz
     end
 
     def active_section(section)
-      if section == "categories" && %w|categories products variants|.include?(controller_name)
+      # if section == "categories" && %w|categories products variants|.include?(controller_name)
+      if section == "categories" && (controller_name == 'categories' || request.fullpath.include?('product'))
         "active"
       elsif section == "properties" && %w|properties property_groups property_options property_args|.include?(controller_name)
         "active"
+      elsif section == "comments"
+        if request.fullpath.exclude?('product') && request.fullpath.include?('comment')
+          "active"  
+        end
       elsif section == controller_name
         "active"
       else

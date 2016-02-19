@@ -53,10 +53,11 @@ ActiveRecord::Schema.define(version: 20160212075546) do
     t.string   "name"
     t.text     "text"
     t.integer  "rate"
-    t.boolean  "accepted"
+    t.boolean  "accepted",   default: false
+    t.boolean  "fresh",      default: true
     t.integer  "product_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
 
   add_index "magaz_comments", ["product_id"], name: "index_magaz_comments_on_product_id"

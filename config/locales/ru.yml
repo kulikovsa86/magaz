@@ -361,10 +361,20 @@ ru:
       moulded_data: Погонажные даные
       order_status: Статусы заказа
       history: История изменений
+      created: Создан
+      new: Новые
+      accepted: Опубликованные
+      hidden: Скрытые
+      all: Все
     layouts:
       profile: Профиль
       settings: Настройки
       quit: Выход
+    dashboard:
+      index:
+        new_orders: Новых заказов
+        new_comments: Новых комментариев
+        details: Подробнее
     users:
       edit:
         profile: Профиль пользователя
@@ -418,7 +428,6 @@ ru:
       index:
         title: Заказы
         num: Номер
-        created: Создан
         customer: 'Компания/ФИО'
         total: Стоимость заказа
         opened: Открытые
@@ -462,6 +471,9 @@ ru:
       shift:
         success: Операция выполнена
     comments:
+      index:
+        public: Публикация
+        fresh: Новый
       edit:
         title: РЕДАКТИРОВАНИЕ
       update:

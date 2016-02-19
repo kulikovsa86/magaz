@@ -6,6 +6,8 @@
   = f.number_field :rate, class: 'small_input_group', in: 1..5
   = f.form_group :accepted do
     = f.check_box :accepted
+  = f.form_group :fresh do
+    = f.check_box :fresh
   = f.text_area :text
 
   = f.submit t('helpers.submit.save'), class: 'btn btn-success'

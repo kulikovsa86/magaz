@@ -1,0 +1,41 @@
+- if notice
+  .alert.alert-success= notice
+
+.panel.panel-default
+  .panel-heading
+    %h4.panel_header= t('magaz.common.dashboard')
+  .panel-body
+    .row
+      .col-lg-3.col-md-6
+        .panel.panel-green
+          .panel-heading
+            .row
+              .col-xs-3
+                %i.fa.fa-shopping-cart.fa-5x
+              .col-xs-9.text-right
+                .huge= Magaz::Order.fresh.count
+                %div
+                  = t('.new_orders')
+          = link_to orders_path(filter: 'new') do
+            .panel-footer
+              %span.pull-left= t('.details')
+              %span.pull-right
+                %i.fa.fa-arrow-circle-right
+              .clearfix
+      .col-lg-3.col-md-6
+        .panel.panel-primary
+          .panel-heading
+            .row
+              .col-xs-3
+                %i.fa.fa-comments.fa-5x
+              .col-xs-9.text-right
+                .huge= Magaz::Comment.fresh.count
+                %div
+                  = t('.new_comments')
+          = link_to comments_path(filter: 'new') do
+            .panel-footer
+              %span.pull-left= t('.details')
+              %span.pull-right
+                %i.fa.fa-arrow-circle-right
+              .clearfix
+              

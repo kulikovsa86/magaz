@@ -1,0 +1,6 @@
+%ul.nav.nav-pills
+  %li{class: ('active' if @filter == 'accepted')}= link_to t('magaz.common.accepted'), product_comments_path(@product, filter: 'accepted'), class: 'btn btn-link'
+  %li{class: ('active' if @filter == 'hidden')}= link_to t('magaz.common.hidden'), product_comments_path(@product, filter: 'hidden'), class: 'btn btn-link'
+  %li{class: ('active' if @filter == 'new')}= link_to t('magaz.common.new'), product_comments_path(@product, filter: 'new'), class: 'btn btn-link'
+  %li{class: ('active' if @filter == 'all')}= link_to t('magaz.common.all'), product_comments_path(@product, filter: 'all'), class: 'btn btn-link'
+  
