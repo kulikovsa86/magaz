@@ -1,0 +1,16 @@
+.col-lg-3.col-md-6
+  .panel{class: "#{panel}"}
+    .panel-heading
+      .row
+        .col-xs-3
+          %i.fa.fa-shopping-cart.fa-5x
+        .col-xs-9.text-right
+          .huge= count
+          %div
+            = items
+    = link_to items_link do
+      .panel-footer
+        %span.pull-left= t('magaz.dashboard.index.details')
+        %span.pull-right
+          %i.fa.fa-arrow-circle-right
+        .clearfix
