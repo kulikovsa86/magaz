@@ -17,7 +17,8 @@ module Magaz
         @orders = Order.fresh
       else
         @orders = Order.order(created_at: :desc)
-      end      
+      end
+      @orders = @orders.paginate(page: params[:page], per_page: 10)
     end
 
     # GET    /orders/new(.:format)

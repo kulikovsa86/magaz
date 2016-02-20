@@ -326,6 +326,11 @@ ru:
       unlock_instructions:
         subject: "Инструкции по разблокировке учётной записи"
 
+  will_paginate:
+    previous_label: "&#8592; Сюда"
+    next_label: "Туда &#8594;"
+    page_gap: "&hellip;"
+
   magaz:
     common:
       dashboard: Панель управления
@@ -374,7 +379,7 @@ ru:
       index:
         new_orders: Новых заказов
         new_comments: Новых комментариев
-        details: Подробнее
+        details: Перейти
     users:
       edit:
         profile: Профиль пользователя

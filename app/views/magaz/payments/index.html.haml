@@ -20,5 +20,4 @@
               = render '/magaz/common/dropdown_menu', edit: edit_payment_path(payment), up: payment_up_path(payment), down: payment_down_path(payment), target: payment, confirm:  "Вы уверены, что хотите удалить запись?"
             %td= link_to payment.name, edit_payment_path(payment)
             %td= payment.note
-%br
-= link_to t('helpers.link_to.new', model: Magaz::Payment.model_name.human), new_payment_path
+    = link_to t('helpers.link_to.new', model: Magaz::Payment.model_name.human), new_payment_path, class: 'btn btn-default'

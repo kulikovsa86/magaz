@@ -22,7 +22,8 @@ module Magaz
         @comments = @comments.where(accepted: true)
       elsif @filter == 'hidden'
         @comments = @comments.where(accepted: false)
-      end    
+      end
+      @comments = @comments.paginate(page: params[:page], per_page: 10)
     end
 
     # GET    /comments/:id/edit(.:format)

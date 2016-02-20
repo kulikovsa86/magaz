@@ -8,7 +8,7 @@ module Magaz
 
     # GET /categories/:category_id/products(.:format)
     def index
-      @products = @parent_category.products.order(:position)
+      @products = @parent_category.products.order(:position).paginate(page: params[:page], per_page: 10)
     end
 
     # GET /categories/:category_id/products/new(.:format)

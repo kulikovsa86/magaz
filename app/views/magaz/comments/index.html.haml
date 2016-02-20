@@ -48,3 +48,5 @@
                 %i.fa.fa-ban
             - unless @product
               %td= link_to comment.product.name, comment.product
+
+    = will_paginate @comments, renderer: BootstrapPagination::Rails

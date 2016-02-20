@@ -11,7 +11,7 @@
       %thead
         %tr
           / %th.checkbox_column= check_box_tag '', '', false, class: 'header-checkbox'
-          %th
+          %th.checkbox_column
           %th.th_actions
           %th= Magaz::Property.human_attribute_name(:name)
           %th= Magaz::Property.human_attribute_name(:property_type)
@@ -35,7 +35,4 @@
             %td
               - if property.variant
                 %i.fa.fa-pencil-square.fa-fw 
-
-%br
-
-= link_to t('helpers.link_to.new_f', model: Magaz::Property.model_name.human), new_property_group_property_path(@parent_group)
+    = link_to t('helpers.link_to.new_f', model: Magaz::Property.model_name.human), new_property_group_property_path(@parent_group), class: 'btn btn-default'

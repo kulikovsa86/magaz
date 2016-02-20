@@ -30,6 +30,4 @@
                 %i.fa.fa-plus
               - else
                 %i.fa.fa-minus
-
-%br
-= link_to t('helpers.link_to.new', model: Magaz::Delivery.model_name.human), new_delivery_path
+    = link_to t('helpers.link_to.new', model: Magaz::Delivery.model_name.human), new_delivery_path, class: 'btn btn-default'

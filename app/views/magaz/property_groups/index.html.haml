@@ -35,11 +35,8 @@
                   %i.fa.fa-folder
                 = group.name
             %td
-
-%br
-- if !@parent_group || (@parent_group.depth < 1)
-  = link_to t('helpers.link_to.new_f', model: Magaz::PropertyGroup.model_name.human), new_property_group_path(@parent_group)
-  - if @groups.empty?
-    \|
-- if @groups.empty?
-  = link_to t('helpers.link_to.new_f', model: Magaz::Property.model_name.human), new_property_group_property_path(@parent_group)
+    - if !@parent_group || (@parent_group.depth < 1)
+      = link_to t('helpers.link_to.new_f', model: Magaz::PropertyGroup.model_name.human), new_property_group_path(@parent_group), class: 'btn btn-default'
+      
+    - if @groups.empty?
+      = link_to t('helpers.link_to.new_f', model: Magaz::Property.model_name.human), new_property_group_property_path(@parent_group), class: 'btn btn-default'

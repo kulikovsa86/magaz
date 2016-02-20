@@ -35,10 +35,7 @@
                   %i.fa.fa-folder
                 = category.name
             %td
+    = link_to t('helpers.link_to.new_f', model: Magaz::Category.model_name.human), new_category_path(@parent_category), class: 'btn btn-default'
+    - if @categories.empty?
+      = link_to t('helpers.link_to.new', model: Magaz::Product.model_name.human), new_category_product_path(@parent_category), class: 'btn btn-default'
       
-
-%br
-= link_to t('helpers.link_to.new_f', model: Magaz::Category.model_name.human), new_category_path(@parent_category)
-- if @categories.empty?
-  \|
-  = link_to t('helpers.link_to.new', model: Magaz::Product.model_name.human), new_category_product_path(@parent_category)

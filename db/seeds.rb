@@ -109,17 +109,7 @@ p1 = Magaz::Product.create(name: 'ASUS K501LB', category: notes, price: 57260)
 p2 = Magaz::Product.create(name: 'HP 15-ac000', category: notes, price: 55401)
 p3 = Magaz::Product.create(name: 'Lenovo Ideapad 100S 11', category: notes, price: 45011)
 
-Magaz::Comment.create(name: 'Ирина', text: 'Крутая штука', rate: 5, accepted: false, product: p1)
-Magaz::Comment.create(name: 'Николай', 
-	text: %|Исходя из имени миграции, Rails может сообщить, что добавляется 
-	(или удаляется) один или несколько столбцов к таблице, имена и типы 
-	данных берутся из параметров. Rails ищет соответствие двум шаблонам: 
-	add_XXX_to_TABLE и remove_XXX_from_TABLE 
-	rails generate migration add_quantity_to_line_items quantity:integer 
-	rails generate migration add_measure_to_products measure:belongs_to 
-	Здесь мы сообщаем, что в таблицу line_items мы хотим добавить поле quntity с типом integer|, 
-	rate: 2, accepted: false, product: p1)
-Magaz::Comment.create(name: 'Алиса', text: 'Мама... агу... ааа па.. баба', rate: 3, accepted: false, product: p1)
+100.times { |i| Magaz::Comment.create(name: "User #{i}", text: "Comment comment comment #{i}", rate: 5, product: p1)
 
 v11 = Magaz::Variant.create!(product: p1, name: 'mod-1', price: 60000)
 v12 = Magaz::Variant.create!(product: p1, name: 'mod-2', price: 70000)
