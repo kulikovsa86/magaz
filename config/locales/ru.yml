@@ -379,6 +379,8 @@ ru:
       index:
         new_orders: Новых заказов
         new_comments: Новых комментариев
+        new_products: Новые товары
+      large_panel:
         details: Перейти
     users:
       edit:

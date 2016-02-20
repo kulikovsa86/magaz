@@ -1,0 +1,10 @@
+.col-lg-6
+  .panel.panel-default
+    .panel-heading
+      = heading
+    .panel-body
+      .list-group
+        - if items
+          - items.each do |item|
+            / = link_to item.name, controller: 'magaz/products', action: 'edit', id: item.permalink, class: 'list-group-item'
+            = link_to item.name, '#', class: 'list-group-item'

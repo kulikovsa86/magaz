@@ -6,7 +6,8 @@
 #  name       :string
 #  text       :text
 #  rate       :integer
-#  accepted   :boolean
+#  accepted   :boolean          default(FALSE)
+#  fresh      :boolean          default(TRUE)
 #  product_id :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
