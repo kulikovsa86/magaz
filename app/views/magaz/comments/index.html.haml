@@ -50,3 +50,4 @@
               %td= link_to comment.product.name, comment.product
 
     = will_paginate @comments, renderer: BootstrapPagination::Rails
+    = render '/magaz/products/iter_group', tab: 'comments'

@@ -2,7 +2,7 @@ require_dependency "magaz/application_controller"
 
 module Magaz
   class ProductsController < ApplicationController
-    before_action :set_product, only: [:edit, :update, :up, :down, :destroy, :upload, :gallery, :properties, :properties_create, :image_up, :image_down, :image_destroy, :descr]
+    before_action :set_product, only: [:edit, :update, :up, :down, :destroy, :upload, :gallery, :properties, :properties_create, :image_up, :image_down, :image_destroy, :descr, :next, :prev]
     before_action :set_image, only: [:image_up, :image_down, :image_destroy]
     before_action :set_parent_category, only: [:index, :new, :create]
 
@@ -20,14 +20,12 @@ module Magaz
 
     # GET /products/1/edit
     def edit
-      @parent_category = @product.category
       @properties = @product.category.static_properties
       @dimensions = Dimension.all
     end
 
     # GET    /products(/:product_id)/descr(.:format)
     def descr
-      @parent_category = @product.category
     end
 
     # POST /categories/:category_id/products(.:format)
@@ -60,23 +58,21 @@ module Magaz
     # PATCH  /products/:product_id/up(.:format)
     def up
       @product.move_higher
-      redirect_to category_products_path(@product.category)
+      redirect_to category_products_path(@parent_category)
     end
 
     # PATCH  /products/:product_id/down(.:format)
     def down
       @product.move_lower
-      redirect_to category_products_path(@product.category)
+      redirect_to category_products_path(@parent_category)
     end
 
     # DELETE /products/1
     def destroy
-      @parent_category = @product.category
       @product.destroy
       if @parent_category.products.empty?
         redirect_to categories_path(@parent_category), notice: t('.success')
       else
-        # @products = @parent_category.products
         redirect_to category_products_path(@parent_category), notice: t('.success')
       end
     end
@@ -134,7 +130,37 @@ module Magaz
       redirect_to category_products_path(@parent_category), notice: 'Операция выполнена'
     end
 
+    # GET    /products/:product_id/next(.:format)
+    def next
+      item = @product.lower_item
+      @product = item if item
+      redirect_to_product
+    end
+
+    # GET    /products/:product_id/prev(.:format)
+    def prev
+      item = @product.higher_item
+      @product = item if item
+      redirect_to_product
+    end
+
     private
+
+      def redirect_to_product
+        if params[:to] == 'descr'
+          redirect_to product_description_path(@product)
+        elsif params[:to] == 'gallery'
+          redirect_to product_gallery_path(@product)
+        elsif params[:to] == 'prop'
+          redirect_to product_properties_path(@product)
+        elsif params[:to] == 'vars'
+          redirect_to product_variants_path(@product)
+        elsif params[:to] == 'comments'
+          redirect_to product_comments_path(@product)
+        else
+          redirect_to edit_product_path(@product)
+        end
+      end
 
       def set_parent_category
         @parent_category = Category.find_by_permalink(params[:category_id])
@@ -144,8 +170,10 @@ module Magaz
       def set_product
         if params[:id]
           @product = Product.find_by_permalink(params[:id])
+          @parent_category = @product.category
         elsif params[:product_id]
           @product = Product.find_by_permalink(params[:product_id])
+          @parent_category = @product.category
         else
           @product = Product.new
         end

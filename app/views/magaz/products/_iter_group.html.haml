@@ -1,0 +1,5 @@
+.btn-group{role: 'group', class: 'pull-right'}
+  = link_to product_prev_path(@product, to: tab), class: 'btn btn-default' do
+    %i.fa.fa-arrow-left
+  = link_to product_next_path(@product, to: tab), class: 'btn btn-default' do
+    %i.fa.fa-arrow-right

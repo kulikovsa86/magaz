@@ -4,7 +4,6 @@
 Magaz::Engine.routes.draw do
 
   root to: "dashboard#index"
-  # root to: "categories#index"
 
   get 'dashboard/index'
 
@@ -23,6 +22,11 @@ Magaz::Engine.routes.draw do
   concern :moveable do
     patch :up
     patch :down
+  end
+
+  concern :iterable do
+    get :next
+    get :prev
   end
 
   concern :image_attachable do
@@ -55,7 +59,7 @@ Magaz::Engine.routes.draw do
   resources :comments, only: :index
 
   resources :products, only: [] do
-    concerns :shiftable
+    concerns [:shiftable, :iterable]
   end
 
   resources :variants, only: [] do

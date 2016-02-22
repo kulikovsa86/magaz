@@ -12,6 +12,7 @@ module Magaz
       @filter = params[:filter] if params[:filter]
       if params[:product_id]
         @product = Product.find_by_permalink(params[:product_id])
+        @parent_category = @product.category
         @comments = @product.comments.order(:created_at)
       else
         @comments = Comment.all.order(:created_at)

@@ -35,7 +35,6 @@
               %td
 
       
-      / = select_tag 'shift[target]', options_for_select(Magaz::Category.options), class: 'selectpicker submit-select', 'data-show-subtext' => true, :title => t('magaz.common.move'), :onchange => ("$('#productform').submit()")
       = link_to t('helpers.link_to.new', model: Magaz::Product.model_name.human), new_category_product_path(@parent_category), class: 'btn btn-default'
       = submit_tag t('magaz.common.remove'), class: 'btn btn-link', data: { confirm: 'Уверены, что хотите удалить выбранные позиции?' }, name: 'remove'
 

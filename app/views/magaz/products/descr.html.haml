@@ -13,3 +13,4 @@
       = hidden_field_tag 'descr', '1'
       = f.text_area :description, class: 'wysihtml5', hide_label: true, id: 'product_description'
       = f.submit t('helpers.submit.save'), class: 'btn btn-success'
+      = render 'iter_group', tab: 'descr'

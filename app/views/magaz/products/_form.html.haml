@@ -22,3 +22,4 @@
   = f.submit t('helpers.submit.save'), class: 'btn btn-success'
   - unless @product.new_record?
     = link_to t('helpers.link_to.destroy'), @product, method: :delete, data: {confirm: "Вы уверены, что хотите удалить товар?"}, class: 'btn btn-link'
+    = render 'iter_group', tab: 'spec'

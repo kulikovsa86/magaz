@@ -26,6 +26,7 @@
       = bootstrap_form_tag url: product_upload_path(@product) do |f|
         = f.file_field :picture, hide_label: true
         = f.submit t('.upload'), class: 'btn btn-success'
+        = render 'iter_group', tab: 'gallery'
 
 
 %br
