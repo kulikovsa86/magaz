@@ -8,7 +8,7 @@
 #  category_id  :integer
 #  description  :text
 #  price        :decimal(8, 2)
-#  hidden       :boolean          default(FALSE)
+#  hidden       :boolean          default(TRUE)
 #  article      :string
 #  weight       :decimal(6, 3)
 #  position     :integer
@@ -35,7 +35,8 @@ module Magaz
     has_many :property_values, as: :valuable, dependent: :destroy
     has_many :comments
 
-    validates :name, presence: true
+    validates :name, :category, presence: true
+    validates :name, allow_blank: true, uniqueness: true, length: { maximum: 144 }
 
     # Устанавливаем значения характеристик товара
     # properties = [{property_id: "", value: ""}, ...]
@@ -57,7 +58,7 @@ module Magaz
     end
 
     # Перемещение/удаление товаров
-    # params = {'parent' => permalink, 'target' => target, items = [{id: id, checked: true}, ...]}
+    # params = {:parent => permalink, :target => target, :items => [{id: id, checked: true}, ...]}
     # target - id категории (для перемещения)
     # id - идентификатор товара, checked - товар выбран
     # remove_flag - флаг операции удаления
@@ -75,15 +76,15 @@ module Magaz
       if input_dim
         input_dim.name
       else
-        Dimension.default.name
+        default_dimension
       end
     end
 
     def calc_dim_name
       if calc_dim
         calc_dim.name
-      else
-        Dimension.default.name
+      elsif
+        default_dimension
       end
     end
 
@@ -104,6 +105,15 @@ module Magaz
     end
 
     private
+      def default_dimension
+        dim = Dimension.default
+        if dim
+          dim.name
+        else
+          '?'
+        end
+      end
+
       def translit_name
         if name
           Translit.convert(name, :english)

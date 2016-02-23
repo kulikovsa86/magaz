@@ -22,12 +22,12 @@ ActiveRecord::Schema.define(version: 20160212075546) do
     t.string   "code"
     t.string   "name"
     t.string   "description"
-    t.boolean  "hidden"
+    t.boolean  "hidden",      default: true
     t.integer  "parent_id"
     t.integer  "position"
     t.string   "permalink"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
 
   add_index "magaz_categories", ["permalink"], name: "index_magaz_categories_on_permalink"
@@ -161,7 +161,7 @@ ActiveRecord::Schema.define(version: 20160212075546) do
     t.integer  "category_id"
     t.text     "description"
     t.decimal  "price",        precision: 8, scale: 2
-    t.boolean  "hidden",                               default: false
+    t.boolean  "hidden",                               default: true
     t.string   "article"
     t.decimal  "weight",       precision: 6, scale: 3
     t.integer  "position"

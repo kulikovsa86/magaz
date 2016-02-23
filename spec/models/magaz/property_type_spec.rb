@@ -1,21 +1,18 @@
 # == Schema Information
 #
-# Table name: magaz_dimensions
+# Table name: magaz_property_types
 #
 #  id         :integer          not null, primary key
 #  code       :string
 #  name       :string
-#  full_name  :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
 
-require 'faker'
+require 'rails_helper'
 
-FactoryGirl.define do
-  factory :magaz_dimension, :class => 'Magaz::Dimension' do
-    code { Faker::Number.number(5) }
-    name { Faker::Lorem.word }
+module Magaz
+  RSpec.describe PropertyType, type: :model do
+    pending "add some examples to (or delete) #{__FILE__}"
   end
-
 end

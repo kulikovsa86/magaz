@@ -31,8 +31,7 @@ module Magaz
     has_many :property_values, dependent: :destroy
     has_one :property_arg, dependent: :destroy
 
-    # validates :code, :name, presence: true
-    # validates :code, allow_blank: true, uniqueness: true
+    validates :name, presence: true
 
     def options
       property_options

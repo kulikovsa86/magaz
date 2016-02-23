@@ -4,7 +4,7 @@ class CreateMagazCategories < ActiveRecord::Migration
       t.string :code
       t.string :name
       t.string :description
-      t.boolean :hidden
+      t.boolean :hidden, default: true
       t.integer :parent_id
       t.integer :position
       t.string :permalink, index: true

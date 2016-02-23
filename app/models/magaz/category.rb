@@ -6,7 +6,7 @@
 #  code        :string
 #  name        :string
 #  description :string
-#  hidden      :boolean
+#  hidden      :boolean          default(TRUE)
 #  parent_id   :integer
 #  position    :integer
 #  permalink   :string

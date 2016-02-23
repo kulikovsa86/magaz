@@ -109,7 +109,7 @@ p1 = Magaz::Product.create(name: 'ASUS K501LB', category: notes, price: 57260)
 p2 = Magaz::Product.create(name: 'HP 15-ac000', category: notes, price: 55401)
 p3 = Magaz::Product.create(name: 'Lenovo Ideapad 100S 11', category: notes, price: 45011)
 
-100.times { |i| Magaz::Comment.create(name: "User #{i}", text: "Comment comment comment #{i}", rate: 5, product: p1)
+100.times { |i| Magaz::Comment.create(name: "User #{i}", text: "Comment comment comment #{i}", rate: 5, product: p1) }
 
 v11 = Magaz::Variant.create!(product: p1, name: 'mod-1', price: 60000)
 v12 = Magaz::Variant.create!(product: p1, name: 'mod-2', price: 70000)
