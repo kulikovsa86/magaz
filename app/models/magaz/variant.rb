@@ -23,6 +23,15 @@ module Magaz
 
     validates :name, presence: true
 
+    # properties = [{property_id: "", value: ""}, ...]
+    def set_properties(properties)
+      property_values.clear
+      properties.each do |pv|
+        next if (!pv[:value] || pv[:value].empty?)
+        property_values.create(property_id: pv[:property_id], value: pv[:value])
+      end
+    end
+
     # удаление модификаций
     # params = {'product' => permalink, items = [{id: id, checked: true}, ...]}
     # id - идентификатор модификации, checked - модификация выбрана
@@ -31,15 +40,6 @@ module Magaz
       variant_ids = params[:items].select{|item| item[:checked]}.map{|item| item[:id]}
       if remove_flag
         Variant.where(:id => variant_ids).destroy_all
-      end
-    end
-
-    # properties = [{property_id: "", value: ""}, ...]
-    def set_properties(properties)
-      property_values.clear
-      properties.each do |pv|
-        next if (!pv[:value] || pv[:value].empty?)
-        property_values.create(property_id: pv[:property_id], value: pv[:value])
       end
     end
 

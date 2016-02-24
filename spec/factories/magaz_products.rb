@@ -55,6 +55,5 @@ FactoryGirl.define do
         create_list(:magaz_variant, evaluator.variant_count, product: product)
       end
     end
-
   end
 end
