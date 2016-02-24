@@ -20,7 +20,6 @@ module Magaz
 
     # GET /products/1/edit
     def edit
-      @properties = @product.category.static_properties
       @dimensions = Dimension.all
     end
 

@@ -22,7 +22,6 @@ module Magaz
     has_many :images, through: :variant_images
 
     validates :name, presence: true
-    validates :name, allow_blank: true, uniqueness: true
 
     # удаление модификаций
     # params = {'product' => permalink, items = [{id: id, checked: true}, ...]}

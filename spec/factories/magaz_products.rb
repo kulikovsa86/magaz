@@ -46,5 +46,15 @@ FactoryGirl.define do
       end
     end
 
+    factory :magaz_product_with_variants do
+      transient do
+        variant_count 5
+      end
+
+      after(:create) do |product, evaluator|
+        create_list(:magaz_variant, evaluator.variant_count, product: product)
+      end
+    end
+
   end
 end

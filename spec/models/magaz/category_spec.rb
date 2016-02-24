@@ -18,6 +18,30 @@ require 'rails_helper'
 
 module Magaz
   RSpec.describe Category, type: :model do
-    pending "add some examples to (or delete) #{__FILE__}"
+    
+    before :each do
+      @category = create(:magaz_category)
+      @category_with_products = create(:magaz_category_with_products)
+      @category_pp = create(:magaz_category_with_properties_and_products)
+    end
+
+    it "has valid factories" do
+      expect(@category).to be_valid
+      expect(@category_with_products).to be_valid
+      expect(@category_pp).to be_valid
+    end
+
+    it "cleans descendant properties" do
+      property_values_total_count = 600
+      expect(Magaz::PropertyValue.all.reload.size).to eq(property_values_total_count)
+      property_group = @category_pp.property_groups.first
+      @category_pp.property_groups.delete(property_group)
+      @category_pp.save
+      expect(Magaz::PropertyValue.all.reload.size).to eq(property_values_total_count / 2)
+      property_group.properties.each do |property|
+        expect(Magaz::PropertyValue.where(property_id: property.id).size).to eq(0)
+      end
+    end
+
   end
 end

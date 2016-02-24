@@ -31,7 +31,7 @@ module Magaz
     end
 
     it "has a valid factory" do
-      expect(create(:magaz_product)).to be_valid
+      expect(@product).to be_valid
     end
 
     it "is not valid with empty attributes" do
