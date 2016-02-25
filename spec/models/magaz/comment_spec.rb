@@ -32,8 +32,9 @@ module Magaz
       product = create(:magaz_product_with_comments, comment_count: total_count)
       items = product.comments.map{ |c| Hash[:id, c.id, :checked, false] }
       0.upto(checked_count - 1) { |i| items[i][:checked] = true }
-      Magaz::Comment.shift({ items: items })
-      expect(product.reload.comments.size).to eq(total_count - checked_count)
+      Comment.shift({ items: items })
+      product.reload
+      expect(product.comments.size).to eq(total_count - checked_count)
     end
   end
 end

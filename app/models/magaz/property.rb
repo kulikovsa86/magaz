@@ -46,19 +46,19 @@ module Magaz
     end
 
     def self.create_combo(name, options)
-      prop = Property.create(name: name, property_type: PropertyType.LIST)
+      prop = Property.create(name: name, property_type: PropertyType.list)
       options.each { |opt| prop.options << PropertyOption.create(name: opt) }
       prop
     end
 
     def self.create_number(name)
-      Property.create(name: name, property_type: PropertyType.NUMBER)
+      Property.create(name: name, property_type: PropertyType.number)
     end
 
     private
 
       def create_property_arg
-        if property_type == PropertyType.NUMBER
+        if property_type == PropertyType.number
           build_property_arg
         end
         true

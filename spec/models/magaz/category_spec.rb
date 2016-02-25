@@ -33,13 +33,13 @@ module Magaz
 
     it "cleans descendant properties" do
       property_values_total_count = 600
-      expect(Magaz::PropertyValue.all.reload.size).to eq(property_values_total_count)
+      expect(PropertyValue.all.reload.size).to eq(property_values_total_count)
       property_group = @category_pp.property_groups.first
       @category_pp.property_groups.delete(property_group)
       @category_pp.save
-      expect(Magaz::PropertyValue.all.reload.size).to eq(property_values_total_count / 2)
+      expect(PropertyValue.all.reload.size).to eq(property_values_total_count / 2)
       property_group.properties.each do |property|
-        expect(Magaz::PropertyValue.where(property_id: property.id).size).to eq(0)
+        expect(PropertyValue.where(property_id: property.id).size).to eq(0)
       end
     end
 

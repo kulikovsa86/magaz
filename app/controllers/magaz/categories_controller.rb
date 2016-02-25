@@ -29,6 +29,7 @@ module Magaz
     # GET /categories/1/edit
     def edit
       @parent_category = @category.parent
+      puts Magaz::PropertyGroup.options
     end
 
     # POST /categories

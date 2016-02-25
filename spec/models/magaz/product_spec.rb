@@ -48,15 +48,15 @@ module Magaz
     it "sets properties" do
       count = 10
       create_list(:magaz_property, count)
-      properties = Magaz::Property.all.map{ |p| Hash[:property_id, "#{p.id}", :value, Faker::Lorem.word] }
+      properties = Property.all.map{ |p| Hash[:property_id, "#{p.id}", :value, Faker::Lorem.word] }
       @product.set_properties(properties)
-      expect(Magaz::PropertyValue.all.size).to eq(count)
+      expect(PropertyValue.all.size).to eq(count)
       expect(@product.property_values.size).to eq(count)
     end
 
     it "gets value" do
       p = create(:magaz_product_with_properties)
-      Magaz::PropertyValue.all.each do |pvalue|
+      PropertyValue.all.each do |pvalue|
         expect(p.value(pvalue.property_id)).to eq(pvalue.value)
       end
       expect(p.value('')).to eq('')
@@ -70,8 +70,9 @@ module Magaz
       0.upto(checked_count - 1) { |i| items[i][:checked] = true }
       category_to = create(:magaz_category)
       params = {target: category_to.id, items: items}
-      Magaz::Product.shift(params, false)
-      expect(category_from.reload.products.size).to eq(total_count - checked_count)
+      Product.shift(params, false)
+      category_from.reload
+      expect(category_from.products.size).to eq(total_count - checked_count)
       expect(category_to.products.size).to eq(checked_count)
     end
 

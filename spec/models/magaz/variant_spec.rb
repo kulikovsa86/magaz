@@ -28,9 +28,9 @@ module Magaz
     it "sets properties" do
       count = 10
       create_list(:magaz_property, count)
-      properties = Magaz::Property.all.map{ |p| Hash[:property_id, "#{p.id}", :value, Faker::Lorem.word] }
+      properties = Property.all.map{ |p| Hash[:property_id, "#{p.id}", :value, Faker::Lorem.word] }
       @variant.set_properties(properties)
-      expect(Magaz::PropertyValue.all.size).to eq(count)
+      expect(PropertyValue.all.size).to eq(count)
       expect(@variant.property_values.size).to eq(count)
     end
 
@@ -40,8 +40,9 @@ module Magaz
       product = create(:magaz_product_with_variants, variant_count: total_count)
       items = product.variants.map{ |v| Hash[:id, v.id, :checked, false] }
       0.upto(checked_count - 1) { |i| items[i][:checked] = true }
-      Magaz::Variant.shift({items: items}, true)
-      expect(product.reload.variants.size).to eq(total_count - checked_count)
+      Variant.shift({items: items}, true)
+      product.reload
+      expect(product.variants.size).to eq(total_count - checked_count)
     end
 
   end

@@ -25,7 +25,7 @@ require 'faker'
 
 FactoryGirl.define do
   factory :magaz_product, :class => 'Magaz::Product' do
-    name { Faker::Commerce.product_name }
+    name { "#{Faker::Commerce.product_name} #{Random.rand(1000)}" }
     association :category, factory: :magaz_category
     description { Faker::Lorem.paragraph }
     price { Faker::Commerce.price }

@@ -10,11 +10,13 @@
 #  updated_at :datetime         not null
 #
 
+require 'faker'
+
 FactoryGirl.define do
   factory :magaz_setting, :class => 'Magaz::Setting' do
-    name "MyString"
-value "MyString"
-param "MyString"
+    name { Faker::Lorem.word }
+    value { Faker::Lorem.word }
+    param { Faker::Lorem.word }
   end
 
 end
