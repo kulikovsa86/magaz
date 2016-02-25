@@ -13,13 +13,14 @@
 #  updated_at :datetime         not null
 #
 
+require 'faker'
+
 FactoryGirl.define do
   factory :magaz_comment, :class => 'Magaz::Comment' do
-    name "MyString"
-text "MyText"
-rate 1
-accepted false
-product nil
+    name { Faker::Name.name }
+    text { Faker::Lorem.paragraph }
+    rate { Faker::Number.between(1, 5) }
+    accepted false
+    association :product, factory: :magaz_product
   end
-
 end
