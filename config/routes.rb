@@ -56,7 +56,9 @@ Magaz::Engine.routes.draw do
     end
   end
 
-  resources :comments, only: :index
+  resources :comments, only: :index do
+    concerns :shiftable
+  end
 
   resources :products, only: [] do
     concerns [:shiftable, :iterable]

@@ -45,6 +45,18 @@ module Magaz
       redirect_to product_comments_path(@product), notice: t('.success')
     end
 
+    # POST   /comments/shift(.:format)
+    def shift
+      shift_params = params.require(:shift).permit(:product_id, :items => [:id, :checked])
+      Comment.shift(shift_params)
+      if params[:shift][:product_id]
+        @product = Product.find_by_permalink(params[:shift][:product_id])
+        redirect_to product_comments_path(@product)
+      else
+        redirect_to comments_path
+      end
+    end
+
     private
       def set_product
         @product = Product.find_by_permalink(params[:product_id])

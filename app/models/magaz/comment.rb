@@ -20,5 +20,14 @@ module Magaz
     def self.fresh
       Comment.where(fresh: true).order(created_at: :desc)
     end
+
+    # удаление комментариев
+    # params = {:items => [{id: id, checked: true}, ...]}
+    # id - идентификатор комментария, checked - комментарий выбран
+    def self.shift(params)
+      comment_ids = params[:items].select{|item| item[:checked]}.map{|item| item[:id]}
+      Comment.where(:id => comment_ids).destroy_all
+    end
+
   end
 end

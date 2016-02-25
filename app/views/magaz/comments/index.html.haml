@@ -19,35 +19,42 @@
       = render '/magaz/products/comment_filter'
     - else
       = render '/magaz/comments/comment_filter'
-
-    %table.editable_table.table.table-condensed
-      %thead
-        %tr
-          %th.th_actions
-          %th= Magaz::Comment.human_attribute_name(:name)
-          %th.datetime_column= t('magaz.common.created')
-          %th= Magaz::Comment.human_attribute_name(:text)
-          %th= Magaz::Comment.human_attribute_name(:rate)
-          %th= t('.fresh')
-          %th= t('.public')
-          - unless @product
-            %th
-      %tbody
-        - @comments.each do |comment|
+    = form_tag(shift_comments_path, id: 'commentform') do
+      - if @product
+        = hidden_field_tag 'shift[product_id]', @product.permalink
+      %table.editable_table.table.table-condensed
+        %thead
           %tr
-            %td
-            %td= link_to comment.name, edit_comment_path(comment)
-            %td= comment.created_at.strftime "%d.%m.%Y %H:%M"
-            %td= truncate(comment.text, length: 80)
-            %td= comment.rate
-            %td
-              - if comment.fresh
-                %i.fa.fa-check-circle-o
-            %td
-              - unless comment.accepted
-                %i.fa.fa-ban
+            %th.checkbox_column= check_box_tag '', '', false, class: 'header-checkbox'
+            %th.th_actions
+            %th= Magaz::Comment.human_attribute_name(:name)
+            %th.datetime_column= t('magaz.common.created')
+            %th= Magaz::Comment.human_attribute_name(:text)
+            %th= Magaz::Comment.human_attribute_name(:rate)
+            %th= t('.fresh')
+            %th= t('.public')
             - unless @product
-              %td= link_to comment.product.name, comment.product
+              %th
+        %tbody
+          - @comments.each do |comment|
+            = hidden_field_tag 'shift[items][][id]', comment.id
+            %tr
+              %td= check_box_tag 'shift[items][][checked]', 'true', false, class: 'row-checkbox'
+              %td
+              %td= link_to comment.name, edit_comment_path(comment)
+              %td= comment.created_at.strftime "%d.%m.%Y %H:%M"
+              %td= truncate(comment.text, length: 80)
+              %td= comment.rate
+              %td
+                - if comment.fresh
+                  %i.fa.fa-check-circle-o
+              %td
+                - unless comment.accepted
+                  %i.fa.fa-ban
+              - unless @product
+                %td= link_to comment.product.name, edit_product_path(comment.product)
+
+      = submit_tag t('magaz.common.remove'), class: 'btn btn-link', data: { confirm: 'Уверены, что хотите удалить выбранные позиции?' }
 
     = will_paginate @comments, renderer: BootstrapPagination::Rails
     - if @product
