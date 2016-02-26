@@ -21,7 +21,6 @@ require 'faker'
 FactoryGirl.define do
   factory :magaz_line_item, :class => 'Magaz::LineItem' do
 
-    
     count { Faker::Number.between(1, 100) }
    
     association :product, factory: :magaz_product

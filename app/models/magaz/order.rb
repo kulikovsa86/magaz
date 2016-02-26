@@ -99,14 +99,14 @@ module Magaz
         item = items.find_by_id(param_item[:id])
         if item
           count = item.count
-          item.update(count: param_item[:count], manual: false)
+          item.update(count: param_item[:count], manual: false, total_count: nil)
           changed = true if count != item.count
         end
       end
       changed
     end
 
-    # param_items = [ {id: "id", count: "count"}, ... ]
+    # param_items = [ {id: "id", total_count: "count"}, ... ]
     def recount_unit(param_items)
       changed = false
       param_items.each do |param_item|

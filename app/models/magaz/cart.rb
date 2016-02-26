@@ -11,9 +11,7 @@ module Magaz
   class Cart < ActiveRecord::Base
     has_many :line_items, dependent: :destroy
 
-    def items
-      line_items
-    end
+    alias items line_items
 
     # params = {product_id: "id", variant_id: "id"}
     def has_item?(params)

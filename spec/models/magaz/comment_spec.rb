@@ -27,8 +27,8 @@ module Magaz
     end
 
     it "can shift" do
-      total_count = Random.rand(10)
-      checked_count = total_count - Random.rand(9)
+      total_count = Random.rand(10) + 1
+      checked_count = Random.rand(total_count)
       product = create(:magaz_product_with_comments, comment_count: total_count)
       items = product.comments.map{ |c| Hash[:id, c.id, :checked, false] }
       0.upto(checked_count - 1) { |i| items[i][:checked] = true }
