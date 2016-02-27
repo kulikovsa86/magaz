@@ -49,8 +49,7 @@ module Magaz
         end
       else
         @parent_category = @product.category
-        @properties = @product.category.static_properties
-        render :action => 'edit'
+        render :edit
       end
     end
 

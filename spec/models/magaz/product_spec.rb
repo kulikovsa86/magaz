@@ -50,7 +50,7 @@ module Magaz
       create_list(:magaz_property, count)
       properties = Property.all.map{ |p| Hash[:property_id, "#{p.id}", :value, Faker::Lorem.word] }
       @product.set_properties(properties)
-      expect(PropertyValue.all.size).to eq(count)
+      expect(PropertyValue.count).to eq(count)
       expect(@product.property_values.size).to eq(count)
     end
 

@@ -65,5 +65,16 @@ FactoryGirl.define do
         create_list(:magaz_comment, evaluator.comment_count, product: product)
       end
     end
+
+    factory :magaz_product_with_images do
+      transient do
+        image_count 5
+      end
+
+      after(:create) do |product, evaluator|
+        1.upto(evaluator.image_count) { product.images << Magaz::Image.create(picture: Faker::Internet.url) }
+      end
+    end
+
   end
 end
