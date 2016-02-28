@@ -14,6 +14,12 @@ module Magaz
     let(:product) { create(:magaz_product) }
 
     describe "GET #index" do
+      it "responds successfully with a HTTP 200 status code" do
+        get :index
+        expect(response).to be_success
+        expect(response).to have_http_status(200)
+      end
+
       it "assigns root categories and renders index" do
         categories = create_list(:magaz_category, 5)
         get :index
@@ -161,7 +167,7 @@ module Magaz
         expect(response).to redirect_to(categories_path(category_with_children))
       end
 
-      it "moves the product down and redirects" do
+      it "moves the category down and redirects" do
         c = category_with_children.children.first
         expect {
           put :down, category_id: c

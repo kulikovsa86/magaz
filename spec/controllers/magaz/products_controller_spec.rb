@@ -327,7 +327,7 @@ module Magaz
 
     describe "PUT #shift" do
       it "assigns new values and redirects" do
-        put :shift, shift: { parent: category_p, target: category.id, items: [{id: product.id, checked: true}] }
+        post :shift, shift: { parent: category_p, target: category.id, items: [{id: product.id, checked: true}] }
         expect(assigns(:parent_category)).to eq(category_p)
         expect(response).to redirect_to(category_products_path(category_p))
       end

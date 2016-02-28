@@ -17,7 +17,6 @@ module Magaz
       @p = @product
       @parent_category = @product.category
       @variant = Variant.new
-      # @properties = @product.category.dynamic_properties
       @property_groups = @product.category.property_groups
       @images = @product.images
       @options = []
@@ -26,7 +25,6 @@ module Magaz
 
     # POST   /products/:product_id/variants(.:format)
     def create
-      # variant = @product.variants.create(variant_params)
       @variant = Variant.new(variant_params)
       @variant.name = params[:var_name]
       @variant.product_id = @product.id
@@ -55,10 +53,20 @@ module Magaz
 
     # PATCH/PUT  /variants/:id(.:format)
     def update
-      @variant.update(variant_params)
+      @variant.attributes = variant_params
       @variant.name = params[:var_name]
-      @variant.set_properties(params[:properties]) if params[:properties]
-      redirect_to product_variants_path(@variant.product), notice: t('.success')
+      if @variant.save
+        @variant.set_properties(params[:properties]) if params[:properties]
+        redirect_to product_variants_path(@variant.product), notice: t('.success')
+      else
+        @product = @variant.product
+        @parent_category = @product.category
+        @property_groups = @product.category.property_groups
+        @images = @product.images
+        @options = []
+        @product.images.each { |image| @options << [image.id, image.id, {:'data-img-src' => image.picture.url}] }
+        render :edit
+      end
     end
 
     # POST   /variants/shift(.:format)
