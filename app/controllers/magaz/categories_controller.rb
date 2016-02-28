@@ -4,7 +4,7 @@ module Magaz
   class CategoriesController < ApplicationController
     before_action :set_category, only: [:edit, :update, :destroy]
 
-    # GET /categories/(:parent_id)
+    # GET /categories/(:parent)
     def index
       if params[:parent]
         @parent_category = Category.find_by_permalink(params[:parent])
@@ -17,19 +17,17 @@ module Magaz
       end
     end
 
-    # GET /categories/new/(:parent_id)
+    # GET /categories/new/(:parent)
     def new
       @category = Category.new
       if params[:parent]
         @parent_category = Category.find_by_permalink(params[:parent])
       end
-      @all_properties = Property.all
     end
 
-    # GET /categories/1/edit
+    # GET    /categories/:id/edit(.:format)
     def edit
       @parent_category = @category.parent
-      puts Magaz::PropertyGroup.options
     end
 
     # POST /categories
@@ -45,7 +43,7 @@ module Magaz
       end
     end
 
-    # PATCH/PUT /categories/1
+    # PATCH/PUT  /categories/:id(.:format)
     def update
       if @category.update(category_params)
         redirect_to edit_category_path(@category), notice: t('.success')

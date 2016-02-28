@@ -32,6 +32,16 @@ FactoryGirl.define do
       end
     end
 
+    factory :magaz_category_with_children do
+      transient do
+        children_count 3
+      end
+
+      after(:create) do |category, evaluator|
+        1.upto(evaluator.children_count) { category.children << create(:magaz_category) }
+      end
+    end
+
     factory :magaz_category_with_properties_and_products do
 
       transient do

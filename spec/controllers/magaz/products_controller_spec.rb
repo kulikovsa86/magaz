@@ -6,16 +6,12 @@ module Magaz
     routes { Magaz::Engine.routes }
 
     before :each do
-      @user = create(:magaz_user)
+      sign_in create(:magaz_user)
     end
 
     let(:category) { create(:magaz_category) }
     let(:category_p) { create(:magaz_category_with_products) }
     let(:product) { create(:magaz_product) }
-
-    before :each do
-      sign_in @user
-    end
 
     describe "GET #index" do
       before :each do
@@ -27,7 +23,7 @@ module Magaz
         expect(response).to have_http_status(200)
       end
 
-      it "assigns varibles" do
+      it "assigns variables" do
         expect(assigns(:parent_category)).to eq(category)
         expect(assigns(:products)).to eq(category.products)
       end
@@ -47,7 +43,7 @@ module Magaz
         expect(response).to have_http_status(200)
       end
 
-      it "assigns varibles" do
+      it "assigns variables" do
         expect(assigns(:parent_category)).to eq(category)
         expect(assigns(:product)).to be_a_new(Product)
         expect(assigns(:dimensions)).to eq(Dimension.all)
@@ -68,7 +64,7 @@ module Magaz
         expect(response).to have_http_status(200)
       end
 
-      it "assigns varibles" do
+      it "assigns variables" do
         expect(assigns(:product)).to eq(product)
         expect(assigns(:dimensions)).to eq(Dimension.all)
       end
@@ -88,7 +84,7 @@ module Magaz
         expect(response).to have_http_status(200)
       end
 
-      it "assigns varibles" do
+      it "assigns variables" do
         expect(assigns(:product)).to eq(product)
       end
 
@@ -109,14 +105,14 @@ module Magaz
           }.to change{ Product.count }.by(1)
         end
 
-        it "assigns varibles" do
+        it "assigns variables" do
           post :create, category_id: category, product: @params
           expect(assigns(:parent_category)).to eq(category)
           expect(assigns(:product)).to be_a(Product)
           expect(assigns(:category)).to eq(category)
         end
 
-        it "it redirects to edit product" do
+        it "redirects to edit product" do
           post :create, category_id: category, product: @params
           expect(response).to redirect_to(edit_product_path(Product.last))
         end
@@ -174,7 +170,7 @@ module Magaz
       context "invalid attributes" do
         before :each do
           @params = attributes_with_foreign_keys_for(:magaz_product)
-          @params.delete "name"
+          @params[:name] = ''
         end
 
         it "doesn't change the instance attributes" do
@@ -184,31 +180,33 @@ module Magaz
           expect(product.name).to eq(old_name)
         end
 
-        it "assigns varibles" do
+        it "assigns variables" do
           put :update, id: product, product: @params
           expect(assigns(:parent_category)).to eq(product.category)
         end
 
         it "re-renders the edit template" do
           put :update, id: product, product: @params
-          expect(response).to redirect_to(edit_product_path(product))
+          expect(response).to render_template(:edit)
         end
       end
     end
 
     describe "PUT #up/#down" do
-      it "moves the product up" do
+      it "moves the product up and redirects" do
         p = category_p.products.last
         expect {
           put :up, product_id: p
         }.to change{ p.reload.position }.by(-1)
+        expect(response).to redirect_to(category_products_path(category_p))
       end
 
-      it "moves the product down" do
+      it "moves the product down and redirects" do
         p = category_p.products.first
         expect {
           put :down, product_id: p
         }.to change{ p.reload.position }.by(1)
+        expect(response).to redirect_to(category_products_path(category_p))
       end
     end
 
@@ -255,7 +253,7 @@ module Magaz
         expect(response).to have_http_status(200)
       end
 
-      it "assigns varibles" do
+      it "assigns variables" do
         expect(assigns(:product)).to eq(product)
         expect(assigns(:parent_category)).to eq(product.category)
       end
@@ -277,7 +275,7 @@ module Magaz
         expect(response).to have_http_status(200)
       end
 
-      it "assigns varibles" do
+      it "assigns variables" do
         expect(assigns(:product)).to eq(@p)
         expect(assigns(:parent_category)).to eq(@cat_pp)
         expect(assigns(:property_groups)).to eq(@cat_pp.property_groups)
