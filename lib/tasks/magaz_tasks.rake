@@ -1,4 +1,6 @@
-# desc "Explaining what the task does"
-# task :magaz do
-#   # Task goes here
-# end
+namespace :magaz do
+  desc 'Load seed data for the Magaz'
+  task seed: :environment do
+    require File.join(Magaz.root, 'db', 'seeds')
+  end
+end

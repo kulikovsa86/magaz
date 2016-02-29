@@ -42,6 +42,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'rails-settings-cached'
   s.add_dependency 'will_paginate', '~> 3.0.6'
   s.add_dependency 'will_paginate-bootstrap'
+  s.add_dependency "rspec-instrumentation-matcher"
 
   s.add_development_dependency "sqlite3"
   s.add_development_dependency "rspec-rails", "~> 3.3.3"
@@ -52,7 +53,6 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'rack_session_access'
   s.add_development_dependency "hirb", "~> 0.7.3"
   s.add_development_dependency "letter_opener"
-  s.add_development_dependency "rspec-instrumentation-matcher"
 
   s.add_development_dependency 'better_errors', '~> 2.1', '>= 2.1.1'
   s.add_development_dependency 'binding_of_caller', '~> 0.7.2'
