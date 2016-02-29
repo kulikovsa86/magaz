@@ -23,6 +23,7 @@ require 'validates_email_format_of'
 require 'rails-settings-cached'
 require 'will_paginate'
 require 'will_paginate-bootstrap'
+require 'rspec-instrumentation-matcher'
 
 require "magaz/engine"
 
