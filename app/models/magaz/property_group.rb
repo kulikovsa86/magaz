@@ -18,6 +18,8 @@ module Magaz
 
     has_many :properties, dependent: :destroy
 
+    validates :name, presence: true
+
     def invariant_properties
       properties.where(variant: false)
     end

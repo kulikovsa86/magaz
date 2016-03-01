@@ -25,6 +25,18 @@ FactoryGirl.define do
         create_list(:magaz_property, evaluator.property_count, property_group: property_group)
       end
     end
+
+    factory :magaz_property_group_with_groups do
+      transient do
+        group_count 5
+      end
+
+      after(:create) do |property_group, evaluator|
+        create_list(:magaz_property_group, evaluator.group_count).each do |group|
+          property_group.children << group
+        end
+      end
+    end
   end
 
 end

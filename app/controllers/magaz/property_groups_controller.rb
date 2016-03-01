@@ -25,7 +25,7 @@ module Magaz
       end
     end
 
-    # GET /property_groups/1/edit
+    # GET    /property_groups/:id/edit(.:format)
     def edit
       @parent_group = @property_group.parent
     end
