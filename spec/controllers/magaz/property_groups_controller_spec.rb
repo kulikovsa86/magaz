@@ -82,7 +82,7 @@ module Magaz
           }.to change{ PropertyGroup.count }.by(1)
         end
 
-        it "adds new child to parent category" do
+        it "adds new child to parent group" do
           expect {
             post :create, property_group: @params, parent_id: property_group
           }.to change{ property_group.reload.children.count }.by(1)
@@ -160,7 +160,7 @@ module Magaz
         expect(response).to redirect_to(property_groups_path(property_group_root))
       end
 
-      it "moves the category down and redirects" do
+      it "moves the property_group down and redirects" do
         pg = property_group_root.children.first
         expect {
           put :down, property_group_id: pg

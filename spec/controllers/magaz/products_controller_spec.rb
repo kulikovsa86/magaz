@@ -108,7 +108,7 @@ module Magaz
         it "assigns variables" do
           post :create, category_id: category, product: @params
           expect(assigns(:parent_category)).to eq(category)
-          expect(assigns(:product)).to be_a(Product)
+          expect(assigns(:product)).to eq(Product.last)
           expect(assigns(:category)).to eq(category)
         end
 

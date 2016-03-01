@@ -7,19 +7,16 @@ module Magaz
 
     # GET    /property_groups/:property_group_id/properties(.:format)
     def index
-      # @properties = Property.joins(:property_type).order('magaz_property_types.code ASC')
-      # @properties = Property.all
       @properties = @parent_group.properties.order(:position)
     end
 
-
-    # GET /properties/new
+    # GET    /property_groups/:property_group_id/properties/new(.:format)
     def new
       @property = Property.new
       @property_group = @parent_group
     end
 
-    # GET /properties/1/edit
+    # GET    /properties/:id/edit(.:format)
     def edit
       @parent_group = @property.group
     end

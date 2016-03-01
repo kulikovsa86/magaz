@@ -23,6 +23,7 @@ FactoryGirl.define do
     name { Faker::Lorem.sentence }
     description { Faker::Lorem.paragraph }
     association :property_type, factory: :magaz_property_type
+    association :property_group, factory: :magaz_property_group
     static false
     variant false
   end
