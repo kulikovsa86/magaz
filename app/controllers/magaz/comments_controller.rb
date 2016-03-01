@@ -3,7 +3,6 @@ require_dependency "magaz/application_controller"
 module Magaz
   class CommentsController < ApplicationController
 
-    # before_action :set_product, only: [:index]
     before_action :set_comment, only: [:edit, :update, :destroy]
 
     # GET    /products/:product_id/comments(.:format)
@@ -34,8 +33,12 @@ module Magaz
 
     # PATCH/PUT  /comments/:id(.:format)
     def update
-      @comment.update(comment_params)
-      redirect_to product_comments_path(@comment.product), notice: t('.success')
+      if @comment.update(comment_params)
+        redirect_to product_comments_path(@comment.product), notice: t('.success')
+      else
+        @product = @comment.product
+        render :edit
+      end
     end
 
     # DELETE /comments/:id(.:format)
