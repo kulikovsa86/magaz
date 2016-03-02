@@ -17,6 +17,8 @@ module Magaz
 
     acts_as_list
 
+    validates :name, :code, presence: true
+
     def self.NEW
       Status.find_by(code: '01')
     end

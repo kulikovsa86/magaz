@@ -12,8 +12,13 @@
 #  updated_at :datetime         not null
 #
 
-module Magaz
-  class Profile < ActiveRecord::Base
-    belongs_to :users
+
+require 'faker'
+
+FactoryGirl.define do
+  factory :magaz_profile, :class => 'Magaz::Profile' do
+    first_name { Faker::Name.first_name }
+    last_name { Faker::Name.last_name }
+    phone { Faker::PhoneNumber.cell_phone }
   end
 end

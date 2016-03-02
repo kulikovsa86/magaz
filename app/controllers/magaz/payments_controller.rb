@@ -1,3 +1,16 @@
+# == Schema Information
+#
+# Table name: magaz_payments
+#
+#  id         :integer          not null, primary key
+#  code       :string
+#  name       :string
+#  note       :text
+#  position   :integer
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
 require_dependency "magaz/application_controller"
 
 module Magaz

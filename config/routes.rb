@@ -96,7 +96,7 @@ Magaz::Engine.routes.draw do
   post '/property_groups/(:parent_id)', to: 'property_groups#create'
   get '/property_groups/(:parent_id)', to: 'property_groups#index', as: :property_groups
 
-  resources :line_items, only: [:create, :destroy]
+  resources :line_items, only: [:destroy]
   
   resources :orders, except: [:show] do
     member do

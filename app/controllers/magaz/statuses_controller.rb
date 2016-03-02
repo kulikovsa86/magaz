@@ -1,3 +1,17 @@
+# == Schema Information
+#
+# Table name: magaz_statuses
+#
+#  id         :integer          not null, primary key
+#  code       :string
+#  name       :string
+#  note       :text
+#  closed     :boolean          default(FALSE)
+#  position   :integer
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
 require_dependency "magaz/application_controller"
 
 module Magaz

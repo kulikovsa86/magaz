@@ -1,3 +1,18 @@
+# == Schema Information
+#
+# Table name: magaz_comments
+#
+#  id         :integer          not null, primary key
+#  name       :string
+#  text       :text
+#  rate       :integer
+#  accepted   :boolean          default(FALSE)
+#  fresh      :boolean          default(TRUE)
+#  product_id :integer
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
 require 'rails_helper'
 
 module Magaz

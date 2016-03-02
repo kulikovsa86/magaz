@@ -46,11 +46,16 @@ FactoryGirl.define do
       price { Faker::Commerce.price }
     end
 
+    trait :in_order do
+      association :order, factory: :magaz_order
+    end
+
     factory :magaz_line_item_with_variant, traits: [:with_variant]
     factory :magaz_line_item_with_variant_nil_price, traits: [:with_variant_nil_price]
     factory :magaz_line_item_with_ratio, traits: [:ratio]
     factory :magaz_line_item_with_total_count, traits: [:manual_and_total_count, :ratio]
     factory :magaz_line_item_with_price, traits: [:price]
+    factory :magaz_line_item_in_order, traits: [:in_order]
 
     transient do
       moulded false

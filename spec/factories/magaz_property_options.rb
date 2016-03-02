@@ -11,7 +11,12 @@
 #  updated_at  :datetime         not null
 #
 
-module Magaz
-  module PropertyOptionsHelper
+require 'faker'
+
+FactoryGirl.define do
+  factory :magaz_property_option, :class => 'Magaz::PropertyOption' do
+    association :property, factory: :magaz_property
+    code { Faker::Number.number(5) }
+    name { Faker::Lorem.sentence }
   end
 end

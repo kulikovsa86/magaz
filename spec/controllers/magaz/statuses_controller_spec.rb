@@ -1,23 +1,21 @@
 # == Schema Information
 #
-# Table name: magaz_deliveries
+# Table name: magaz_statuses
 #
-#  id                 :integer          not null, primary key
-#  code               :string
-#  name               :string
-#  note               :text
-#  address_required   :boolean
-#  post_code_required :boolean
-#  price              :decimal(8, 2)
-#  position           :integer
-#  created_at         :datetime         not null
-#  updated_at         :datetime         not null
+#  id         :integer          not null, primary key
+#  code       :string
+#  name       :string
+#  note       :text
+#  closed     :boolean          default(FALSE)
+#  position   :integer
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
 #
 
 require 'rails_helper'
 
 module Magaz
-  RSpec.describe DeliveriesController, type: :controller do
+  RSpec.describe StatusesController, type: :controller do
 
     routes { Magaz::Engine.routes }
 
@@ -25,7 +23,8 @@ module Magaz
       sign_in create(:magaz_user)
     end
 
-    let(:delivery) { create(:magaz_delivery) }
+    let(:status) { create(:magaz_status) }
+    let(:statuses) { create_list(:magaz_status, 5) }
 
     describe "GET #index" do
       before :each do
@@ -38,7 +37,7 @@ module Magaz
       end
 
       it "assigns variables" do
-        expect(assigns(:deliveries)).to eq([delivery])
+        expect(assigns(:statuses)).to eq([status])
       end
 
       it "renders index" do
@@ -57,7 +56,7 @@ module Magaz
       end
 
       it "assigns variables" do
-        expect(assigns(:delivery)).to be_a_new(Delivery)
+        expect(assigns(:status)).to be_a_new(Status)
       end
 
       it "renders template" do
@@ -67,18 +66,18 @@ module Magaz
 
     describe "POST #create" do
       before :each do
-        @params = attributes_with_foreign_keys_for(:magaz_delivery)
+        @params = attributes_with_foreign_keys_for(:magaz_status)
       end
 
       context "valid attributes" do
-        subject { post :create, delivery: @params }
+        subject { post :create, status: @params }
 
         it "creates a new instance" do
-          expect { subject }.to change{ Delivery.count }.by(1)
+          expect { subject }.to change{ Status.count }.by(1)
         end
 
         it "redirects to edit path" do
-          expect(subject).to redirect_to(edit_delivery_path(Delivery.last))
+          expect(subject).to redirect_to(edit_status_path(Status.last))
         end
       end
 
@@ -87,10 +86,10 @@ module Magaz
           @params.delete "name"
         end
 
-        subject { post :create, delivery: @params }
+        subject { post :create, status: @params }
 
         it "doesn't save the new instance" do
-          expect{ subject }.to_not change{ Delivery.count }
+          expect{ subject }.to_not change{ Status.count }
         end
 
         it "re-renders new template" do
@@ -101,7 +100,7 @@ module Magaz
 
     describe "GET #edit" do
       before :each do
-        get :edit, id: delivery
+        get :edit, id: status
       end
 
       it "responds successfully with a HTTP 200 status code" do
@@ -110,34 +109,34 @@ module Magaz
       end
 
       it "assigns variables and render template" do
-        expect(assigns(:delivery)).to eq(delivery)
+        expect(assigns(:status)).to eq(status)
         expect(response).to render_template(:edit)
       end
     end
 
     describe "PUT #update" do
       before :each do
-        @params = attributes_with_foreign_keys_for(:magaz_delivery)
+        @params = attributes_with_foreign_keys_for(:magaz_status)
       end
 
       context "valid attributes" do
         before :each do
-          put :update, id: delivery, delivery: @params
+          put :update, id: status, status: @params
         end
 
         it "locates the requested instance" do
-          expect(assigns(:delivery)).to eq(delivery)
+          expect(assigns(:status)).to eq(status)
         end
 
         it "change instance attributes" do
-          delivery.reload
-          %w|code name note address_required post_code_required|.each do |field|
-            expect(delivery[field]).to eq(@params[field])
+          status.reload
+          %w|code name note closed|.each do |field|
+            expect(status[field]).to eq(@params[field])
           end
         end
 
         it "redirects to edit path" do
-          expect(response).to redirect_to(edit_delivery_path(delivery))
+          expect(response).to redirect_to(edit_status_path(status))
         end
       end
 
@@ -147,48 +146,48 @@ module Magaz
         end
 
         it "doesn't change the instance attributes" do
-          old_name = delivery.name
-          put :update, id: delivery, delivery: @params
-          delivery.reload
-          expect(delivery.name).to eq(old_name)
+          old_name = status.name
+          put :update, id: status, status: @params
+          status.reload
+          expect(status.name).to eq(old_name)
         end
 
         it "re-renders the edit template" do
-          put :update, id: delivery, delivery: @params
+          put :update, id: status, status: @params
           expect(response).to render_template(:edit)
         end
       end
     end
 
     describe "PUT #up/#down" do
-      it "moves the delivery up and redirects" do
-        d = create_list(:magaz_delivery, 5).last
+      it "moves the status up and redirects" do
+        s = statuses.last
         expect {
-          put :up, delivery_id: d
-        }.to change{ d.reload.position }.by(-1)
-        expect(response).to redirect_to(deliveries_path)
+          put :up, status_id: s
+        }.to change{ s.reload.position }.by(-1)
+        expect(response).to redirect_to(statuses_path)
       end
 
       it "moves the destroy down and redirects" do
-        d = create_list(:magaz_delivery, 5).first
+        s = statuses.first
         expect {
-          put :down, delivery_id: d
-        }.to change{ d.reload.position }.by(1)
-        expect(response).to redirect_to(deliveries_path)
+          put :down, status_id: s
+        }.to change{ s.reload.position }.by(1)
+        expect(response).to redirect_to(statuses_path)
       end
     end
 
     describe "DELETE #destroy" do
       it "deletes the instance" do
-        d = create(:magaz_delivery)
+        s = create(:magaz_status)
         expect {
-          delete :destroy, id: d
-        }.to change{ Delivery.count }.by(-1)
+          delete :destroy, id: s
+        }.to change{ Status.count }.by(-1)
       end
 
       it "redirects to index" do
-        delete :destroy, id: delivery
-        expect(response).to redirect_to(deliveries_path)
+        delete :destroy, id: status
+        expect(response).to redirect_to(statuses_path)
       end
     end
 

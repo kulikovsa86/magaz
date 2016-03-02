@@ -1,13 +1,27 @@
+# == Schema Information
+#
+# Table name: magaz_line_items
+#
+#  id          :integer          not null, primary key
+#  product_id  :integer
+#  variant_id  :integer
+#  price       :decimal(8, 2)
+#  count       :integer
+#  total_count :decimal(8, 3)
+#  manual      :boolean          default(FALSE)
+#  ratio       :decimal(8, 3)
+#  cart_id     :integer
+#  order_id    :integer
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#
+
 require_dependency "magaz/application_controller"
 
 module Magaz
   class LineItemsController < ApplicationController
 
     before_action :set_line_item, only: [:destroy]
-
-    # POST   /line_items(.:format)
-    def create
-    end
 
     # DELETE /line_items/:id(.:format)
     def destroy

@@ -388,6 +388,8 @@ ru:
         change_pwd: Изменить пароль
       update:
         success: 'Профиль обновлен'
+      update_password:
+        success: 'Пароль изменен'
     settings:
       index:
         title: Настройки
