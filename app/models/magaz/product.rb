@@ -30,10 +30,11 @@ module Magaz
     belongs_to :input_dim, :class_name => "Dimension"
     belongs_to :calc_dim, :class_name => "Dimension"
 
+    has_many :line_items, dependent: :destroy
     has_many :variants, dependent: :destroy
     has_many :images, as: :imageable, dependent: :destroy
     has_many :property_values, as: :valuable, dependent: :destroy
-    has_many :comments
+    has_many :comments, dependent: :destroy
 
     validates :name, :category, presence: true
     validates :name, allow_blank: true, uniqueness: true, length: { maximum: 144 }
