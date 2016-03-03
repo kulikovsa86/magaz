@@ -6,8 +6,6 @@
     %h4.panel_header= t('magaz.common.dashboard')
   .panel-body
     .row
-      = render 'large_panel', panel: 'panel-green', count: Magaz::Order.fresh.count, items: t('.new_orders'), items_link: orders_path(filter: 'new')
-      = render 'large_panel', panel: 'panel-primary', count: Magaz::Comment.fresh.count, items: t('.new_comments'), items_link: comments_path(filter: 'new')
-    .row
-      / = render 'notifications_panel', heading: t('.new_products'), items: @new_products
+      = render 'large_panel', panel: 'panel-green', count: Magaz::Order.fresh.count, items: t('.new_orders'), items_link: orders_path(filter: 'new'), icon: "fa-shopping-cart"
+      = render 'large_panel', panel: 'panel-primary', count: Magaz::Comment.fresh.count, items: t('.new_comments'), items_link: comments_path(filter: 'new'), icon: "fa-comments"
 
