@@ -5,6 +5,7 @@ Magaz::Order.delete_all
 Magaz::PropertyValue.delete_all
 Magaz::Variant.delete_all
 Magaz::Comment.delete_all
+Magaz::Image.delete_all
 Magaz::Product.delete_all
 Magaz::Category.delete_all
 Magaz::PropertyOption.delete_all
@@ -73,31 +74,43 @@ pg_mon.add_combo_property('Разрешение', %w|1024x768 1440x900 5000x2500
 
 
 notes = Magaz::Category.find_or_create_by_path %w|Компьютеры Ноутбуки|
-Magaz::Category.find_or_create_by_path %w|Компьютеры Настольные|
-Magaz::Category.find_or_create_by_path %w|Компьютеры Планшеты|
-Magaz::Category.find_or_create_by_path %w|Компьютеры Комплектующие|
-Magaz::Category.find_or_create_by_path %w|Компьютеры Мониторы|
-Magaz::Category.find_or_create_by_path %w|Электроника Мобильные-телефоны|
-Magaz::Category.find_or_create_by_path %w|Электроника Фото-и-видеокамеры|
-Magaz::Category.find_or_create_by_path %w|Электроника Телевизоры|
-Magaz::Category.find_or_create_by_path %w|Бытовая-техника Крупная-техника-для-кухни|
-Magaz::Category.find_or_create_by_path %w|Бытовая-техника Мелкая-техника-для-кухни|
-Magaz::Category.find_or_create_by_path %w|Бытовая-техника Техника-для-дома|
+desk = Magaz::Category.find_or_create_by_path %w|Компьютеры Настольные|
+mon = Magaz::Category.find_or_create_by_path %w|Компьютеры Мониторы|
 
-p1 = Magaz::Product.create(name: 'ASUS K501LB', category: notes, price: 57260)
-p2 = Magaz::Product.create(name: 'HP 15-ac000', category: notes, price: 55401)
-p3 = Magaz::Product.create(name: 'Lenovo Ideapad 100S 11', category: notes, price: 45011)
+p1 = Magaz::Product.create(name: 'ASUS K501', category: notes, price: 57260)
+p1.images << Magaz::Image.create(picture: File.open(Rails.root + "app/assets/images/asus-1.jpg", "r"))
+p11 = Magaz::Product.create(name: 'ASUS K505', category: notes)
+p11.images << Magaz::Image.create(picture: File.open(Rails.root + "app/assets/images/asus-2.jpg", "r"))
+p2 = Magaz::Product.create(name: 'HP 15-ac', category: notes, price: 55401)
+p2.images << Magaz::Image.create(picture: File.open(Rails.root + "app/assets/images/hp.jpg", "r"))
+p3 = Magaz::Product.create(name: 'Lenovo Idealpad 500', category: notes, price: 45011)
+p3.images << Magaz::Image.create(picture: File.open(Rails.root + "app/assets/images/lenovo.jpg", "r"))
+
+p4 = Magaz::Product.create(name: 'MicroXpress', category: desk, price: 35000)
+p4.images << Magaz::Image.create(picture: File.open(Rails.root + "app/assets/images/micro.jpg", "r"))
+p5 = Magaz::Product.create(name: 'MSI Night', category: desk, price: 75000)
+p5.images << Magaz::Image.create(picture: File.open(Rails.root + "app/assets/images/msi.jpg", "r"))
+
+p6 = Magaz::Product.create(name: 'Samsung S29', category: mon, price: 15000)
+p6.images << Magaz::Image.create(picture: File.open(Rails.root + "app/assets/images/samsung.jpg", "r"))
+p7 = Magaz::Product.create(name: 'Benq U111', category: mon, price: 13333)
+p7.images << Magaz::Image.create(picture: File.open(Rails.root + "app/assets/images/benq.jpg", "r"))
 
 15.times { |i| Magaz::Comment.create(name: "User #{i}", text: "Comment comment comment #{i}", rate: 5, product: p1) }
 
-v11 = Magaz::Variant.create!(product: p1, name: 'mod-1', price: 60000)
-v12 = Magaz::Variant.create!(product: p1, name: 'mod-2', price: 70000)
-
 o1 = Magaz::Order.create!(customer: 'Иванов Иван', phone: '111-22-333', email: 'ivanoff@example.com', status: staus_new, payment: payment, delivery: delivery)
-o1.line_items << Magaz::LineItem.create!(product: p1, variant: v11, count: 2, price: v11.price)
-o1.line_items << Magaz::LineItem.create!(product: p1, variant: v12, count: 2, price: v12.price)
+o1.line_items << Magaz::LineItem.create!(product: p1, count: 2, price: p1.price)
+o1.line_items << Magaz::LineItem.create!(product: p3, count: 2, price: p3.price)
 
 o2 = Magaz::Order.create!(customer: 'Петров Петр', phone: '123-45-678', email: 'petroff@example.com', status: staus_new, payment: payment, delivery: delivery)
 o2.line_items << Magaz::LineItem.create!(product: p2, price: p2.price, count: 4) << Magaz::LineItem.create!(product: p3, price: p3.price, count: 7)
+
+v11 = Magaz::Variant.create!(product: p11, name: 'mod-1', price: 60000)
+v12 = Magaz::Variant.create!(product: p11, name: 'mod-2', price: 70000)
+
+o3 = Magaz::Order.create!(customer: 'Сидоров Сидр', phone: '555-55-55', email: 'sidoroff@example.com', status: staus_new, payment: payment, delivery: delivery)
+o3.line_items << Magaz::LineItem.create!(product: p11, variant: v11, count: 2, price: v11.price)
+o3.line_items << Magaz::LineItem.create!(product: p11, variant: v12, count: 2, price: v12.price)
+
 
 Magaz::User.create(email: 'user@example.com', password: 'useruser')
