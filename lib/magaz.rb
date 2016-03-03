@@ -31,4 +31,7 @@ module Magaz
   def self.root
     File.expand_path('../../', __FILE__)
   end
+  def self.image_dir
+    File.join(Magaz.root, "app/assets/images/magaz/")
+  end
 end

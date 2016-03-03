@@ -78,23 +78,23 @@ desk = Magaz::Category.find_or_create_by_path %w|Компьютеры Насто
 mon = Magaz::Category.find_or_create_by_path %w|Компьютеры Мониторы|
 
 p1 = Magaz::Product.create(name: 'ASUS K501', category: notes, price: 57260)
-p1.images << Magaz::Image.create(picture: File.open(Rails.root + "app/assets/images/asus-1.jpg", "r"))
+p1.images << Magaz::Image.create(picture: File.open(Magaz.image_dir + "asus-1.jpg", "r"))
 p11 = Magaz::Product.create(name: 'ASUS K505', category: notes)
-p11.images << Magaz::Image.create(picture: File.open(Rails.root + "app/assets/images/asus-2.jpg", "r"))
+p11.images << Magaz::Image.create(picture: File.open(Magaz.image_dir + "asus-2.jpg", "r"))
 p2 = Magaz::Product.create(name: 'HP 15-ac', category: notes, price: 55401)
-p2.images << Magaz::Image.create(picture: File.open(Rails.root + "app/assets/images/hp.jpg", "r"))
+p2.images << Magaz::Image.create(picture: File.open(Magaz.image_dir + "hp.jpg", "r"))
 p3 = Magaz::Product.create(name: 'Lenovo Idealpad 500', category: notes, price: 45011)
-p3.images << Magaz::Image.create(picture: File.open(Rails.root + "app/assets/images/lenovo.jpg", "r"))
+p3.images << Magaz::Image.create(picture: File.open(Magaz.image_dir + "lenovo.jpg", "r"))
 
 p4 = Magaz::Product.create(name: 'MicroXpress', category: desk, price: 35000)
-p4.images << Magaz::Image.create(picture: File.open(Rails.root + "app/assets/images/micro.jpg", "r"))
+p4.images << Magaz::Image.create(picture: File.open(Magaz.image_dir + "micro.jpg", "r"))
 p5 = Magaz::Product.create(name: 'MSI Night', category: desk, price: 75000)
-p5.images << Magaz::Image.create(picture: File.open(Rails.root + "app/assets/images/msi.jpg", "r"))
+p5.images << Magaz::Image.create(picture: File.open(Magaz.image_dir + "msi.jpg", "r"))
 
 p6 = Magaz::Product.create(name: 'Samsung S29', category: mon, price: 15000)
-p6.images << Magaz::Image.create(picture: File.open(Rails.root + "app/assets/images/samsung.jpg", "r"))
+p6.images << Magaz::Image.create(picture: File.open(Magaz.image_dir + "samsung.jpg", "r"))
 p7 = Magaz::Product.create(name: 'Benq U111', category: mon, price: 13333)
-p7.images << Magaz::Image.create(picture: File.open(Rails.root + "app/assets/images/benq.jpg", "r"))
+p7.images << Magaz::Image.create(picture: File.open(Magaz.image_dir + "benq.jpg", "r"))
 
 15.times { |i| Magaz::Comment.create(name: "User #{i}", text: "Comment comment comment #{i}", rate: 5, product: p1) }
 
@@ -111,6 +111,5 @@ v12 = Magaz::Variant.create!(product: p11, name: 'mod-2', price: 70000)
 o3 = Magaz::Order.create!(customer: 'Сидоров Сидр', phone: '555-55-55', email: 'sidoroff@example.com', status: staus_new, payment: payment, delivery: delivery)
 o3.line_items << Magaz::LineItem.create!(product: p11, variant: v11, count: 2, price: v11.price)
 o3.line_items << Magaz::LineItem.create!(product: p11, variant: v12, count: 2, price: v12.price)
-
 
 Magaz::User.create(email: 'user@example.com', password: 'useruser')
