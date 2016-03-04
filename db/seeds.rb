@@ -77,23 +77,23 @@ notes = Magaz::Category.find_or_create_by_path %w|Компьютеры Ноут�
 desk = Magaz::Category.find_or_create_by_path %w|Компьютеры Настольные|
 mon = Magaz::Category.find_or_create_by_path %w|Компьютеры Мониторы|
 
-p1 = Magaz::Product.create(name: 'ASUS K501', category: notes, price: 57260)
+p1 = Magaz::Product.create(name: 'ASUS K501', category: notes, price: 57260, description: Faker::Lorem.paragraph)
 p1.images << Magaz::Image.create(picture: File.open(Magaz.image_dir + "asus-1.jpg", "r"))
-p11 = Magaz::Product.create(name: 'ASUS K505', category: notes)
+p11 = Magaz::Product.create(name: 'ASUS K505', category: notes, description: Faker::Lorem.paragraph)
 p11.images << Magaz::Image.create(picture: File.open(Magaz.image_dir + "asus-2.jpg", "r"))
-p2 = Magaz::Product.create(name: 'HP 15-ac', category: notes, price: 55401)
+p2 = Magaz::Product.create(name: 'HP 15-ac', category: notes, price: 55401, description: Faker::Lorem.paragraph)
 p2.images << Magaz::Image.create(picture: File.open(Magaz.image_dir + "hp.jpg", "r"))
-p3 = Magaz::Product.create(name: 'Lenovo Idealpad 500', category: notes, price: 45011)
+p3 = Magaz::Product.create(name: 'Lenovo Idealpad 500', category: notes, price: 45011, description: Faker::Lorem.paragraph)
 p3.images << Magaz::Image.create(picture: File.open(Magaz.image_dir + "lenovo.jpg", "r"))
 
-p4 = Magaz::Product.create(name: 'MicroXpress', category: desk, price: 35000)
+p4 = Magaz::Product.create(name: 'MicroXpress', category: desk, price: 35000, description: Faker::Lorem.paragraph)
 p4.images << Magaz::Image.create(picture: File.open(Magaz.image_dir + "micro.jpg", "r"))
-p5 = Magaz::Product.create(name: 'MSI Night', category: desk, price: 75000)
+p5 = Magaz::Product.create(name: 'MSI Night', category: desk, price: 75000, description: Faker::Lorem.paragraph)
 p5.images << Magaz::Image.create(picture: File.open(Magaz.image_dir + "msi.jpg", "r"))
 
-p6 = Magaz::Product.create(name: 'Samsung S29', category: mon, price: 15000)
+p6 = Magaz::Product.create(name: 'Samsung S29', category: mon, price: 15000, description: Faker::Lorem.paragraph)
 p6.images << Magaz::Image.create(picture: File.open(Magaz.image_dir + "samsung.jpg", "r"))
-p7 = Magaz::Product.create(name: 'Benq U111', category: mon, price: 13333)
+p7 = Magaz::Product.create(name: 'Benq U111', category: mon, price: 13333, description: Faker::Lorem.paragraph)
 p7.images << Magaz::Image.create(picture: File.open(Magaz.image_dir + "benq.jpg", "r"))
 
 15.times { |i| Magaz::Comment.create(name: "User #{i}", text: "Comment comment comment #{i}", rate: 5, product: p1) }

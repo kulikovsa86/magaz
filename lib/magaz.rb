@@ -24,6 +24,7 @@ require 'rails-settings-cached'
 require 'will_paginate'
 require 'will_paginate-bootstrap'
 require 'rspec-instrumentation-matcher'
+require 'faker'
 
 require "magaz/engine"
 

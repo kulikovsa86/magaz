@@ -43,11 +43,11 @@ Gem::Specification.new do |s|
   s.add_dependency 'will_paginate', '~> 3.0.6'
   s.add_dependency 'will_paginate-bootstrap'
   s.add_dependency "rspec-instrumentation-matcher"
+  s.add_dependency 'faker'
 
   s.add_development_dependency "sqlite3"
   s.add_development_dependency "rspec-rails", "~> 3.3.3"
   s.add_development_dependency "factory_girl_rails", "~> 4.5.0"
-  s.add_development_dependency 'faker'
   s.add_development_dependency 'guard-rspec'
   s.add_development_dependency 'capybara'
   s.add_development_dependency 'rack_session_access'
