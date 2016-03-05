@@ -55,6 +55,24 @@ module Magaz
       Property.create(name: name, property_type: PropertyType.number)
     end
 
+    def rand_value
+      value = case type.code
+      when '01'
+        options[Random.rand(options.size)].name
+      when ('02' || '021')
+        property_arg.rand.to_s
+      when '03'
+        Faker::Lorem.sentence
+      when '04'
+        Faker::Lorem.paragraph
+      when '05'
+        [true, false].sample
+      when '10'
+        Faker::Color.hex_color
+      end
+      value
+    end
+
     private
 
       def create_property_arg

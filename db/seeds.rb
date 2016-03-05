@@ -9,6 +9,7 @@ Magaz::Image.delete_all
 Magaz::Product.delete_all
 Magaz::Category.delete_all
 Magaz::PropertyOption.delete_all
+Magaz::PropertyArg.delete_all
 Magaz::Property.delete_all
 Magaz::PropertyType.delete_all
 Magaz::PropertyGroup.delete_all
@@ -58,27 +59,31 @@ pg_mem = Magaz::PropertyGroup.find_or_create_by_path %w|ЭВМ Память|
 pg_mon = Magaz::PropertyGroup.find_or_create_by_path %w|ЭВМ Экран|
 pg_hdd = Magaz::PropertyGroup.find_or_create_by_path %w|ЭВМ Устройство-хранения-данных|
 
-Magaz::PropertyGroup.find_or_create_by_path %w|Бытовая-техника Холодильники|
-Magaz::PropertyGroup.find_or_create_by_path %w|Бытовая-техника Морозильники|
-Magaz::PropertyGroup.find_or_create_by_path %w|Бытовая-техника Плиты|
-Magaz::PropertyGroup.find_or_create_by_path %w|Бытовая-техника Вытяжки|
-
 pg_origin.add_combo_property('Страна', %w|Китай Тайвань Корея Япония|)
 pg_origin.add_combo_property('Компания', %w|HP ASUS Acer DELL MSI|)
 pg_proc.add_combo_property('Тип', %w|A10 A8 A6 Core-i7 Core-i5 Core-i3|)
-pg_proc.add_number_property('Частота, МГЦ')
+pg_proc.add_number_property('Частота, МГЦ', {min: 1000, max: 10000})
 pg_mem.add_combo_property('Размер, ГБ', %w|4 6 8 12 16 32|)
 pg_mem.add_combo_property('Тип', %w|DDR3 DDR4 DDR5|)
-pg_mon.add_number_property('Размер,"')
+pg_mon.add_number_property('Размер,"', {min: 19, max: 29})
 pg_mon.add_combo_property('Разрешение', %w|1024x768 1440x900 5000x2500|)
-
+pg_hdd.add_combo_property('Тип', %w|HDD HDD+SDD SDD|)
+pg_hdd.add_number_property('Размер, ГБ', {min: 100, max: 3000})
 
 notes = Magaz::Category.find_or_create_by_path %w|Компьютеры Ноутбуки|
 desk = Magaz::Category.find_or_create_by_path %w|Компьютеры Настольные|
 mon = Magaz::Category.find_or_create_by_path %w|Компьютеры Мониторы|
 
+[notes, desk, mon].each do |cat|
+  cat.property_groups << pg_origin
+  if cat != mon
+    cat.property_groups << [pg_proc, pg_mem, pg_hdd]
+  end
+end
+
 p1 = Magaz::Product.create(name: 'ASUS K501', category: notes, price: 57260, description: Faker::Lorem.paragraph)
 p1.images << Magaz::Image.create(picture: File.open(Magaz.image_dir + "asus-1.jpg", "r"))
+
 p11 = Magaz::Product.create(name: 'ASUS K505', category: notes, description: Faker::Lorem.paragraph)
 p11.images << Magaz::Image.create(picture: File.open(Magaz.image_dir + "asus-2.jpg", "r"))
 p2 = Magaz::Product.create(name: 'HP 15-ac', category: notes, price: 55401, description: Faker::Lorem.paragraph)
@@ -95,6 +100,8 @@ p6 = Magaz::Product.create(name: 'Samsung S29', category: mon, price: 15000, des
 p6.images << Magaz::Image.create(picture: File.open(Magaz.image_dir + "samsung.jpg", "r"))
 p7 = Magaz::Product.create(name: 'Benq U111', category: mon, price: 13333, description: Faker::Lorem.paragraph)
 p7.images << Magaz::Image.create(picture: File.open(Magaz.image_dir + "benq.jpg", "r"))
+
+Magaz::Product.all.each { |p| p.rand_properties }
 
 15.times { |i| Magaz::Comment.create(name: "User #{i}", text: "Comment comment comment #{i}", rate: 5, product: p1) }
 

@@ -46,14 +46,12 @@ class CartsController < ApplicationController
   # POST   /order(.:format)
   def create_order
     @order = Magaz::Order.new(params.require(:order).permit(:customer, :company, :email, :phone, :delivery, :address1, :address2, :address3, :address4, :post_code, :payment, :pdt, :customer_comment))
-    # @order.company_valid = true
     @order.skip_delivery_valid = true
     @order.skip_payment_valid = true
-    # @order.pdt_valid = true
     @order.take_items_from_cart(current_cart)
     if @order.save
       destroy_cart
-      redirect_to root_path
+      redirect_to root_path, notice: 'Новый заказ создан'
     else
       @cart = current_cart
       render :new_order

@@ -15,5 +15,13 @@
 module Magaz
   class PropertyArg < ActiveRecord::Base
     belongs_to :property
+
+    def rand
+      if !min || !max
+        Random.rand(100)
+      else
+        (min.to_i..max.to_i).to_a.sample
+      end
+    end
   end
 end

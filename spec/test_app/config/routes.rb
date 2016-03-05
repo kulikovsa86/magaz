@@ -19,6 +19,4 @@ Rails.application.routes.draw do
   
   delete 'item/:id', to: 'carts#delete_item', as: 'item'
 
-
-
 end

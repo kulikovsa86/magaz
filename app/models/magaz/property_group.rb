@@ -40,8 +40,15 @@ module Magaz
       properties << Property.create_combo(name, options)
     end
 
-    def add_number_property(name)
-      properties << Property.create_number(name)
+    def add_number_property(name, args = {})
+      prop = Property.create_number(name)
+      if args.size
+        [:min, :max, :step, :default].each do |key|
+          prop.property_arg[key] = args[key] if args[key]
+        end
+        prop.property_arg.save
+      end
+      properties << prop
     end
 
   end

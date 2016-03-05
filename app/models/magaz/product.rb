@@ -105,6 +105,15 @@ module Magaz
       values.join(', ')
     end
 
+    def rand_properties
+      property_values.clear
+      category.property_groups.each do |pg|
+        pg.properties.each do |prop|
+          property_values.create(property_id: prop.id, value: prop.rand_value)
+        end
+      end
+    end
+
     private
       def default_dimension
         dim = Dimension.default
