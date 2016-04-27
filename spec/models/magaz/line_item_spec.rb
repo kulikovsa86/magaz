@@ -10,8 +10,8 @@
 #  total_count :decimal(8, 3)
 #  manual      :boolean          default(FALSE)
 #  ratio       :decimal(8, 3)
-#  cart_id     :integer
-#  order_id    :integer
+#  liable_id   :integer
+#  liable_type :string
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #

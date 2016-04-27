@@ -9,7 +9,7 @@
 
 module Magaz
   class Cart < ActiveRecord::Base
-    has_many :line_items, dependent: :destroy
+    has_many :line_items, as: :liable, dependent: :destroy
 
     alias items line_items
 

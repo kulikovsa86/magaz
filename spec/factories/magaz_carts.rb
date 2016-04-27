@@ -20,9 +20,9 @@ FactoryGirl.define do
 
       after(:create) do |cart, evaluator|
         unless evaluator.with_variant
-          create_list(:magaz_line_item, evaluator.item_count, cart: cart)
+          create_list(:magaz_line_item, evaluator.item_count, liable: cart)
         else
-          create_list(:magaz_line_item_with_variant, evaluator.item_count, cart: cart)
+          create_list(:magaz_line_item_with_variant, evaluator.item_count, liable: cart)
         end
       end
     end

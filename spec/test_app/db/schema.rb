@@ -101,14 +101,13 @@ ActiveRecord::Schema.define(version: 20160212075546) do
     t.decimal  "total_count", precision: 8, scale: 3
     t.boolean  "manual",                              default: false
     t.decimal  "ratio",       precision: 8, scale: 3
-    t.integer  "cart_id"
-    t.integer  "order_id"
+    t.integer  "liable_id"
+    t.string   "liable_type"
     t.datetime "created_at",                                          null: false
     t.datetime "updated_at",                                          null: false
   end
 
-  add_index "magaz_line_items", ["cart_id"], name: "index_magaz_line_items_on_cart_id"
-  add_index "magaz_line_items", ["order_id"], name: "index_magaz_line_items_on_order_id"
+  add_index "magaz_line_items", ["liable_type", "liable_id"], name: "index_magaz_line_items_on_liable_type_and_liable_id"
   add_index "magaz_line_items", ["product_id"], name: "index_magaz_line_items_on_product_id"
   add_index "magaz_line_items", ["variant_id"], name: "index_magaz_line_items_on_variant_id"
 

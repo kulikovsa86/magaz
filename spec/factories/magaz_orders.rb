@@ -55,7 +55,7 @@ FactoryGirl.define do
       end
 
       after(:create) do |order, evaluator| 
-        create_list(:magaz_line_item, evaluator.item_count, order: order, price: 1, count: 1)
+        create_list(:magaz_line_item, evaluator.item_count, liable: order, price: 1, count: 1)
       end
     end
 
@@ -65,7 +65,7 @@ FactoryGirl.define do
       end
 
       after(:create) do |order, evaluator|
-        create_list(:magaz_line_item_with_total_count, evaluator.item_count, order: order)
+        create_list(:magaz_line_item_with_total_count, evaluator.item_count, liable: order)
       end
     end
 

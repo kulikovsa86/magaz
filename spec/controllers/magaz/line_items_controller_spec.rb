@@ -10,8 +10,8 @@
 #  total_count :decimal(8, 3)
 #  manual      :boolean          default(FALSE)
 #  ratio       :decimal(8, 3)
-#  cart_id     :integer
-#  order_id    :integer
+#  liable_id   :integer
+#  liable_type :string
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #
@@ -40,12 +40,12 @@ module Magaz
       end
 
       it "notifies custom event" do
-        expect{ subject }.to instrument("magaz.custom_event").with(options: {event_type: 'order item deleted', order: @item.order.id})
+        expect{ subject }.to instrument("magaz.custom_event").with(options: {event_type: 'order item deleted', order: @item.liable_id})
       end
 
       it "redirects to order items" do
         delete :destroy, id: @item.id
-        expect(response).to redirect_to(edit_items_order_path(@item.order))
+        expect(response).to redirect_to(edit_items_order_path(@item.liable))
       end
     end
   end

@@ -10,8 +10,8 @@
 #  total_count :decimal(8, 3)
 #  manual      :boolean          default(FALSE)
 #  ratio       :decimal(8, 3)
-#  cart_id     :integer
-#  order_id    :integer
+#  liable_id   :integer
+#  liable_type :string
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #
@@ -25,7 +25,7 @@ module Magaz
 
     # DELETE /line_items/:id(.:format)
     def destroy
-      order = @line_item.order
+      order = @line_item.liable
       @line_item.destroy
       notify( event_type: 'order item deleted', order: order.id )
       redirect_to edit_items_order_path(order)

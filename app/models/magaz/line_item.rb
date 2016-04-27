@@ -10,18 +10,18 @@
 #  total_count :decimal(8, 3)
 #  manual      :boolean          default(FALSE)
 #  ratio       :decimal(8, 3)
-#  cart_id     :integer
-#  order_id    :integer
+#  liable_id   :integer
+#  liable_type :string
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #
 
 module Magaz
   class LineItem < ActiveRecord::Base
+
     belongs_to :product
     belongs_to :variant
-    belongs_to :cart
-    belongs_to :order
+    belongs_to :liable, polymorphic: true
 
     def cart_price
       if variant && variant.price

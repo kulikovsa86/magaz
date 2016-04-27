@@ -10,8 +10,8 @@
 #  total_count :decimal(8, 3)
 #  manual      :boolean          default(FALSE)
 #  ratio       :decimal(8, 3)
-#  cart_id     :integer
-#  order_id    :integer
+#  liable_id   :integer
+#  liable_type :string
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #
@@ -47,7 +47,7 @@ FactoryGirl.define do
     end
 
     trait :in_order do
-      association :order, factory: :magaz_order
+      association :liable, factory: :magaz_order
     end
 
     factory :magaz_line_item_with_variant, traits: [:with_variant]

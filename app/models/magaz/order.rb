@@ -28,7 +28,7 @@ module Magaz
     belongs_to :payment
     belongs_to :status
 
-    has_many :line_items, dependent: :destroy
+    has_many :line_items, as: :liable, dependent: :destroy
     has_many :order_statuses, dependent: :destroy
 
     before_create :check_status
@@ -78,7 +78,7 @@ module Magaz
 
     def take_items_from_cart(cart)
       cart.items.each do |item|
-        item.cart_id = nil
+        # item.cart_id = nil
         item.price = item.cart_price
         items << item
       end
