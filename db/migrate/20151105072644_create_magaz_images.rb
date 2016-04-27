@@ -9,8 +9,8 @@ class CreateMagazImages < ActiveRecord::Migration
     end
 
     create_table :magaz_variant_images do |t|
-      t.belongs_to :variant
-      t.belongs_to :image
+      t.integer :variant_id
+      t.integer :image_id
 
       t.timestamps null: false
     end

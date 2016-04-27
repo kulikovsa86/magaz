@@ -10,8 +10,8 @@ class CreateMagazPropertyGroups < ActiveRecord::Migration
     end
 
     create_table :magaz_categories_property_groups, id: false do |t|
-      t.belongs_to :category, index: true
-      t.belongs_to :property_group, index: true
+      t.integer :category_id, index: true
+      t.integer :property_group_id, index: true
     end
   end
 end

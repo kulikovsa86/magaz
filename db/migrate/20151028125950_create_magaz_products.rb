@@ -3,7 +3,7 @@ class CreateMagazProducts < ActiveRecord::Migration
     create_table :magaz_products do |t|
       t.string :name
       t.string :var_name
-      t.belongs_to :category, index: true, foreign_key: true
+      t.integer :category_id, index: true, foreign_key: true
       t.text :description
       t.decimal :price, :precision => 8, :scale => 2
       t.boolean :hidden, default: true

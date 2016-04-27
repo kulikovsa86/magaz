@@ -6,7 +6,7 @@ class CreateMagazComments < ActiveRecord::Migration
       t.integer :rate
       t.boolean :accepted, default: false
       t.boolean :fresh, default: true
-      t.belongs_to :product, index: true, foreign_key: true
+      t.integer :product_id, index: true, foreign_key: true
 
       t.timestamps null: false
     end
