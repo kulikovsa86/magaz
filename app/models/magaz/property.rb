@@ -57,17 +57,17 @@ module Magaz
 
     def rand_value
       value = case type.code
-      when '01'
+      when PropertyType::LIST_CODE
         options[Random.rand(options.size)].name
-      when ('02' || '021')
+      when (PropertyType::NUMBER_CODE || PropertyType::FLOAT_CODE)
         property_arg.rand.to_s
-      when '03'
+      when PropertyType::STRING_CODE
         Faker::Lorem.sentence
-      when '04'
+      when PropertyType::TEXT_CODE
         Faker::Lorem.paragraph
-      when '05'
+      when PropertyType::BOOL_CODE
         [true, false].sample
-      when '10'
+      when PropertyType::COLOR_CODE
         Faker::Color.hex_color
       end
       value
