@@ -18,6 +18,22 @@ module Magaz
   class Delivery < ActiveRecord::Base
     acts_as_list
 
+    PICKUP_CODE = '01'
+    COURIER_CODE = '02'
+    POST_CODE = '03'
+
+    def self.pickup 
+      Delivery.find_by(code: Delivery::PICKUP_CODE)
+    end
+
+    def self.courier
+      Delivery.find_by(code: Delivery::COURIER_CODE)
+    end
+
+    def self.post
+      Delivery.find_by(code: Delivery::POST_CODE)
+    end
+
     validates :name, presence: true
 
   end

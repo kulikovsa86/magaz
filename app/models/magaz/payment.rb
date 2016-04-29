@@ -15,7 +15,18 @@ module Magaz
   class Payment < ActiveRecord::Base
     acts_as_list
 
+    NON_CASH_CODE = '01'
+    CASH_CODE = '02'
+
     validates :name, presence: true
+
+    def self.non_cash
+      Payment.find_by(code: Payment::NON_CASH_CODE)
+    end
+
+    def self.cash
+      Payment.find_by(code: Payment::CASH_CODE)
+    end
     
   end
 end

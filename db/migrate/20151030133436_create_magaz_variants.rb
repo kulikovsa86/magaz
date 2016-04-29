@@ -6,6 +6,7 @@ class CreateMagazVariants < ActiveRecord::Migration
       t.string :name
       t.boolean :hidden, default: false
       t.integer :position
+      t.integer :stock, default: 0
 
       t.timestamps null: false
     end

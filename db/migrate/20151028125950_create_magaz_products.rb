@@ -15,6 +15,7 @@ class CreateMagazProducts < ActiveRecord::Migration
       t.integer :calc_dim_id
       t.boolean :correct, default: false
       t.boolean :moulded, default: false
+      t.integer :stock, default: 0
 
       t.timestamps null: false
     end

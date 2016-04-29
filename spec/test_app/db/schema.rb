@@ -169,6 +169,7 @@ ActiveRecord::Schema.define(version: 20160212075546) do
     t.integer  "calc_dim_id"
     t.boolean  "correct",                              default: false
     t.boolean  "moulded",                              default: false
+    t.integer  "stock",                                default: 0
     t.datetime "created_at",                                           null: false
     t.datetime "updated_at",                                           null: false
   end
@@ -311,6 +312,7 @@ ActiveRecord::Schema.define(version: 20160212075546) do
     t.string   "name"
     t.boolean  "hidden",                             default: false
     t.integer  "position"
+    t.integer  "stock",                              default: 0
     t.datetime "created_at",                                         null: false
     t.datetime "updated_at",                                         null: false
   end
