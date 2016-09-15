@@ -20,19 +20,8 @@ $panel_max_width: 800px;
 $form_small_field_width: 150px;
 $form_field_default_width: 600px;
 
-
-.main {
+#page-wrapper {
   padding-top: 10px;
-}
-
-
-.breadcrumb {
-  min-width: $panel_min_width;
-  // max-width: $panel_max_width;
-}
-.panel {
-  // min-width: $panel_min_width;
-  // max-width: $panel_max_width;
 }
 
 .panel_header {
@@ -119,7 +108,7 @@ table {
 form {
 
   label,legend {
-    color: #606060;
+    color: dimGray;
   }
 
   textarea {
@@ -127,7 +116,7 @@ form {
     max-width: 600px;
   }
 
-  textarea#product_description {
+  textarea.description {
     height: 400px;
   }
 

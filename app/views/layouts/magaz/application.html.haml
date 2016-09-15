@@ -13,6 +13,11 @@
         = render 'layouts/magaz/nav'
         = render 'layouts/magaz/side'
       #page-wrapper
-        .row.main
-          .col-lg-12
-            = yield      
+        .container-fluid
+
+          - if notice
+            .alert.alert-success= notice
+          - if alert
+            .alert.alert-danger= alert
+
+          = yield      

@@ -25,6 +25,8 @@ require 'rack_session_access/capybara'
 
 require File.expand_path("../test_app/config/environment", __FILE__)
 
+ActiveRecord::Migrator.migrations_paths = 'spec/test_app/db/migrate' # !!! https://github.com/rspec/rspec-rails/issues/1330
+
 Dir["./spec/support/**/*.rb"].sort.each { |f| require f }
 
 RSpec.configure do |config|

@@ -18,7 +18,7 @@ require_dependency "magaz/application_controller"
 
 module Magaz
   class CategoriesController < ApplicationController
-    before_action :set_category, only: [:edit, :update, :destroy]
+    before_action :set_category, only: [:edit, :update, :destroy, :descr]
 
     # GET /categories/(:parent)
     def index
@@ -31,6 +31,10 @@ module Magaz
       if @parent_category && !@parent_category.products.empty?
         redirect_to category_products_path(@parent_category)
       end
+    end
+
+    # GET    /categories(/:product_id)/descr(.:format)
+    def descr
     end
 
     # GET /categories/new/(:parent)
@@ -62,7 +66,11 @@ module Magaz
     # PATCH/PUT  /categories/:id(.:format)
     def update
       if @category.update(category_params)
-        redirect_to edit_category_path(@category), notice: t('.success')
+        if params[:descr]
+          redirect_to category_description_path(@category), notice: t('.success')
+        else
+          redirect_to edit_category_path(@category), notice: t('.success')
+        end
       else
         render :edit
       end

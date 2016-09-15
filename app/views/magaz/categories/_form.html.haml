@@ -1,20 +1,20 @@
-= bootstrap_form_for @category, layout: :horizontal, label_col: 'col-md-2', control_col: 'col-md-10' do |f|
+= bootstrap_form_for @category, layout: :horizontal, label_col: 'col-md-2', control_col: 'col-lg-4 col-md-10' do |f|
   - if @category.errors.any?
     = f.alert_message t('errors.template.header', count: @category.errors.count)
   - if @parent_category
     = hidden_field_tag :parent, @parent_category.permalink
 
-  = f.text_field :code, class: 'small_input_group'
+  = f.text_field :code
   = f.text_field :name
 
   = f.select :property_group_ids, grouped_options_for_select(Magaz::PropertyGroup.options, @category.property_group_ids), { label: Magaz::Category.human_attribute_name(:properties) }, { class: 'selectpicker', multiple: true, :'data-size' => 5 }
   = f.form_group :hidden do
     = f.check_box :hidden
 
-  %fieldset
-    %legend= t('magaz.common.description')
-    = f.text_area :description, class: 'wysihtml5', hide_label: true, control_col: 'col-md-12'
-  %br
-  = f.submit t('helpers.submit.save'), class: 'btn btn-success'
-  - unless @category.new_record?
-    = link_to t('helpers.link_to.destroy'), @category, method: :delete, data: {confirm: "Вы уверены, что хотите удалить категорию? <br/>Все дочерние категории и товары будут также удалены"}, class: 'btn btn-link'
+  / %fieldset
+  /   %legend= t('magaz.common.description')
+  /   = f.text_area :description, class: 'wysihtml5', hide_label: true, control_col: 'col-md-12'
+  / %br
+  / = f.submit t('helpers.submit.save'), class: 'btn btn-success'
+  / - unless @category.new_record?
+  /   = link_to t('helpers.link_to.destroy'), @category, method: :delete, data: {confirm: "Вы уверены, что хотите удалить категорию? <br/>Все дочерние категории и товары будут также удалены"}, class: 'btn btn-link'

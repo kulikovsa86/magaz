@@ -1,5 +1,3 @@
-- if notice
-  .alert.alert-success= notice
 
 = render 'breadcrumb'
 
@@ -12,6 +10,8 @@
         = t('.default_header')
 
   .panel-body
+    = render 'tabs'
+    %br
     = render 'form'
 
 = link_to t('helpers.link_to.back'), categories_path(@parent_category)

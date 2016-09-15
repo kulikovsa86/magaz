@@ -13,7 +13,6 @@
 //= require jquery
 //= require bootstrap-sprockets
 //= require jquery_ujs
-//= require turbolinks
 //= require bootstrap-select.min
 //= require defaults-ru_RU
 //= require tinycolor-0.9.15.min
@@ -33,8 +32,8 @@
 
 var ready;
 ready = function() {
-  $('.selectpicker').selectpicker({
-  });
+  // $('.selectpicker1').selectpicker({
+  // });
 
   $(".pick-a-color").pickAColor();
 

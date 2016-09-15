@@ -79,6 +79,8 @@ Magaz::Engine.routes.draw do
   post '/categories/(:parent)', to: 'categories#create'
   get '/categories/(:parent)', to: 'categories#index', as: :categories
 
+  get '/categories/(:id)/descr', to: 'categories#descr', as: :category_description
+
   shallow do
     resources :property_groups, only: [:edit, :update, :destroy] do
       concerns :moveable
