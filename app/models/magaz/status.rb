@@ -21,7 +21,7 @@ module Magaz
 
     NEW_CODE = '01'
 
-    def self._new
+    def self.NEW
       Status.find_by(code: Status::NEW_CODE)
     end
 

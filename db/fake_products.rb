@@ -53,16 +53,16 @@ Magaz::Product.all.each { |p| p.rand_properties }
 
 15.times { |i| Magaz::Comment.create(name: "User #{i}", text: "Comment comment comment #{i}", rate: 5, product: p1) }
 
-o1 = Magaz::Order.create!(customer: 'Иванов Иван', phone: '111-22-333', email: 'ivanoff@example.com', status: Magaz::Status._new, payment: Magaz::Payment.non_cash, delivery: Magaz::Delivery.pickup)
+o1 = Magaz::Order.create!(customer: 'Иванов Иван', phone: '111-22-333', email: 'ivanoff@example.com', status: Magaz::Status.NEW, payment: Magaz::Payment.non_cash, delivery: Magaz::Delivery.pickup)
 o1.line_items << Magaz::LineItem.create!(product: p1, count: 2, price: p1.price)
 o1.line_items << Magaz::LineItem.create!(product: p3, count: 2, price: p3.price)
 
-o2 = Magaz::Order.create!(customer: 'Петров Петр', phone: '123-45-678', email: 'petroff@example.com', status: Magaz::Status._new, payment: Magaz::Payment.non_cash, delivery: Magaz::Delivery.pickup)
+o2 = Magaz::Order.create!(customer: 'Петров Петр', phone: '123-45-678', email: 'petroff@example.com', status: Magaz::Status.NEW, payment: Magaz::Payment.non_cash, delivery: Magaz::Delivery.pickup)
 o2.line_items << Magaz::LineItem.create!(product: p2, price: p2.price, count: 4) << Magaz::LineItem.create!(product: p3, price: p3.price, count: 7)
 
 v11 = Magaz::Variant.create!(product: p11, name: 'mod-1', price: 60000)
 v12 = Magaz::Variant.create!(product: p11, name: 'mod-2', price: 70000)
 
-o3 = Magaz::Order.create!(customer: 'Сидоров Сидр', phone: '555-55-55', email: 'sidoroff@example.com', status: Magaz::Status._new, payment: Magaz::Payment.non_cash, delivery: Magaz::Delivery.pickup)
+o3 = Magaz::Order.create!(customer: 'Сидоров Сидр', phone: '555-55-55', email: 'sidoroff@example.com', status: Magaz::Status.NEW, payment: Magaz::Payment.non_cash, delivery: Magaz::Delivery.pickup)
 o3.line_items << Magaz::LineItem.create!(product: p11, variant: v11, count: 2, price: v11.price)
 o3.line_items << Magaz::LineItem.create!(product: p11, variant: v12, count: 2, price: v12.price)

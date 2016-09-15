@@ -11,7 +11,7 @@
       -if @property.type && @property.type.code == Magaz::PropertyType::LIST_CODE
         \|
         %small= link_to t('magaz.common.options'), property_property_options_path(@property)
-      -if @property.type && @property.type.code == Magaz::ProprtyType::NUMBER_CODE
+      -if @property.type && @property.type.code == Magaz::PropertyType::NUMBER_CODE
         \|
         %small= link_to t('magaz.common.options'), property_property_args_path(@property)
 

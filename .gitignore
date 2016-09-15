@@ -7,3 +7,5 @@ spec/test_app/log/*.log
 spec/test_app/tmp/
 spec/test_app/.sass-cache
 spec/test_app/public/uploads
+spec/test_app/db/migrate
+
