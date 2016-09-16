@@ -1,9 +1,9 @@
-= bootstrap_form_for(@order, layout: :horizontal, label_col: 'col-md-2', control_col: 'col-md-10') do |f|
+= bootstrap_form_for(@order, layout: :horizontal, label_col: 'col-md-2', control_col: 'col-lg-4 col-md-10') do |f|
   - if @order.errors.any?
     = f.alert_message t('errors.template.header', count: @order.errors.count)
 
   = hidden_field_tag "member", "edit_payment"
   = hidden_field_tag "form", "form_payment"
-  = f.collection_select :payment_id, Magaz::Payment.all, :id, :name, { hide_label: false }, {class: 'selectpicker', 'data-width': '400px'}
+  = f.collection_select :payment_id, Magaz::Payment.all, :id, :name, { hide_label: false }, {class: 'selectpicker'}
 
   = f.submit t('helpers.submit.save'), class: 'btn btn-success'

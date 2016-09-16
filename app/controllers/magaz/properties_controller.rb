@@ -19,7 +19,7 @@ require_dependency "magaz/application_controller"
 
 module Magaz
   class PropertiesController < ApplicationController
-    before_action :set_property, only: [:edit, :update, :destroy, :up, :down]
+    before_action :set_property, only: [:edit, :update, :destroy, :up, :down, :descr]
     before_action :set_group, only: [:index, :new, :create]
 
     # GET    /property_groups/:property_group_id/properties(.:format)
@@ -38,6 +38,11 @@ module Magaz
       @parent_group = @property.group
     end
 
+    # GET    /properties(/:id)/descr(.:format)
+    def descr
+      @parent_group = @property.group
+    end
+
     # POST   /property_groups/:property_group_id/properties(.:format)
     def create
       @property = Property.new(property_params)
@@ -53,7 +58,11 @@ module Magaz
     # PATCH/PUT /properties/1
     def update
       if @property.update(property_params)
-        redirect_to edit_property_path(@property), notice: t('.success')
+        if params[:descr]
+          redirect_to property_description_path(@property), notice: t('.success')
+        else
+          redirect_to edit_property_path(@property), notice: t('.success')
+        end
       else
         render :edit
       end

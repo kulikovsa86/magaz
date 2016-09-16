@@ -1,18 +1,18 @@
-= bootstrap_form_for(@order, layout: :horizontal, label_col: 'col-md-2', control_col: 'col-md-10') do |f|
+= bootstrap_form_for(@order, layout: :horizontal, label_col: 'col-md-2', control_col: 'col-lg-4 col-md-10') do |f|
   - if @order.errors.any?
     = f.alert_message t('errors.template.header', count: @order.errors.count)
 
   = hidden_field_tag "member", "edit_delivery"
   = hidden_field_tag "form", "form_delivery"
-  = f.collection_select :delivery_id, Magaz::Delivery.all, :id, :name, { hide_label: false }, {class: 'selectpicker', 'data-width': '400px'}
+  = f.collection_select :delivery_id, Magaz::Delivery.all, :id, :name, { hide_label: false }, {class: 'selectpicker'}
 
-  = f.text_field :address1, class: 'medium_input_group'
-  = f.text_field :address2, class: 'medium_input_group'
-  = f.text_field :address3, class: 'medium_input_group'
-  = f.text_field :address4, class: 'medium_input_group'
-  = f.text_field :post_code, class: 'medium_input_group'
+  = f.text_field :address1
+  = f.text_field :address2
+  = f.text_field :address3
+  = f.text_field :address4
+  = f.text_field :post_code
 
-  = f.datetime_field :pdt, value: @order.formatted_pdt, class: 'datetimepicker medium_input_group'
+  = f.datetime_field :pdt, value: @order.formatted_pdt, class: 'datetimepicker'
   = f.text_area :customer_comment, disabled: true
 
   = f.submit t('helpers.submit.save'), class: 'btn btn-success'

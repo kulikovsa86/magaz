@@ -94,6 +94,7 @@ Magaz::Engine.routes.draw do
     end
   end
 
+  get '/properties/(:id)/descr', to: 'properties#descr', as: :property_description
   get '/property_groups/new/(:parent_id)', to: 'property_groups#new', as: :new_property_group
   post '/property_groups/(:parent_id)', to: 'property_groups#create'
   get '/property_groups/(:parent_id)', to: 'property_groups#index', as: :property_groups

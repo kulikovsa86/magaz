@@ -1,9 +1,9 @@
-= bootstrap_form_for @status, layout: :horizontal, label_col: 'col-md-2', control_col: 'col-md-10' do |f|
+= bootstrap_form_for @status, layout: :horizontal, label_col: 'col-md-2', control_col: 'col-lg-4 col-md-10' do |f|
   - if @status.errors.any?
     = f.alert_message t('errors.template.header', count: @status.errors.count)
 
   = f.text_field :code, class: 'small_input_group'
-  = f.text_field :name, class: 'medium_input_group'
+  = f.text_field :name
   = f.form_group :closed do
     = f.check_box :closed
   = f.text_area :note

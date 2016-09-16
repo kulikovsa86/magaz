@@ -1,17 +1,16 @@
-= bootstrap_form_for(@order, layout: :horizontal, label_col: 'col-md-2', control_col: 'col-md-10') do |f|
+= bootstrap_form_for(@order, layout: :horizontal, label_col: 'col-md-2', control_col: 'col-lg-4 col-md-10') do |f|
   - if @order.errors.any?
     = f.alert_message t('errors.template.header', count: @order.errors.count)
 
   = hidden_field_tag "member", "edit_status"
   = hidden_field_tag "form", "form_status"
-  = f.collection_select :status_id, Magaz::Status.all, :id, :name, { hide_label: false }, {class: 'selectpicker', 'data-width': '400px'}
+  = f.collection_select :status_id, Magaz::Status.all, :id, :name, { hide_label: false }, {class: 'selectpicker'}
   .row
     .col-md-2
       %p.text-right= t('magaz.common.history')
-    .col-md-10
+    .col-md-10.col-lg-4
       %textarea{readonly: true, rows: 10}
         - @history.each do |status|
           = status.html_safe
-
-
+          
   = f.submit t('helpers.submit.save'), class: 'btn btn-success'

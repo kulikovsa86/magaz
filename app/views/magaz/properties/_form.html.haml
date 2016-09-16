@@ -1,4 +1,4 @@
-= bootstrap_form_for([@property_group, @property], layout: :horizontal, label_col: 'col-md-2', control_col: 'col-md-10') do |f|
+= bootstrap_form_for([@property_group, @property], layout: :horizontal, label_col: 'col-md-2', control_col: 'col-lg-4 col-md-10') do |f|
   - if @property.errors.any?
     = f.alert_message t('errors.template.header', count: @property.errors.count)
 
@@ -7,11 +7,11 @@
   = f.collection_select :property_type_id, Magaz::PropertyType.order(:code), :id, :name, { label: Magaz::Property.human_attribute_name(:property_type) }, {class: 'selectpicker', disabled: !new_property_page?, 'data-width' => '400px'}
   = f.form_group :variant do
     = f.check_box :variant
-  %br
-  %fieldset
-    %legend= t('magaz.common.description')
-    = f.text_area :description, class: 'wysihtml5', hide_label: true, control_col: 'col-md-12'
-  %br
+  / %br
+  / %fieldset
+  /   %legend= t('magaz.common.description')
+  /   = f.text_area :description, class: 'wysihtml5', hide_label: true, control_col: 'col-md-12'
+  / %br
 
   = f.submit t('helpers.submit.save'), class: 'btn btn-success'
   - unless @property.new_record?

@@ -1,5 +1,3 @@
-- if notice
-  .alert.alert-success= notice
 
 = render '/magaz/categories/breadcrumb'
 
@@ -9,10 +7,8 @@
   .panel-body
     = render 'tabs'
     %br
-    .row
-      .col-md-12
-        = form_tag(product_properties_create_path(@product), {class: 'form-horizontal'}) do
-          = render '/magaz/property_values/form', modification_name: @product.var_name
-          = submit_tag t('helpers.submit.save'), class: 'btn btn-success'
-          = render 'iter_group', tab: 'prop'
+      = form_tag(product_properties_create_path(@product), {class: 'form-horizontal'}) do
+        = render '/magaz/property_values/form', modification_name: @product.var_name
+        = submit_tag t('helpers.submit.save'), class: 'btn btn-success'
+        = render 'iter_group', tab: 'prop'
           

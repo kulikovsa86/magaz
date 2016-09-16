@@ -1,6 +1,3 @@
-- if notice
-  .alert.alert-success= notice
-
 = render '/magaz/property_groups/breadcrumb'
 
 .panel.panel-default
@@ -10,7 +7,6 @@
     %table.editable_table.table
       %thead
         %tr
-          / %th.checkbox_column= check_box_tag '', '', false, class: 'header-checkbox'
           %th.checkbox_column
           %th.th_actions
           %th= Magaz::Property.human_attribute_name(:name)

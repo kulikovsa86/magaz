@@ -1,0 +1,13 @@
+= render '/magaz/property_groups/breadcrumb'
+
+.panel.panel-default
+  .panel-heading
+    %h4.panel_header
+      = @property.name
+  .panel-body
+    = render 'tabs'
+    %br
+    = bootstrap_form_for @property do |f|
+      = hidden_field_tag 'descr', '1'
+      = f.text_area :description, class: 'wysihtml5 description', hide_label: true
+      = f.submit t('helpers.submit.save'), class: 'btn btn-success'

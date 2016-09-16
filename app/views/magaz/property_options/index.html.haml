@@ -1,25 +1,25 @@
 
-- if notice
-  .alert.alert-success= notice
-
 = render '/magaz/property_groups/breadcrumb'
+
 .panel.panel-default
   .panel-heading
     %h4.panel_header
-      = link_to @property.name, edit_property_path(@property)
-      \|
-      %small= t('magaz.common.options')
+      = @property.name
   .panel-body
+    = render '/magaz/properties/tabs'
+    %br
     = form_for [@property, @property.property_options.build], html: { class: 'form-inline' } do |f|
       .input-group.medium_input_group
         = f.text_field :name, class: 'form-control', placeholder: 'Новый элемент'
         %span.input-group-btn
           = button_tag(type: "submit", class: "btn btn-default") do
             %i.fa.fa-plus.fa-fw
-    %table#opt_table.table.table-hover.table-condensed.editable_table
-      %thead
-        %tr
-          %th.th_actions
-          %th
-      %tbody
-        = render @property.property_options
+    .row
+      .col-md-6
+        %table#opt_table.table.table-hover.table-condensed.editable_table
+          %thead
+            %tr
+              %th.th_actions
+              %th
+          %tbody
+            = render @property.property_options

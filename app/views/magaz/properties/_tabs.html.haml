@@ -1,0 +1,8 @@
+%ul.nav.nav-tabs
+  %li{class: active_class(edit_property_path(@property))}= link_to t('magaz.common.specification'), edit_property_path(@property)
+  %li{class: active_class(property_description_path(@property))}= link_to t('magaz.common.description'), property_description_path(@property)
+  -if @property.type && @property.type.code == Magaz::PropertyType::LIST_CODE
+    %li{class: active_class(property_property_options_path(@property))}= link_to t('magaz.common.options'), property_property_options_path(@property)
+  -if @property.type && @property.type.code == Magaz::PropertyType::NUMBER_CODE
+    %li{class: active_class(property_property_args_path(@property))}= link_to t('magaz.common.options'), property_property_args_path(@property)
+

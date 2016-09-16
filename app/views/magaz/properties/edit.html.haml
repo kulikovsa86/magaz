@@ -1,21 +1,12 @@
-
-- if notice
-  .alert.alert-success= notice
-
 = render '/magaz/property_groups/breadcrumb'
 
 .panel.panel-default
   .panel-heading
     %h4.panel_header
       = @property.name
-      -if @property.type && @property.type.code == Magaz::PropertyType::LIST_CODE
-        \|
-        %small= link_to t('magaz.common.options'), property_property_options_path(@property)
-      -if @property.type && @property.type.code == Magaz::PropertyType::NUMBER_CODE
-        \|
-        %small= link_to t('magaz.common.options'), property_property_args_path(@property)
-
   .panel-body
+    = render 'tabs'
+    %br
     = render 'form'
 
 = link_to t('helpers.link_to.back'), property_group_properties_path(@parent_group)

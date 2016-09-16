@@ -1,9 +1,9 @@
-= bootstrap_form_for @payment, layout: :horizontal, label_col: 'col-md-2', control_col: 'col-md-10' do |f|
+= bootstrap_form_for @payment, layout: :horizontal, label_col: 'col-md-2', control_col: 'col-lg-4 col-md-10' do |f|
   - if @payment.errors.any?
     = f.alert_message t('errors.template.header', count: @payment.errors.count)
 
   = f.text_field :code, class: 'small_input_group'
-  = f.text_field :name, class: 'medium_input_group'
+  = f.text_field :name
   = f.text_area :note
 
   = f.submit t('helpers.submit.save'), class: 'btn btn-success'
