@@ -36,12 +36,12 @@ module Magaz
       options
     end
 
-    def add_combo_property(name, options)
-      properties << Property.create_combo(name, options)
+    def add_combo_property(name, options, args = {})
+      properties << Property.create_combo(name, options, args)
     end
 
     def add_number_property(name, args = {})
-      prop = Property.create_number(name)
+      prop = Property.create_number(name, args)
       if args.size
         [:min, :max, :step, :default].each do |key|
           prop.property_arg[key] = args[key] if args[key]
@@ -49,6 +49,14 @@ module Magaz
         prop.property_arg.save
       end
       properties << prop
+    end
+
+    def add_float_property(name, args = {})
+      properties << Property.create_float(name, args)
+    end
+
+    def add_string_property(name, args = {})
+      properties << Property.create_string(name, args)
     end
 
   end

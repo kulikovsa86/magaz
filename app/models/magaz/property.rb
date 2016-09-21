@@ -45,14 +45,22 @@ module Magaz
       property_group
     end
 
-    def self.create_combo(name, options)
-      prop = Property.create(name: name, property_type: PropertyType.list)
+    def self.create_combo(name, options, args = {})
+      prop = Property.create(name: name, property_type: PropertyType.list, static: args[:static], variant: args[:variant])
       options.each { |opt| prop.options << PropertyOption.create(name: opt) }
       prop
     end
 
-    def self.create_number(name)
-      Property.create(name: name, property_type: PropertyType.number)
+    def self.create_number(name, args = {})
+      Property.create(name: name, property_type: PropertyType.number, static: args[:static], variant: args[:variant])
+    end
+
+    def self.create_float(name, args = {})
+      Property.create(name: name, property_type: PropertyType.float, static: args[:static], variant: args[:variant])
+    end
+
+    def self.create_string(name, args = {})
+      Property.create(name: name, property_type: PropertyType.string, static: args[:static], variant: args[:variant])
     end
 
     def rand_value

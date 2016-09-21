@@ -24,12 +24,22 @@ module Magaz
     BOOL_CODE = '05'
     COLOR_CODE = '10'
 
+    NUMBER = PropertyType.find_by(code: PropertyType::NUMBER_CODE)
+
     def self.list
       PropertyType.find_by(code: PropertyType::LIST_CODE)
     end
 
     def self.number
       PropertyType.find_by(code: PropertyType::NUMBER_CODE)
+    end
+
+    def self.float
+      PropertyType.find_by(code: PropertyType::FLOAT_CODE)
+    end
+
+    def self.string
+      PropertyType.find_by(code: PropertyType::STRING_CODE)
     end
 
   end
