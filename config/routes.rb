@@ -80,6 +80,7 @@ Magaz::Engine.routes.draw do
   get '/categories/(:parent)', to: 'categories#index', as: :categories
 
   get '/categories/(:id)/descr', to: 'categories#descr', as: :category_description
+  delete '/categories/:id/image', to: 'categories#image_destroy', as: :category_image_destroy
 
   shallow do
     resources :property_groups, only: [:edit, :update, :destroy] do

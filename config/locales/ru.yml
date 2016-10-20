@@ -527,6 +527,8 @@ ru:
         success: Категория обновлена
       destroy:
         success: Категория удалена
+      image_destroy:
+        success: Изображение удалено
     property_groups:
       index:
         title: Характеристики

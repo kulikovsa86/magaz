@@ -17,6 +17,7 @@
 module Magaz
   class Category < ActiveRecord::Base
 
+    after_save :set_image
     after_save :clean_desc_properties
 
     acts_as_tree dependent: :destroy
@@ -26,8 +27,12 @@ module Magaz
     has_many :products, dependent: :destroy
     has_many :property_values, as: :valuable
     has_and_belongs_to_many :property_groups
+    has_one :image, as: :imageable, dependent: :destroy
 
     validates :name, presence: true
+
+    attr_accessor :picture
+
 
     def self.options
       opts = []
@@ -53,6 +58,10 @@ module Magaz
         else
           nil
         end
+      end
+
+      def set_image
+        self.image = Magaz::Image.create(picture: picture) if picture
       end
   end
 end

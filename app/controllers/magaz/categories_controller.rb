@@ -18,7 +18,7 @@ require_dependency "magaz/application_controller"
 
 module Magaz
   class CategoriesController < ApplicationController
-    before_action :set_category, only: [:edit, :update, :destroy, :descr]
+    before_action :set_category, only: [:edit, :update, :destroy, :descr, :image_destroy]
 
     # GET /categories/(:parent)
     def index
@@ -97,6 +97,12 @@ module Magaz
       redirect_to categories_path(@parent_category), notice: t('.success')
     end
 
+    # DELETE /categories/:id/image(.:format)
+    def image_destroy
+      @category.image.destroy
+      redirect_to edit_category_path(@category), notice: t('.success')
+    end
+
     private
       # Use callbacks to share common setup or constraints between actions.
       def set_category
@@ -105,7 +111,7 @@ module Magaz
 
       # Only allow a trusted parameter "white list" through.
       def category_params
-        params.require(:category).permit(:code, :name, :description, :hidden, property_group_ids: [])
+        params.require(:category).permit(:code, :name, :description, :hidden, :picture, property_group_ids: [])
       end
   end
 end
