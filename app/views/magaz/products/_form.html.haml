@@ -2,7 +2,7 @@
   - if @product.errors.any?
     = f.alert_message t('errors.template.header', count: @product.errors.count)
 
-  = f.text_field :name
+  = f.text_field :name, :autofocus => true
   = f.text_field :price
   = f.text_field :article
   = f.text_field :weight

@@ -4,8 +4,8 @@
     - if @parent_category
         = hidden_field_tag :parent, @parent_category.permalink
 
-    = f.text_field :code
-    = f.text_field :name
+    / = f.text_field :code
+    = f.text_field :name, :autofocus => true
 
     = f.select :property_group_ids, grouped_options_for_select(Magaz::PropertyGroup.options, @category.property_group_ids), { label: Magaz::Category.human_attribute_name(:properties) }, { class: 'selectpicker', multiple: true, :'data-size' => 5 }
     = f.form_group :hidden do

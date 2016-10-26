@@ -1,3 +1,18 @@
+Magaz::Order.delete_all
+
+Magaz::PropertyValue.delete_all
+Magaz::Variant.delete_all
+Magaz::Comment.delete_all
+Magaz::Image.delete_all
+
+Magaz::Product.delete_all
+Magaz::Category.delete_all
+Magaz::PropertyOption.delete_all
+Magaz::PropertyArg.delete_all
+Magaz::Property.delete_all
+Magaz::PropertyGroup.delete_all
+
+
 Magaz::PropertyGroup.find_or_create_by_path %w|Общее Габаритные-размеры|
 Magaz::PropertyGroup.find_or_create_by_path %w|Общее Внешний-вид|
 

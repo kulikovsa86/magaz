@@ -35,6 +35,7 @@ module Magaz
 
     # GET    /categories(/:product_id)/descr(.:format)
     def descr
+      @parent_category = @category.parent
     end
 
     # GET /categories/new/(:parent)

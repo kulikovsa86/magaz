@@ -124,9 +124,24 @@ module Magaz
         end
       end
 
+      def find_permalink(permalink, index = nil)
+        if index.nil?
+          permalink = find_permalink(permalink, 2) if Magaz::Product.find_by_permalink(permalink)
+        else
+          if Magaz::Product.find_by_permalink("#{permalink}-#{index}")
+            permalink = find_permalink(permalink, index + 1) 
+          else
+            permalink = "#{permalink}-#{index}"
+          end
+        end
+        permalink
+      end
+
+
       def translit_name
         if name
-          Translit.convert(name, :english)
+          translit = Translit.convert(name, :english)
+          find_permalink(translit.parameterize)
         else
           nil
         end
