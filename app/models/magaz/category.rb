@@ -50,7 +50,11 @@ module Magaz
       Magaz::PropertyValue.where(valuable_type: Magaz::Product, valuable_id: product_ids).where.not(property: Magaz::Property.where(property_group: property_groups)).destroy_all
     end
 
-    # private
+    def all_products
+      Magaz::Product.where(category: self_and_descendants)
+    end
+
+    private
   
       def translit_name
         if name
