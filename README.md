@@ -4,7 +4,7 @@ Magaz - это библиотека (gem), которая поможет быс�
 
 [![Code Climate](https://codeclimate.com/github/nmix/magaz/badges/gpa.svg)](https://codeclimate.com/github/nmix/magaz)
 
-[![CircleCI](https://circleci.com/gh/nmix/magaz.svg?style=svg)](https://circleci.com/gh/nmix/magaz)
+[![CircleCI](https://circleci.com/gh/nmix/magaz.svg?style=svg&circle-token=1248d5b356cb774161cb279492cf2cbfce26a4b3)](https://circleci.com/gh/nmix/magaz)
 
 #### Установка и конфигурация
 
