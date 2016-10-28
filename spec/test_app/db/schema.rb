@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160915061136) do
+ActiveRecord::Schema.define(version: 20161028155105) do
 
   create_table "magaz_carts", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 20160915061136) do
   create_table "magaz_categories", force: :cascade do |t|
     t.string   "code"
     t.string   "name"
-    t.string   "description"
+    t.text     "description"
     t.boolean  "hidden",      default: true
     t.integer  "parent_id"
     t.integer  "position"
