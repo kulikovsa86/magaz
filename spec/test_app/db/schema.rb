@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161028155105) do
+ActiveRecord::Schema.define(version: 20161215081409) do
 
   create_table "magaz_carts", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -200,8 +200,10 @@ ActiveRecord::Schema.define(version: 20161028155105) do
     t.integer  "property_group_id"
     t.datetime "created_at",                        null: false
     t.datetime "updated_at",                        null: false
+    t.integer  "property_kind_id"
   end
 
+  add_index "magaz_properties", ["property_kind_id"], name: "index_magaz_properties_on_property_kind_id"
   add_index "magaz_properties", ["property_type_id"], name: "index_magaz_properties_on_property_type_id"
 
   create_table "magaz_property_args", force: :cascade do |t|
@@ -230,6 +232,13 @@ ActiveRecord::Schema.define(version: 20161028155105) do
     t.string   "code"
     t.integer  "parent_id"
     t.integer  "position"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "magaz_property_kinds", force: :cascade do |t|
+    t.string   "code"
+    t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

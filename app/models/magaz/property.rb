@@ -13,6 +13,7 @@
 #  property_group_id :integer
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
+#  property_kind_id  :integer
 #
 
 module Magaz
@@ -27,6 +28,8 @@ module Magaz
 
     belongs_to :property_type
     has_many :property_options, -> { order(position: :asc) }, dependent: :destroy
+
+    belongs_to :property_kind
 
     has_many :property_values, dependent: :destroy
     has_one :property_arg, dependent: :destroy
@@ -79,6 +82,18 @@ module Magaz
         Faker::Color.hex_color
       end
       value
+    end
+
+    def feature?
+      property_kind.feature?
+    end
+
+    def variant?
+      property_kind.variant?
+    end
+
+    def special?
+      property_kind.special?
     end
 
     private

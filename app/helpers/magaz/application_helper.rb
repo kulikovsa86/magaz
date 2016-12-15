@@ -54,5 +54,16 @@ module Magaz
     def setting_moulded?
       Magaz::Setting.get_bool('magaz-moulded')
     end
+
+    def property_kind_icon(property)
+      content_tag :span do
+        if property.variant?
+          content_tag(:i, nil, :class => "fa fa-pencil-square fa-fw") 
+        elsif property.special?
+          content_tag(:i, nil, :class => "fa fa-cog fa-fw")
+        end
+      end
+    end
+
   end
 end

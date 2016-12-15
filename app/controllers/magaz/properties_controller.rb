@@ -13,6 +13,7 @@
 #  property_group_id :integer
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
+#  property_kind_id  :integer
 #
 
 require_dependency "magaz/application_controller"
@@ -107,7 +108,7 @@ module Magaz
 
       # Only allow a trusted parameter "white list" through.
       def property_params
-        params.require(:property).permit(:code, :name, :description, :property_type_id, :static, :variant)
+        params.require(:property).permit(:code, :name, :description, :property_type_id, :static, :variant, :property_kind_id)
       end
 
   end

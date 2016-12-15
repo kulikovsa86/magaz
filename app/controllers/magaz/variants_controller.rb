@@ -8,6 +8,7 @@
 #  name       :string
 #  hidden     :boolean          default(FALSE)
 #  position   :integer
+#  stock      :integer          default(0)
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #

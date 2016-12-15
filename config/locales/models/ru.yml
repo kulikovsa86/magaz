@@ -7,6 +7,9 @@ ru:
       magaz/property_group:
         one: Группа характеристик
         other: Группы характеристик
+      magaz/property_kind:
+        one: Вид
+        other: Виды
       magaz/property: 
         one: Характеристика
         other: Характеристики
@@ -48,6 +51,7 @@ ru:
         property_type: Тип
         static: Константная характеристика
         variant: Расчетная характеристика
+        property_kind: Вид
       magaz/property_group:
         code: Код
         name: Наименование

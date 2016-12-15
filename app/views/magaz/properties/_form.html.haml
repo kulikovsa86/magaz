@@ -4,9 +4,8 @@
 
   = f.text_field :code
   = f.text_field :name
-  = f.collection_select :property_type_id, Magaz::PropertyType.order(:code), :id, :name, { label: Magaz::Property.human_attribute_name(:property_type) }, {class: 'selectpicker', disabled: !new_property_page?, 'data-width' => '400px'}
-  = f.form_group :variant do
-    = f.check_box :variant
+  = f.collection_select :property_type_id, Magaz::PropertyType.order(:code), :id, :name, { label: Magaz::Property.human_attribute_name(:property_type) }, {class: 'selectpicker', disabled: !new_property_page?}
+  = f.collection_select :property_kind_id, Magaz::PropertyKind.order(:code), :id, :name, { label: Magaz::Property.human_attribute_name(:property_kind) }, {class: 'selectpicker', disabled: !new_property_page? }
   / %br
   / %fieldset
   /   %legend= t('magaz.common.description')

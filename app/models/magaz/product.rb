@@ -17,6 +17,7 @@
 #  calc_dim_id  :integer
 #  correct      :boolean          default(FALSE)
 #  moulded      :boolean          default(FALSE)
+#  stock        :integer          default(0)
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
 #
@@ -38,6 +39,10 @@ module Magaz
 
     validates :name, :category, presence: true
     validates :name, allow_blank: true, uniqueness: true, length: { maximum: 144 }
+
+    def features
+      property_values.joins(property: :property_kind).where('magaz_property_kinds' => { id: Magaz::PropertyKind::FEATURE.id })
+    end
 
     # Устанавливаем значения характеристик товара
     # properties = [{property_id: "", value: ""}, ...]

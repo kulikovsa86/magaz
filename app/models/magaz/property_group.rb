@@ -24,7 +24,6 @@ module Magaz
       properties.where(variant: false)
     end
 
-
     def self.options
       options = []
       PropertyGroup.leaves.group_by(&:parent).each do |key, value|

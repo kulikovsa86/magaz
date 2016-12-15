@@ -13,6 +13,7 @@
 #  property_group_id :integer
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
+#  property_kind_id  :integer
 #
 
 require 'faker'

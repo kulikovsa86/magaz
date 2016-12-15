@@ -12,14 +12,17 @@
       - group.properties.order(:position).each do |property|
         .form-group
           = hidden_field_tag 'properties[][property_id]', property.id
-          = label_tag nil, property.name, class: 'col-md-2 control-label'
+          = label_tag nil, class: 'col-md-2 control-label' do
+            = property.name
+            = property_kind_icon(property)
+
           .col-lg-4.col-md-10
             - if property.type.code == Magaz::PropertyType::LIST_CODE
               = select_tag 'properties[][value]', options_from_collection_for_select(property.options, :name, :name, @product.value(property.id)), include_blank: true, class: 'selectpicker form-control'
             - elsif property.type.code == Magaz::PropertyType::NUMBER_CODE
-              = number_field_tag 'properties[][value]', @product.value(property.id), disabled: property.variant, class: 'form-control special_input'
+              = number_field_tag 'properties[][value]', @product.value(property.id), disabled: property.variant?, class: 'form-control special_input'
             - elsif property.type.code == Magaz::PropertyType::FLOAT_CODE
-              = number_field_tag 'properties[][value]', @product.value(property.id), disabled: property.variant, :step => 'any', class: 'form-control special_input'
+              = number_field_tag 'properties[][value]', @product.value(property.id), disabled: property.variant?, :step => 'any', class: 'form-control special_input'
             - elsif property.type.code == Magaz::PropertyType::TEXT_CODE
               = text_area_tag 'properties[][value]', @product.value(property.id), class: 'form-control wysihtml5'
             - elsif property.type.code == Magaz::PropertyType::BOOL_CODE

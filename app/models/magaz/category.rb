@@ -5,7 +5,7 @@
 #  id          :integer          not null, primary key
 #  code        :string
 #  name        :string
-#  description :string
+#  description :text
 #  hidden      :boolean          default(TRUE)
 #  parent_id   :integer
 #  position    :integer

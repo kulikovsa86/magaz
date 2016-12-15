@@ -12,6 +12,7 @@ Magaz::PropertyArg.delete_all
 Magaz::Property.delete_all
 Magaz::PropertyType.delete_all
 Magaz::PropertyGroup.delete_all
+Magaz::PropertyKind.delete_all
 
 Magaz::Dimension.delete_all
 Magaz::Delivery.delete_all
@@ -46,5 +47,9 @@ Magaz::PropertyType.create!(code: '03', name: 'Строковый')
 Magaz::PropertyType.create!(code: '04', name: 'Текстовый')
 Magaz::PropertyType.create!(code: '05', name: 'Логический')
 Magaz::PropertyType.create!(code: '10', name: 'Цвет')
+
+Magaz::PropertyKind.create!(code: '01', name: 'Описание')
+Magaz::PropertyKind.create!(code: '02', name: 'Расчетный')
+Magaz::PropertyKind.create!(code: '03', name: 'Специальный')
 
 Magaz::User.create(email: 'user@example.com', password: 'useruser')
