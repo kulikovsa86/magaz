@@ -21,6 +21,7 @@ module Magaz
 
     acts_as_list scope: :property_group
 
+    before_create :check_kind
     after_create :create_property_arg
 
     belongs_to :property_group
@@ -97,6 +98,10 @@ module Magaz
     end
 
     private
+
+      def check_kind
+        self.property_kind = PropertyKind::FEATURE unless property_kind_id
+      end
 
       def create_property_arg
         if property_type == PropertyType.number

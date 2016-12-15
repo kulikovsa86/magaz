@@ -7,9 +7,7 @@ class CreateMagazPropertyKinds < ActiveRecord::Migration
       t.timestamps null: false
     end
 
-    # add_column :magaz_properties, :property_kind_id, :integer
     add_reference :magaz_properties, :property_kind, index: true
     add_foreign_key :magaz_properties, :property_kinds
-
   end
 end
