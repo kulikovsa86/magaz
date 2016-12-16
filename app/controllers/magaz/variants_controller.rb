@@ -106,7 +106,7 @@ module Magaz
 
     # DELETE /variants/:id(.:format)
     def destroy
-      @variant = Variant.find(params[:id])
+      @variant = Variant.find_by_permalink(params[:id])
       @product = @variant.product
       @variant.destroy
       redirect_to product_variants_path(@product), notice: t('.success')
@@ -119,9 +119,9 @@ module Magaz
 
       def set_variant
         if params[:id]
-          @variant = Variant.find(params[:id])
+          @variant = Variant.find_by_permalink(params[:id])
         elsif params[:variant_id]
-          @variant = Variant.find(params[:variant_id])
+          @variant = Variant.find_by_permalink(params[:variant_id])
         else
           @variant = Variant.new
         end
