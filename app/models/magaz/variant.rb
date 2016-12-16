@@ -33,6 +33,15 @@ module Magaz
       end
     end
 
+    def value(property_id, args = {})
+      pv = property_values.find_by(property_id: property_id)
+      if pv
+        pv.value
+      else
+        ''
+      end
+    end
+
     # удаление модификаций
     # params = {'product' => permalink, items = [{id: id, checked: true}, ...]}
     # id - идентификатор модификации, checked - модификация выбрана

@@ -7,7 +7,7 @@
   = f.form_group :hidden do
     = f.check_box :hidden
 
-  = render '/magaz/property_values/form', modification_name: @variant.name
+  = render '/magaz/property_values/form', modification_name: @variant.name, obj: @variant
 
   %hr
   .panel.panel-default

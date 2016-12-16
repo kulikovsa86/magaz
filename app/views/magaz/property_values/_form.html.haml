@@ -18,17 +18,17 @@
 
           .col-lg-4.col-md-10
             - if property.type.code == Magaz::PropertyType::LIST_CODE
-              = select_tag 'properties[][value]', options_from_collection_for_select(property.options, :name, :name, @product.value(property.id)), include_blank: true, class: 'selectpicker form-control'
+              = select_tag 'properties[][value]', options_from_collection_for_select(property.options, :name, :name, obj.value(property.id)), include_blank: true, class: 'selectpicker form-control'
             - elsif property.type.code == Magaz::PropertyType::NUMBER_CODE
-              = number_field_tag 'properties[][value]', @product.value(property.id), disabled: property.variant?, class: 'form-control special_input'
+              = number_field_tag 'properties[][value]', obj.value(property.id), disabled: property.variant?, class: 'form-control special_input'
             - elsif property.type.code == Magaz::PropertyType::FLOAT_CODE
-              = number_field_tag 'properties[][value]', @product.value(property.id), disabled: property.variant?, :step => 'any', class: 'form-control special_input'
+              = number_field_tag 'properties[][value]', obj.value(property.id), disabled: property.variant?, :step => 'any', class: 'form-control special_input'
             - elsif property.type.code == Magaz::PropertyType::TEXT_CODE
-              = text_area_tag 'properties[][value]', @product.value(property.id), class: 'form-control wysihtml5'
+              = text_area_tag 'properties[][value]', obj.value(property.id), class: 'form-control wysihtml5'
             - elsif property.type.code == Magaz::PropertyType::BOOL_CODE
               .checkbox
-                = check_box_tag 'properties[][value]', '1', str2bool(@product.value(property.id)), :'data-on-text' => 'ДА', :'data-off-text' => 'НЕТ', :'data-size' => 'mini', class: 'switcher'
+                = check_box_tag 'properties[][value]', '1', str2bool(obj.value(property.id)), :'data-on-text' => 'ДА', :'data-off-text' => 'НЕТ', :'data-size' => 'mini', class: 'switcher'
             - elsif property.type.code == Magaz::PropertyType::COLOR_CODE
-              = text_field_tag 'properties[][value]', @product.value(property.id), class: 'pick-a-color form-control'
+              = text_field_tag 'properties[][value]', obj.value(property.id), class: 'pick-a-color form-control'
             - else
-              = text_field_tag 'properties[][value]', @product.value(property.id), class: 'form-control'
+              = text_field_tag 'properties[][value]', obj.value(property.id), class: 'form-control'
