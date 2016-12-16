@@ -54,6 +54,10 @@ module Magaz
       Magaz::Product.where(category: self_and_descendants)
     end
 
+    def all_variants
+      Magaz::Variant.where(product: all_products)
+    end
+
     private
   
       def translit_name

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161215081409) do
+ActiveRecord::Schema.define(version: 20161216120106) do
 
   create_table "magaz_carts", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -324,8 +324,10 @@ ActiveRecord::Schema.define(version: 20161215081409) do
     t.integer  "stock",                              default: 0
     t.datetime "created_at",                                         null: false
     t.datetime "updated_at",                                         null: false
+    t.string   "permalink"
   end
 
+  add_index "magaz_variants", ["permalink"], name: "index_magaz_variants_on_permalink"
   add_index "magaz_variants", ["product_id"], name: "index_magaz_variants_on_product_id"
 
 end
