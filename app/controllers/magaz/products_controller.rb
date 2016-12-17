@@ -59,7 +59,8 @@ module Magaz
       if @product.save
         redirect_to edit_product_path(@product), notice: t('.success')
       else
-        render :new
+        @dimensions = Dimension.all
+        render :new        
       end
     end
 
@@ -207,7 +208,7 @@ module Magaz
 
       # Only allow a trusted parameter "white list" through.
       def product_params
-        params.require(:product).permit(:name, :description, :price, :hidden, :article, :weight, :input_dim_id, :calc_dim_id, :correct, :moulded)
+        params.require(:product).permit(:name, :short_name, :description, :price, :hidden, :article, :weight, :input_dim_id, :calc_dim_id, :correct, :moulded)
       end
 
       def product_properties

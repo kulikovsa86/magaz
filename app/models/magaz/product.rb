@@ -38,10 +38,15 @@ module Magaz
     has_many :comments, dependent: :destroy
 
     validates :name, :category, presence: true
-    validates :name, allow_blank: true, uniqueness: true, length: { maximum: 144 }
+    # validates :name, allow_blank: true, uniqueness: true, length: { maximum: 144 }
+    validates :name, allow_blank: true, length: { maximum: 144 }
 
     def features
       property_values.joins(property: :property_kind).where('magaz_property_kinds' => { id: Magaz::PropertyKind::FEATURE.id })
+    end
+
+    def spec_value(code)
+      property_values.joins(:property).where('magaz_properties' => { code: code }).first
     end
 
     # Устанавливаем значения характеристик товара
@@ -145,7 +150,7 @@ module Magaz
 
       def translit_name
         if name
-          translit = Translit.convert(name, :english)
+          translit = Translit.convert("#{category.name} #{name}", :english)
           find_permalink(translit.parameterize)
         else
           nil

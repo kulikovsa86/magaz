@@ -63,6 +63,7 @@ ru:
         hidden: Скрытая
       magaz/product:
         name: Наименование
+        short_name: Краткое наименование
         var_name: Модификация
         description: Описание
         price: Цена, руб.

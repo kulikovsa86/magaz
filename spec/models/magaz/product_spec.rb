@@ -42,8 +42,8 @@ module Magaz
       expect(product.errors[:category].any?).to be(true)
     end
 
-    it "has a uniquie title" do
-      expect(build(:magaz_product, name: @product.name).valid?).to be(false)
+    it "has not a uniquie title" do
+      expect(build(:magaz_product, name: @product.name).valid?).to be(true)
     end
 
     it "sets properties" do

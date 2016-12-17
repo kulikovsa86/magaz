@@ -26,6 +26,14 @@ module Magaz
 
     validates :name, presence: true
 
+    def features
+      property_values.joins(property: :property_kind).where('magaz_property_kinds' => { id: Magaz::PropertyKind::FEATURE.id })
+    end
+
+    def spec_value(code)
+      property_values.joins(:property).where('magaz_properties' => { code: code }).first
+    end
+
     # properties = [{property_id: "", value: ""}, ...]
     def set_properties(properties)
       property_values.clear
