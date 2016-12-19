@@ -13,6 +13,12 @@ module Magaz
 
     alias items line_items
 
+    def total_price
+      items.to_a.sum do |item|
+        item.total_cart_price
+      end
+    end
+
     # params = {product_id: "id", variant_id: "id"}
     def has_item?(params)
       @line_item = items.find_by(product_id: params[:product_id], variant_id: params[:variant_id])
