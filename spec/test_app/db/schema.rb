@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161217061617) do
+ActiveRecord::Schema.define(version: 20161220120636) do
 
   create_table "magaz_carts", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -105,6 +105,7 @@ ActiveRecord::Schema.define(version: 20161217061617) do
     t.string   "liable_type"
     t.datetime "created_at",                                          null: false
     t.datetime "updated_at",                                          null: false
+    t.string   "note"
   end
 
   add_index "magaz_line_items", ["liable_type", "liable_id"], name: "index_magaz_line_items_on_liable_type_and_liable_id"
