@@ -1,6 +1,6 @@
 # Magaz
 
-Magaz - это библиотека (gem), которая поможет быстро создать интернет-магазин на базе Rails 4. Данный проект разрабатывается по мотивам платформы [shoppe](https://github.com/tryshoppe/shoppe), но с уклоном на *отечественного потребителя*.
+Magaz - это библиотека, которая поможет быстро создать интернет-магазин на базе Rails 4. Данный проект разрабатывается по мотивам платформы [shoppe](https://github.com/tryshoppe/shoppe), но с уклоном на *отечественного потребителя*.
 
 [![Code Climate](https://codeclimate.com/github/nmix/magaz/badges/gpa.svg)](https://codeclimate.com/github/nmix/magaz)
 
