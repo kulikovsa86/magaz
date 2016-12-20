@@ -124,7 +124,7 @@ module Magaz
     def properties_create
       @product.update(var_name: params[:var_name])
       @product.set_properties(params.require(:properties))
-      redirect_to product_properties_path(@product)
+      redirect_to product_properties_path(@product), notice: t('.success')
     end
 
     # PATCH  /products(/:product_id)/images(/:image_id)/up(.:format)

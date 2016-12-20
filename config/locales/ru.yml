@@ -514,6 +514,8 @@ ru:
         success: Товар обновлен
       destroy:
         success: Товар удален
+      properties_create:
+        success: Характеристики обновлены
     categories:
       index:
         title: Категории
