@@ -24,6 +24,9 @@ module Magaz
     has_many :variant_images, dependent: :destroy
     has_many :images, through: :variant_images
 
+    scoped_search on: :name
+    scoped_search :in => :product, on: [:name, :description]
+
     validates :name, presence: true
 
     def features

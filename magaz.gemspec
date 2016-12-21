@@ -44,6 +44,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'will_paginate-bootstrap'
   s.add_dependency "rspec-instrumentation-matcher"
   s.add_dependency 'faker'
+  s.add_dependency 'scoped_search', '~> 4.0'
 
   s.add_development_dependency "sqlite3"
   s.add_development_dependency "rspec-rails", "~> 3.3.3"

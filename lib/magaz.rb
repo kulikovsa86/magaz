@@ -25,6 +25,7 @@ require 'will_paginate'
 require 'will_paginate-bootstrap'
 require 'rspec-instrumentation-matcher'
 require 'faker'
+require 'scoped_search'
 
 require "magaz/engine"
 
