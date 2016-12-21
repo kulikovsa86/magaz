@@ -25,7 +25,7 @@ module Magaz
     has_many :images, through: :variant_images
 
     scoped_search on: :name
-    scoped_search :in => :product, on: [:name, :description]
+    scoped_search :relation => :product, on: [:name, :description]
 
     validates :name, presence: true
 

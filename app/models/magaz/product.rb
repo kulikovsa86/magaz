@@ -38,7 +38,7 @@ module Magaz
     has_many :comments, dependent: :destroy
 
     scoped_search on: [:name, :description]
-    scoped_search :in => :variants, on: :name
+    scoped_search :relation => :variants, on: :name
 
     validates :name, :category, presence: true
     # validates :name, allow_blank: true, uniqueness: true, length: { maximum: 144 }

@@ -24,7 +24,7 @@ Gem::Specification.new do |s|
   s.add_dependency "bootstrap_form", "~> 2.3", ">= 2.3.0"
   s.add_dependency 'turbolinks'
   s.add_dependency 'autoprefixer-rails'
-  s.add_dependency 'acts_as_list', '~> 0.7.2'
+  s.add_dependency 'acts_as_list', '0.7.2'
   s.add_dependency 'closure_tree'
   s.add_dependency 'translit'
   s.add_dependency 'has_permalink'
