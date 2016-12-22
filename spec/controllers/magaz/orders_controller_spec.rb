@@ -195,7 +195,7 @@ module Magaz
 
         it "notifies custom event" do
           @params[:status_id] = 1
-          expect{ subject }.to instrument("magaz.custom_event").with(options: {event_type: 'status updated', order: order.id})
+          expect{ subject }.to instrument("magaz.custom_event").with(options: {event_type: 'status updated', order: order.id, user: 1})
         end
 
         it "doesn't notify event if status not changed" do
@@ -243,14 +243,14 @@ module Magaz
           item = order.items.take
           expect { 
             put :recount, id: order, items: [{id: item.id, count: item.count + 1}] 
-          }.to instrument("magaz.custom_event").with(options: {event_type: 'count changed', order: order.id})
+          }.to instrument("magaz.custom_event").with(options: {event_type: 'count changed', order: order.id, user: 1})
         end
 
         it "unit_count" do
           item = order.items.take
           expect { 
             put :recount, id: order, recount_unit: true, items: [{id: item.id, total_count: Random.rand(100)}]
-          }.to instrument("magaz.custom_event").with(options: {event_type: 'unit count changed', order: order.id})
+          }.to instrument("magaz.custom_event").with(options: {event_type: 'unit count changed', order: order.id, user: 1})
         end
       end
     end

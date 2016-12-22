@@ -105,7 +105,7 @@ module Magaz
       status_id = @order.status_id
       if @order.update(order_params)
         if status_id != @order.status_id
-          notify( event_type: 'status updated', order: @order.id )
+          notify( event_type: 'status updated', order: @order.id, user: current_user.id )
         end
         redirect_to "/magaz/orders/#{@order.id}/#{params[:member]}", notice: t('.success')
       else
@@ -125,11 +125,11 @@ module Magaz
       params.require(:items)
       unless params[:recount_unit]
         if @order.recount(params[:items])
-          notify( event_type: 'count changed', order: @order.id )
+          notify( event_type: 'count changed', order: @order.id, user: current_user.id )
         end
       else
         if @order.recount_unit(params[:items])
-          notify( event_type: 'unit count changed', order: @order.id )
+          notify( event_type: 'unit count changed', order: @order.id, user: current_user.id )
         end
       end
       redirect_to edit_items_order_path(@order), notice: t('.success')
@@ -143,7 +143,7 @@ module Magaz
 
     # GET    /order/:id/send_bill(.:format)
     def send_bill
-      notify( event_type: 'send bill', order: @order.id )
+      notify( event_type: 'send bill', order: @order.id, user: current_user.id )
       redirect_to edit_payment_order_path(@order), notice: t('.success')
     end
 
