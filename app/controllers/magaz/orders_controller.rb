@@ -26,8 +26,9 @@ require_dependency "magaz/application_controller"
 
 module Magaz
   class OrdersController < ApplicationController
+    include PdfUtils
 
-    before_action :set_order, only: [:edit, :update, :destroy, :edit_items, :edit_contacts, :edit_delivery, :edit_payment, :edit_status, :recount]
+    before_action :set_order, only: [:edit, :update, :destroy, :edit_items, :edit_contacts, :edit_delivery, :edit_payment, :edit_status, :recount, :bill]
 
     # GET    /orders(.:format)
     def index
@@ -131,6 +132,13 @@ module Magaz
         end
       end
       redirect_to edit_items_order_path(@order), notice: t('.success')
+    end
+
+    # GET    /order/:id/bill(.:format)
+    def bill
+      filename, filepath = create_bill(@order)
+      send_data File.read(filepath), filename: filename, type: "application/pdf"
+      # redirect_to edit_payment_path(@order)
     end
 
     private

@@ -72,6 +72,18 @@ module Magaz
       end
     end
 
+    def total_price_s
+      sprintf("%.2f", total_price).sub('.', ',')
+    end
+
+    def including_nds
+      (total_price / 1.18 * 0.18).round 2
+    end
+
+    def including_nds_s
+      sprintf("%.2f", including_nds).sub('.', ',')
+    end
+
     def has_moulded?
       !items.to_a.select{ |item| item.product.moulded }.empty?
     end
@@ -133,6 +145,37 @@ module Magaz
 
     def self.fresh
       Order.where(status: Status.NEW).order(created_at: :desc)
+    end
+
+    def contacts
+      "#{company} #{post_code} #{address1} #{address2} #{address3} #{address4} #{phone} #{email} #{customer}".strip.squeeze
+    end
+
+    def bill_array
+      items = []
+      line_items.select(:product_id, :variant_id).distinct.each do |line_item|
+        product_id = line_item.product_id
+        product = Magaz::Product.find(product_id) if product_id
+        variant_id = line_item.variant_id
+        variant = Magaz::Variant.find(variant_id) if variant_id
+        price = line_items.find_by(product_id: product_id, variant_id: variant_id).price
+        price_str = sprintf("%.2f", price).sub('.', ',')
+        count = line_items.where(product_id: product_id, variant_id: variant_id).to_a.sum {|item| item.amount}
+        sum_str = sprintf("%.2f", count * price).sub('.', ',')
+        if product.short_name && !product.short_name.empty?
+          product_name = product.short_name
+        else
+          product_name = product.name
+        end
+        if variant_id
+          full_name = "#{product_name} #{variant.name}"
+        else
+          full_name = "#{product_name}"
+        end
+        dim = product.calc_dim ? product.calc_dim.name : Magaz::Dimension.default.name
+        items << [full_name, count, dim, price_str, sum_str]
+      end
+      items
     end
 
     private

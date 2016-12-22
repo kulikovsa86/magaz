@@ -26,6 +26,7 @@ require 'will_paginate-bootstrap'
 require 'rspec-instrumentation-matcher'
 require 'faker'
 require 'scoped_search'
+require 'pdf_utils'
 
 require "magaz/engine"
 
@@ -35,5 +36,8 @@ module Magaz
   end
   def self.image_dir
     File.join(Magaz.root, "app/assets/images/magaz/")
+  end
+  def self.root_path
+    Pathname.new(Magaz.root)
   end
 end

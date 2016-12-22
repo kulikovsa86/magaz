@@ -422,7 +422,8 @@ ru:
         shipper: 'Грузоотправитель'
 
         signatories: Подписанты
-        director: Руководитель
+        head_position: Должность руководителя
+        head_name: ФИО руководителя
         accountant: 'Главный (старший) бухгалтер'
         responsible: 'Ответственный'
 

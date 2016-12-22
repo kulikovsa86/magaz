@@ -45,6 +45,9 @@ Gem::Specification.new do |s|
   s.add_dependency "rspec-instrumentation-matcher"
   s.add_dependency 'faker'
   s.add_dependency 'scoped_search', '~> 4.0'
+  s.add_dependency 'prawn', '~> 2.1'
+  s.add_dependency 'prawn-table', '~> 0.2.2'
+  s.add_dependency 'ru_propisju', '~> 2.5'
 
   s.add_development_dependency "sqlite3"
   s.add_development_dependency "rspec-rails", "~> 3.3.3"

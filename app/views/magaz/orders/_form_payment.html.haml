@@ -6,4 +6,17 @@
   = hidden_field_tag "form", "form_payment"
   = f.collection_select :payment_id, Magaz::Payment.all, :id, :name, { hide_label: false }, {class: 'selectpicker'}
 
-  = f.submit t('helpers.submit.save'), class: 'btn btn-success'
+  .row
+    .col-lg-12
+      = f.submit t('helpers.submit.save'), class: 'btn btn-success'
+      &nbsp;
+      .btn-group
+        %button.btn.btn-default.dropdown-toggle{:type => "button", :'data-toggle' => "dropdown", :'aria-haspopup'=>true, :'aria-expanded'=>false}
+          Счет 
+          %span.caret
+        %ul.dropdown-menu
+          %li= link_to "Скачать", bill_path(@order)
+          %li= link_to "Отправить на foo@example.com", "#"
+  
+
+      / = button_to 'Счет', '#', class: 'btn btn-default'

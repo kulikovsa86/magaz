@@ -126,4 +126,6 @@ Magaz::Engine.routes.draw do
   get '/settings', to: 'settings#index', as: :settings
   post '/settings', to: 'settings#update'
 
+  get '/order/:id/bill', to: 'orders#bill', as: :bill
+
 end

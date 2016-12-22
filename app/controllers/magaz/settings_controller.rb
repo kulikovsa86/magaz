@@ -45,7 +45,8 @@ module Magaz
       Magaz::Setting.set('magaz-supplier', settings_params['supplier'])
       Magaz::Setting.set('magaz-shipper', settings_params['shipper'])
       # ---
-      Magaz::Setting.set('magaz-director', settings_params['director'])
+      Magaz::Setting.set('magaz-head-position', settings_params['head-position'])
+      Magaz::Setting.set('magaz-head-name', settings_params['head-name'])
       Magaz::Setting.set('magaz-accountant', settings_params['accountant'])
       Magaz::Setting.set('magaz-responsible', settings_params['responsible'])
       # ---
@@ -63,7 +64,7 @@ module Magaz
           :'full-name', :'post-code', :city, :street, :'main-phone', :phones, :fax, :email,
           :'bank-name', :inn, :kpp, :bik, :'corr-account', :'abon-account', :recipient,
           :supplier, :shipper,
-          :director, :accountant, :responsible,
+          :'head-position', :'head-name', :accountant, :responsible,
           :moulded, :'show-images', :'show-colors')
       end
 

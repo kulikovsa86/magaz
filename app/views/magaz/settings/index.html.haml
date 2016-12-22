@@ -40,7 +40,8 @@
 
       %fieldset
         %legend= t('.signatories')
-        = f.text_field 'magaz[director]', :label => t('.director'), :value => Magaz::Setting.get('magaz-director')
+        = f.text_field 'magaz[head-position]', :label => t('.head_position'), :value => Magaz::Setting.get('magaz-head-position')
+        = f.text_field 'magaz[head-name]', :label => t('.head_name'), :value => Magaz::Setting.get('magaz-head-name')
         = f.text_field 'magaz[accountant]', :label => t('.accountant'), :value => Magaz::Setting.get('magaz-accountant')
         = f.text_field 'magaz[responsible]', :label => t('.responsible'), :value => Magaz::Setting.get('magaz-responsible')
 
