@@ -2,7 +2,7 @@
 %html
   %head
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
-    %title Magaz
+    %title= Magaz::Setting.get('magaz-title')
     = stylesheet_link_tag    "magaz/application", media: "all"
     = javascript_include_tag "magaz/application"
     = csrf_meta_tags

@@ -3,9 +3,53 @@
   .panel-heading
     %h4.panel_header= t('.title')
   .panel-body
-    = bootstrap_form_tag do |f|
-      = f.form_group do
-        = f.check_box 'magaz[moulded]', :label => t('.moulded'), checked: Magaz::Setting.get_bool('magaz-moulded')
-        = f.check_box 'magaz[show-images]', :label => t('.images'), checked: Magaz::Setting.get_bool('magaz-show-images')
-        = f.check_box 'magaz[show-colors]', :label => t('.colors'), checked: Magaz::Setting.get_bool('magaz-show-colors')
+    = bootstrap_form_tag({:layout => :horizontal, :label_col => 'col-md-2', :control_col => 'col-lg-4 col-md-10'}) do |f|
+
+      %fieldset
+        %legend= t('.general')
+        = f.text_field 'magaz[title]', label: t('.page_title'), value: Magaz::Setting.get('magaz-title')
+        = f.email_field 'magaz[notification-email]', label: t('.notification_email'), value: Magaz::Setting.get('magaz-notification-email')
+        = f.form_group do
+          = f.check_box 'magaz[cat-off]', label: t('.cat_off'), checked: Magaz::Setting.get_bool('magaz-cat-off')
+
+      %fieldset
+        %legend= t('.contacts')
+        = f.text_field 'magaz[full-name]', :label => t('.full_name'), value: Magaz::Setting.get('magaz-full-name')
+        = f.text_field 'magaz[post-code]', :label => t('.post_code'), value: Magaz::Setting.get('magaz-post-code')
+        = f.text_field 'magaz[city]', :label => t('.city'), value: Magaz::Setting.get('magaz-city')
+        = f.text_field 'magaz[street]', :label => t('.street'), value: Magaz::Setting.get('magaz-street')
+        = f.text_field 'magaz[main-phone]', :label => t('.main_phone'), value: Magaz::Setting.get('magaz-main-phone')
+        = f.text_field 'magaz[phones]', :label => t('.phones'), value: Magaz::Setting.get('magaz-phones')
+        = f.text_field 'magaz[fax]', :label => t('.fax'), value: Magaz::Setting.get('magaz-fax')
+        = f.text_field 'magaz[email]', :label => t('.email'), value: Magaz::Setting.get('magaz-email')
+
+      %fieldset
+        %legend= t('.payment_details')  
+        = f.text_field 'magaz[bank-name]', :label => t('.bank_name'), :value => Magaz::Setting.get('magaz-bank-name')
+        = f.text_field 'magaz[inn]', :label => t('.inn'), :value => Magaz::Setting.get('magaz-inn')
+        = f.text_field 'magaz[kpp]', :label => t('.kpp'), :value => Magaz::Setting.get('magaz-kpp')
+        = f.text_field 'magaz[bik]', :label => t('.bik'), :value => Magaz::Setting.get('magaz-bik')
+        = f.text_field 'magaz[corr-account]', :label => t('.corr_account'), :value => Magaz::Setting.get('magaz-corr-account')
+        = f.text_field 'magaz[abon-account]', :label => t('.abon_account'), :value => Magaz::Setting.get('magaz-abon-account')
+        = f.text_field 'magaz[recipient]', :label => t('.recipient'), :value => Magaz::Setting.get('magaz-recipient')
+
+      %fieldset
+        %legend= t('.delivery_details')
+        = f.text_area 'magaz[supplier]', :label => t('.supplier'), :value => Magaz::Setting.get('magaz-supplier')
+        = f.text_area 'magaz[shipper]', :label => t('.shipper'), :value => Magaz::Setting.get('magaz-shipper')
+
+      %fieldset
+        %legend= t('.signatories')
+        = f.text_field 'magaz[director]', :label => t('.director'), :value => Magaz::Setting.get('magaz-director')
+        = f.text_field 'magaz[accountant]', :label => t('.accountant'), :value => Magaz::Setting.get('magaz-accountant')
+        = f.text_field 'magaz[responsible]', :label => t('.responsible'), :value => Magaz::Setting.get('magaz-responsible')
+
+      %fieldset
+        %legend= 'Отображение'
+        = f.form_group do
+          = f.check_box 'magaz[moulded]', label: t('.moulded'), checked: Magaz::Setting.get_bool('magaz-moulded')
+          = f.check_box 'magaz[show-images]', label: t('.images'), checked: Magaz::Setting.get_bool('magaz-show-images')
+          = f.check_box 'magaz[show-colors]', label: t('.colors'), checked: Magaz::Setting.get_bool('magaz-show-colors')
+
+
       = f.submit t('helpers.submit.save'), class: 'btn btn-success'

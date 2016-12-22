@@ -393,6 +393,39 @@ ru:
     settings:
       index:
         title: Настройки
+        general: Основное
+        page_title: Заголовок страницы
+        notification_email: Email для уведомлений
+        cat_off: Отключить каталог
+
+        contacts: Контакты
+        full_name: 'Полное наименование'
+        post_code: Почтовый индекс
+        city: Город
+        street: 'Улица, дом'
+        main_phone: 'Основной телефон'
+        phones: Контактные телефоны
+        fax: Факс
+        email: Эл. почта
+
+        payment_details: Банковские реквизиты
+        bank_name: Банк получателя
+        inn: ИНН
+        kpp: КПП
+        bik: БИК
+        corr_account: Корр. счет
+        abon_account: Абон. счет
+        recipient: Получатель
+
+        delivery_details: 'Транспортирование'
+        supplier: 'Поставщик'
+        shipper: 'Грузоотправитель'
+
+        signatories: Подписанты
+        director: Руководитель
+        accountant: 'Главный (старший) бухгалтер'
+        responsible: 'Ответственный'
+
         moulded: Отображать погонажные данные
         images: Отображать картинки в списке модификаций
         colors: Отображать цвета в списке модификаций
