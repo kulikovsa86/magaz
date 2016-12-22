@@ -44,7 +44,7 @@ module Magaz
       it "sets settings values" do
         expect {
           post :update, magaz: @params
-        }.to change{ Setting.count }.by(3)
+        }.to change{ Setting.count }.by(26)
       end
 
       it "redirects to index" do
