@@ -104,7 +104,7 @@ module Magaz
 
     def values_string
       values = []
-      property_values.each do |pv|
+      features.each do |pv|
         if pv.property && pv.property.type.code != '10'
           if pv.property.type.code == '04'
             values << (pv.value.gsub(/<\/?[^>]*>/, "")[0..15] + '...')

@@ -16,7 +16,8 @@
           %span.caret
         %ul.dropdown-menu
           %li= link_to "Скачать", bill_path(@order)
-          %li= link_to "Отправить на foo@example.com", "#"
+          - if @order.email && !@order.email.empty?
+            %li= link_to "Отправить на #{@order.email}", send_bill_path(@order)
   
 
       / = button_to 'Счет', '#', class: 'btn btn-default'

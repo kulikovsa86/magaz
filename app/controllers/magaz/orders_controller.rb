@@ -28,7 +28,8 @@ module Magaz
   class OrdersController < ApplicationController
     include PdfUtils
 
-    before_action :set_order, only: [:edit, :update, :destroy, :edit_items, :edit_contacts, :edit_delivery, :edit_payment, :edit_status, :recount, :bill]
+    before_action :set_order, only: [:edit, :update, :destroy, :edit_items, :edit_contacts, 
+      :edit_delivery, :edit_payment, :edit_status, :recount, :bill, :send_bill]
 
     # GET    /orders(.:format)
     def index
@@ -138,7 +139,12 @@ module Magaz
     def bill
       filename, filepath = create_bill(@order)
       send_data File.read(filepath), filename: filename, type: "application/pdf"
-      # redirect_to edit_payment_path(@order)
+    end
+
+    # GET    /order/:id/send_bill(.:format)
+    def send_bill
+      notify( event_type: 'send bill', order: @order.id )
+      redirect_to edit_payment_order_path(@order), notice: t('.success')
     end
 
     private

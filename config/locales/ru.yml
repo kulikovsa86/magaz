@@ -490,6 +490,8 @@ ru:
         success: Заказ удален
       recount:
         success: Данные заказа обновлены
+      send_bill:
+        success: Запрос на отравку счета по email выполнен
     variants:
       index:
         title: Модификации товара
