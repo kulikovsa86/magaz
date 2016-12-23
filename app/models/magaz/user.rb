@@ -31,5 +31,13 @@ module Magaz
     validates :email, presence: true
     validates :email, allow_blank: true, email_format: { message: 'Не похоже, что это адрес электронной почты' }
 
+    def fio
+      if profile
+        "#{profile.first_name} #{profile.last_name}"
+      else
+        nil
+      end
+    end
+
   end
 end

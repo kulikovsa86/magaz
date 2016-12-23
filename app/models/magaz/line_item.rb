@@ -48,7 +48,7 @@ module Magaz
     end
 
     def unit_count
-      if manual && total_count
+      if manual?
         total_count
       elsif ratio
         count * ratio
@@ -62,6 +62,22 @@ module Magaz
         count
       else
         unit_count
+      end
+    end
+
+    def manual?
+      if manual && total_count
+        true
+      else
+        false
+      end
+    end
+
+    def manual_tag
+      if manual?
+        '*'
+      else
+        ''
       end
     end
 

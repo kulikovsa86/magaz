@@ -111,8 +111,9 @@ module Magaz
         item = items.find_by_id(param_item[:id])
         if item
           count = item.count
+          total_count = item.total_count
           item.update(count: param_item[:count], manual: false, total_count: nil)
-          changed = true if count != item.count
+          changed = true if (count != item.count || total_count != item.total_count)
         end
       end
       changed
@@ -123,7 +124,7 @@ module Magaz
       changed = false
       param_items.each do |param_item|
         item = items.find_by_id(param_item[:id])
-        if item && item.total_count != BigDecimal(param_item[:total_count])
+        if item && param_item[:total_count] && item.total_count != BigDecimal(param_item[:total_count])
           item.update(total_count: param_item[:total_count], manual: true)
           changed = true
         end
@@ -176,6 +177,22 @@ module Magaz
         items << [full_name, count, dim, price_str, sum_str]
       end
       items
+    end
+
+    def manual?
+      if line_items.find_by(manual: true)
+        true
+      else
+        false
+      end
+    end
+
+    def manual_tag
+      if manual?
+        '*'
+      else
+        ''
+      end
     end
 
     private
