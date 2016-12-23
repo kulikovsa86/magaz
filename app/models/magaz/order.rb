@@ -39,25 +39,25 @@ module Magaz
     validates :phone, presence: true
     validates :email, presence: true
 
-    attr_accessor :company_valid
-    validates :company, presence: true, if: :company_valid
+    # attr_accessor :company_valid
+    # validates :company, presence: true, if: :company_valid
 
-    attr_accessor :skip_delivery_valid
-    validates :delivery, presence: true, unless: :skip_delivery_valid
+    # attr_accessor :skip_delivery_valid
+    # validates :delivery, presence: true, unless: :skip_delivery_valid
 
-    with_options if: :delivery_need? do |o|
-      o.validates :address1, presence: true
-      o.validates :address2, presence: true
-      o.validates :address3, presence: true
-      o.validates :address4, presence: true
-      o.validates :post_code, presence: true, if: :post_code_need?
-    end
+    # with_options if: :delivery_need? do |o|
+    #   o.validates :address1, presence: true
+    #   o.validates :address2, presence: true
+    #   o.validates :address3, presence: true
+    #   o.validates :address4, presence: true
+    #   o.validates :post_code, presence: true, if: :post_code_need?
+    # end
 
-    attr_accessor :skip_payment_valid
-    validates :payment, presence: true, unless: :skip_payment_valid
+    # attr_accessor :skip_payment_valid
+    validates :payment, presence: true #, unless: :skip_payment_valid
 
-    attr_accessor :pdt_valid
-    validates :pdt, presence: true, if: :pdt_valid
+    # attr_accessor :pdt_valid
+    # validates :pdt, presence: true, if: :pdt_valid
     
     alias items line_items
     alias statuses order_statuses
@@ -198,11 +198,13 @@ module Magaz
     private
 
       def delivery_need?
-        delivery.address_required if (!skip_delivery_valid && delivery)
+        delivery.address_required if delivery
+        # delivery.address_required if (!skip_delivery_valid && delivery)
       end
 
       def post_code_need?
-        delivery.post_code_required if (!skip_delivery_valid && delivery)
+        delivery.post_code_required if delivery
+        # delivery.post_code_required if (!skip_delivery_valid && delivery)
       end
 
       def check_status

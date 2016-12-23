@@ -24,7 +24,7 @@
             %td= order.created_at.strftime "%d.%m.%Y %H:%M"
             %td
               = order.customer
-              = "(#{order.company})" if order.company
+              = "(#{order.company})" if (order.company && !order.company.empty?)
             %td.price_cell= number_to_currency order.total_price
             %td.status_cell= order.status.name if order.status
 
