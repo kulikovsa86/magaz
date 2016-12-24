@@ -26,11 +26,13 @@ module Magaz
 
     scoped_search on: :name
     scoped_search :relation => :product, on: [:name, :description]
+    
+
 
     validates :name, presence: true
 
     def features
-      property_values.joins(property: :property_kind).where('magaz_property_kinds' => { id: Magaz::PropertyKind::FEATURE.id })
+      property_values.features
     end
 
     def spec_value(code)

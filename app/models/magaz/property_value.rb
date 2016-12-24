@@ -16,5 +16,10 @@ module Magaz
   class PropertyValue < ActiveRecord::Base
     belongs_to :property
     belongs_to :valuable, polymorphic: true
+
+    scope :features, -> { joins(property: :property_kind).where('magaz_property_kinds' => { id: Magaz::PropertyKind::FEATURE.id }) }
+
+    scoped_search on: :value
+
   end
 end
