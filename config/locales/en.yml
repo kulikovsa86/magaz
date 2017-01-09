@@ -140,8 +140,9 @@ en:
 
   magaz:
     sign_in:
-      title: Sign in
+      title: Magaz
       remember: Remember me
+      submit: Sign in
     common:
       remove: Remove
       recount: Recount

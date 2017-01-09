@@ -19,9 +19,9 @@
                   .form-group
                     = f.email_field :email, placeholder: "E-mail  ", autofocus: true, class: "form-control"
                   .form-group
-                    = f.password_field :password, placeholder: "Пароль", autocomplete: "off", class: "form-control"
+                    = f.password_field :password, placeholder: "Password", autocomplete: "off", class: "form-control"
                   .checkbox
                     %label
                       = f.check_box :remember_me
                       = t("magaz.sign_in.remember")
-                = f.submit "Войти", class: "btn btn-lg btn-success btn-block"
+                = f.submit t("magaz.sign_in.submit"), class: "btn btn-lg btn-success btn-block"

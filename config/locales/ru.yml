@@ -335,8 +335,9 @@ ru:
 
   magaz:
     sign_in:
-      title: Войти в Magaz
+      title: Вход в Magaz
       remember: Запомнить меня
+      submit: Войти
     common:
       dashboard: Панель управления
       edit: Редактировать

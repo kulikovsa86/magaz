@@ -11,9 +11,6 @@ module Magaz
 
       def set_locale
         # if params[:locale] is nil then I18n.default_locale will be used
-        puts "************************************"
-        puts params
-        puts "************************************"
         I18n.locale = params[:locale]
       end
   end
