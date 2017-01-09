@@ -12,12 +12,12 @@
       &nbsp;
       .btn-group
         %button.btn.btn-default.dropdown-toggle{:type => "button", :'data-toggle' => "dropdown", :'aria-haspopup'=>true, :'aria-expanded'=>false}
-          Счет 
+          = t("magaz.common.bill")
           %span.caret
         %ul.dropdown-menu
-          %li= link_to "Скачать", bill_path(@order)
+          %li= link_to t("magaz.common.download"), bill_path(@order)
           - if @order.email && !@order.email.empty?
-            %li= link_to "Отправить на #{@order.email}", send_bill_path(@order)
+            %li= link_to t("magaz.common.send_bill", mail: @order.email), send_bill_path(@order)
   
 
       / = button_to 'Счет', '#', class: 'btn btn-default'

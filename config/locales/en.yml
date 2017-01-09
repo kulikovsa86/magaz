@@ -33,6 +33,7 @@ en:
       update: Update %{model}
       save: Save
       login: Login
+      change: Change
     label:
       new: New %{model}
       list: List of %{model}
@@ -44,9 +45,12 @@ en:
       edit: Edit
       destroy: Destroy
       new: New
+      new_f: New
       logout: Logout
     question:
       confirm: Are you sure?
+      confirm_remove_items: 'Delete selected items?'
+      confirm_remove_image: 'Delete image?'
   controllers:
     created: "%{model} was successfully created"
     updated: "%{model} was successfully updated"
@@ -133,3 +137,117 @@ en:
       not_saved:
         one: "1 error prohibited this %{resource} from being saved:"
         other: "%{count} errors prohibited this %{resource} from being saved:"
+
+  magaz:
+    sign_in:
+      title: Sign in
+      remember: Remember me
+    common:
+      remove: Remove
+      recount: Recount
+      recount_unit: Recount units
+      send_bill: Send to %{mail}
+    products:
+      index:
+        title: Products
+      gallery:
+        upload: Upload
+      upload:
+        success: Image uploaded
+      create:
+        success: Product created
+      update:
+        success: Product updated
+      destroy:
+        success: Product deleted
+      properties_create:
+        success: Properties updated
+    property_groups:
+      title: Property group - %{group}
+    variants:
+      form:
+        select: "Select the image associated with this modification"
+      edit:
+        title: Edit modification
+    properties:
+      index:
+        title: Properties
+      new:
+        title: New property
+      edit:
+        options: Property type options
+      create:
+        success: Property created
+      update:
+        success: Property updated
+      destroy:
+        success: Property deleted
+    orders:
+      index:
+        title: Orders
+        num: Num
+        customer: 'Company/Name'
+        total: Order cost
+        new: Новые
+        all: Все
+      new:
+        title: New order
+      create:
+        success: Order created
+      edit:
+        title: Order N%{num}
+      update:
+        success: Order updated
+      destroy:
+        success: Order deleted
+      recount:
+        success: Order recounted
+      send_bill:
+        success: Request to send bills by email done
+    deliveries:
+      index:
+        title: Delivery methods
+      new:
+        title: New delivery method
+      create:
+        success: Delivery method created
+      update:
+        success: Delivery method updated
+      destroy:
+        success: Delivery method deleted
+    payments:
+      index:
+        title: Payment methods
+      new:
+        title: New payment method
+      create:
+        success: Payment method created
+      update:
+        success: Payment method updated
+      destroy:
+        success: Payment method deleted
+    comments:
+      index:
+        public: Publication
+      edit:
+        title: Editing comment
+      update:
+        success: Comment updated
+      destroy:
+        success: Comment deleted
+    statuses:
+      index:
+        title: Statuses
+      new:
+        title: New status
+      create:
+        success: Status created
+      update:
+        success: Status updated
+      destroy:
+        success: Status deleted
+    settings:
+      index:
+        title: Settings
+      update:
+        success: Settings updated

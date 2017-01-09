@@ -7,7 +7,7 @@
 - @property_groups.each do |group|
   .panel.panel-default
     .panel-heading
-      .panel_header.subpanel= "Группа характеристик - #{group.name}"
+      .panel_header.subpanel= t("magaz.property_groups.title", group: group.name)
     .panel-body
       - group.properties.order(:position).each do |property|
         .form-group

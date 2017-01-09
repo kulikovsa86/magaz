@@ -1,5 +1,5 @@
 %ol.breadcrumb
-  %li= link_to 'Товары', categories_path
+  %li= link_to t('magaz.common.products'), categories_path
   - if @parent_category
     - @parent_category.self_and_ancestors.reverse.each do |cat|
       %li= link_to cat.name, categories_path(cat)

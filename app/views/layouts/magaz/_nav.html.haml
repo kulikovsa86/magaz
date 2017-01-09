@@ -26,6 +26,8 @@
         = link_to destroy_user_session_path, method: :delete do
           %i.fa.fa-sign-out.fa-fw
           = t('magaz.layouts.quit')
+  %li= link_to "ru", root_path(locale: "ru")
+  %li= link_to "en", root_path(locale: "en")
 
       
 

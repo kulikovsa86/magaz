@@ -193,6 +193,8 @@ ru:
       confirm_remove_category: 'Вы уверенны? Все товары данной категории также будут удалены'
       confirm_remove_product: 'Вы уверенны? Все закрытые заказы и корзины, содержащие данный товар, будут также удалены'
       confirm_remove_order: 'Вы уверенны, что хотите удалить заказ?'
+      confirm_remove_items: 'Удалить выбранные позиции?'
+      confirm_remove_image: 'Удалить изображение?'
   number:
     currency:
       format:
@@ -332,6 +334,9 @@ ru:
     page_gap: "&hellip;"
 
   magaz:
+    sign_in:
+      title: Войти в Magaz
+      remember: Запомнить меня
     common:
       dashboard: Панель управления
       edit: Редактировать
@@ -371,6 +376,9 @@ ru:
       accepted: Опубликованные
       hidden: Скрытые
       all: Все
+      bill: Счет
+      download: Скачать
+      send_bill: Отправить на %{mail}
     layouts:
       profile: Профиль
       settings: Настройки
@@ -427,6 +435,7 @@ ru:
         accountant: 'Главный (старший) бухгалтер'
         responsible: 'Ответственный'
 
+        displaying: Отображение
         moulded: Отображать погонажные данные
         images: Отображать картинки в списке модификаций
         colors: Отображать цвета в списке модификаций
@@ -502,7 +511,7 @@ ru:
         title: НОВАЯ
         button: Добавить
       edit:
-        title: РЕДАКТИРОВАНИЕ
+        title: Редактирование модификации
         button: Изменить
       form:
         images: Изображения
@@ -578,6 +587,7 @@ ru:
         success: Группа характеристик удалена
       update:
         success: Группа характеристик обновлена
+      title: Группа характеристик - %{group}
     properties:
       index:
         title: Характеристики

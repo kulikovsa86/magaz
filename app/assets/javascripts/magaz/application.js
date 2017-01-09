@@ -71,14 +71,14 @@ ready = function() {
       className: "my-modal",
       buttons: {
         success: {
-          label: "Уверен!",
+          label: "OK",
           className: "btn-danger",
           callback: function() {
             return callback();
           }
         },
         chickenout: {
-          label: "Нет, не уверен",
+          label: "NO",
           className: "btn-success pull-left"
         }
       }

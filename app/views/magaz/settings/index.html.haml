@@ -46,7 +46,7 @@
         = f.text_field 'magaz[responsible]', :label => t('.responsible'), :value => Magaz::Setting.get('magaz-responsible')
 
       %fieldset
-        %legend= 'Отображение'
+        %legend= t('.displaying')
         = f.form_group do
           = f.check_box 'magaz[moulded]', label: t('.moulded'), checked: Magaz::Setting.get_bool('magaz-moulded')
           = f.check_box 'magaz[show-images]', label: t('.images'), checked: Magaz::Setting.get_bool('magaz-show-images')
