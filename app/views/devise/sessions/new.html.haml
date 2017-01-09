@@ -17,8 +17,10 @@
               = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
                 %fieldset
                   .form-group
-                    = f.email_field :email, placeholder: "E-mail  ", autofocus: true, class: "form-control"
+                    %p.text-muted= "user@example.com" if Magaz::Setting.get_bool('magaz-demo-mode')
+                    = f.email_field :email, placeholder: "E-mail", autofocus: true, class: "form-control"
                   .form-group
+                    %p.text-muted= "useruser" if Magaz::Setting.get_bool('magaz-demo-mode')
                     = f.password_field :password, placeholder: "Password", autocomplete: "off", class: "form-control"
                   .checkbox
                     %label
