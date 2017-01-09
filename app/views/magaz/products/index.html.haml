@@ -26,7 +26,7 @@
               %td
                 = check_box_tag 'shift[items][][checked]', 'true', false, class: 'row-checkbox'
               %td.td_actions
-                = render '/magaz/common/dropdown_menu', edit: edit_product_path(product), up: product_up_path(product), down: product_down_path(product), target: product, confirm: "Вы уверены, что хотите удалить товар?"
+                = render '/magaz/common/dropdown_menu', edit: edit_product_path(product), up: product_up_path(product), down: product_down_path(product), target: product, confirm: t("helpers.question.confirm_remove_product")
 
 
               %td= link_to product.name, edit_product_path(product)

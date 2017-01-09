@@ -54,7 +54,9 @@ module Magaz
     # POST /categories
     def create
       @category = Category.new(category_params)
-      if @category.save
+      if @demo_mode
+        redirect_to categories_path, alert: t("magaz.demo.disabled")
+      elsif @category.save
         if params[:parent]
           Category.find_by_permalink(params[:parent]).add_child @category
         end
@@ -66,7 +68,9 @@ module Magaz
 
     # PATCH/PUT  /categories/:id(.:format)
     def update
-      if @category.update(category_params)
+      if @demo_mode
+        redirect_to categories_path, alert: t("magaz.demo.disabled")
+      elsif @category.update(category_params)
         if params[:descr]
           redirect_to category_description_path(@category), notice: t('.success')
         else
@@ -93,15 +97,23 @@ module Magaz
 
     # DELETE /categories/1
     def destroy
-      @parent_category = @category.parent
-      @category.destroy
-      redirect_to categories_path(@parent_category), notice: t('.success')
+      if @demo_mode
+        redirect_to categories_path, alert: t("magaz.demo.disabled")
+      else
+        @parent_category = @category.parent
+        @category.destroy
+        redirect_to categories_path(@parent_category), notice: t('.success')
+      end
     end
 
     # DELETE /categories/:id/image(.:format)
     def image_destroy
-      @category.image.destroy
-      redirect_to edit_category_path(@category), notice: t('.success')
+      if @demo_mode
+        redirect_to categories_path, alert: t("magaz.demo.disabled")
+      else
+        @category.image.destroy
+        redirect_to edit_category_path(@category), notice: t('.success')
+      end
     end
 
     private

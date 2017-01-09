@@ -19,7 +19,7 @@
                 = link_to @category.image.picture.url, {:'data-lightbox' => @category.permalink} do
                     = image_tag(@category.image.picture.url, class: 'example-image img-rounded img-thumbnail')
                     .actions
-                        = link_to category_image_destroy_path(@category), :method => :delete, :data => { :confirm => 'Вы уверены, что хотите удалить изображение?' }, class: 'btn-link' do
+                        = link_to category_image_destroy_path(@category), :method => :delete, :data => { :confirm => t("helpers.question.confirm_remove_image") }, class: 'btn-link' do
                             %i.glyphicon.glyphicon-remove
             - else
                 = image_tag("blank_350_350.png", class: 'example-image img-rounded img-thumbnail')

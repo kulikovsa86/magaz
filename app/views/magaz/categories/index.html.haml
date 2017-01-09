@@ -23,7 +23,7 @@
           %tr
             %td
             %td.td_actions
-              = render '/magaz/common/dropdown_menu', edit: edit_category_path(category), up:category_up_path(category), down: category_down_path(category), target: category, confirm:  "Вы уверены, что хотите удалить категорию? <br/>Все дочерние категории и товары будут также удалены"
+              = render '/magaz/common/dropdown_menu', edit: edit_category_path(category), up:category_up_path(category), down: category_down_path(category), target: category, confirm:  t("helpers.question.confirm_remove_category")
             %td
               = link_to categories_path(category) do
                 - if category.products.empty?

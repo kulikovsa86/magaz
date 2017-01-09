@@ -92,20 +92,28 @@ module Magaz
 
     # DELETE /products/1
     def destroy
-      @product.destroy
-      if @parent_category.products.empty?
-        redirect_to categories_path(@parent_category), notice: t('.success')
+      if @demo_mode
+        redirect_to edit_product_path(@product), alert: t("magaz.demo.disabled")
       else
-        redirect_to category_products_path(@parent_category), notice: t('.success')
+        @product.destroy
+        if @parent_category.products.empty?
+          redirect_to categories_path(@parent_category), notice: t('.success')
+        else
+          redirect_to category_products_path(@parent_category), notice: t('.success')
+        end
       end
     end
 
     # POST   /products/:product_id/upload(.:format)
     def upload
-      if params[:picture]
-        @product.images << Image.create(picture: params[:picture])
+      if @demo_mode
+        redirect_to edit_product_path(@product), alert: t("magaz.demo.disabled")
+      else
+        if params[:picture]
+          @product.images << Image.create(picture: params[:picture])
+        end
+        redirect_to product_gallery_path(@product), notice: t('.success')
       end
-      redirect_to product_gallery_path(@product), notice: t('.success')
     end
 
     # GET    /products/:product_id/gallery(.:format)
@@ -141,8 +149,12 @@ module Magaz
 
     # DELETE /products(/:product_id)/images(/:image_id)(.:format)
     def image_destroy
-      @image.destroy
-      redirect_to product_gallery_path(@product)
+      if @demo_mode
+        redirect_to edit_product_path(@product), alert: t("magaz.demo.disabled")
+      else
+        @image.destroy
+        redirect_to product_gallery_path(@product)
+      end
     end
 
     # PATCH  /products/shift(.:format)

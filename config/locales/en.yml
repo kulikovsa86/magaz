@@ -49,6 +49,8 @@ en:
       logout: Logout
     question:
       confirm: Are you sure?
+      confirm_remove_category: 'Are you sure you want to delete a category? <br/>All the child categories and products will also be removed'
+      confirm_remove_product: 'Are you sure you want to remove the item? All closed orders and carts, containing this product will also be removed'
       confirm_remove_items: 'Delete selected items?'
       confirm_remove_image: 'Delete image?'
   controllers:
@@ -139,6 +141,8 @@ en:
         other: "%{count} errors prohibited this %{resource} from being saved:"
 
   magaz:
+    demo:
+      disabled: Action is disabled in demo mode
     sign_in:
       title: Magaz
       remember: Remember me
