@@ -6,6 +6,9 @@ Magaz - это библиотека, которая поможет быстро 
 
 [![CircleCI](https://circleci.com/gh/nmix/magaz.svg?style=svg&circle-token=1248d5b356cb774161cb279492cf2cbfce26a4b3)](https://circleci.com/gh/nmix/magaz)
 
+[Magaz Demo Source](https://github.com/nmix/magaz-demo)
+[Magaz Demo Site](http://www.magaz-demo.zstaging.xyz/)
+
 #### Установка и конфигурация
 
 Создаем новое Rails-приложение
