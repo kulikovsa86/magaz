@@ -27,8 +27,14 @@ module Magaz
     def destroy
       order = @line_item.liable
       @line_item.destroy
-      notify( event_type: 'order item deleted', order: order.id )
-      redirect_to edit_items_order_path(order)
+      unless order.line_items.any?
+        order.cancel
+        notify( event_type: 'status updated', order: order.id, user: current_user.id )
+        redirect_to orders_path, notice: "Заказ отменен"
+      else
+        notify( event_type: 'order item deleted', order: order.id, user: current_user.id )
+        redirect_to edit_items_order_path(order)
+      end
     end 
 
     private

@@ -23,6 +23,14 @@ module Magaz
     belongs_to :variant
     belongs_to :liable, polymorphic: true
 
+    def calc_dim_name
+      if product && product.moulded
+        product.calc_dim.name
+      else
+        Magaz::Dimension.default.name
+      end
+    end
+
     def cart_price
       if variant && variant.price
         variant.price

@@ -20,6 +20,7 @@ module Magaz
     validates :name, :code, presence: true
 
     NEW_CODE = '01'
+    CANCELED_CODE = '11'
 
     def self.NEW
       Status.find_by(code: Status::NEW_CODE)

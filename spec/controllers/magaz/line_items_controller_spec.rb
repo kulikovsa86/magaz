@@ -23,8 +23,10 @@ module Magaz
 
     routes { Magaz::Engine.routes }
 
+    let (:user) { create(:magaz_user) }
+
     before :each do
-      sign_in create(:magaz_user)
+      sign_in user
     end
 
     describe "DELETE #destroy" do
@@ -40,12 +42,12 @@ module Magaz
       end
 
       it "notifies custom event" do
-        expect{ subject }.to instrument("magaz.custom_event").with(options: {event_type: 'order item deleted', order: @item.liable_id})
+        expect{ subject }.to instrument("magaz.custom_event").with(options: {event_type: 'status updated', order: @item.liable_id, user: user.id})
       end
 
       it "redirects to order items" do
         delete :destroy, id: @item.id
-        expect(response).to redirect_to(edit_items_order_path(@item.liable))
+        expect(response).to redirect_to(orders_path)
       end
     end
   end

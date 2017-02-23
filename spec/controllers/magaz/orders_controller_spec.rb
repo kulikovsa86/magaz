@@ -151,7 +151,8 @@ module Magaz
 
       context "valid attributes" do
         before :each do
-          put :update, id: order, order: @params, member: 'edit_items'
+          request.env['HTTP_REFERER'] = edit_items_order_path(order)
+          put :update, id: order.id, order: @params, member: 'edit_items'
         end
 
         it "locates the requested instance" do
@@ -205,16 +206,20 @@ module Magaz
     end
 
     describe "DELETE #destroy" do
-      it "deletes the instance" do
+      before do
+        request.env['HTTP_REFERER'] = edit_items_order_path(order)
+      end
+
+      it "does not delete the instance" do
         o = create(:magaz_order)
         expect {
           delete :destroy, id: o
-        }.to change{ Order.count }.by(-1)
+        }.to change{ Order.count }.by(0)
       end
 
-      it "redirects to variant index" do
+      it "redirects to back" do
         delete :destroy, id: order
-        expect(response).to redirect_to(orders_path(filter: 'opened'))
+        expect(response).to redirect_to(edit_items_order_path(order))
       end
     end
 

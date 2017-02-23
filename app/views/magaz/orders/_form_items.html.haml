@@ -63,6 +63,9 @@
           %strong= number_to_currency @order.total_price
 
   %br
+  = content_tag :p, "Внимание! При удалении позиций или пересчете заказа автоматически отправляется соответствующее уведомление на электронную почту покупателя", class: "alert alert-danger"
+  %br
+
   = submit_tag t('magaz.common.recount'), class: 'btn btn-success', name: 'recount'
   - if @moulded_flag
     = submit_tag t('magaz.common.recount_unit'), class: 'btn btn-link', name: 'recount_unit'

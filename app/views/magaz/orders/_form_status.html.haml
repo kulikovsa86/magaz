@@ -12,5 +12,8 @@
       %textarea{readonly: true, rows: 10}
         - @history.each do |status|
           = status.html_safe
+      %br
+      %br
+      = content_tag :p, "Внимание! При изменении статуса заказа автоматически отправляется соответствующее уведомление на электронную почту покупателя", class: "alert alert-danger"
           
   = f.submit t('helpers.submit.save'), class: 'btn btn-success'

@@ -26,8 +26,10 @@ require_dependency "magaz/application_controller"
 
 module Magaz
   class OrdersController < ApplicationController
+    rescue_from ActiveRecord::RecordNotFound, with: :invalid_request
     include PdfUtils
 
+    before_action :check_profile, only: [:update, :recount]
     before_action :set_order, only: [:edit, :update, :destroy, :edit_items, :edit_contacts, 
       :edit_delivery, :edit_payment, :edit_status, :recount, :bill, :send_bill]
 
@@ -114,8 +116,9 @@ module Magaz
 
     # DELETE /orders/:id(.:format)
     def destroy
-      @order.destroy
-      redirect_to orders_path(filter: 'opened'), notice: t('.success')
+      redirect_to :back, alert: "Операция запрещена. Используйте статус 'Отменен'"
+      # @order.destroy
+      # redirect_to orders_path(filter: 'opened'), notice: t('.success')
     end
 
     # PATCH  /orders/:id/recount(.:format)
@@ -153,6 +156,16 @@ module Magaz
 
       def order_params
         params.require(:order).permit(:customer, :company, :phone, :email, :delivery_id, :address1, :address2, :address3, :address4, :post_code, :payment_id, :status_id, :pdt, :manager_comment, :form)
+      end
+
+      def check_profile
+        unless current_user.profile
+          redirect_to :back, alert: "Операция запрещена: не заполнен профиль пользователя"
+        end
+      end
+
+      def invalid_request
+        redirect_to orders_path, alert: "Указанный заказ не найден"
       end
   end
 end

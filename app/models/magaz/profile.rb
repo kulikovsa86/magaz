@@ -15,5 +15,8 @@
 module Magaz
   class Profile < ActiveRecord::Base
     belongs_to :users
+
+    validates :first_name, :last_name, :phone, :email, presence: true
+
   end
 end

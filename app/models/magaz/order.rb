@@ -195,6 +195,11 @@ module Magaz
       end
     end
 
+    def cancel
+      self.status = Magaz::Status.find_by_code(Magaz::Status::CANCELED_CODE)
+      save
+    end
+
     private
 
       def delivery_need?

@@ -21,7 +21,8 @@ require 'faker'
 
 FactoryGirl.define do
   factory :magaz_user, :class => 'Magaz::User' do
-    email { Faker::Internet.free_email('foo') }
+    email { Faker::Internet.free_email(Faker::Name.last_name) }
     password { Faker::Internet.password(8) }
+    association :profile, factory: :magaz_profile
   end
 end

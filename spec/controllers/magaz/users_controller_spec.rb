@@ -24,12 +24,12 @@ module Magaz
 
     routes { Magaz::Engine.routes }
 
+    let(:password) { Faker::Internet.password(8) }
+    let(:user) { create(:magaz_user, password: password, profile: nil) }
+
     before :each do
       sign_in user
     end
-
-    let(:password) { Faker::Internet.password(8) }
-    let(:user) { create(:magaz_user, password: password) }
 
     describe "GET #profile" do
       before :each do
@@ -74,8 +74,10 @@ module Magaz
         end
 
         it "changes profile attributes" do
+          user.create_profile
           put :update, user: @params
-          %w|first_name last_name phone|.each do |field|
+          user.reload
+          %w|first_name last_name phone email|.each do |field|
             expect(user.profile[field]).to eq(@params[:profile_attributes][field])
           end
         end
