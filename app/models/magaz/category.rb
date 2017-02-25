@@ -20,7 +20,7 @@ module Magaz
     after_save :set_image
     after_save :clean_desc_properties
 
-    acts_as_tree dependent: :destroy
+    acts_as_tree dependent: :destroy, touch: true
     acts_as_list scope: :parent
     has_permalink :translit_name
 
@@ -32,16 +32,6 @@ module Magaz
     validates :name, presence: true
 
     attr_accessor :picture
-
-
-    def self.options
-      opts = []
-      Magaz::Category.leaves.order(:parent_id, :position).each do |cat|
-        subtext = cat.ancestry_path[0..-2].join('/')
-        opts += [[cat.name, cat.id, {'data-subtext' => subtext}]]
-      end
-      opts
-    end
 
     def clean_desc_properties
       # --- удаляем характеристики в модификациях, которых (уже) нет в категориях
@@ -56,6 +46,22 @@ module Magaz
 
     def all_variants
       Magaz::Variant.where(product: all_products)
+    end
+
+    class << self
+
+      def latest
+        Magaz::Category.order(:updated_at).last
+      end
+
+      def options
+        opts = []
+        Magaz::Category.leaves.order(:parent_id, :position).each do |cat|
+          subtext = cat.ancestry_path[0..-2].join('/')
+          opts += [[cat.name, cat.id, {'data-subtext' => subtext}]]
+        end
+        opts
+      end
     end
 
     private

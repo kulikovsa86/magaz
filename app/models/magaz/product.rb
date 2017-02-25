@@ -26,7 +26,7 @@ module Magaz
   class Product < ActiveRecord::Base
     has_permalink :translit_name
 
-    belongs_to :category
+    belongs_to :category, touch: true
     acts_as_list scope: :category
     belongs_to :input_dim, :class_name => "Dimension"
     belongs_to :calc_dim, :class_name => "Dimension"
@@ -70,21 +70,6 @@ module Magaz
       end
     end
 
-    # Перемещение/удаление товаров
-    # params = {:parent => permalink, :target => target, :items => [{id: id, checked: true}, ...]}
-    # target - id категории (для перемещения)
-    # id - идентификатор товара, checked - товар выбран
-    # remove_flag - флаг операции удаления
-    def self.shift(params, remove_flag)
-      product_ids = params[:items].select{|item| item[:checked]}.map{|item| item[:id]}
-      if remove_flag
-        Product.where(:id => product_ids).destroy_all
-      else
-        category = Category.find(params[:target])
-        category.products << Product.find(product_ids)
-      end
-    end
-
     def input_dim_name
       if input_dim
         input_dim.name
@@ -124,6 +109,29 @@ module Magaz
           property_values.create(property_id: prop.id, value: prop.rand_value)
         end
       end
+    end
+
+    class << self
+
+      def latest
+        Magaz::Product.order(:updated_at).last
+      end
+
+      # Перемещение/удаление товаров
+      # params = {:parent => permalink, :target => target, :items => [{id: id, checked: true}, ...]}
+      # target - id категории (для перемещения)
+      # id - идентификатор товара, checked - товар выбран
+      # remove_flag - флаг операции удаления
+      def shift(params, remove_flag)
+        product_ids = params[:items].select{|item| item[:checked]}.map{|item| item[:id]}
+        if remove_flag
+          Product.where(:id => product_ids).destroy_all
+        else
+          category = Category.find(params[:target])
+          category.products << Product.find(product_ids)
+        end
+      end
+
     end
 
     private

@@ -13,40 +13,48 @@
 module Magaz
   class Setting < ActiveRecord::Base
 
-    def self.set(name, value)
-      s = Setting.find_or_create_by(name: name)
-      s.value = value
-      s.save
-      s.id
-    end
+    class << self
 
-    def self.get(name)
-      s = Setting.find_by(name: name)
-      if s
+      def latest
+        Magaz::Setting.order(:updated_at).last
+      end
+
+      def set(name, value)
+        s = Magaz::Setting.find_or_create_by(name: name)
+        s.value = value
+        s.save
+        s.id
+      end
+
+      def get(name)
+        s = Setting.find_by(name: name)
+        if s
+          s.value
+        else
+          nil
+        end
+      end
+
+      # val: nil, false, '0' -> false; else -> true
+      def set_bool(name, val)
+        s = Magaz::Setting.find_or_create_by(name: name)
+        if !val || val == '0'
+          s.value = '0'
+        else
+          s.value = '1'
+        end
+        s.save
         s.value
-      else
-        nil
       end
-    end
 
-    # val: nil, false, '0' -> false; else -> true
-    def self.set_bool(name, val)
-      s = Setting.find_or_create_by(name: name)
-      if !val || val == '0'
-        s.value = '0'
-      else
-        s.value = '1'
+      def get_bool(name)
+        if get(name) && get(name) != '0'
+          true
+        else
+          false
+        end
       end
-      s.save
-      s.value
-    end
 
-    def self.get_bool(name)
-      if get(name) && get(name) != '0'
-        true
-      else
-        false
-      end
     end
 
   end

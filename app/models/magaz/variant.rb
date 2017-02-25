@@ -17,7 +17,7 @@ module Magaz
   class Variant < ActiveRecord::Base
     has_permalink :translit_name
 
-    belongs_to :product
+    belongs_to :product, touch: true
     acts_as_list scope: :product
     
     has_many :property_values, as: :valuable, dependent: :destroy
@@ -57,17 +57,6 @@ module Magaz
       end
     end
 
-    # удаление модификаций
-    # params = {'product' => permalink, items = [{id: id, checked: true}, ...]}
-    # id - идентификатор модификации, checked - модификация выбрана
-    # remove_flag - флаг операции удаления
-    def self.shift(params, remove_flag)
-      variant_ids = params[:items].select{|item| item[:checked]}.map{|item| item[:id]}
-      if remove_flag
-        Variant.where(:id => variant_ids).destroy_all
-      end
-    end
-
     def values_string
       values = []
       features.each do |pv|
@@ -92,6 +81,24 @@ module Magaz
         end
       end
       colors
+    end
+
+    class << self
+
+      def latest
+        Magaz::Variant.order(:updated_at).last
+      end
+
+      # удаление модификаций
+      # params = {'product' => permalink, items = [{id: id, checked: true}, ...]}
+      # id - идентификатор модификации, checked - модификация выбрана
+      # remove_flag - флаг операции удаления
+      def shift(params, remove_flag)
+        variant_ids = params[:items].select{|item| item[:checked]}.map{|item| item[:id]}
+        if remove_flag
+          Variant.where(:id => variant_ids).destroy_all
+        end
+      end
     end
 
     private
