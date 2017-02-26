@@ -70,3 +70,9 @@
   - if @moulded_flag
     = submit_tag t('magaz.common.recount_unit'), class: 'btn btn-link', name: 'recount_unit'
 
+  - if @order.offer
+    %div.pull-right
+      = link_to "Направить КП", send_offer_path(@order.id), class: "btn btn-default"
+      - if @order.offer_sent
+        = " (отпр. #{@order.offer_sent.strftime "%d.%m.%Y %H:%M"})"
+

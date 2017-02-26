@@ -31,7 +31,7 @@ module Magaz
 
     before_action :check_profile, only: [:update, :recount]
     before_action :set_order, only: [:edit, :update, :destroy, :edit_items, :edit_contacts, 
-      :edit_delivery, :edit_payment, :edit_status, :recount, :bill, :send_bill]
+      :edit_delivery, :edit_payment, :edit_status, :recount, :bill, :send_bill, :send_offer]
 
     # GET    /orders(.:format)
     def index
@@ -57,6 +57,7 @@ module Magaz
     # POST   /orders(.:format)
     def create
       @order = Order.new(order_params)
+      @order.offer = true
       if @order.save
         redirect_to edit_contacts_order_path(@order), notice: t('.success')
       else
@@ -146,6 +147,17 @@ module Magaz
     def send_bill
       notify( event_type: 'send bill', order: @order.id, user: current_user.id )
       redirect_to edit_payment_order_path(@order), notice: t('.success')
+    end
+
+    # GET    /order/:id/send_offer(.:format)
+    def send_offer
+      unless @order.offer
+        redirect_to edit_items_order_path(@order), alert: "Только для заказов КП"
+      else
+        @order.update(offer_sent: Time.now)
+        notify( event_type: 'send offer', order: @order.id, user: current_user.id )
+        redirect_to edit_items_order_path(@order), notice: t('.success')
+      end
     end
 
     private

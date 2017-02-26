@@ -1,4 +1,4 @@
-= bootstrap_form_for @order do |f|
+= bootstrap_form_for(@order, layout: :horizontal, label_col: 'col-md-2', control_col: 'col-lg-4 col-md-10') do |f|
   - if @order.errors.any?
     = f.alert_message t('errors.template.header', count: @order.errors.count)
 
@@ -7,8 +7,7 @@
   = f.phone_field :phone
   = f.email_field :email
 
-  = label_tag Magaz::Order.human_attribute_name(:delivery)
-  = f.collection_select :delivery_id, Magaz::Delivery.all, :id, :name, { hide_label: true }, {class: 'selectpicker'}
+  = f.collection_select :delivery_id, Magaz::Delivery.all, :id, :name, { hide_label: false }, {class: 'selectpicker'}
 
   = f.text_field :address1
   = f.text_field :address2
@@ -16,8 +15,8 @@
   = f.text_field :address4
   = f.text_field :post_code
 
-  = label_tag Magaz::Order.human_attribute_name(:payment)
-  = f.collection_select :payment_id, Magaz::Payment.all, :id, :name, { hide_label: true }, {class: 'selectpicker'}
+  
+  = f.collection_select :payment_id, Magaz::Payment.all, :id, :name, { hide_label: false }, {class: 'selectpicker'}
 
   = f.datetime_field :pdt, value: @order.formatted_pdt, icon: 'calendar', class: 'datetimepicker'
 

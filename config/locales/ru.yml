@@ -491,6 +491,8 @@ ru:
         closed: Закрытые
         new: Новые
         all: Все
+        note: Примечание
+        offer: КП
       new:
         title: Новый заказ
       create:
@@ -498,6 +500,7 @@ ru:
       edit:
         title: Заказ N%{num}
         product: Наименование
+        offer: КП
       update:
         success: Данные заказа обновлены
       destroy:
@@ -506,6 +509,8 @@ ru:
         success: Данные заказа обновлены
       send_bill:
         success: Запрос на отравку счета по email выполнен
+      send_offer:
+        success: Запрос на отпавку КП выполнен
     variants:
       index:
         title: Модификации товара

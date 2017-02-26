@@ -17,6 +17,7 @@
           %th= t('.customer')
           %th.total_price_column= t('.total')
           %th.status_column= Magaz::Order.human_attribute_name(:status)
+          %th= t('.note')
       %tbody
         - @orders.each do |order|
           %tr
@@ -27,6 +28,11 @@
               = "(#{order.company})" if (order.company && !order.company.empty?)
             %td.price_cell= number_to_currency order.total_price
             %td.status_cell= order.status.name if order.status
+            %td
+              - if order.offer
+                = t('.offer')
+                - if order.offer_sent
+                  = " (отпр. #{order.offer_sent.strftime "%d.%m.%Y %H:%M"})"
 
-    / = link_to t('helpers.link_to.new', model: Magaz::Order.model_name.human), new_order_path
+    = link_to t('helpers.link_to.new', model: Magaz::Order.model_name.human), new_order_path
     = will_paginate @orders, renderer: BootstrapPagination::Rails

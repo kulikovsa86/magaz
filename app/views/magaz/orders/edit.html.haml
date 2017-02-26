@@ -1,7 +1,10 @@
 
 .panel.panel-default
   .panel-heading
-    %h4.panel_header= t('.title', num: @order.num)
+    %h4.panel_header
+      = t('.title', num: @order.num)
+      - if @order.offer
+        = t('.offer')
   .panel-body
     = render 'undertitle_links'
     %br
