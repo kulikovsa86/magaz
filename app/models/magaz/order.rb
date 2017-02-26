@@ -149,7 +149,7 @@ module Magaz
     end
 
     def contacts
-      "#{company} #{post_code} #{address1} #{address2} #{address3} #{address4} #{phone} #{email} #{customer}".strip.squeeze
+      "#{company} #{post_code} #{address1} #{address2} #{address3} #{address4} #{phone} #{email} #{customer}".strip.squeeze(" ")
     end
 
     def bill_array
