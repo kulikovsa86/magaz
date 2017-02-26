@@ -1,0 +1,7 @@
+%h4.panel_header
+  - unless product.name.empty?
+    = product.name
+    = link_to main_app.product_path(product) do
+      %i.fa.fa-external-link.fa-fw
+  - else
+    Наименование товара

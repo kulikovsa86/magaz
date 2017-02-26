@@ -3,11 +3,7 @@
 
 .panel.panel-default
   .panel-heading
-    %h4.panel_header
-      - unless @product.name.empty?
-        = @product.name
-      - else
-        = t('.default_header')
+    = render "/magaz/common/product_header", product: @product
   .panel-body
     = render 'tabs'
     %br

@@ -3,7 +3,7 @@
 
 .panel.panel-default
   .panel-heading
-    %h4.panel_header= @product.name
+    = render "/magaz/common/product_header", product: @product
 
   .panel-body
     = render '/magaz/products/tabs'
@@ -30,7 +30,7 @@
               %td.td_actions
                 = render '/magaz/common/dropdown_menu', edit: edit_variant_path(variant), up: variant_up_path(variant), down: variant_down_path(variant), target: variant, confirm: "Вы уверены, что хотите удалить модификацию товара?"
               %td= link_to variant.name, edit_variant_path(variant)
-              %td= variant.price
+              %td= number_to_currency variant.price
               %td= variant.values_string
               - if Magaz::Setting.get_bool('magaz-show-images')
                 %td

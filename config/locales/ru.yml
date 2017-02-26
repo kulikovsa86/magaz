@@ -386,6 +386,7 @@ ru:
     layouts:
       profile: Профиль
       settings: Настройки
+      home: На главую
       quit: Выход
     dashboard:
       index:

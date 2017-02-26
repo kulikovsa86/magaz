@@ -4,11 +4,7 @@
 
 .panel.panel-default
   .panel-heading
-    %h4.panel_header
-      - if @product
-        = @product.name
-      - else
-        = t('magaz.common.comments')
+    = render "/magaz/common/product_header", product: @product
 
   .panel-body
     - if @product

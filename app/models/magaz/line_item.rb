@@ -39,6 +39,11 @@ module Magaz
       end
     end
 
+    def cart_price!
+      self.price = cart_price
+      save
+    end
+
     def total_cart_price
       if cart_price
         cart_price * amount

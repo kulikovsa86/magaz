@@ -200,6 +200,25 @@ module Magaz
       save
     end
 
+    # params = {product_id: "id", variant_id: "id", count: "id"}
+    def add_item(params) 
+      unless has_item?(params)
+        @line_item = items.create(params)
+      else
+        @line_item
+      end
+    end
+
+    # params = {product_id: "id", variant_id: "id"}
+    def has_item?(params)
+      unless params[:ratio]
+        @line_item = items.find_by(product_id: params[:product_id], variant_id: params[:variant_id])
+      else
+        @line_item = items.find_by(product_id: params[:product_id], variant_id: params[:variant_id], ratio: params[:ratio])
+      end
+    end
+
+
     private
 
       def delivery_need?

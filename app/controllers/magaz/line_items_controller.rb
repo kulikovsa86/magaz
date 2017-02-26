@@ -21,7 +21,7 @@ require_dependency "magaz/application_controller"
 module Magaz
   class LineItemsController < ApplicationController
 
-    before_action :set_line_item, only: [:destroy]
+    before_action :set_line_item, only: :destroy
 
     # DELETE /line_items/:id(.:format)
     def destroy
@@ -42,6 +42,5 @@ module Magaz
       def set_line_item
         @line_item = LineItem.find(params[:id])
       end
-
   end
 end

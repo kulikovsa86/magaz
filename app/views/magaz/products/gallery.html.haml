@@ -3,7 +3,7 @@
 
 .panel.panel-default
   .panel-heading
-    %h4.panel_header= @product.name
+    = render "/magaz/common/product_header", product: @product
   .panel-body
     = render 'tabs'
     %br

@@ -23,6 +23,11 @@
           = t('magaz.layouts.settings')
       %li.divider
       %li
+        = link_to main_app.root_path do
+          %i.fa.fa-home.fa-fw
+          = t('magaz.layouts.home')
+      %li.divider
+      %li
         = link_to destroy_user_session_path, method: :delete do
           %i.fa.fa-sign-out.fa-fw
           = t('magaz.layouts.quit')
