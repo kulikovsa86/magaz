@@ -93,9 +93,9 @@ module PdfUtils
       # --- Грузоотправитель 
       shipper_cell = make_cell(content: Magaz::Setting.get('magaz-shipper'))
       # --- Покупатель
-      buyer_cell = make_cell(content: order.contacts)
+      buyer_cell = make_cell(content: order.payer_info)
       # --- Грузополучатель
-      consignee = make_cell(content: order.contacts)
+      consignee = make_cell(content: order.consignee_info)
       # ---
       data = [
         ['Поставщик:', supplier_cell],

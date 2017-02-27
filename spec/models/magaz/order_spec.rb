@@ -20,6 +20,10 @@
 #  manager_comment  :text
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null
+#  offer            :boolean
+#  offer_sent       :datetime
+#  payer            :text
+#  consignee        :text
 #
 
 require 'rails_helper'

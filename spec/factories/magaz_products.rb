@@ -20,6 +20,7 @@
 #  stock        :integer          default(0)
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
+#  short_name   :string
 #
 
 require 'faker'

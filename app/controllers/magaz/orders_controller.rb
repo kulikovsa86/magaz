@@ -20,6 +20,10 @@
 #  manager_comment  :text
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null
+#  offer            :boolean
+#  offer_sent       :datetime
+#  payer            :text
+#  consignee        :text
 #
 
 require_dependency "magaz/application_controller"
@@ -167,7 +171,7 @@ module Magaz
       end
 
       def order_params
-        params.require(:order).permit(:customer, :company, :phone, :email, :delivery_id, :address1, :address2, :address3, :address4, :post_code, :payment_id, :status_id, :pdt, :manager_comment, :form)
+        params.require(:order).permit(:customer, :company, :phone, :email, :delivery_id, :address1, :address2, :address3, :address4, :post_code, :payment_id, :status_id, :pdt, :manager_comment, :form, :payer, :consignee)
       end
 
       def check_profile

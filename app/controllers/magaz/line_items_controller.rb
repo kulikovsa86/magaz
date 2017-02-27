@@ -14,6 +14,7 @@
 #  liable_type :string
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
+#  note        :string
 #
 
 require_dependency "magaz/application_controller"

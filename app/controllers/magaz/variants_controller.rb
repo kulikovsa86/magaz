@@ -11,6 +11,7 @@
 #  stock      :integer          default(0)
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  permalink  :string
 #
 
 require_dependency "magaz/application_controller"

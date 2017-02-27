@@ -103,6 +103,8 @@ ru:
         pdt: Время доставки
         customer_comment: Комментарий клиента
         manager_comment: Комментарий менеджера
+        payer: Покупатель
+        consignee: Грузополучатель
       magaz/delivery:
         code: Код
         name: Наименование

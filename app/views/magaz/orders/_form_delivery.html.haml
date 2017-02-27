@@ -13,6 +13,6 @@
   = f.text_field :post_code
 
   = f.datetime_field :pdt, value: @order.formatted_pdt, class: 'datetimepicker'
-  = f.text_area :customer_comment, disabled: true
+  = f.text_area :customer_comment, readonly: true
 
   = f.submit t('helpers.submit.save'), class: 'btn btn-success'

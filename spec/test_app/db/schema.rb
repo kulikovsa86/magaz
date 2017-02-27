@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170226141530) do
+ActiveRecord::Schema.define(version: 20170227101528) do
 
   create_table "magaz_carts", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -142,6 +142,8 @@ ActiveRecord::Schema.define(version: 20170226141530) do
     t.datetime "updated_at",       null: false
     t.boolean  "offer"
     t.datetime "offer_sent"
+    t.text     "payer"
+    t.text     "consignee"
   end
 
   add_index "magaz_orders", ["delivery_id"], name: "index_magaz_orders_on_delivery_id"

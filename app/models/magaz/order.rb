@@ -20,6 +20,10 @@
 #  manager_comment  :text
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null
+#  offer            :boolean
+#  offer_sent       :datetime
+#  payer            :text
+#  consignee        :text
 #
 
 module Magaz
@@ -146,6 +150,22 @@ module Magaz
 
     def self.fresh
       Order.where(status: Status.NEW).order(created_at: :desc)
+    end
+
+    def payer_info
+      if payer && !payer.empty?
+        payer
+      else
+        contacts
+      end
+    end
+
+    def consignee_info
+      if consignee && !consignee.empty?
+        consignee
+      else
+        contacts
+      end
     end
 
     def contacts

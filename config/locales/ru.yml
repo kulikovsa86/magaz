@@ -360,6 +360,7 @@ ru:
       products: Товары
       delivery: Доставка
       payment: Оплата
+      bill_and_payment: Счет и оплата
       status: Статус
       count: Количество
       count_total: Кол-во единиц
