@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170227101528) do
+ActiveRecord::Schema.define(version: 20170302092717) do
 
   create_table "magaz_carts", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -22,12 +22,15 @@ ActiveRecord::Schema.define(version: 20170227101528) do
     t.string   "code"
     t.string   "name"
     t.text     "description"
-    t.boolean  "hidden",      default: true
+    t.boolean  "hidden",           default: true
     t.integer  "parent_id"
     t.integer  "position"
     t.string   "permalink"
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+    t.string   "title"
+    t.text     "meta_description"
+    t.text     "meta_keywords"
   end
 
   add_index "magaz_categories", ["permalink"], name: "index_magaz_categories_on_permalink"
@@ -164,20 +167,23 @@ ActiveRecord::Schema.define(version: 20170227101528) do
     t.string   "var_name"
     t.integer  "category_id"
     t.text     "description"
-    t.decimal  "price",        precision: 8, scale: 2
-    t.boolean  "hidden",                               default: true
+    t.decimal  "price",            precision: 8, scale: 2
+    t.boolean  "hidden",                                   default: true
     t.string   "article"
-    t.decimal  "weight",       precision: 6, scale: 3
+    t.decimal  "weight",           precision: 6, scale: 3
     t.integer  "position"
     t.string   "permalink"
     t.integer  "input_dim_id"
     t.integer  "calc_dim_id"
-    t.boolean  "correct",                              default: false
-    t.boolean  "moulded",                              default: false
-    t.integer  "stock",                                default: 0
-    t.datetime "created_at",                                           null: false
-    t.datetime "updated_at",                                           null: false
+    t.boolean  "correct",                                  default: false
+    t.boolean  "moulded",                                  default: false
+    t.integer  "stock",                                    default: 0
+    t.datetime "created_at",                                               null: false
+    t.datetime "updated_at",                                               null: false
     t.string   "short_name"
+    t.string   "title"
+    t.text     "meta_description"
+    t.text     "meta_keywords"
   end
 
   add_index "magaz_products", ["category_id"], name: "index_magaz_products_on_category_id"

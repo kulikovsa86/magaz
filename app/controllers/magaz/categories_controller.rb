@@ -18,7 +18,7 @@ require_dependency "magaz/application_controller"
 
 module Magaz
   class CategoriesController < ApplicationController
-    before_action :set_category, only: [:edit, :update, :destroy, :descr, :image_destroy]
+    before_action :set_category, only: [:edit, :update, :destroy, :descr, :image_destroy, :seo]
 
     # GET /categories/(:parent)
     def index
@@ -35,6 +35,11 @@ module Magaz
 
     # GET    /categories(/:product_id)/descr(.:format)
     def descr
+      @parent_category = @category.parent
+    end
+
+    # GET    /categories(/:id)/seo(.:format)
+    def seo
       @parent_category = @category.parent
     end
 
@@ -73,6 +78,8 @@ module Magaz
       elsif @category.update(category_params)
         if params[:descr]
           redirect_to category_description_path(@category), notice: t('.success')
+        elsif params[:seo]
+          redirect_to category_seo_path(@category), notice: t('.success')
         else
           redirect_to edit_category_path(@category), notice: t('.success')
         end
@@ -124,7 +131,7 @@ module Magaz
 
       # Only allow a trusted parameter "white list" through.
       def category_params
-        params.require(:category).permit(:code, :name, :description, :hidden, :picture, property_group_ids: [])
+        params.require(:category).permit(:code, :name, :description, :hidden, :picture, :title, :meta_description, :meta_keywords, property_group_ids: [])
       end
   end
 end

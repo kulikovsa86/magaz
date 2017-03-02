@@ -74,12 +74,14 @@ Magaz::Engine.routes.draw do
   delete '/products/(:product_id)/images/(:image_id)', to: 'products#image_destroy', as: :product_image_destroy
 
   get '/products/(:product_id)/descr', to: 'products#descr', as: :product_description
+  get '/products/(:product_id)/seo', to: 'products#seo', as: :product_seo
 
   get '/categories/new/(:parent)', to: 'categories#new', as: :new_category
   post '/categories/(:parent)', to: 'categories#create'
   get '/categories/(:parent)', to: 'categories#index', as: :categories
 
   get '/categories/(:id)/descr', to: 'categories#descr', as: :category_description
+  get '/categories/(:id)/seo', to: 'categories#seo', as: :category_seo
   delete '/categories/:id/image', to: 'categories#image_destroy', as: :category_image_destroy
 
   shallow do

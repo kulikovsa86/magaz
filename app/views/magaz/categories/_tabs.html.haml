@@ -2,3 +2,5 @@
 %ul.nav.nav-tabs
   %li{class: active_class(edit_category_path(@category))}= link_to t('magaz.common.specification'), edit_category_path(@category)
   %li{class: active_class(category_description_path(@category))}= link_to t('magaz.common.description'), category_description_path(@category)
+  %li{class: active_class(category_seo_path(@category))}= link_to "SEO", category_seo_path(@category)
+

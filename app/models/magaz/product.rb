@@ -112,6 +112,34 @@ module Magaz
       end
     end
 
+    def pretty_title
+      if title && !title.empty?
+        "#{title}" % {
+          name: name, 
+          short_name: short_name, 
+          var_name: var_name,
+          description: description}
+      else
+        name
+      end
+    rescue KeyError
+      "Ошибка формата заголовока страницы"
+    end
+
+    def pretty_description
+      if meta_description && !meta_description.empty?
+        "#{meta_description}" % {
+          name: name, 
+          short_name: short_name, 
+          var_name: var_name,
+          description: description}
+      else
+        description
+      end
+    rescue KeyError
+      "Ошибка формата мета-описания"
+    end
+
     class << self
 
       def latest

@@ -27,7 +27,7 @@ require_dependency "magaz/application_controller"
 
 module Magaz
   class ProductsController < ApplicationController
-    before_action :set_product, only: [:edit, :update, :up, :down, :destroy, :upload, :gallery, :properties, :properties_create, :image_up, :image_down, :image_destroy, :descr, :next, :prev]
+    before_action :set_product, only: [:edit, :update, :up, :down, :destroy, :upload, :gallery, :properties, :properties_create, :image_up, :image_down, :image_destroy, :descr, :seo, :next, :prev]
     before_action :set_image, only: [:image_up, :image_down, :image_destroy]
     before_action :set_parent_category, only: [:index, :new, :create]
 
@@ -52,6 +52,10 @@ module Magaz
     def descr
     end
 
+    # GET    /products(/:product_id)/seo(.:format)
+    def seo
+    end
+
     # POST /categories/:category_id/products(.:format)
     def create
       @product = Product.new(product_params)
@@ -70,6 +74,8 @@ module Magaz
       if @product.update(product_params)
         if params[:descr]
           redirect_to product_description_path(@product), notice: t('.success')
+        elsif params[:seo]
+          redirect_to product_seo_path(@product), notice: t('.success')
         else
           redirect_to edit_product_path(@product), notice: t('.success')
         end
@@ -221,7 +227,7 @@ module Magaz
 
       # Only allow a trusted parameter "white list" through.
       def product_params
-        params.require(:product).permit(:name, :short_name, :description, :price, :hidden, :article, :weight, :input_dim_id, :calc_dim_id, :correct, :moulded)
+        params.require(:product).permit(:name, :short_name, :description, :price, :hidden, :article, :weight, :input_dim_id, :calc_dim_id, :correct, :moulded, :title, :meta_description, :meta_keywords)
       end
 
       def product_properties

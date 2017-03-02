@@ -48,6 +48,26 @@ module Magaz
       Magaz::Variant.where(product: all_products)
     end
 
+    def pretty_title
+      if title && !title.empty?
+        "#{title}" % {name: name, description: description}
+      else
+        name
+      end
+    rescue KeyError
+      "Ошибка формата заголовока страницы"
+    end
+
+    def pretty_description
+      if meta_description && !meta_description.empty?
+        "#{meta_description}" % {name: name, description: description}
+      else
+        description
+      end
+    rescue KeyError
+      "Ошибка формата мета-описания"
+    end
+
     class << self
 
       def latest

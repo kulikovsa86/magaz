@@ -61,6 +61,9 @@ ru:
         description: Описание
         properties: Характеристики
         hidden: Скрытая
+        title: Заголовок
+        meta_description: Мета-описание
+        meta_keywords: Ключевые слова (через запятую)
       magaz/product:
         name: Наименование
         short_name: Краткое наименование
@@ -74,6 +77,9 @@ ru:
         calc_dim: Единицы расчета
         correct: Корректировка кол-ва единиц в товарной позиции
         moulded: Погонажный
+        title: Заголовок
+        meta_description: Мета-описание
+        meta_keywords: Ключевые слова (через запятую)
       magaz/comment:
         name: Имя
         text: Сообщение

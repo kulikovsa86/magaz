@@ -84,6 +84,36 @@ module Magaz
       colors
     end
 
+    def pretty_title
+      if product.title && !product.title.empty?
+        "#{product.title}" % {
+          product_name: product.name, 
+          product_short_name: product.short_name,
+          name: name,
+          product_var_name: product.var_name,
+          description: product.description}
+      else
+        name
+      end
+    rescue KeyError
+      "Ошибка формата заголовока страницы"
+    end
+
+    def pretty_description
+      if product.meta_description && !product.meta_description.empty?
+        "#{product.meta_description}" % {
+          product_name: product.name, 
+          product_short_name: product.short_name,
+          name: name,
+          product_var_name: product.var_name,
+          description: product.description}
+      else
+        product.description
+      end
+    rescue KeyError
+      "Ошибка формата мета-описания"
+    end
+
     class << self
 
       def latest

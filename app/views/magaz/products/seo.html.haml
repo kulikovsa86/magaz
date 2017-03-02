@@ -1,0 +1,15 @@
+= render '/magaz/categories/breadcrumb'
+
+.panel.panel-default
+  .panel-heading
+    = render "/magaz/common/product_header", product: @product
+  .panel-body
+    = render 'tabs'
+    %br
+    = bootstrap_form_for @product, layout: :horizontal, label_col: 'col-md-2', control_col: 'col-lg-4 col-md-10' do |f|
+      = hidden_field_tag 'seo', '1'
+      = f.text_field :title
+      = f.text_area :meta_description, hide_label: false
+      = f.text_area :meta_keywords, hide_label: false
+      = f.submit t('helpers.submit.save'), class: 'btn btn-success'
+      = render 'iter_group', tab: 'descr'

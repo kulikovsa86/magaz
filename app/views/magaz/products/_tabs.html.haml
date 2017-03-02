@@ -6,3 +6,4 @@
   %li{class: active_class(product_properties_path(@product))}= link_to t('magaz.common.properties'), product_properties_path(@product)
   %li{class: active_tab('variants')}= link_to t('magaz.common.variants'), product_variants_path(@product)
   %li{class: active_tab('comments')}= link_to t('magaz.common.comments'), product_comments_path(@product)
+  %li{class: active_class(product_seo_path(@product))}= link_to "SEO", product_seo_path(@product)
