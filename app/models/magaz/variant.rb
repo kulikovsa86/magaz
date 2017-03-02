@@ -101,12 +101,14 @@ module Magaz
 
     def pretty_description
       if product.meta_description && !product.meta_description.empty?
-        "#{product.meta_description}" % {
-          product_name: product.name, 
+        md = product.meta_description.gsub("%", "%%")
+        "#{md}" % {
+          product_name: product.name,
           product_short_name: product.short_name,
           name: name,
           product_var_name: product.var_name,
-          description: product.description}
+          description: product.description
+        }
       else
         product.description
       end

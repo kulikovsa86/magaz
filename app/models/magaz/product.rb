@@ -128,7 +128,8 @@ module Magaz
 
     def pretty_description
       if meta_description && !meta_description.empty?
-        "#{meta_description}" % {
+        md = meta_description.gsub("%", "%%")
+        "#{md}" % {
           name: name, 
           short_name: short_name, 
           var_name: var_name,
