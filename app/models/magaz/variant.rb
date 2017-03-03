@@ -28,7 +28,7 @@ module Magaz
     scoped_search on: :name
     scoped_search :relation => :product, on: [:name, :description]
     
-
+    scope :visible, -> {where(hidden: false)}
 
     validates :name, presence: true
 

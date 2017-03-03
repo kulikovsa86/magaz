@@ -41,6 +41,8 @@ module Magaz
     scoped_search on: [:name, :description]
     scoped_search :relation => :variants, on: :name
 
+    scope :visible, -> {where(hidden: false)}
+
     validates :name, :category, presence: true
     validates :name, allow_blank: true, length: { maximum: 144 }
 

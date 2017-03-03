@@ -29,6 +29,8 @@ module Magaz
     has_and_belongs_to_many :property_groups
     has_one :image, as: :imageable, dependent: :destroy
 
+    scope :visible, -> {where(hidden: false)}
+
     validates :name, presence: true
 
     attr_accessor :picture
