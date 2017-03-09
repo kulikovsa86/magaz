@@ -30,6 +30,7 @@ module Magaz
     before_action :set_product, only: [:edit, :update, :up, :down, :destroy, :upload, :gallery, :properties, :properties_create, :image_up, :image_down, :image_destroy, :descr, :seo, :next, :prev]
     before_action :set_image, only: [:image_up, :image_down, :image_destroy]
     before_action :set_parent_category, only: [:index, :new, :create]
+    before_action :set_dimensions, only: [:new, :edit, :create, :update]
 
     # GET /categories/:category_id/products(.:format)
     def index
@@ -40,12 +41,10 @@ module Magaz
     def new
       @category = @parent_category
       @product = Product.new
-      @dimensions = Dimension.all
     end
 
     # GET /products/1/edit
     def edit
-      @dimensions = Dimension.all
     end
 
     # GET    /products(/:product_id)/descr(.:format)
@@ -64,7 +63,6 @@ module Magaz
       if @product.save
         redirect_to edit_product_path(@product), notice: t('.success')
       else
-        @dimensions = Dimension.all
         render :new        
       end
     end
@@ -232,6 +230,10 @@ module Magaz
 
       def product_properties
         params.require(:properties)
+      end
+
+      def set_dimensions
+        @dimensions = Dimension.all
       end
   end
 end

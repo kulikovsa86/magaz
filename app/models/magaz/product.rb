@@ -44,7 +44,7 @@ module Magaz
     scope :visible, -> {where(hidden: false)}
 
     validates :name, :category, presence: true
-    validates :name, allow_blank: true, length: { maximum: 144 }
+    validates :name, allow_blank: false, length: { maximum: 144 }
 
     def features
       property_values.features
